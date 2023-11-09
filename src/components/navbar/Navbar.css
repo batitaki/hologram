@@ -1,0 +1,83 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  background-color: #fff; 
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; 
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.navbar-nav .nav-item {
+  margin: 0;
+}
+
+.navbar-nav .nav-link {
+  padding: 8px 15px;
+}
+
+
+.navbar-expanded {
+  width: 220px; 
+}
+
+.art-options {
+  font-size: 37px;
+  font-family: 'Oswald', sans-serif;
+}
+.description {
+  color: black; 
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+p{
+  color: rgb(255, 255, 255);
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  
+}
+.content-right {
+  margin-left: 500px;
+}
+.custom-button {
+  background-color: #515151; 
+  color: #FFFFFF; 
+  border: none; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+}
+.content-window {
+  display: inline-block;
+  background-color: #fff; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  max-width: 600px;
+  max-height:700px;
+  margin-top: 60px;
+
+}
+.content-right .container {
+
+  display: inline-block;
+  max-width: 600px;
+  max-height:670px
+}
+.fit-image {
+  display: inline-block;
+}
