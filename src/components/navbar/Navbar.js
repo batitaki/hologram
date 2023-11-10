@@ -35,8 +35,8 @@ function Navbar () {
                 id="artOptions"
                 style={{ display: isExpanded ? 'block' : 'none' }}
               >
-                <Link to='/artist' className="nav-link"  >
-              ARTIST
+                <Link to='/artists' className="nav-link"  >
+              ARTISTS
                 </Link>
                 <Link className="nav-link" href="#" >
               COLLECTION

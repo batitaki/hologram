@@ -9,4 +9,7 @@ const getArtists = async () => {
   }
 };
 
+
+
 export { getArtists };
+
