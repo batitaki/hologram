@@ -1,0 +1,10 @@
+.homeImg {
+  background-image: url('../../assets/holograma.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}

@@ -2,3 +2,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.sketch {
+  margin-top: 100px;
+}

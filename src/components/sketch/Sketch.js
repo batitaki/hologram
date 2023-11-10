@@ -37,5 +37,5 @@ export default (props) => {
     }
   };
 
-  return <Sketch setup={setup} draw={draw} preload={preload} />;
+  return <Sketch className={"sketch"} setup={setup} draw={draw} preload={preload} />;
 };

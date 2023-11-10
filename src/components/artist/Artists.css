@@ -1,0 +1,148 @@
+.titulo {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 30px;
+  font-weight: 1;
+  color: #27343a;
+  text-align: center;
+  font-style: bold;
+
+    }
+
+/* CUADRO DE BÚSQUEDA DE PRODUCTO */
+.search input[type="search"] {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 12px;
+  color: #181818;
+}
+
+.search .form-inline label {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.search-container {
+ border-radius: 1;
+ width: 50vw;
+}
+
+.d-flex {
+  width: 30em;
+}
+
+/*BODY Y CONTENEDOR */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Ajusta la opacidad deseada */
+  z-index: -1;
+  background-position: center top;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.artista {
+  background-color: white;
+  border: 1px solid #1a1c1d;
+  border-radius: 3px;
+  width: calc(50% - 20px); /* Establece el ancho del artista al 50% del contenedor con un margen de 20px entre ellos */
+  box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px; /* Agrega margen inferior para separar las filas de artistas */
+}
+
+.artista .imagen {
+  margin-bottom: 10px;
+}
+
+.artista .imagen img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.artista .linea {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-bottom: 10px;
+}
+
+.artista .detalle {
+  font-family: 'Exo 2', sans-serif;
+  text-align: center;
+
+}
+
+.artista:hover {
+  transform: scale(1.05);
+}
+
+.artista {
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+}
+.nombre{
+  color: #1a1c1d;
+  font-size: large;
+  font-weight: 1000;
+}
+
+.product {
+  width: 100%;
+  height: 100%;
+}
+
+.barra_img {
+  width: 100%;
+  height: 50px;
+}
+
+.Caja_producto {
+  background-color: white;
+  opacity: 0.9;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.artistas-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Alinea las escuelas en filas */
+  gap: 20px;
+  max-width: 1000px; /* Establece un ancho máximo para el contenedor */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+
+
