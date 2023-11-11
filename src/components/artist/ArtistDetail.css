@@ -1,0 +1,40 @@
+.artistName {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 30px;
+  color: #27343a;
+  text-align: center;
+  margin-bottom: 10px; /* Añade espacio entre el nombre y la descripción */
+}
+
+.artistDescription {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 15px;
+  font-weight: 10;
+  color: #27343a;
+  text-align: center;
+  width: 40vw;
+}
+
+.artistDetailContainer {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección del contenedor a columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  margin-top: 5vw;
+}
+
+.detailsContainer {
+  display: flex;
+}
+
+.descriptionContainer {
+  margin-top: 20px; /* Añade espacio entre el texto y la imagen */
+}
+
+.containerImage {
+  flex-shrink: 0;
+  border: 2px solid #5b666b;
+  padding: 10px;
+
+  margin-left: 10vw;
+}

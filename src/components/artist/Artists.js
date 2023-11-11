@@ -26,13 +26,12 @@ const Artists = () => {
         {artistas.map((artista) => (
           <article className="artista" key={artista.ID}>
             <div className="imagen">
-            <Link to={`/artist/${artista.ID}`} key={artista.ID}>
+              <Link to={`/artist/${artista.ID}`} key={artista.ID}>
                 <img src={artista.Imagen} className="product1" alt={artista.Nombre} />
               </Link>
               <div className="linea"></div>
               <div className="detalle">
                 <p className="nombre">{artista.Nombre}</p>
-                <p className="nombre">{artista.DescripcionArtista}</p>
               </div>
             </div>
           </article>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { getArtistDetails } from '../../services/artistsAPI.js'; // Asegúrate de importar el método correcto
+import './ArtistDetail.css';
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -7,13 +9,8 @@ const ArtistDetail = () => {
 
   const loadArtistDetails = async (artistId) => {
     try {
-      const response = await fetch(`http://localhost:3002/artistas/detalleArtista/${artistId}`);
-      if (response.ok) {
-        const artistData = await response.json();
-        setSelectedArtist(artistData);
-      } else {
-        console.error('Error fetching artist details');
-      }
+      const artistData = await getArtistDetails(artistId);
+      setSelectedArtist(artistData);
     } catch (error) {
       console.error('Error fetching artist details', error);
     }
@@ -30,13 +27,18 @@ const ArtistDetail = () => {
   }
 
   return (
-    <div>
-      <h1>{selectedArtist.Nombre}</h1>
-      <p>{selectedArtist.DescripcionArtista}</p>
-      <img src={selectedArtist.Imagen} className="product1" alt={selectedArtist.Nombre} />
+    <div className='artistDetailContainer'>
+      <div className='detailsContainer'>
+        <div className='descriptionContainer'>
+          <h1 className='artistName'>{selectedArtist.Nombre}</h1>
+          <p className='artistDescription'>{selectedArtist.DescripcionArtista}</p>
+        </div>
+        <div className='containerImage'>
+          <img src={selectedArtist.Imagen} className="product1" alt={selectedArtist.Nombre} />
+        </div>
+      </div>
     </div>
   );
 };
 
 export { ArtistDetail };
-
