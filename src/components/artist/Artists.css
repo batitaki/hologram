@@ -19,8 +19,8 @@
 
 .artista {
   background-color: white;
-  border: 1px solid #1a1c1d;
-  border-radius: 3px;
+  border: 2px solid rgba(128, 136, 139, 0.3); /* Borde con color sutil */
+  box-shadow: 3px 3px 6px rgba(157, 165, 168, 0.2); /* Leve sombra alrededor del contenedor */
   width: calc(50% - 20px); /* Establece el ancho del artista al 50% del contenedor con un margen de 20px entre ellos */
   box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
   display: flex;

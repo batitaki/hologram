@@ -38,7 +38,7 @@ function Navbar () {
                 <Link to='/artists' className="nav-link"  >
               ARTISTS
                 </Link>
-                <Link className="nav-link" href="#" >
+                <Link to='/collection' className="nav-link"  >
               COLLECTION
                 </Link>
                 <Link to='/sketch' className="nav-link" >
@@ -51,7 +51,7 @@ function Navbar () {
               ESSAYS
                 </Link>
                 <Link className="nav-link" href="#" >
-              PODCAST
+              ABOUT
                 </Link>
                 <Link className="nav-link" href="#" >
               EXHIBITIONS
@@ -59,7 +59,7 @@ function Navbar () {
                 <Link className="nav-link" href="#" >
               COMING SOON
                 </Link>
-                <Link className="nav-link" href="#" >
+                <Link className="nav-link" href="apply" >
               APPLY
                 </Link>
 

@@ -3,10 +3,14 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
 import Artists  from './components/artist/Artists'
+import Collection from './components/collection/Collection';
+import ApplyForm from './components/apply/Apply';
 import { ArtistDetail } from './components/artist/ArtistDetail';
 import { Home } from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
 
 function App() {
   return (
@@ -19,6 +23,8 @@ function App() {
             <Route path='/sketch' element={<Sketch />} />
             <Route path='/artists' element={<Artists />} />
             <Route path='/artist/:id' element={<ArtistDetail />} />
+            <Route path='/collection' element= {<Collection />} />
+            <Route path='/apply' element= {<ApplyForm />} />
 
           </Routes>
         </Router>

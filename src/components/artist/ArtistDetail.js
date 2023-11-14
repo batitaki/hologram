@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtistDetails } from '../../services/artistsAPI.js'; // Asegúrate de importar el método correcto
 import './ArtistDetail.css';
+import Sketch from '../sketch/Sketch.js';
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -27,6 +28,7 @@ const ArtistDetail = () => {
   }
 
   return (
+    <>
     <div className='artistDetailContainer'>
       <div className='detailsContainer'>
         <div className='descriptionContainer'>
@@ -38,6 +40,11 @@ const ArtistDetail = () => {
         </div>
       </div>
     </div>
+
+   <Sketch />
+
+
+    </>
   );
 };
 
