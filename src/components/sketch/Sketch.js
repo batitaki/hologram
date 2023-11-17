@@ -5,23 +5,37 @@ import "p5/lib/addons/p5.sound"; // Importa p5.sound
 import audio from '../../assets/beat.wav';
 import audio1 from '../../assets/ojo.wav';
 import audio2 from '../../assets/soho.wav';
+import suziImage from '../../assets/suzi.jpg';
+import valentinoImage from '../../assets/valen1.png';
+import jeeImage from '../../assets/jeee.png'
 import './SketchStyles.css';
 
-let x = 50;
-let y = 50;
-let sound; // Variable para el objeto de sonido principal
-let sound1; // Variable para el objeto de sonido secundario
+let sound;
+let sound1;
 let sound2;
-let isSoundOn = false; // Estado para rastrear si el sonido principal está activado
-let isSound1On = false; // Estado para rastrear si el sonido secundario está activado
+let isSoundOn = false;
+let isSound1On = false;
 let isSound2On = false;
+let suzi;
+let valentino;
+let jee;
+let suziSize = 100;
+let valentinoSize = 100;
+let jeeSize = 100;
+let angle = 0;
+let yOffset = 0; // Variable para ajustar el desplazamiento vertical
 
 export default (props) => {
+  const x = 250;
+  const y = 250;
+
   const preload = (p5) => {
-    // Cargar los archivos de audio en la función preload
     sound = p5.loadSound(audio);
     sound1 = p5.loadSound(audio1);
     sound2 = p5.loadSound(audio2);
+    suzi = p5.loadImage(suziImage);
+    valentino = p5.loadImage(valentinoImage);
+    jee = p5.loadImage(jeeImage)
   };
 
   const setup = (p5, canvasParentRef) => {
@@ -29,12 +43,47 @@ export default (props) => {
   };
 
   const draw = (p5) => {
-    p5.background(0);
-    p5.ellipse(x, y, 70, 70);
-    x++;
+    p5.background(255, 182, 223);
+
+    // Ajustar el tamaño de la imagen de Suzi al estado de reproducción del sonido principal
+    if (isSoundOn && sound.isPlaying()) {
+      const scaleValue = p5.sin(angle);
+      suziSize = p5.map(scaleValue, -1, 1, 50, 200);
+      angle += 0.1;
+    }
+    
+    p5.image(suzi, x - suziSize / 2, y - suziSize / 2 + yOffset, suziSize, suziSize);
+
+    if (p5.keyIsDown(75)) {
+      // Animar la imagen de Valentino con una oscilación sinusoidal cuando se reproduce el sonido principal
+      if (isSoundOn && sound.isPlaying()) {
+        const scaleValue = p5.sin(angle);
+        valentinoSize = p5.map(scaleValue, -1, 1, 50, 200);
+        angle += 0.1;
+      }
+      // Mostrar la imagen de Valentino con el tamaño animado y desplazamiento vertical opuesto a Suzi
+      p5.image(valentino, x - valentinoSize / 2, y - suziSize / 2 - valentinoSize - yOffset, valentinoSize, valentinoSize);
+    }
+
+
+    if (p5.keyIsDown(83)) {
+    
+      if (isSoundOn && sound.isPlaying()) {
+        const scaleValue = p5.sin(angle);
+        jeeSize = p5.map(scaleValue, -1, 1, 50, 200);
+        angle += 0.1;
+      }
+      p5.image(jee, 0, p5.height - jeeSize, jeeSize, jeeSize);
+
+    }
+
+    if (x > p5.width - 35 || x < 35) {
+      x = p5.constrain(x, 35, p5.width - 35);
+    }
+
+
 
     if (p5.keyIsDown(66) && !isSoundOn) { 
-      // Activar el sonido principal al presionar la tecla 'b'
       sound.loop();
       isSoundOn = true;
     } else if (!p5.keyIsDown(66) && isSoundOn) {
@@ -43,7 +92,6 @@ export default (props) => {
     }
 
     if (p5.keyIsDown(75) && !isSound1On) { 
-      // Activar el sonido secundario al presionar la tecla 'k'
       sound1.loop();
       isSound1On = true;
     } else if (!p5.keyIsDown(75) && isSound1On) {
@@ -54,7 +102,7 @@ export default (props) => {
     if (p5.keyIsDown(83) && !isSound2On) {
       sound2.loop();
       isSound2On = true;
-    } else if (!p5.keyIsDown(83)&& isSound2On){
+    } else if (!p5.keyIsDown(83) && isSound2On){
       sound2.stop();
       isSound2On = false;
     }
@@ -62,4 +110,3 @@ export default (props) => {
 
   return <Sketch className={"sketch"} setup={setup} draw={draw} preload={preload} />;
 };
-

@@ -5,10 +5,12 @@ import Sketch from './components/sketch/Sketch';
 import Artists  from './components/artist/Artists'
 import Collection from './components/collection/Collection';
 import ApplyForm from './components/apply/Apply';
+import CreateArtWork from './components/collection/CreateArtWork';
 import { ArtistDetail } from './components/artist/ArtistDetail';
 import { Home } from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 
 
@@ -25,7 +27,7 @@ function App() {
             <Route path='/artist/:id' element={<ArtistDetail />} />
             <Route path='/collection' element= {<Collection />} />
             <Route path='/apply' element= {<ApplyForm />} />
-
+            <Route path='/createArt' element= {<CreateArtWork />} />
           </Routes>
         </Router>
       </div>

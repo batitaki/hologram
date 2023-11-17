@@ -1,111 +1,55 @@
 import React, { useState } from 'react';
+import { sendArtistApplication } from '../../services/artistsAPI';
+import ArtistApplicationForm from './ApplyFrom';
 
 const ApplyForm = () => {
   const [formData, setFormData] = useState({
     Nombre: '',
     Email: '',
     DescripcionArtista: '',
-    Imagen: null, // Assuming this field is for file upload
+    Imagen: null,
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
+
     if (name === 'Imagen') {
-      setFormData({
-        ...formData,
-        [name]: event.target.files[0],  // Usar files para el campo de imagen
-      });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: event.target.files[0],
+      }));
     } else {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         [name]: value,
-      });
+      }));
     }
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const apiEndpoint = 'http://localhost:3002/artistas/aplicacionArtistas';
-      const form = new FormData();
+    const apiResponse = await sendArtistApplication(formData);
 
-      for (const key in formData) {
-        form.append(key, formData[key]);
-      }
-
-      const response = await fetch(apiEndpoint, {
-        method: 'POST',
-        body: form,
+    if (apiResponse.success) {
+      alert('Solicitud enviada exitosamente');
+      setFormData({
+        Nombre: '',
+        Email: '',
+        DescripcionArtista: '',
+        Imagen: null,
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Solicitud creada:', data);
-        // Perform actions on successful response
-      } else {
-        console.error('Error al crear la solicitud');
-        // Handle error if the request is not successful
-      }
-    } catch (error) {
-      console.error('Error en la solicitud:', error);
-      // Handle network or other errors
+    } else {
+      console.error(apiResponse.error);
     }
   };
 
   return (
-    <>
-    <div className="aplicacion-artistas">
-  <form onSubmit={handleSubmit} encType="multipart/form-data">
-  {/* ... rest of your form code ... */}
-  <br></br>
-  <br></br>
-  <br></br>
-  Nombre
-  <input
-    type="text"
-    aria-label="First name"
-    className="form-control"
-    name="Nombre"
-    value={formData.Nombre}
-    onChange={handleChange}
-  />
-  <br></br>
-Email
-    <input
-    type="email"
-    aria-label="First name"
-    className="form-control"
-    name="Email"
-    value={formData.Email}
-    onChange={handleChange}
-  />
-  <br></br>
-  Descripcion
-     <input
-    type="text"
-    aria-label="First name"
-    className="form-control"
-    name="DescripcionArtista"
-    value={formData.DescripcionArtista}
-    onChange={handleChange}
-  />
-  <br></br>
-  Imagen
-  {/* ... other form fields ... */}
-  <input
-    type="file"
-    className="form-control"
-    id="inputGroupFile01"
-    name="Imagen"
-    onChange={handleChange}
-  />
-  <input type="submit" value="Enviar" className="boton-submit" />
-</form>
-
-    </div>
-
-    </>
+    <ArtistApplicationForm
+      formData={formData}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 

@@ -1,10 +1,30 @@
+.collection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.columns-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px; 
+  margin-left: 21vw;
+}
+
+.column {
+  flex: 0 0 30%;
+  margin-bottom: 20px;
+}
+
 .title {
   font-family: 'Exo 2', sans-serif;
   font-size: 30px;
   font-weight: 1;
   color: #27343a;
-  text-align: center;
   font-style: bold;
+  margin-bottom: 20px;
 }
 
 .description {
@@ -13,7 +33,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Número de líneas a mostrar */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
 }
 
@@ -22,48 +42,18 @@
   font-size: 25px;
   font-weight: bold;
   color: #38464d;
-  text-align: center;
-  
 }
-
 
 .artwork-image {
   width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
-
-.price {
-  font-family: 'Exo 2', sans-serif;
-  font-size: 14px;
-  color: #5a4e4e;
-  font-weight: bold;
-  /* Otros estilos para el precio */
-}
-
-.collection-container {
-  width: 100%;
+.artwork-container {
+  margin-bottom: 30px;
   padding: 20px;
-  /* Estilos para el contenedor principal de la colección */
-}
-
-.artworks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: 'Exo 2', sans-serif;
-  /* Estilos para el contenedor de las obras de arte */
-}
-
-.artwork {
-  width: 300px;
-  margin: 15px;
-  padding: 15px;
-  background: #ffffff;
-  border: 1px solid #494a4b;
-  border-radius: 3px;
-  font-family: 'Exo 2', sans-serif;
-  /* Otros estilos para cada obra de arte */
+  box-sizing: border-box;
 }
