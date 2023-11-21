@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -42,14 +41,8 @@ function Navbar () {
                 <Link to='/sketch' className="nav-link" >
               SKETCHES
                 </Link>
-                <Link className="nav-link" href="#">
-              VIDEOS
-                </Link>
                 <Link to='/createArt' className="nav-link" >
               CREATE ART
-                </Link>
-                <Link className="nav-link" href="#" >
-              ABOUT
                 </Link>
                 <Link to='/apply' className="nav-link"  >
               APPLY

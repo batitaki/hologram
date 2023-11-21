@@ -1,6 +1,6 @@
 const getArtists = async () => {
   try {
-    const artistAnswer = await fetch('http://localhost:3002/artistas/artistas');
+    const artistAnswer = await fetch('http://localhost:3002/artists/artists');
     const data = await artistAnswer.json();
     return data;
   } catch (error) {
@@ -13,7 +13,7 @@ const getArtists = async () => {
 
 const getArtistDetails = async (artistId) => {
   try {
-      const response = await fetch(`http://localhost:3002/artistas/detalleArtista/${artistId}`);
+      const response = await fetch(`http://localhost:3002/artists/artistDetail/${artistId}`);
     if (response.ok) {
       const artistData = await response.json();
       return artistData;
@@ -30,7 +30,7 @@ const getArtistDetails = async (artistId) => {
 
 const sendArtistApplication = async (formData) => {
   try {
-    const apiEndpoint = 'http://localhost:3002/artistas/aplicacionArtistas';
+    const apiEndpoint = 'http://localhost:3002/artists/artistRequest';
     const form = new FormData();
 
     for (const key in formData) {

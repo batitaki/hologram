@@ -32,9 +32,9 @@ const Collection = () => {
                     .map((artwork) => (
                       <div className="artwork-container" key={artwork.id}>
                         <div className="artwork">
-                          <img className="artwork-image" src={artwork.Imagen} alt={artwork.Titulo} />
-                          <h2 className="work-title">{artwork.Titulo}</h2>
-                          <p className="description">{artwork.Descripcion}</p>
+                          <img className="artwork-image" src={artwork.Image} alt={artwork.Title} />
+                          <h2 className="work-title">{artwork.Title}</h2>
+                          <p className="description">{artwork.Description}</p>
                         </div>
                       </div>
                     ))}

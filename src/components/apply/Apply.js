@@ -4,16 +4,16 @@ import ArtistApplicationForm from './ApplyFrom';
 
 const ApplyForm = () => {
   const [formData, setFormData] = useState({
-    Nombre: '',
+    Name: '',
     Email: '',
-    DescripcionArtista: '',
-    Imagen: null,
+    ArtistDetail: '',
+    Image: null,
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'Imagen') {
+    if (name === 'Image') {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: event.target.files[0],
@@ -32,12 +32,12 @@ const ApplyForm = () => {
     const apiResponse = await sendArtistApplication(formData);
 
     if (apiResponse.success) {
-      alert('Solicitud enviada exitosamente');
+      alert('Request sent correctly');
       setFormData({
-        Nombre: '',
+        Name: '',
         Email: '',
-        DescripcionArtista: '',
-        Imagen: null,
+        ArtistDetail: '',
+        Image: null,
       });
     } else {
       console.error(apiResponse.error);

@@ -8,12 +8,12 @@ const ArtistApplicationForm = ({ formData, handleChange, handleSubmit }) => {
           <br />
           <br />
           <br />
-          Nombre
+          Name
           <input
             type="text"
             aria-label="First name"
             className="form-control"
-            name="Nombre"
+            name="Name"
             value={formData.Nombre}
             onChange={handleChange}
           />
@@ -28,22 +28,22 @@ const ArtistApplicationForm = ({ formData, handleChange, handleSubmit }) => {
             onChange={handleChange}
           />
           <br />
-          Descripcion
+          Description
           <input
             type="text"
             aria-label="First name"
             className="form-control"
-            name="DescripcionArtista"
-            value={formData.DescripcionArtista}
+            name="ArtistDescription"
+            value={formData.ArtistDescription}
             onChange={handleChange}
           />
           <br />
-          Imagen
+          Imagaes
           <input
             type="file"
             className="form-control"
             id="inputGroupFile01"
-            name="Imagen"
+            name="Image"
             onChange={handleChange}
           />
           <input type="submit" value="Enviar" className="boton-submit" />

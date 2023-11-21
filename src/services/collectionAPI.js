@@ -1,6 +1,6 @@
 export const getCollection = async () => {
   try {
-    const collectionAwnser = await fetch('http://localhost:3002/obras/obras');
+    const collectionAwnser = await fetch('http://localhost:3002/artworks/artworks');
     const data = await collectionAwnser.json();
     return data;
   } catch (error) {
@@ -11,7 +11,7 @@ export const getCollection = async () => {
 
 export const fetchArtistas = async () => {
   try {
-    const response = await fetch('http://localhost:3002/obras/obraCreacion');
+    const response = await fetch('http://localhost:3002/artworks/createArtwork');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -22,7 +22,7 @@ export const fetchArtistas = async () => {
 
 export const createArtWorkAPI = async (formData) => {
   try {
-    const response = await fetch('http://localhost:3002/obras/obraCreacion', {
+    const response = await fetch('http://localhost:3002/artworks/createArtwork', {
       method: 'POST',
       body: formData,
     });

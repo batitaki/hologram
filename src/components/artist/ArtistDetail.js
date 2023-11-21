@@ -32,11 +32,11 @@ const ArtistDetail = () => {
     <div className='artistDetailContainer'>
       <div className='detailsContainer'>
         <div className='descriptionContainer'>
-          <h1 className='artistName'>{selectedArtist.Nombre}</h1>
-          <p className='artistDescription'>{selectedArtist.DescripcionArtista}</p>
+          <h1 className='artistName'>{selectedArtist.Name}</h1>
+          <p className='artistDescription'>{selectedArtist.ArtistDescription}</p>
         </div>
         <div className='containerImage'>
-          <img src={selectedArtist.Imagen} className="product1" alt={selectedArtist.Nombre} />
+          <img src={selectedArtist.Image} className="product1" alt={selectedArtist.Name} />
         </div>
       </div>
     </div>

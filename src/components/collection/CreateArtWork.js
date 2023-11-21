@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { fetchArtistas, createArtWorkAPI } from '../../services/collectionAPI';
 
 const CreateArtWork = () => {
-  const [artistasRegistrados, setArtistasRegistrados] = useState([]);
+  const [registeredArtists, setRegisteredArtists] = useState([]);
   const [formData, setFormData] = useState({
-    IDArtista: '',
-    Titulo: '',
-    Descripcion: '',
-    FechaCreacion: '',
-    Precio: '',
+    ArtistID: '',
+    Title: '',
+    Description: '',
+    CreationDate: '',
+    Price: '',
   });
 
   useEffect(() => {
     const fetchData = async () => {
-      const artistasData = await fetchArtistas();
-      setArtistasRegistrados(artistasData);
+      const artistsData = await fetchArtistas();
+      setRegisteredArtists(artistsData);
     };
 
     fetchData();
@@ -42,71 +42,59 @@ const CreateArtWork = () => {
 
   return (
     <div className="container">
-      <h3 className="nuevaObra">New ARTWORK</h3>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-3">
-          <label htmlFor="Artista" className="form-label">
-            Artista  
+          <label htmlFor="Artist" className="form-label">
           </label>
-          <select
-            className="form-select"
-            id="ArtistaId"
-            name="IDArtista"
-            value={formData.IDArtista}
-            onChange={handleChange}
-            required
-          >
+          <select className="form-select">
             <option value="" disabled selected>
-              Selecciona un artista
+              select an artist
             </option>
-            {artistasRegistrados.map((artista) => (
-              <option key={artista.ID} value={artista.ID}>
-                {artista.Nombre}
+            {registeredArtists.map((artist) => (
+              <option key={artist.ID} value={artist.ID}>
+                {artist.Name}
               </option>
             ))}
           </select>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="Titulo" className="form-label">
-            Título
+          <label htmlFor="Title" className="form-label">
+            Title
           </label>
           <input
             type="text"
             className="form-control"
-            id="Titulo"
-            name="Titulo"
-            value={formData.Titulo}
+            name="Title"
+            value={formData.Title}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="Descripcion" className="form-label">
-            Descripción
+          <label htmlFor="Description" className="form-label">
+            Description
           </label>
           <textarea
             className="form-control"
-            id="Descripcion"
             rows="3"
-            name="Descripcion"
-            value={formData.Descripcion}
+            name="Description"
+            value={formData.Description}
             onChange={handleChange}
             required
           ></textarea>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="FechaCreacion" className="form-label">
-            Fecha de Creación
+          <label htmlFor="CreationDate" className="form-label">
+            Creation Date
           </label>
           <input
             type="date"
             className="form-control"
-            id="FechaCreacion"
-            name="FechaCreacion"
-            value={formData.FechaCreacion}
+            name="CreationDate"
+            value={formData.CreationDate}
             onChange={handleChange}
             required
           />
@@ -114,14 +102,13 @@ const CreateArtWork = () => {
 
         <div className="mb-3">
           <label htmlFor="Precio" className="form-label">
-            Precio
+            Price
           </label>
           <input
             type="number"
             className="form-control"
-            id="Precio"
-            name="Precio"
-            value={formData.Precio}
+            name="Price"
+            value={formData.Price}
             onChange={handleChange}
             required
           />
@@ -135,14 +122,13 @@ const CreateArtWork = () => {
           <input
             type="file"
             className="form-control"
-            id="inputGroupFile01"
-            name="Imagen"
+            name="Image"
             multiple
           />
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Crear Obra de Arte
+          Create Artwork 
         </button>
       </form>
     </div>
