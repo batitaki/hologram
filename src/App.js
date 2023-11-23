@@ -10,6 +10,7 @@ import { ArtistDetail } from './components/artist/ArtistDetail';
 import { Home } from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Artwork } from './components/collection/Artwork';
 
 
 
@@ -26,6 +27,7 @@ function App() {
             <Route path='/artists' element={<Artists />} />
             <Route path='/artist/:id' element={<ArtistDetail />} />
             <Route path='/collection' element= {<Collection />} />
+            <Route path='/artwork/:id' element={<Artwork />} />
             <Route path='/apply' element= {<ApplyForm />} />
             <Route path='/createArt' element= {<CreateArtWork />} />
           </Routes>
