@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchArtistas, createArtWorkAPI } from '../../services/collectionAPI';
+import { fetchArtists, createArtWorkAPI } from '../../services/collectionAPI';
 
 const CreateArtWork = () => {
   const [registeredArtists, setRegisteredArtists] = useState([]);
@@ -13,7 +13,7 @@ const CreateArtWork = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const artistsData = await fetchArtistas();
+      const artistsData = await fetchArtists();
       setRegisteredArtists(artistsData);
     };
 
@@ -46,16 +46,21 @@ const CreateArtWork = () => {
         <div className="mb-3">
           <label htmlFor="Artist" className="form-label">
           </label>
-          <select className="form-select">
-            <option value="" disabled selected>
-              select an artist
-            </option>
-            {registeredArtists.map((artist) => (
-              <option key={artist.ID} value={artist.ID}>
-                {artist.Name}
-              </option>
-            ))}
-          </select>
+          <select
+            className="form-select"
+            name="ArtistID"
+            value={formData.ArtistID}
+            onChange={handleChange}
+          >
+          <option value="" disabled selected>
+            select an artist
+          </option>
+          {registeredArtists.map((artist) => (
+          <option key={artist.ID} value={artist.ID}>
+          {artist.Name}
+    </option>
+  ))}
+</select>
         </div>
 
         <div className="mb-3">

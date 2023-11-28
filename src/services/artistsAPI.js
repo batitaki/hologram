@@ -55,4 +55,7 @@ const sendArtistApplication = async (formData) => {
     return { success: false, error: 'Error en la solicitud' };
   }
 };
+
+
+
 export { getArtists, getArtistDetails, sendArtistApplication };

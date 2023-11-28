@@ -1,0 +1,46 @@
+.artworkContent {
+  display: flex;
+  align-items: flex-start;
+}
+
+.artworkImage {
+  width: auto; 
+  height: 400px;
+  margin-right: 14vw;
+}
+
+.image-content {
+  margin-top: 5vw;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  margin-right: 7vw;
+}
+
+.price {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 20px;
+  font-weight: 1;
+  color: #27343a;
+  font-style: bold;
+}
+
+.title-art {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 30px;
+  font-weight: 1;
+  color: #27343a;
+  font-style: bold;
+}
+
+.artist-name {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 20px;
+  font-weight: 1;
+  color: #27343a;
+  font-style: bold;
+}

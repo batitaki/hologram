@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Artists.css'; // Importa tu archivo CSS
+import './Artists.css'; 
 import { Link } from 'react-router-dom';
 import { getArtists } from '../../services/artistsAPI.js';
 

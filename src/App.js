@@ -10,7 +10,8 @@ import { ArtistDetail } from './components/artist/ArtistDetail';
 import { Home } from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { Artwork } from './components/collection/Artwork';
+import Artwork from './components/collection/Artwork';
+
 
 
 

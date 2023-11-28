@@ -7,20 +7,19 @@
 
 .columns-container {
   display: flex;
-  justify-content: space-between; /* Cambiado de space-around a space-between */
+  justify-content: space-between;
   width: 100%;
   max-width: 1200px; 
 }
 
 .artwork-container:hover .artwork-image {
-  opacity: 0.8; /* Puedes ajustar el nivel de opacidad según tus preferencias */
+  opacity: 0.8;
 }
 
 
 .column {
-
   margin-bottom: 20px;
-  box-sizing: border-box; /* Añadido para incluir padding y border en el ancho del elemento */
+  box-sizing: border-box; 
 }
 
 .title {
@@ -55,7 +54,7 @@
   height: auto;
   object-fit: cover;
   margin-bottom: 10px;
-  transition: opacity 0.2s ease; /* Ajusta la duración y el tipo de transición según tus preferencias */
+  transition: opacity 0.2s ease;
 }
 
 

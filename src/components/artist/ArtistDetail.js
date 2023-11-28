@@ -1,27 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArtistDetails } from '../../services/artistsAPI.js'; // Asegúrate de importar el método correcto
+import { getArtistDetails } from '../../services/artistsAPI.js';
+import { getArtworksByArtist } from '../../services/collectionAPI.js';
 import './ArtistDetail.css';
+import Collection from '../collection/Collection';
 import Sketch from '../sketch/Sketch.js';
+
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
-  const { id } = useParams(); // Obtiene el ID del artista de la URL
+  const { id } = useParams();
+  const [artistArtworks, setArtistArtworks] = useState([]);
 
   const loadArtistDetails = async (artistId) => {
     try {
       const artistData = await getArtistDetails(artistId);
       setSelectedArtist(artistData);
+
+      const artworksData = await getArtworksByArtist(artistId);
+      setArtistArtworks(artworksData);
     } catch (error) {
       console.error('Error fetching artist details', error);
     }
   };
 
   useEffect(() => {
+    console.log('Fetching artist details and artworks...');
     if (id) {
       loadArtistDetails(id);
     }
   }, [id]);
+
+  useEffect(() => {
+    console.log('Artist artworks:', artistArtworks);
+  }, [artistArtworks]);
 
   if (!selectedArtist) {
     return <div>Loading...</div>;
@@ -29,22 +41,26 @@ const ArtistDetail = () => {
 
   return (
     <>
-    <div className='artistDetailContainer'>
-      <div className='detailsContainer'>
-        <div className='descriptionContainer'>
-          <h1 className='artistName'>{selectedArtist.Name}</h1>
-          <p className='artistDescription'>{selectedArtist.ArtistDescription}</p>
-        </div>
-        <div className='containerImage'>
-          <img src={selectedArtist.Image} className="product1" alt={selectedArtist.Name} />
+      <div className='artistDetailContainer'>
+        <div className='detailsContainer'>
+          <div className='descriptionContainer'>
+            <h1 className='artistName'>{selectedArtist.Name}</h1>
+            <p className='artistDescription'>{selectedArtist.ArtistDescription}</p>
+          </div>
+          <div className='containerImage'>
+            <img src={selectedArtist.Image} className="product1" alt={selectedArtist.Name} />
+          </div>
         </div>
       </div>
-    </div>
-
-   <Sketch />
-
-
+      <div className='sketch-content'>
+      <p className='sketch-title'>interactive sketch</p>
+        <Sketch/>
+      </div>
+      <div className='artistDetailContainer'>
+        <Collection artistArtworks={artistArtworks} />
+      </div>
     </>
+
   );
 };
 

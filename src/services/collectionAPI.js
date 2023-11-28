@@ -9,7 +9,7 @@ export const getCollection = async () => {
   } 
 };
 
-export const fetchArtistas = async () => {
+export const fetchArtists = async () => {
   try {
     const response = await fetch('http://localhost:3002/artworks/createArtwork');
     const data = await response.json();
@@ -39,3 +39,26 @@ export const createArtWorkAPI = async (formData) => {
     return { success: false, error: 'Error al enviar la solicitud' };
   }
 };
+
+export const getArtworkById = async (artworkId) => {
+  try {
+    const response = await fetch(`http://localhost:3002/artworks/artworks/${artworkId}`); 
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching artwork with ID ${artworkId}:`, error);
+    return null; 
+  }
+};
+
+export const getArtworksByArtist = async (artistId) => {
+  try {
+    const response = await fetch(`http://localhost:3002/artworks/byArtist/${artistId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching artworks for artist with ID ${artistId}:`, error);
+    return [];
+  }
+};
+

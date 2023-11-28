@@ -23,7 +23,7 @@ let suziSize = 100;
 let valentinoSize = 100;
 let jeeSize = 100;
 let angle = 0;
-let yOffset = 0; // Variable para ajustar el desplazamiento vertical
+let yOffset = 0;
 
 export default (props) => {
   const x = 250;
@@ -43,9 +43,8 @@ export default (props) => {
   };
 
   const draw = (p5) => {
-    p5.background(255, 182, 223);
+    p5.background(255, 400, 223);
 
-    // Ajustar el tamaño de la imagen de Suzi al estado de reproducción del sonido principal
     if (isSoundOn && sound.isPlaying()) {
       const scaleValue = p5.sin(angle);
       suziSize = p5.map(scaleValue, -1, 1, 50, 200);
@@ -55,13 +54,11 @@ export default (props) => {
     p5.image(suzi, x - suziSize / 2, y - suziSize / 2 + yOffset, suziSize, suziSize);
 
     if (p5.keyIsDown(75)) {
-      // Animar la imagen de Valentino con una oscilación sinusoidal cuando se reproduce el sonido principal
       if (isSoundOn && sound.isPlaying()) {
         const scaleValue = p5.sin(angle);
         valentinoSize = p5.map(scaleValue, -1, 1, 50, 200);
         angle += 0.1;
       }
-      // Mostrar la imagen de Valentino con el tamaño animado y desplazamiento vertical opuesto a Suzi
       p5.image(valentino, x - valentinoSize / 2, y - suziSize / 2 - valentinoSize - yOffset, valentinoSize, valentinoSize);
     }
 
