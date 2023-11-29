@@ -1,12 +1,12 @@
 .artworkContent {
   display: flex;
-  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 17vw;
 }
 
 .artworkImage {
   width: auto; 
   height: 400px;
-  margin-right: 14vw;
 }
 
 .image-content {
@@ -16,9 +16,10 @@
 .info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: center;
   align-items: center;
-  margin-right: 7vw;
+  margin-left: 12vw;
+  margin-bottom: 5vw;
 }
 
 .price {

@@ -11,6 +11,7 @@ import { Home } from './components/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Artwork from './components/collection/Artwork';
+import { Foot } from './components/foot/Foot';
 
 
 
@@ -18,6 +19,7 @@ import Artwork from './components/collection/Artwork';
 
 function App() {
   return (
+  <>
     <div className="App">
       <div className='headerParent'>
         <Router>
@@ -35,6 +37,8 @@ function App() {
         </Router>
       </div>
     </div>
+<Foot/>
+  </>
   );
 }
 

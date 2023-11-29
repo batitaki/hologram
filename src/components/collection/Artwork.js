@@ -39,6 +39,7 @@ const Artwork = () => {
             <h1 className="title-art">{artworkDetails.Title}</h1>
             <p className='price'> PRICE:  {artworkDetails.Price}USD</p>
             <p className='price'>  {artworkDetails.Description}</p>
+            <p className='price'>  {artworkDetails.Materials}</p>
           </div>
         </div>
       ) : (

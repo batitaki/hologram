@@ -1,6 +1,8 @@
-body {
+.sketch {
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding-top: 50px;
 }
 
 .sketch-content{
@@ -10,6 +12,7 @@ body {
   align-items: center;
   margin-top: 100px;
 }
+
 .sketch-title {
   font-family: 'Exo 2', sans-serif;
   font-size: 35px;

@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vw;
+}
+
+.foot-text {
+  font-family: 'Exo 2', sans-serif;
+  color: #3c3737;
+}
