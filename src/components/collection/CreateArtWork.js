@@ -8,9 +8,10 @@ const CreateArtWork = () => {
     ArtistID: '',
     Title: '',
     Description: '',
+    Materials: '',
+    Dimensions: '',
     CreationDate: '',
     Price: '',
-    Dimensions: '',
   });
 
   useEffect(() => {
@@ -32,8 +33,10 @@ const CreateArtWork = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSubmit = new FormData(e.target);
+    console.log([...formDataToSubmit.entries()]); // Esto imprime pares clave-valor del objeto FormData
+  
     const apiResponse = await createArtWorkAPI(formDataToSubmit);
-
+  
     if (apiResponse.success) {
       console.log(apiResponse.message);
       alert('Art Work created');
@@ -41,7 +44,7 @@ const CreateArtWork = () => {
       console.error('Error al crear la obra:', apiResponse.error);
     }
   };
-
+  
   return (
     <div className="my-container">
       <form onSubmit={handleSubmit} encType="multipart/form-data" className="my-form">
@@ -79,7 +82,19 @@ const CreateArtWork = () => {
             required
           />
         </div>
-
+        <div className="my-form-group">
+          <label htmlFor="Materials" className="my-label">
+           MATERIALS
+          </label>
+          <input
+            type="text"
+            className="my-input"
+            name="Materials"
+            value={formData.Materials}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div className="my-form-group">
           <label htmlFor="Dimensions" className="my-label">
             DIMENSIONS

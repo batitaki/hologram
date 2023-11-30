@@ -57,7 +57,6 @@ const Artwork = () => {
             <p className='price'> PRICE:  {artworkDetails.Price}USD</p>
             <p className='price'>  {artworkDetails.Description}</p>
             <p className='price'>  {artworkDetails.Materials}</p>
-            <p className='price'>  {artworkDetails.Dimensions}</p>
           </div>
         </div>
       ) : (
