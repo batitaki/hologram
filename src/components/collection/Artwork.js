@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams , Link } from 'react-router-dom';
 import { getArtworkById } from '../../services/collectionAPI';
 import { getArtistDetails } from '../../services/artistsAPI';
+import {initLightboxJS} from 'lightbox.js-react'
+import 'lightbox.js-react/dist/index.css'
+import {SlideshowLightbox} from 'lightbox.js-react'
+import 'lightbox.js-react/dist/index.css'
 import './Artwork.css';
 
 const Artwork = () => {
   const { id } = useParams();
   const [artworkDetails, setArtworkDetails] = useState(null);
   const [artistName, setArtistName] = useState('');
+
+  useEffect(() => {
+    initLightboxJS("Insert your License Key here", "Insert plan type here");
+  }, []);
 
   useEffect(() => {
     const fetchArtworkDetails = async () => {
@@ -31,8 +39,17 @@ const Artwork = () => {
       {artworkDetails ? (
         <div className="artworkContent">
           <div className='image-content'>
-          <p className='artist-name'>{artistName}</p>
-          <img src={artworkDetails.Image} className="artworkImage" alt={artworkDetails.Name} />
+          <Link to={`/artist/${artworkDetails.ArtistID}`} className='artist-name'>{artistName}</Link>
+      <div className='artworkImage'>
+           <SlideshowLightbox className="container grid grid-cols-3 gap-2 mx-auto">
+           <img
+                  style={{ width: 'auto', height: '500px' }}
+                  className="w-full"
+                  src={artworkDetails.Image}
+                  alt={artworkDetails.Name}
+                />
+            </SlideshowLightbox> 
+     </div>
           <br></br>
           </div>
           <div className='info'>
@@ -40,6 +57,7 @@ const Artwork = () => {
             <p className='price'> PRICE:  {artworkDetails.Price}USD</p>
             <p className='price'>  {artworkDetails.Description}</p>
             <p className='price'>  {artworkDetails.Materials}</p>
+            <p className='price'>  {artworkDetails.Dimensions}</p>
           </div>
         </div>
       ) : (

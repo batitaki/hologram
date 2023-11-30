@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchArtists, createArtWorkAPI } from '../../services/collectionAPI';
+import './CreateArtWork.css';
 
 const CreateArtWork = () => {
   const [registeredArtists, setRegisteredArtists] = useState([]);
@@ -9,6 +10,7 @@ const CreateArtWork = () => {
     Description: '',
     CreationDate: '',
     Price: '',
+    Dimensions: '',
   });
 
   useEffect(() => {
@@ -41,35 +43,36 @@ const CreateArtWork = () => {
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="mb-3">
-          <label htmlFor="Artist" className="form-label">
+    <div className="my-container">
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className="my-form">
+        <div className="my-form-group">
+          <label htmlFor="Artist" className="my-label">
+            ARTIST
           </label>
           <select
-            className="form-select"
+            className="my-select"
             name="ArtistID"
             value={formData.ArtistID}
             onChange={handleChange}
           >
-          <option value="" disabled selected>
-            select an artist
-          </option>
-          {registeredArtists.map((artist) => (
-          <option key={artist.ID} value={artist.ID}>
-          {artist.Name}
-    </option>
-  ))}
-</select>
+            <option value="" disabled defaultValue>
+              Select an artist
+            </option>
+            {registeredArtists.map((artist) => (
+              <option key={artist.ID} value={artist.ID}>
+                {artist.Name}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="Title" className="form-label">
-            Title
+        <div className="my-form-group">
+          <label htmlFor="Title" className="my-label">
+            TITLE
           </label>
           <input
             type="text"
-            className="form-control"
+            className="my-input"
             name="Title"
             value={formData.Title}
             onChange={handleChange}
@@ -77,12 +80,26 @@ const CreateArtWork = () => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="Description" className="form-label">
-            Description
+        <div className="my-form-group">
+          <label htmlFor="Dimensions" className="my-label">
+            DIMENSIONS
+          </label>
+          <input
+            type="text"
+            className="my-input"
+            name="Dimensions"
+            value={formData.Dimensions}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="my-form-group">
+          <label htmlFor="Description" className="my-label">
+            DESCRIPTION
           </label>
           <textarea
-            className="form-control"
+            className="my-textarea"
             rows="3"
             name="Description"
             value={formData.Description}
@@ -91,13 +108,13 @@ const CreateArtWork = () => {
           ></textarea>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="CreationDate" className="form-label">
-            Creation Date
+        <div className="my-form-group">
+          <label htmlFor="CreationDate" className="my-label">
+            CREATION DATE
           </label>
           <input
             type="date"
-            className="form-control"
+            className="my-input"
             name="CreationDate"
             value={formData.CreationDate}
             onChange={handleChange}
@@ -105,13 +122,13 @@ const CreateArtWork = () => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="Precio" className="form-label">
-            Price
+        <div className="my-form-group">
+          <label htmlFor="Price" className="my-label">
+            PRICE
           </label>
           <input
             type="number"
-            className="form-control"
+            className="my-input"
             name="Price"
             value={formData.Price}
             onChange={handleChange}
@@ -119,21 +136,15 @@ const CreateArtWork = () => {
           />
         </div>
 
-        <div className="input-group mb-3">
-          <label className="input-group-text" htmlFor="inputGroupFile01">
-            Upload
+        <div className="my-form-group">
+          <label className="my-label" htmlFor="inputGroupFile01">
+            UPLOAD
           </label>
-
-          <input
-            type="file"
-            className="form-control"
-            name="Image"
-            multiple
-          />
+          <input type="file" className="my-input" name="Image" multiple />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Create Artwork 
+        <button type="submit" className="my-button">
+          CREATE ARTWORK
         </button>
       </form>
     </div>
