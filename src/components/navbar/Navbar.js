@@ -35,6 +35,9 @@ function Navbar () {
                 <Link to='/artists' className="nav-link"  >
               ARTISTS
                 </Link>
+                <Link to='/createSketch' className="nav-link"  >
+              CREATE SKETCH
+                </Link>
                 <Link to='/collection' className="nav-link"  >
               COLLECTION
                 </Link>

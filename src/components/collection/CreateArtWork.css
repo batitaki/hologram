@@ -8,12 +8,12 @@
   font-family: 'Exo 2', sans-serif;
 }
 .my-form-container {
-  margin-right: 100px; /* Ajusta el margen derecho según tus preferencias */
+  margin-right: 100px; 
 }
 
 
 .my-form {
-  width: 400px; /* Ajusta el ancho según tus preferencias */
+  width: 400px; 
 }
 
 .my-form-group {
@@ -58,20 +58,20 @@
 .my-input:focus,
 .my-select:focus,
 .my-textarea:focus {
-  border-color: #ff5733; /* Cambia el color según tus preferencias */
-  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5); /* Opcional: Añade una sombra alrededor del borde */
-  outline: none; /* Elimina el resaltado predeterminado al enfocar */
+  border-color: #ff5733; 
+  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5); 
+  outline: none; 
 }
 
 .my-button:focus {
-  outline: none; /* Elimina el resaltado predeterminado del botón al enfocarlo */
-  border-color: #ff5733; /* Cambia el color del borde del botón al enfocarlo */
-  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5); /* Opcional: Añade una sombra alrededor del borde */
+  outline: none; 
+  border-color: #ff5733; 
+  box-shadow: 0 0 5px rgba(255, 87, 51, 0.5); 
 }
 
 .my-button:hover {
   background-color: #0056b3;
-  border-color: #0056b3; /* Cambia el color del borde cuando el botón está en estado de hover */
+  border-color: #0056b3; 
 }
 
 .my-label {

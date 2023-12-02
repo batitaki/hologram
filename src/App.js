@@ -12,12 +12,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Artwork from './components/collection/Artwork';
 import { Foot } from './components/foot/Foot';
+import CreateSketch from './components/sketch/CreateSketch';
+import { Register } from './components/user/Register';
+
 
 
 
 
 
 function App() {
+
   return (
   <>
     <div className="App">
@@ -26,6 +30,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/register' element={<Register />} />
             <Route path='/sketch' element={<Sketch />} />
             <Route path='/artists' element={<Artists />} />
             <Route path='/artist/:id' element={<ArtistDetail />} />
@@ -33,6 +38,7 @@ function App() {
             <Route path='/artwork/:id' element={<Artwork />} />
             <Route path='/apply' element= {<ApplyForm />} />
             <Route path='/createArt' element= {<CreateArtWork />} />
+            <Route path='/createSketch' element= {<CreateSketch />} />
           </Routes>
         </Router>
       </div>

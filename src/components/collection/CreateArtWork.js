@@ -33,7 +33,7 @@ const CreateArtWork = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSubmit = new FormData(e.target);
-    console.log([...formDataToSubmit.entries()]); // Esto imprime pares clave-valor del objeto FormData
+    console.log([...formDataToSubmit.entries()]); 
   
     const apiResponse = await createArtWorkAPI(formDataToSubmit);
   

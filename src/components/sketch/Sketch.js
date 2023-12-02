@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Sketch from "react-p5";
-
 import "p5/lib/addons/p5.sound";
 import audio from '../../assets/beat.wav';
 import audio1 from '../../assets/ojo.wav';
