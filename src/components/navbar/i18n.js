@@ -25,7 +25,7 @@ i18n
           magazine: 'REVISTA',
           gallery: 'GALERIA',
           artists: 'ARTISTAS',
-          apply: 'APLICÁR',
+          apply: 'APLICAR',
           createArt: 'CREAR ARTE',
           createSketch: 'CREAR SKETCH'
         },

@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../assets/logoTipo.png";
+import logo from "../../assets/logoNegroH.PNG";
+import logo2 from "../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
 
 function Navbar() {
@@ -44,19 +45,28 @@ function Navbar() {
   }, [isExpanded]);
 
   return (
-    <nav className="navbar">
+
       <div className={`sidebar ${isExpanded ? "navbar-expanded" : ""}`}>
         <div
           className={`logo-class ${isExpanded ? "logo-class-expanded" : ""}`}
         >
-          <Link className="navbar-brand">
-            <img
-              onClick={toggleNavbarAndOptions}
-              src={logo}
-              alt=""
-              width="50"
-              style={{ margin: "8px" }}
-            />
+     <Link className="navbar-brand">
+            {isExpanded ? (
+              <img
+                className="logo2"
+                onClick={toggleNavbarAndOptions}
+                src={logo2}
+                alt=""
+              />
+            ) : (
+              <img
+                onClick={toggleNavbarAndOptions}
+                src={logo}
+                alt=""
+                width="50"
+                style={{ margin: "8px" }}
+              />
+            )}
           </Link>
         </div>
         <div className="navbar-nav">
@@ -186,7 +196,7 @@ function Navbar() {
           </div>
           {!isExpanded && (
             <button className="open-button" onClick={toggleNavbarAndOptions}>
-              |||||
+              |||
             </button>
           )}
 
@@ -197,7 +207,7 @@ function Navbar() {
           )}
         </div>
       </div>
-    </nav>
+
   );
 }
 
