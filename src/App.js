@@ -14,16 +14,15 @@ import Artwork from './components/collection/Artwork';
 import { Foot } from './components/foot/Foot';
 import CreateSketch from './components/sketch/CreateSketch';
 import { Register } from './components/user/Register';
-
-
-
-
-
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../src/components/navbar/i18n';
 
 function App() {
 
   return (
   <>
+  <I18nextProvider i18n={i18n}>
+
     <div className="App">
       <div className='headerParent'>
         <Router>
@@ -43,7 +42,11 @@ function App() {
         </Router>
       </div>
     </div>
-<Foot/>
+
+    <Foot/>
+
+  </I18nextProvider>
+
   </>
   );
 }
