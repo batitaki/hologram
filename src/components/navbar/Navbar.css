@@ -37,6 +37,8 @@
 .class-lang-expanded {
   margin-right: 2vw;
   align-self: flex-end; 
+  margin-bottom: 3vw;
+  margin-top: -4vw; 
 }
 
 .language-button {
@@ -99,3 +101,5 @@
 .nav-link.selected {
   color: #939393;
 }
+
+
