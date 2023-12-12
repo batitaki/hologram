@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
+import { Magazine } from './components/magazine/Magazine'
 import Artists  from './components/artist/Artists'
 import Collection from './components/collection/Collection';
 import ApplyForm from './components/apply/Apply';
@@ -31,6 +32,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/sketch' element={<Sketch />} />
+            <Route path='/magazine' element={<Magazine />} />
             <Route path='/artists' element={<Artists />} />
             <Route path='/artist/:id' element={<ArtistDetail />} />
             <Route path='/collection' element= {<Collection />} />

@@ -130,13 +130,13 @@ function Navbar() {
                 </Link>
 
                 <Link
-                  to="/sketch"
+                  to="/magazine"
                   className={`nav-link ${
-                    selectedView === "/sketch" ? "selected" : ""
+                    selectedView === "/magazine" ? "selected" : ""
                   }`}
                   onClick={() => {
                     closeNavbar();
-                    setSelectedView("/sketch");
+                    setSelectedView("/magazine");
                   }}
                 >
                   {t("magazine")}

@@ -5,11 +5,13 @@ import { getArtistDetails } from '../../services/artistsAPI';
 import {initLightboxJS} from 'lightbox.js-react'
 import 'lightbox.js-react/dist/index.css'
 import {SlideshowLightbox} from 'lightbox.js-react'
+import { useTranslation } from "react-i18next";
 import 'lightbox.js-react/dist/index.css'
 import './Artwork.css';
 
 const Artwork = () => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const [artworkDetails, setArtworkDetails] = useState(null);
   const [artistName, setArtistName] = useState('');
 
@@ -54,7 +56,7 @@ const Artwork = () => {
           </div>
           <div className='info'>
             <h1 className="title-art">{artworkDetails.Title}</h1>
-            <p className='price'> PRICE:  {artworkDetails.Price}USD</p>
+            <p className='price'> {t("price")}  {artworkDetails.Price}USD</p>
             <p className='price'>  {artworkDetails.Description}</p>
             <p className='price'>  {artworkDetails.Materials}</p>
           </div>

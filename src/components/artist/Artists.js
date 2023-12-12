@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Artists.css'; 
 import { Link } from 'react-router-dom';
 import { getArtists } from '../../services/artistsAPI.js';
+import { useTranslation } from "react-i18next";
 
 const Artists = () => {
+  const { t } = useTranslation();
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Artists = () => {
   return (
     <main>
       <div className="buscador mt-5 mx-auto text-center">
-        <h1 className="title">ARTISTS</h1>
+        <h1 className="title">{t("artists")}</h1>
         <br />
       </div>
 

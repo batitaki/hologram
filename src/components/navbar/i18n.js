@@ -15,7 +15,16 @@ i18n
           gallery: 'GALLERY',
           artists: 'ARTISTS',
           apply: 'APPLY',
-          createSketch: 'CREATE SKETCH'
+          createSketch: 'CREATE SKETCH' ,
+          price:'PRICE',
+          description:'DESCRIPTION',
+          title:'TITLE',
+          materials:'MATERIALS',
+          selectArtist:'SELECT AN ARTIST',
+          dimensions:'DIMENSIONS',
+          upload:'UPLOAD AN IMAGE',
+          createArt:'CREATE ARTWORK',
+          magazine:'MAGAZINE'
         },
       },
       es: {
@@ -27,7 +36,17 @@ i18n
           artists: 'ARTISTAS',
           apply: 'APLICAR',
           createArt: 'CREAR ARTE',
-          createSketch: 'CREAR SKETCH'
+          createSketch: 'CREAR SKETCH',
+          price:'PRECIO',
+          description:'DESCRIPCION',
+          title:'TITULO',
+          materials:'MATERIALES',
+          selectArtist:'SELECCIONA UN ARTISTA',
+          dimensions:'DIMENSIONES',
+          upload:'CARGA UNA IMAGEN',
+          createArt:'CREAR OBRA',
+          creationDate:'FECHA DE CREACION',
+          magazine:'REVISTA'
         },
       },
     },
