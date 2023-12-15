@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Sketch from "react-p5";
 import "p5/lib/addons/p5.sound";
-import videoFile from '../../assets/lacienaga.mp4'; 
-import audio from '../../assets/beat.wav';
-import audio1 from '../../assets/ojo.wav';
-import audio2 from '../../assets/soho.wav';
-import audio3 from '../../assets/rising.wav';
-import audio4 from '../../assets/space.wav';
-import suziImage from '../../assets/suzi.jpg';
-import valentinoImage from '../../assets/valen1.png';
-import jeeImage from '../../assets/jeee.png'
-import './SketchStyles.css';
+import videoFile from "../../assets/suns-soleil.mp4";
+import audio from "../../assets/beat.wav";
+import audio1 from "../../assets/ojo.wav";
+import audio2 from "../../assets/soho.wav";
+import audio3 from "../../assets/rising.wav";
+import audio4 from "../../assets/space.wav";
+import suziImage from "../../assets/suzi.jpg";
+import harmImage from "../../assets/harm.jpg";
+import goylImage from "../../assets/goyl.jpg";
+import "./SketchStyles.css";
 
 let sound;
 let sound1;
@@ -19,24 +19,36 @@ let sound3;
 let sound4;
 let video;
 
+let wasLKeyPressed = false;
+let areSoundsStarted = false;
 let isSoundOn = false;
 let isSound1On = false;
 let isSound2On = false;
 let isSound3On = false;
 let isSound4On = false;
 let isVideoPlaying = false;
+let isGrowing = true;
+let isHKeyPressed = false;
+
+let initialCircleRadius = 50;
+let circleRadius = 0;
 
 let suzi;
-let valentino;
-let jee;
 let suziSize = 100;
-let valentinoSize = 100;
-let jeeSize = 100;
-let angle = 0;
-let yOffset = 0;
+let suziAngle = 0;
+let suziOffset = 0;
 
-let isHKeyPressed = false;
-let circleRadius = 0;
+let harm;
+let harmSize = 100;
+let harmAngle = 0;
+let harmOffset = 0;
+
+let goyl;
+let goylSize = 100;
+let goylAngle = 0;
+let goylOffset = 0;
+
+let cubeRotation = 0;
 
 export default (props) => {
   const x = 250;
@@ -49,47 +61,92 @@ export default (props) => {
     sound3 = p5.loadSound(audio3);
     sound4 = p5.loadSound(audio4);
     suzi = p5.loadImage(suziImage);
-    valentino = p5.loadImage(valentinoImage);
-    jee = p5.loadImage(jeeImage);
+    harm = p5.loadImage(harmImage);
+    goyl = p5.loadImage(goylImage);
     video = p5.createVideo([videoFile]);
-    video.hide(); 
+    video.hide();
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+    p5.createCanvas(1200, 500, p5.WEBGL).parent(canvasParentRef);
+  };
+
+  const toggleAllSounds = () => {
+    if (areSoundsStarted) {
+      sound.stop();
+      sound1.stop();
+      sound2.stop();
+      sound3.stop();
+      areSoundsStarted = false;
+    } else {
+      sound.loop();
+      sound1.loop();
+      sound2.loop();
+      sound3.loop();
+      areSoundsStarted = true;
+    }
+  };
+
+  const remove = (p5) => {
+    video.remove();
   };
 
   const draw = (p5) => {
-    p5.background(215, 300, 423);
 
+    //video
+    if (p5.keyIsDown(86) && !isVideoPlaying) {
+      video.loop();
+      isVideoPlaying = true;
+    } else if (!p5.keyIsDown(86) && isVideoPlaying) {
+      video.pause();
+      isVideoPlaying = false;
+    }
+    if (isVideoPlaying) {
+      const videoWidth = 350;
+
+      const videoHeight = (videoWidth / -video.width) * -video.height;
+      p5.image(video, 0, 0, videoWidth, videoHeight);
+    } else {
+      p5.background(0, 0, 0);
+    }
+
+    // tecla L - loop
+    const isLKeyPressed = p5.keyIsDown(76);
+
+    if (isLKeyPressed && !wasLKeyPressed) {
+      cubeRotation = 0;
+      toggleAllSounds();
+    }
+
+    wasLKeyPressed = isLKeyPressed;
+
+    if (isLKeyPressed) {
+      p5.push();
+      p5.translate(0, 0, -200);
+      p5.rotateX(cubeRotation);
+      p5.rotateY(cubeRotation);
+      p5.box(100);
+      p5.pop();
+
+      // Update cube rotation
+      cubeRotation += 0.01;
+    }
+
+    //tecla B - beat
     if (isSoundOn && sound.isPlaying()) {
-      const scaleValue = p5.sin(angle);
-      suziSize = p5.map(scaleValue, -1, 1, 50, 200);
-      angle += 0.1;
-    }
-
-    p5.image(suzi, x - suziSize / 2, y - suziSize / 2 + yOffset, suziSize, suziSize);
-
-    if (p5.keyIsDown(75)) {
-      if (isSoundOn && sound.isPlaying()) {
-        const scaleValue = p5.sin(angle);
-        valentinoSize = p5.map(scaleValue, -1, 1, 50, 200);
-        angle += 0.1;
-      }
-      p5.image(valentino, x - valentinoSize / 2, y - suziSize / 2 - valentinoSize - yOffset, valentinoSize, valentinoSize);
-    }
-
-    if (p5.keyIsDown(83)) {
-      if (isSoundOn && sound.isPlaying()) {
-        const scaleValue = p5.sin(angle);
-        jeeSize = p5.map(scaleValue, -1, 1, 50, 200);
-        angle += 0.1;
-      }
-      p5.image(jee, 0, p5.height - jeeSize, jeeSize, jeeSize);
-    }
-
-    if (x > p5.width - 35 || x < 35) {
-      x = p5.constrain(x, 35, p5.width - 35);
+      p5.push(); 
+      const scaleValue = p5.sin(suziAngle);
+      suziSize = p5.map(scaleValue, -1, 1, 50, 900);
+      suziAngle += 0.5;
+      p5.translate(p5.width / -+50, p5.height / 24, -700);
+      p5.image(
+        suzi,
+        -suziSize / 2,
+        -suziSize / 2 + suziOffset,
+        suziSize,
+        suziSize
+      );
+      p5.pop(); 
     }
 
     if (p5.keyIsDown(66) && !isSoundOn) {
@@ -100,12 +157,48 @@ export default (props) => {
       isSoundOn = false;
     }
 
+    //letra K - bajo
+    if (isSound1On && sound1.isPlaying()) {
+      p5.push();
+      const scaleValue = p5.sin(harmAngle);
+      harmSize = p5.map(scaleValue, -1, 1, 50, 900);
+      harmAngle += 0.5;
+
+      
+      const harmXPos = (p5.width * 1.5) / 1.6;
+      p5.translate(harmXPos, p5.height / 8, -700);
+      p5.image(
+        harm,
+        -harmSize / 2,
+        -harmSize / 2 + harmOffset,
+        harmSize,
+        harmSize
+      );
+      p5.pop();
+    }
+
     if (p5.keyIsDown(75) && !isSound1On) {
       sound1.loop();
       isSound1On = true;
     } else if (!p5.keyIsDown(75) && isSound1On) {
       sound1.stop();
       isSound1On = false;
+    }
+
+    if (isSound2On && sound2.isPlaying()) {
+      p5.push(); 
+      const scaleValue = p5.sin(goylAngle);
+      goylSize = p5.map(scaleValue, -1, 1, 50, 900);
+      goylAngle += 0.5;
+      p5.translate(p5.width / -1, p5.height / 8, -700);
+      p5.image(
+        goyl,
+        -goylSize / 2,
+        -goylSize / 2 + goylOffset,
+        goylSize,
+        goylSize
+      );
+      p5.pop();
     }
 
     if (p5.keyIsDown(83) && !isSound2On) {
@@ -116,6 +209,8 @@ export default (props) => {
       isSound2On = false;
     }
 
+    //letra H
+
     if (p5.keyIsDown(72) && !isSound3On) {
       sound3.loop();
       isSound3On = true;
@@ -124,6 +219,36 @@ export default (props) => {
       isSound3On = false;
     }
 
+    if (p5.keyIsDown(72) && !isHKeyPressed) {
+      isHKeyPressed = true;
+      circleRadius = initialCircleRadius;
+    } else if (!p5.keyIsDown(72) && isHKeyPressed) {
+      isHKeyPressed = false;
+    
+    }
+
+    if (isHKeyPressed) {
+      p5.fill(530, 44, 399);
+      const centerX = p5.width / -60;
+      const centerY = p5.height / 60;
+      p5.ellipse(centerX, centerY, circleRadius, circleRadius);
+
+      if (isGrowing) {
+        circleRadius += 10;
+        if (circleRadius > 200) {
+          circleRadius = 200;
+          isGrowing = false; 
+        }
+      } else {
+        circleRadius -= 5;
+        if (circleRadius < 5) {
+          circleRadius = 5;
+          isGrowing = true; 
+        }
+      }
+    }
+
+    // letra R
     if (p5.keyIsDown(82) && !isSound4On) {
       sound4.loop();
       isSound4On = true;
@@ -131,42 +256,15 @@ export default (props) => {
       sound4.stop();
       isSound4On = false;
     }
-   
-    if (p5.keyIsDown(86) && !isVideoPlaying) { 
-      video.loop(); 
-      isVideoPlaying = true;
-    } else if (!p5.keyIsDown(86) && isVideoPlaying) {
-      video.pause();
-      isVideoPlaying = false;
-    }
-
-    const videoWidth = 300; 
-    const videoHeight = (videoWidth / video.width) * video.height;
-  
-    if (isVideoPlaying) {
-      p5.image(video, p5.width - videoWidth, 0, videoWidth, videoHeight);
-    }
-
-    if (p5.keyIsDown(72) && !isHKeyPressed) { 
-      isHKeyPressed = true;
-    } else if (!p5.keyIsDown(72) && isHKeyPressed) {
-      isHKeyPressed = false;
-      circleRadius = 0; 
-    }
-
-    if (isHKeyPressed) {
-      p5.fill(255, 0, 0);
-      p5.ellipse(p5.width / 2, p5.height / 2, circleRadius, circleRadius);
-      circleRadius += 5; 
-      if (circleRadius > 200) {
-        circleRadius = 200;
-      }
-    }
   };
 
-  const remove = (p5) => {
-    video.remove();
-  };
-
-  return <Sketch className={"sketch"} setup={setup} draw={draw} preload={preload} remove={remove} />;
+  return (
+    <Sketch
+      className={"sketch"}
+      setup={setup}
+      draw={draw}
+      preload={preload}
+      remove={remove}
+    />
+  );
 };
