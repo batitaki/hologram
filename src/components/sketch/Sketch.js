@@ -29,9 +29,11 @@ let isSound4On = false;
 let isVideoPlaying = false;
 let isGrowing = true;
 let isHKeyPressed = false;
+let isRKeyPressed = false;
 
 let initialCircleRadius = 50;
 let circleRadius = 0;
+let stars = [];
 
 let suzi;
 let suziSize = 100;
@@ -255,6 +257,36 @@ export default (props) => {
     } else if (!p5.keyIsDown(82) && isSound4On) {
       sound4.stop();
       isSound4On = false;
+      stars = [];
+    }
+
+    for (let i = 0; i < stars.length; i++) {
+      drawStar(p5, stars[i].x, stars[i].y, stars[i].radius);
+    }
+
+    if (p5.keyIsPressed && p5.keyIsDown(82) ) {
+      // Agrega una nueva estrella al arreglo
+      stars.push({
+        x: p5.random(p5.width),
+        y: p5.random(p5.height),
+        radius: 5,
+        growing: true
+      });
+
+      // Actualiza el tamaño de las estrellas existentes
+      for (let i = 0; i < stars.length; i++) {
+        if (stars[i].growing) {
+          stars[i].radius += 2;
+          if (stars[i].radius > 30) {
+            stars[i].growing = false;
+          }
+        } else {
+          stars[i].radius -= 1;
+          if (stars[i].radius < 5) {
+            stars[i].growing = true;
+          }
+        }
+      }
     }
   };
 
@@ -268,3 +300,20 @@ export default (props) => {
     />
   );
 };
+
+// Función para dibujar una estrella en una posición y tamaño dados
+function drawStar(p5, x, y, radius) {
+  p5.fill(255, 200, 0);
+  p5.beginShape();
+  for (let i = 0; i < 5; i++) {
+    let angle = p5.TWO_PI * i / 4 - p5.HALF_PI;
+    let x1 = x + p5.cos(angle) * radius;
+    let y1 = y + p5.sin(angle) * radius;
+    p5.vertex(x1, y1);
+    angle += p5.TWO_PI / 10;
+    let x2 = x + p5.cos(angle) * radius / 2;
+    let y2 = y + p5.sin(angle) * radius / 2;
+    p5.vertex(x2, y2);
+  }
+  p5.endShape(p5.CLOSE);
+}
