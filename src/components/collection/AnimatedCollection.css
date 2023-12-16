@@ -1,0 +1,28 @@
+.animated-collection-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.animated-artwork-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80%;
+  margin: auto;
+}
+
+.animated-artwork-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.images-content {
+  width: 600px;
+  height: 1000px;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+}

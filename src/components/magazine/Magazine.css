@@ -12,3 +12,12 @@
   font-style: bold;
   margin-top: 20px;
 }
+.animated {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 15vw;
+}
+.text-animation {
+  width: 500px;
+}
