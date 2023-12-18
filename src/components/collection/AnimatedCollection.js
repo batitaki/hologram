@@ -15,9 +15,9 @@ const AnimatedCollection = () => {
       try {
         const fetchedArtworks = await getCollection();
         setArtworks(fetchedArtworks);
-        const initialIndexes = getRandomIndexes(fetchedArtworks, 13);
+        const initialIndexes = getRandomIndexes(fetchedArtworks, 10); // Cambiado a 3
         setIndexes(initialIndexes);
-        setPositions(generateRandomPositions(13));
+        setPositions(generateRandomPositions(10)); // Cambiado a 3
       } catch (error) {
         console.error('Error fetching artworks', error);
       }
@@ -33,14 +33,14 @@ const AnimatedCollection = () => {
 
   const generateRandomPositions = (count) => {
     const positions = [];
-    const imageWidth = 200; // Ajusta el ancho de las imágenes según tus necesidades
-    const imageHeight = 200; // Ajusta la altura de las imágenes según tus necesidades
-    const margin = 20; // Ajusta el margen entre las imágenes según tus necesidades
+    const imageWidth = 200;
+    const imageHeight = 200;
+    const margin = 20;
 
     for (let i = 0; i < count; i++) {
       let left, top;
       do {
-        left = Math.random() * (1100 - imageWidth);
+        left = Math.random() * (500 - imageWidth);
         top = Math.random() * (700 - imageHeight);
       } while (checkOverlap(positions, left, top, imageWidth, imageHeight));
 
@@ -51,39 +51,34 @@ const AnimatedCollection = () => {
 
   const checkOverlap = (existingPositions, left, top, width, height) => {
     for (const pos of existingPositions) {
-      const xOverlap = left < pos.left + width && left + width > pos.left;
-      const yOverlap = top < pos.top + height && top + height > pos.top;
+      const xOverlap = left < pos.left + width + 20 && left + width + 20 > pos.left;
+      const yOverlap = top < pos.top + height + 20 && top + height + 20 > pos.top;
       if (xOverlap && yOverlap) {
-        return true; // Hay superposición
+        return true;
       }
     }
-    return false; // No hay superposición
+    return false;
   };
 
-  const navbarHeight = 60; // Ajusta la altura de tu barra de navegación
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: { duration: 500 },
     onRest: () => {
-      const timeoutId = setTimeout(() => {
-        setIndexes((prevIndexes) => {
-          const nextIndexes = getRandomIndexes(artworks, 13);
-          setCurrentIndex(nextIndexes[0]);
-          setPositions(generateRandomPositions(13));
-          return nextIndexes;
-        });
-      }, 9000);
-
-      return () => clearTimeout(timeoutId);
+      setIndexes((prevIndexes) => {
+        const nextIndexes = getRandomIndexes(artworks, 10); // Cambiado a 3
+        setCurrentIndex(nextIndexes[0]);
+        setPositions(generateRandomPositions(10)); // Cambiado a 3
+        return nextIndexes;
+      });
     },
   });
 
   useInterval(() => {
     setIndexes((prevIndexes) => {
-      const nextIndexes = getRandomIndexes(artworks, 13);
+      const nextIndexes = getRandomIndexes(artworks, 10); // Cambiado a 3
       setCurrentIndex(nextIndexes[0]);
-      setPositions(generateRandomPositions(13));
+      setPositions(generateRandomPositions(10)); // Cambiado a 3
       return nextIndexes;
     });
   }, 9000);
@@ -92,11 +87,11 @@ const AnimatedCollection = () => {
     <div
       className='images-content'
       style={{
-        width: '700px',
-        height: '700px', // Ajusta la altura del contenedor según tus necesidades
+        width: '500px',
+        height: '700px',
         position: 'relative',
         overflow: 'hidden',
-        margin: 'auto', // Centra el contenedor
+        margin: 'auto',
       }}
     >
       <div className="animated-collection-container">
@@ -110,8 +105,8 @@ const AnimatedCollection = () => {
                   position: 'absolute',
                   left: positions[i].left,
                   top: positions[i].top,
-                  width: '200px', // Ajusta el ancho de las imágenes según tus necesidades
-                  margin: '20px', // Ajusta el margen entre las imágenes según tus necesidades
+                  width: '200px',
+                  margin: '20px',
                 }}
               >
                 {artworks[index] && (

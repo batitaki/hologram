@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
 import { Magazine } from './components/magazine/Magazine'
+
 import Artists  from './components/artist/Artists'
 import Collection from './components/collection/Collection';
 import ApplyForm from './components/apply/Apply';
@@ -40,6 +41,7 @@ function App() {
             <Route path='/apply' element= {<ApplyForm />} />
             <Route path='/createArt' element= {<CreateArtWork />} />
             <Route path='/createSketch' element= {<CreateSketch />} />
+           
           </Routes>
         </Router>
       </div>
