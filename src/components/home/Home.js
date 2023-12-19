@@ -5,10 +5,14 @@ import './Home.css';
 
 export const Home = () => {
   return (
-    <div className="homeImg">
-          <ParticleComponent/>
+    <>
+    <div className="home-img">
+      <div className='home-sketch'>
+    <ParticleComponent />
+     </div>
     </div>
-    
+
+    </>
   );
 };
 
