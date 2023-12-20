@@ -24,7 +24,8 @@ i18n
           dimensions:'DIMENSIONS',
           upload:'UPLOAD AN IMAGE',
           createArt:'CREATE ARTWORK',
-          magazine:'MAGAZINE'
+          magazine:'MAGAZINE',
+          draw: 'DRAW'
         },
       },
       es: {
@@ -46,7 +47,8 @@ i18n
           upload:'CARGA UNA IMAGEN',
           createArt:'CREAR OBRA',
           creationDate:'FECHA DE CREACION',
-          magazine:'REVISTA'
+          magazine:'REVISTA',
+          draw: 'DIBIJAR'
         },
       },
     },

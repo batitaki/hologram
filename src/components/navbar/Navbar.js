@@ -167,6 +167,18 @@ function Navbar() {
                 >
                   {t("apply")}
                 </Link>
+                <Link
+                  to="/draw"
+                  className={`nav-link ${
+                    selectedView === "/draw" ? "selected" : ""
+                  }`}
+                  onClick={() => {
+                    closeNavbar();
+                    setSelectedView("/draw");
+                  }}
+                >
+                  {t("draw")}
+                </Link>
               </div>
             </li>
           </ul>

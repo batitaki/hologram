@@ -109,7 +109,7 @@ export default (props) => {
       const videoHeight = (videoWidth / -video.width) * -video.height;
       p5.image(video, 0, 0, videoWidth, videoHeight);
     } else {
-      p5.background(0, 0, 0);
+      p5.background(255, 0, 0);
     }
 
     // tecla L - loop

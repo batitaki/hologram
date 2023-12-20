@@ -26,13 +26,6 @@ const ParticleComponent = () => {
     }
   };
 
-  const pauseAudio = () => {
-    if (audioPlaying) {
-      sound.pause();
-      setAudioPlaying(false);
-    }
-  };
-
   const stopAudio = () => {
     sound.pause();
     sound.currentTime = 0;
@@ -57,6 +50,7 @@ const ParticleComponent = () => {
   const draw = (p5) => {
     p5.background(0);
 
+    let isMouseInsideCanvas = p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height;
     // Mueve las partículas hacia el mouse
     for (const particle of particles) {
       if (!particlesAtMouse.has(particle)) {
@@ -76,7 +70,7 @@ const ParticleComponent = () => {
     }
 
     // Verifica si todas las partículas han llegado al mouse
-    if (particlesAtMouse.size === numParticles) {
+    if (particlesAtMouse.size === numParticles && isMouseInsideCanvas) {
       playAudio();
     }
 
@@ -106,15 +100,6 @@ const ParticleComponent = () => {
     }
   };
 
-  const mousePressed = (p5) => {
-    setCurrentLine([{ x: p5.mouseX, y: p5.mouseY }]);
-    if (!audioPlaying) {
-      playAudio();
-    } else {
-      pauseAudio();
-    }
-    setDrawingEnabled(true);
-  };
 
   const mouseReleased = () => {
     setDrawnLines((prevDrawnLines) => [...prevDrawnLines, currentLine]);
@@ -126,14 +111,36 @@ const ParticleComponent = () => {
     stopAudio();
   };
 
+
+  const mouseClicked = (p5) => {
+    if (audioPlaying) {
+      stopAudio();
+      resetParticlePositions(p5);
+    }
+  };
+  
+  const resetParticlePositions = (p5) => {
+    particlesAtMouse.clear(); // Limpiar el conjunto de partículas en el mouse
+  
+    // Reiniciar las posiciones de las partículas
+    for (let i = 0; i < numParticles; i++) {
+      particles[i] = {
+        x: p5.random(p5.width),
+        y: p5.random(p5.height),
+        size: p5.random(0.1, 2),
+        opacity: p5.random(150, 255),
+        speed: p5.random(1, 3),
+      };
+    }
+  };
   return (
     <Sketch
       setup={setup}
       draw={draw}
       mouseMoved={mouseMoved}
-      mousePressed={mousePressed}
       mouseReleased={mouseReleased}
       mouseLeave={mouseLeave}
+      mouseClicked={mouseClicked}
     />
   );
 };

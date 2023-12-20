@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
 import { Magazine } from './components/magazine/Magazine'
-
+import DrawComponent from './components/sketch/DrawComponent';
 import Artists  from './components/artist/Artists'
 import Collection from './components/collection/Collection';
 import ApplyForm from './components/apply/Apply';
@@ -41,6 +41,7 @@ function App() {
             <Route path='/apply' element= {<ApplyForm />} />
             <Route path='/createArt' element= {<CreateArtWork />} />
             <Route path='/createSketch' element= {<CreateSketch />} />
+            <Route path='/draw' element= {<DrawComponent />} />
            
           </Routes>
         </Router>
