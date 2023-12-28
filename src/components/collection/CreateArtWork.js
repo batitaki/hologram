@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { fetchArtists, createArtWorkAPI } from '../../services/collectionAPI';
-import './CreateArtWork.css';
+import React, { useState, useEffect } from "react";
+import { fetchArtists, createArtWorkAPI } from "../../services/collectionAPI";
+import "./CreateArtWork.css";
 import { useTranslation } from "react-i18next";
 
 const CreateArtWork = () => {
   const [registeredArtists, setRegisteredArtists] = useState([]);
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    ArtistID: '',
-    Title: '',
-    Description: '',
-    Materials: '',
-    Dimensions: '',
-    CreationDate: '',
-    Price: '',
+    ArtistID: "",
+    Title: "",
+    Description: "",
+    Materials: "",
+    Dimensions: "",
+    CreationDate: "",
+    Price: "",
   });
 
   useEffect(() => {
@@ -35,24 +35,28 @@ const CreateArtWork = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSubmit = new FormData(e.target);
-    console.log([...formDataToSubmit.entries()]); 
-  
+    console.log([...formDataToSubmit.entries()]);
+
     const apiResponse = await createArtWorkAPI(formDataToSubmit);
-  
+
     if (apiResponse.success) {
       console.log(apiResponse.message);
-      alert('Art Work created');
+      alert("Art Work created");
     } else {
-      console.error('Error al crear la obra:', apiResponse.error);
+      console.error("Error al crear la obra:", apiResponse.error);
     }
   };
-  
+
   return (
     <div className="my-container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className="my-form">
+      <form
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        className="my-form"
+      >
         <div className="my-form-group">
           <label htmlFor="Artist" className="my-label">
-          {t("artists")}
+            {t("artists")}
           </label>
           <select
             className="my-select"
@@ -61,7 +65,7 @@ const CreateArtWork = () => {
             onChange={handleChange}
           >
             <option value="" disabled defaultValue>
-            {t("selectArtist")}
+              {t("selectArtist")}
             </option>
             {registeredArtists.map((artist) => (
               <option key={artist.ID} value={artist.ID}>
@@ -73,7 +77,7 @@ const CreateArtWork = () => {
 
         <div className="my-form-group">
           <label htmlFor="Title" className="my-label">
-          {t("title")}
+            {t("title")}
           </label>
           <input
             type="text"
@@ -86,7 +90,7 @@ const CreateArtWork = () => {
         </div>
         <div className="my-form-group">
           <label htmlFor="Materials" className="my-label">
-          {t("materials")}
+            {t("materials")}
           </label>
           <input
             type="text"
@@ -99,7 +103,7 @@ const CreateArtWork = () => {
         </div>
         <div className="my-form-group">
           <label htmlFor="Dimensions" className="my-label">
-          {t("dimensions")}
+            {t("dimensions")}
           </label>
           <input
             type="text"
@@ -113,7 +117,7 @@ const CreateArtWork = () => {
 
         <div className="my-form-group">
           <label htmlFor="Description" className="my-label">
-          {t("description")}
+            {t("description")}
           </label>
           <textarea
             className="my-textarea"
@@ -127,7 +131,7 @@ const CreateArtWork = () => {
 
         <div className="my-form-group">
           <label htmlFor="CreationDate" className="my-label">
-          {t("creationDate")}
+            {t("creationDate")}
           </label>
           <input
             type="date"
@@ -141,7 +145,7 @@ const CreateArtWork = () => {
 
         <div className="my-form-group">
           <label htmlFor="Price" className="my-label">
-          {t("price")}
+            {t("price")}
           </label>
           <input
             type="number"
@@ -155,13 +159,13 @@ const CreateArtWork = () => {
 
         <div className="my-form-group">
           <label className="my-label" htmlFor="inputGroupFile01">
-          {t("upload")}
+            {t("upload")}
           </label>
           <input type="file" className="my-input" name="Image" multiple />
         </div>
 
         <button type="submit" className="my-button">
-        {t("createArt")}
+          {t("createArt")}
         </button>
       </form>
     </div>

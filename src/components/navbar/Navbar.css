@@ -19,7 +19,7 @@
 
 .art-options {
   font-size: 37px;
-  font-family: 'Array', sans-serif;
+  font-family: 'Array', sans-serif !important;
   margin-left: 9vw;
   margin-top: 5vw;
 }

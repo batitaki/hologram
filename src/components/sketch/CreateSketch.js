@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchArtists, createSketch } from '../../services/collectionAPI';
+import { fetchArtists } from '../../services/collectionAPI';
+import { createSketch } from '../../services/fetchSketch.js';
 import './CreateSketch.css';
 
 const CreateSketch = () => {
