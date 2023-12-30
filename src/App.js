@@ -3,8 +3,7 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
 import { Magazine } from './components/magazine/Magazine'
-import { Movie } from './components/movie/Movie';
-import MovieForm from './components/movie/MovieFrom';
+
 import DrawComponent from './components/sketch/DrawComponent';
 import Artists  from './components/artist/Artists'
 import Collection from './components/collection/Collection';
@@ -44,8 +43,7 @@ function App() {
             <Route path='/createArt' element= {<CreateArtWork />} />
             <Route path='/createSketch' element= {<CreateSketch />} />
             <Route path='/draw' element= {<DrawComponent />} />
-            <Route path='/movie' element= {<MovieForm />} />
-            <Route path='/movies' element= {<Movie/>} />
+ 
 
            
           </Routes>
