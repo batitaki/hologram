@@ -1,0 +1,29 @@
+.title {
+  font-family: "Array", sans-serif;
+  font-size: 30px;
+  font-weight: 1;
+  color: #27343a;
+  text-align: center;
+  font-style: bold;
+}
+.view-title {
+  font-family: "Array", sans-serif;
+  margin-top: 3vw;
+  font-size: 30px;
+  font-weight: 1;
+  color: #27343a;
+  text-align: center;
+  font-style: bold;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
