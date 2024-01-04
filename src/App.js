@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
 import { Magazine } from './components/magazine/Magazine'
 import VideoList from './components/movie/VideoList';
+import Movie from './components/movie/Movie';
 import MovieForm from './components/movie/MovieForm';
 import DrawComponent from './components/sketch/DrawComponent';
 import Artists  from './components/artist/Artists'
@@ -46,7 +47,7 @@ function App() {
             <Route path='/draw' element= {<DrawComponent />} />
             <Route path='/movies' element= {<VideoList/>} />
             <Route path='/movieForm' element= {<MovieForm/>} />
-           
+            <Route path='/movie/:id' element= {<Movie/>} />
           </Routes>
         </Router>
       </div>

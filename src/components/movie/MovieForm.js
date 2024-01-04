@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchArtists } from '../../services/collectionAPI';  // Ajusta la ruta según tu estructura de archivos
+import { fetchArtists } from '../../services/collectionAPI';
 
 const MovieForm = () => {
   const [file, setFile] = useState(null);
@@ -11,6 +11,9 @@ const MovieForm = () => {
     ArtistID: '',
   });
   const [artists, setArtists] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [alert, setAlert] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +33,13 @@ const MovieForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const showAlert = (message, type = 'success') => {
+    setAlert({ message, type });
+    setTimeout(() => {
+      setAlert(null);
+    }, 5000);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -42,24 +52,39 @@ const MovieForm = () => {
     formDataWithFile.append('ArtistID', formData.ArtistID);
 
     try {
+      setLoading(true);
+
       const response = await fetch('http://localhost:3002/movies/createMovie', {
         method: 'POST',
         body: formDataWithFile,
+        onUploadProgress: (progressEvent) => {
+          const percentage = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          setProgress(percentage);
+        },
       });
 
       if (!response.ok) {
         throw new Error(`Error ${response.status} - ${response.statusText}`);
       }
 
-      console.log('Video created successfully');
-      // Puedes redirigir o realizar otras acciones después de crear el video
+      showAlert('Video created successfully', 'success');
+  
     } catch (error) {
       console.error('Error creating video:', error.message);
+      showAlert('Error creating video', 'error');
+    } finally {
+      setLoading(false);
+      setProgress(0); 
     }
   };
 
   return (
     <div className="my-container">
+      {alert && (
+        <div className={`alert ${alert.type}`}>
+          {alert.message}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="my-form">
         <div className="my-form-group">
@@ -106,7 +131,16 @@ const MovieForm = () => {
           </select>
         </div>
 
-        <button type="submit" className="my-button">Create Video</button>
+        <button type="submit" className="my-button" disabled={loading}>
+          {loading ? `Uploading... ${progress}%` : 'Create Video'}
+        </button>
+
+        {loading && (
+          <div className="my-progress">
+            <progress value={progress} max={100} />
+            <span>{progress}%</span>
+          </div>
+        )}
       </form>
     </div>
   );

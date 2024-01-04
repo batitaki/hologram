@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './ApplyForm.css'
 const ArtistApplicationForm = ({ formData, handleChange, handleSubmit }) => {
   return (
     <>

@@ -8,7 +8,6 @@ i18n
     resources: {
       en: {
         translation: {
-          createArt: 'CREATE ART',
           home: 'HOME',
           register: 'REGISTER',
           magazine: 'MAGAZINE',
@@ -24,19 +23,18 @@ i18n
           dimensions:'DIMENSIONS',
           upload:'UPLOAD AN IMAGE',
           createArt:'CREATE ARTWORK',
-          magazine:'MAGAZINE',
-          draw: 'DRAW'
+
+          draw: 'DRAW',
+          movies: 'MOVIES'
         },
       },
       es: {
         translation: {
           home: 'INICIO',
           register: 'REGISTRARSE',
-          magazine: 'REVISTA',
           gallery: 'GALERIA',
           artists: 'ARTISTAS',
           apply: 'APLICAR',
-          createArt: 'CREAR ARTE',
           createSketch: 'CREAR SKETCH',
           price:'PRECIO',
           description:'DESCRIPCION',
@@ -48,7 +46,8 @@ i18n
           createArt:'CREAR OBRA',
           creationDate:'FECHA DE CREACION',
           magazine:'REVISTA',
-          draw: 'DIBIJAR'
+          draw: 'DIBUJAR',
+          movies: 'PELICULAS'
         },
       },
     },

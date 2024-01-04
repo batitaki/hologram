@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './VideoList.css'
+import { Link } from 'react-router-dom';
+
+import './VideoList.css';
 
 const VideoList = () => {
   const [videos, setVideos] = useState([]);
@@ -22,19 +24,21 @@ const VideoList = () => {
   }, []);
 
   return (
-    <div>
-      <ul className='list'>
+    <>
+      <h1 className='view-title'>MOVIES</h1>
+      <div className='video-list'>
         {videos.map(video => (
-          <li key={video.ID}>
-            <h1 className='view-title'>MOVIES</h1>
-            <video width="420" height="340" controls>
-              <source src={video.VideoFile} type="video/mp4" />
-            </video>
-            <p className='title'>{video.Title} - {video.Description}</p>
-          </li>
+          <Link to={`/movie/${video.ID}`} key={video.ID} className='video-item-link'>
+            <div className='video-item'>
+              <video width="260" height="180" controls>
+                <source src={video.VideoFile} type="video/mp4" />
+              </video>
+              <p className='video-list-title'>{video.Title}</p>
+            </div>
+          </Link>
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -21,7 +21,7 @@
 .my-label {
   display: block;
   margin-bottom: 5px;
-  color: #ff33ee;  /* Color personalizado para las etiquetas */
+  color: #ff33ee; 
 }
 
 .my-input,

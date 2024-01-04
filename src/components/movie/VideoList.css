@@ -1,29 +1,48 @@
-.title {
+.video-list-title {
   font-family: "Array", sans-serif;
-  font-size: 30px;
-  font-weight: 1;
+  font-size: 15px;
   color: #27343a;
   text-align: center;
-  font-style: bold;
+  margin: 1px 0; 
 }
+
 .view-title {
   font-family: "Array", sans-serif;
   margin-top: 3vw;
   font-size: 30px;
-  font-weight: 1;
   color: #27343a;
   text-align: center;
-  font-style: bold;
-}
-.list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
+  margin-bottom: 5vw;
 }
 
-li {
-  margin: 0;
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
   padding: 0;
+  margin: 100px;
+  margin-top: -2px;
+  margin-bottom: -2px;
 }
+
+.video-item-link {
+  margin-bottom: 1px;
+  text-decoration: none;
+  flex: 0 0 22%;
+  position: relative;
+}
+
+.video-item {
+  text-align: center;
+}
+
+.video-item:hover video {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+video {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+

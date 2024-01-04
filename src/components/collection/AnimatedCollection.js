@@ -15,9 +15,9 @@ const AnimatedCollection = () => {
       try {
         const fetchedArtworks = await getCollection();
         setArtworks(fetchedArtworks);
-        const initialIndexes = getRandomIndexes(fetchedArtworks, 10); // Cambiado a 3
+        const initialIndexes = getRandomIndexes(fetchedArtworks, 10);
         setIndexes(initialIndexes);
-        setPositions(generateRandomPositions(10)); // Cambiado a 3
+        setPositions(generateRandomPositions(10));
       } catch (error) {
         console.error('Error fetching artworks', error);
       }
@@ -66,9 +66,9 @@ const AnimatedCollection = () => {
     config: { duration: 500 },
     onRest: () => {
       setIndexes((prevIndexes) => {
-        const nextIndexes = getRandomIndexes(artworks, 10); // Cambiado a 3
+        const nextIndexes = getRandomIndexes(artworks, 10);
         setCurrentIndex(nextIndexes[0]);
-        setPositions(generateRandomPositions(10)); // Cambiado a 3
+        setPositions(generateRandomPositions(10)); 
         return nextIndexes;
       });
     },
@@ -76,9 +76,9 @@ const AnimatedCollection = () => {
 
   useInterval(() => {
     setIndexes((prevIndexes) => {
-      const nextIndexes = getRandomIndexes(artworks, 10); // Cambiado a 3
+      const nextIndexes = getRandomIndexes(artworks, 10); 
       setCurrentIndex(nextIndexes[0]);
-      setPositions(generateRandomPositions(10)); // Cambiado a 3
+      setPositions(generateRandomPositions(10)); 
       return nextIndexes;
     });
   }, 9000);
