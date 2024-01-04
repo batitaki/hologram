@@ -42,30 +42,9 @@ const MovieForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const formDataWithFile = new FormData();
-    formDataWithFile.append('VideoFile', file);
-    formDataWithFile.append('Title', formData.Title);
-    formDataWithFile.append('Duration', formData.Duration);
-    formDataWithFile.append('Description', formData.Description);
-    formDataWithFile.append('Director', formData.Director);
-    formDataWithFile.append('ArtistID', formData.ArtistID);
-
+    
     try {
       setLoading(true);
-
-      const response = await fetch('http://localhost:3002/movies/createMovie', {
-        method: 'POST',
-        body: formDataWithFile,
-        onUploadProgress: (progressEvent) => {
-          const percentage = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-          setProgress(percentage);
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error ${response.status} - ${response.statusText}`);
-      }
 
       showAlert('Video created successfully', 'success');
   

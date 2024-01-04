@@ -3,6 +3,8 @@ import './Magazine.css'
 import Sketch from '../sketch/Sketch.js';
 import { useTranslation } from 'react-i18next';
 import AnimatedCollection from '../collection/AnimatedCollection.js';
+import ParticleComponent from '../sketch/ParticleComponent.js';
+
 
 
 export const Magazine = () => {
@@ -17,6 +19,10 @@ export const Magazine = () => {
 
 
     <Sketch/>
+
+    <div className='particle'> 
+    <ParticleComponent/>
+    </div>
 
     <div className='animated'>
       <div className='text-animation'>

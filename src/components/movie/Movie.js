@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, Link } from 'react-router-dom';
-import './Movie.css'
+import { useParams } from 'react-router-dom';
+import { fetchMovieDetails } from '../../services/movieAPI';
+import './Movie.css';
 
 const Movie = () => {
   const { id } = useParams();
@@ -10,23 +11,17 @@ const Movie = () => {
   const [artistName, setArtistName] = useState('');
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {    
+    const fetchMovieData = async () => {    
       try {
-        const response = await fetch(`http://localhost:3002/movies/movies/${id}`);
-    
-        if (response.ok) {
-          const data = await response.json();
-          setMovieDetails(data);
-          setArtistName(data.Artist ? data.Artist.name : '');
-        } else {
-          console.error('Error fetching movie details');
-        }
+        const data = await fetchMovieDetails(id);
+        setMovieDetails(data);
+        setArtistName(data.Artist ? data.Artist.name : '');
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
     };
     
-    fetchMovieDetails();
+    fetchMovieData();
   }, [id]);
 
   if (!movieDetails) {

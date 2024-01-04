@@ -21,3 +21,8 @@
 .text-animation {
   width: 500px;
 }
+.particle {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vw;
+}
