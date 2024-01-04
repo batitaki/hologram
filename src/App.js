@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
+import  FluidComponent  from './components/sketch/FluidComponent';
 import { Magazine } from './components/magazine/Magazine'
 import VideoList from './components/movie/VideoList';
 import Movie from './components/movie/Movie';
@@ -36,6 +37,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/sketch' element={<Sketch />} />
+            <Route path='/fluid' element={<FluidComponent />} />
             <Route path='/magazine' element={<Magazine />} />
             <Route path='/artists' element={<Artists />} />
             <Route path='/artist/:id' element={<ArtistDetail />} />
