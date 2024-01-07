@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Sketch from 'react-p5';
+import { ChromePicker } from 'react-color'; // Importa el selector de colores
 import './FluidComponent.css';
 import audio from "../../assets/llanto.wav";
 import suziImage from "../../assets/suzi.jpg";
 import harmImage from "../../assets/harm.jpg";
-import goylImage from "../../assets/goyl.jpg"; 
+import goylImage from "../../assets/goyl.jpg";
 
 let sound;
 
@@ -13,6 +14,8 @@ const FluidComponent = () => {
   const [drawHImage, setDrawHImage] = useState(false);
   const [drawSImage, setDrawSImage] = useState(false);
   const [drawGImage, setDrawGImage] = useState(false);
+  const [aureolaColor, setAureolaColor] = useState({ r: 465, g: 90, b: 220 }); // Color inicial
+  const [showColorPicker, setShowColorPicker] = useState(false);
   const imgRef = useRef(null);
   const aureolas = [];
 
@@ -33,6 +36,18 @@ const FluidComponent = () => {
     sound.pause();
     sound.currentTime = 0;
     setAudioPlaying(false);
+  };
+
+  const handleColorChange = (color) => {
+    setAureolaColor(color.rgb);
+  };
+
+  const toggleColorPicker = () => {
+    setShowColorPicker((prev) => !prev);
+  };
+
+  const handleCloseColorPicker = () => {
+    setShowColorPicker(false);
   };
 
   const mouseClicked = () => {
@@ -99,7 +114,7 @@ const FluidComponent = () => {
 
     for (let i = aureolas.length - 1; i >= 0; i--) {
       p5.noFill();
-      p5.stroke(465, 90, 220);
+      p5.stroke(aureolaColor.r, aureolaColor.g, aureolaColor.b);
       p5.ellipse(aureolas[i].x, aureolas[i].y, aureolas[i].radius, aureolas[i].radius);
 
       aureolas[i].radius += 2;
@@ -111,14 +126,22 @@ const FluidComponent = () => {
   };
 
   return (
-    <Sketch
-      className="fluid"
-      setup={setup}
-      draw={draw}
-      mouseClicked={mouseClicked}
-      keyPressed={keyPressed}
-      keyReleased={keyReleased}
-    />
+    <div>
+      <div className='color-buttons'>
+        <button onClick={toggleColorPicker}>Pick Color</button>
+        {showColorPicker && (
+          <ChromePicker color={aureolaColor} onChange={handleColorChange} onClose={handleCloseColorPicker} />
+        )}
+      </div>
+      <Sketch
+        className="fluid"
+        setup={setup}
+        draw={draw}
+        mouseClicked={mouseClicked}
+        keyPressed={keyPressed}
+        keyReleased={keyReleased}
+      />
+    </div>
   );
 };
 
