@@ -8,7 +8,8 @@ import VideoList from './components/movie/VideoList';
 import Movie from './components/movie/Movie';
 import MovieForm from './components/movie/MovieForm';
 import DrawComponent from './components/sketch/DrawComponent';
-import Artists  from './components/artist/Artists'
+import DrawImagesComponent from './components/sketch/DrawImagesComponent';
+import Artists  from './components/artist/Artists';
 import Collection from './components/collection/Collection';
 import ApplyForm from './components/apply/Apply';
 import CreateArtWork from './components/collection/CreateArtWork';
@@ -47,6 +48,7 @@ function App() {
             <Route path='/createArt' element= {<CreateArtWork />} />
             <Route path='/createSketch' element= {<CreateSketch />} />
             <Route path='/draw' element= {<DrawComponent />} />
+            <Route path='/drawImages' element= {<DrawImagesComponent />} />
             <Route path='/movies' element= {<VideoList/>} />
             <Route path='/movieForm' element= {<MovieForm/>} />
             <Route path='/movie/:id' element= {<Movie/>} />
