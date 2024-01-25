@@ -5,9 +5,7 @@ const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(true);
-  const [isPaused, setIsPaused] = useState(
-    localStorage.getItem('isPaused') === 'true' ? true : false
-  );
+  const [isPaused, setIsPaused] = useState(false);
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
 
@@ -51,9 +49,7 @@ const DrawImagesComponent = () => {
   };
 
   const mousePressed = () => {
-    const newIsPaused = !isPaused;
-    setIsPaused(newIsPaused);
-    localStorage.setItem('isPaused', newIsPaused.toString());
+    setIsPaused(!isPaused);
   };
 
   useEffect(() => {
