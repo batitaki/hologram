@@ -6,16 +6,38 @@
   align-items: center;
 }
 
+.sketch-controls {
+  font-family: 'Array', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 20px; /* Ajusta el margen inferior para separar del sketch */
+  width: 50%; /* Ancho del contenedor de controles */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sketch-controls label {
+  margin-right: -100px; /* Puedes ajustar este valor según sea necesario */
+}
+
+.sketch-controls input[type="color"] {
+  margin-right: 10px; /* Puedes ajustar este valor según sea necesario */
+}
+
 .sketch-buttons {
   font-family: 'Array', sans-serif;
   display: flex;
-  justify-content: center;
+  align-items: center;
   justify-content: space-around;
-  margin-top: 10px;
+  margin-bottom: -50px; /* Ajusta el margen inferior para separar del sketch */
+  width: 80%; /* Ancho del contenedor de botones */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sketch-buttons button {
-border: none;
-background-color: red;
-
+  border: none;
+  background-color: red;
+  margin-right: 10px; /* Ajusta el espacio entre los botones */
 }

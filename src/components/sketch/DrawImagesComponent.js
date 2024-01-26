@@ -67,6 +67,8 @@ const DrawImagesComponent = () => {
   };
 
   return (
+    <>
+    <h4 className='title'> DRAW IMAGES </h4>
     <div>
       <Sketch
         className="fluid"
@@ -82,7 +84,9 @@ const DrawImagesComponent = () => {
         style={{ display: 'none' }}
         onChange={(e) => handleImageUpload(new window.p5(), e)}
       />
+      
     </div>
+    </>
   );
 };
 

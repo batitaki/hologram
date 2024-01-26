@@ -71,7 +71,8 @@
 .logo2 {
   position: absolute;
   left: 0;
-  top: -9vw;
+  top: -5vw;
+  margin-left: -4vw;
   height: 300px;
   width: auto;
 }
