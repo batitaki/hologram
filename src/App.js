@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sketch from './components/sketch/Sketch';
-import  FluidComponent  from './components/sketch/FluidComponent';
+import FluidComponent  from './components/sketch/FluidComponent';
 import { Magazine } from './components/magazine/Magazine'
 import VideoList from './components/movie/VideoList';
 import Movie from './components/movie/Movie';
@@ -20,7 +20,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Artwork from './components/collection/Artwork';
 import { Foot } from './components/foot/Foot';
 import CreateSketch from './components/sketch/CreateSketch';
-import { Register } from './components/user/Register';
+import Register from './components/user/Register';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../src/components/navbar/i18n';
 
@@ -36,7 +36,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
+            <Route path='/register' element={<Register/>} />
             <Route path='/sketch' element={<Sketch />} />
             <Route path='/fluid' element={<FluidComponent />} />
             <Route path='/magazine' element={<Magazine />} />

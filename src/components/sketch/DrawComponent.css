@@ -31,13 +31,20 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: -50px; /* Ajusta el margen inferior para separar del sketch */
-  width: 80%; /* Ancho del contenedor de botones */
+  width: 50%; /* Ancho del contenedor de botones */
   margin-left: auto;
   margin-right: auto;
 }
 
 .sketch-buttons button {
   border: none;
-  background-color: red;
+  font-family: 'Array', sans-serif;
+  background-color: rgb(186, 248, 251);
   margin-right: 10px; /* Ajusta el espacio entre los botones */
+}
+
+.line-thickness-slider {
+  background-color: red; 
+  color: white;  
+  border: 1px solid transparent;  
 }

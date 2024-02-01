@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchArtists } from '../../services/collectionAPI';
-
+import './MovieForm.css'
 const MovieForm = () => {
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({

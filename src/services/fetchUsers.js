@@ -11,23 +11,28 @@ export const fetchUsers = async () => {
 
 export const createUser = async (formData) => {
   try {
-    const response = await fetch('http://localhost:3002/users/createUser', {
+    const apiEndpoint = 'http://localhost:3002/users/createUser';
+    const form = new FormData();
+
+    for (const key in formData) {
+      form.append(key, formData[key]);
+    }
+
+    const response = await fetch(apiEndpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
+      body: form,
     });
 
     if (response.ok) {
-      const responseData = await response.json();
-      return { success: true, message: responseData.message };
+      const data = await response.json();
+      console.log('Solicitud creada:', data);
+      return { success: true, data };
     } else {
-      const errorData = await response.json();
-      return { success: false, error: errorData.error };
+      console.error('Error al crear la solicitud');
+      return { success: false, error: 'Error al crear la solicitud' };
     }
   } catch (error) {
-    console.error('Error al enviar la solicitud:', error);
-    return { success: false, error: 'Error al enviar la solicitud' };
+    console.error('Error en la solicitud:', error);
+    return { success: false, error: 'Error en la solicitud' };
   }
 };
