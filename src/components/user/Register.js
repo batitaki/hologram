@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createUser } from '../../services/fetchUsers';
+import { createUser } from '../../services/usersAPI';
 import RegisterForm from './RegisterForm';
 
 const Register = () => {
