@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sketch from "react-p5";
-import audio from "../../assets/llanto.wav";
+import audio from "../../../assets/llanto.wav";
 
 let sound;
 
@@ -51,14 +51,13 @@ const ParticleComponent = () => {
     p5.background(0);
 
     let isMouseInsideCanvas = p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height;
-    // Mueve las partículas hacia el mouse
+
     for (const particle of particles) {
       if (!particlesAtMouse.has(particle)) {
         const angle = p5.atan2(p5.mouseY - particle.y, p5.mouseX - particle.x);
         particle.x += particle.speed * p5.cos(angle);
         particle.y += particle.speed * p5.sin(angle);
 
-        // Verifica si la partícula ha llegado al mouse
         if (p5.dist(particle.x, particle.y, p5.mouseX, p5.mouseY) < 5) {
           particlesAtMouse.add(particle);
         }
@@ -69,7 +68,6 @@ const ParticleComponent = () => {
       p5.ellipse(particle.x, particle.y, particle.size, particle.size);
     }
 
-    // Verifica si todas las partículas han llegado al mouse
     if (particlesAtMouse.size === numParticles && isMouseInsideCanvas) {
       playAudio();
     }
@@ -82,7 +80,6 @@ const ParticleComponent = () => {
       p5.endShape();
     }
 
-    // Dibuja la línea actual (si se está dibujando)
     if (drawingEnabled) {
       p5.stroke(255, 50);
       p5.noFill();
@@ -100,7 +97,6 @@ const ParticleComponent = () => {
     }
   };
 
-
   const mouseReleased = () => {
     setDrawnLines((prevDrawnLines) => [...prevDrawnLines, currentLine]);
     setCurrentLine([]);
@@ -111,7 +107,6 @@ const ParticleComponent = () => {
     stopAudio();
   };
 
-
   const mouseClicked = (p5) => {
     if (audioPlaying) {
       stopAudio();
@@ -120,9 +115,8 @@ const ParticleComponent = () => {
   };
   
   const resetParticlePositions = (p5) => {
-    particlesAtMouse.clear(); // Limpiar el conjunto de partículas en el mouse
+    particlesAtMouse.clear();
   
-    // Reiniciar las posiciones de las partículas
     for (let i = 0; i < numParticles; i++) {
       particles[i] = {
         x: p5.random(p5.width),

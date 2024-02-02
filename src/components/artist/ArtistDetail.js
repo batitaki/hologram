@@ -4,8 +4,7 @@ import { getArtistDetails } from '../../services/artistsAPI.js';
 import { getArtworksByArtist } from '../../services/collectionAPI.js';
 import './ArtistDetail.css';
 import Collection from '../collection/Collection';
-import Sketch from '../sketch/Sketch.js';
-
+import AudioImages from '../sketch/audio/AudioImages.js';
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -54,7 +53,7 @@ const ArtistDetail = () => {
       </div>
       <div className='sketch-content'>
       <p className='sketch-title'>interactive sketch</p>
-        <Sketch/>
+        <AudioImages/>
       </div>
       <div className='artistDetailContainer'>
         <Collection artistArtworks={artistArtworks} />

@@ -25,7 +25,7 @@ import MovieForm from './components/movie/MovieForm';
 
 import DrawComponent from './components/sketch/draw/DrawComponent';
 import DrawImagesComponent from './components/sketch/draw/DrawImagesComponent';
-import Sketch from './components/sketch/Sketch';
+import AudioImages from './components/sketch/audio/AudioImages';
 import DrawCirculesComponent from './components/sketch/draw/DrawCirculesComponent';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/sketch' element={<Sketch />} />
+                <Route path='/audiImages' element={<AudioImages />} />
                 <Route path='/circules' element={<DrawCirculesComponent />} />
                 <Route path='/magazine' element={<Magazine />} />
                 <Route path='/artists' element={<Artists />} />

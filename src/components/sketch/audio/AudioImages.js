@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Sketch from "react-p5";
 import "p5/lib/addons/p5.sound";
-import videoFile from "../../assets/suns-soleil.mp4";
-import audio from "../../assets/beat.wav";
-import audio1 from "../../assets/ojo.wav";
-import audio2 from "../../assets/soho.wav";
-import audio3 from "../../assets/rising.wav";
-import audio4 from "../../assets/space.wav";
-import suziImage from "../../assets/suzi.jpg";
-import harmImage from "../../assets/harm.jpg";
-import goylImage from "../../assets/goyl.jpg";
+import videoFile from "../../../assets/suns-soleil.mp4";
+import audio from "../../../assets/beat.wav";
+import audio1 from "../../../assets/ojo.wav";
+import audio2 from "../../../assets/soho.wav";
+import audio3 from "../../../assets/rising.wav";
+import audio4 from "../../../assets/space.wav";
+import suziImage from "../../../assets/suzi.jpg";
+import harmImage from "../../../assets/harm.jpg";
+import goylImage from "../../../assets/goyl.jpg";
 import "./SketchStyles.css";
 
 let sound;
@@ -265,7 +265,6 @@ export default (props) => {
     }
 
     if (p5.keyIsPressed && p5.keyIsDown(82) ) {
-      // Agrega una nueva estrella al arreglo
       stars.push({
         x: p5.random(p5.width),
         y: p5.random(p5.height),
@@ -273,7 +272,6 @@ export default (props) => {
         growing: true
       });
 
-      // Actualiza el tamaño de las estrellas existentes
       for (let i = 0; i < stars.length; i++) {
         if (stars[i].growing) {
           stars[i].radius += 2;
@@ -301,7 +299,6 @@ export default (props) => {
   );
 };
 
-// Función para dibujar una estrella en una posición y tamaño dados
 function drawStar(p5, x, y, radius) {
   p5.fill(255, 200, 0);
   p5.beginShape();

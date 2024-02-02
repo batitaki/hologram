@@ -1,9 +1,8 @@
 import React from 'react'
 import './Magazine.css'
-import Sketch from '../sketch/Sketch.js';
+import Sketch from '../sketch/audio/AudioImages.js';
 import { useTranslation } from 'react-i18next';
-import AnimatedCollection from '../collection/AnimatedCollection.js';
-import ParticleComponent from '../sketch/ParticleComponent.js';
+import AnimatedCollectionVisual from '../collection/animatedCollection/AnimatedCollectionVisual.js';
 
 
 
@@ -20,9 +19,6 @@ export const Magazine = () => {
 
     <Sketch/>
 
-    <div className='particle'> 
-    <ParticleComponent/>
-    </div>
 
     <div className='animated'>
       <div className='text-animation'>
@@ -48,7 +44,7 @@ export const Magazine = () => {
     Ni siquiera desde arriba de la valla, tomando un poco de perspectiva, podía una dimensionar 
     el impacto histórico de lo que estaba aconteciendo.
 </div>
-    <AnimatedCollection />
+    <AnimatedCollectionVisual />
     </div>
     </>
   )

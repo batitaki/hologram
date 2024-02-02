@@ -1,5 +1,5 @@
 import React from 'react';
-import ParticleComponent from '../sketch/ParticleComponent';
+import ParticleComponent from '../sketch/audio/ParticleComponent';
 
 import './Home.css';
 
