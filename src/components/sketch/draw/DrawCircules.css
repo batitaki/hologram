@@ -5,6 +5,8 @@
 }
 
 .color-buttons {
+  font-family: 'Array', sans-serif;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }

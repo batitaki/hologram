@@ -23,10 +23,10 @@ import VideoList from './components/movie/VideoList';
 import Movie from './components/movie/Movie';
 import MovieForm from './components/movie/MovieForm';
 
-import DrawComponent from './components/sketch/DrawComponent';
-import DrawImagesComponent from './components/sketch/DrawImagesComponent';
+import DrawComponent from './components/sketch/draw/DrawComponent';
+import DrawImagesComponent from './components/sketch/draw/DrawImagesComponent';
 import Sketch from './components/sketch/Sketch';
-import FluidComponent from './components/sketch/FluidComponent';
+import DrawCirculesComponent from './components/sketch/draw/DrawCirculesComponent';
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/sketch' element={<Sketch />} />
-                <Route path='/fluid' element={<FluidComponent />} />
+                <Route path='/circules' element={<DrawCirculesComponent />} />
                 <Route path='/magazine' element={<Magazine />} />
                 <Route path='/artists' element={<Artists />} />
                 <Route path='/artist/:id' element={<ArtistDetail />} />

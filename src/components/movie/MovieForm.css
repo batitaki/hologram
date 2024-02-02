@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 5vw;
-  margin-left: 15vw;
+  margin-left: 5vw;
   font-family: 'Array', sans-serif;
 }
 
@@ -21,7 +21,7 @@
 .my-label {
   display: block;
   margin-bottom: 5px;
-  color: #eb9fe6; 
+  color: #49d3c1; 
 }
 
 .my-input,

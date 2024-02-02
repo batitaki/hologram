@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Sketch from 'react-p5';
 import { ChromePicker } from 'react-color'; // Importa el selector de colores
-import './FluidComponent.css';
-import audio from "../../assets/llanto.wav";
-import suziImage from "../../assets/suzi.jpg";
-import harmImage from "../../assets/harm.jpg";
-import goylImage from "../../assets/goyl.jpg";
+import './DrawCircules.css';
+import audio from "../../../assets/llanto.wav";
+import suziImage from "../../../assets/suzi.jpg";
+import harmImage from "../../../assets/harm.jpg";
+import goylImage from "../../../assets/goyl.jpg";
 
 let sound;
 
-const FluidComponent = () => {
+const DrawCirculesComponent = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [drawHImage, setDrawHImage] = useState(false);
   const [drawSImage, setDrawSImage] = useState(false);
@@ -112,15 +112,15 @@ const FluidComponent = () => {
       }
     }
 
-    for (let i = aureolas.length - 1; i >= 0; i--) {
+    for (let i = aureolas.length - 1; i >= 10; i--) {
       p5.noFill();
       p5.stroke(aureolaColor.r, aureolaColor.g, aureolaColor.b);
       p5.ellipse(aureolas[i].x, aureolas[i].y, aureolas[i].radius, aureolas[i].radius);
 
-      aureolas[i].radius += 2;
+      aureolas[i].radius += 5;
 
-      if (aureolas[i].radius > 100) {
-        aureolas.splice(i, 1);
+      if (aureolas[i].radius >= 440) {
+        aureolas.splice(i, 8);
       }
     }
   };
@@ -145,4 +145,4 @@ const FluidComponent = () => {
   );
 };
 
-export default FluidComponent;
+export default DrawCirculesComponent;
