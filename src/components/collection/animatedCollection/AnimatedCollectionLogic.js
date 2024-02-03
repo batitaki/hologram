@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useState, useEffect } from 'react';
+import { useSpring } from 'react-spring';
 import { useInterval } from 'react-use';
 import { getCollection } from '../../../services/collectionAPI';
 

@@ -32,12 +32,6 @@ const DrawCirculesComponent = () => {
     }
   };
 
-  const stopAudio = () => {
-    sound.pause();
-    sound.currentTime = 0;
-    setAudioPlaying(false);
-  };
-
   const handleColorChange = (color) => {
     setAureolaColor(color.rgb);
   };

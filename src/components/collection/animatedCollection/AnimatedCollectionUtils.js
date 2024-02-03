@@ -7,8 +7,7 @@ export const getRandomIndexes = (array, count) => {
     const positions = [];
     const imageWidth = 200;
     const imageHeight = 200;
-    const margin = 20;
-  
+    
     for (let i = 0; i < count; i++) {
       let left, top;
       do {

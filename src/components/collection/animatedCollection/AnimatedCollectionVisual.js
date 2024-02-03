@@ -3,7 +3,6 @@ import { animated } from 'react-spring';
 import { Link } from 'react-router-dom';
 
 import AnimatedCollectionLogic from './AnimatedCollectionLogic';
-import { checkOverlap } from './AnimatedCollectionUtils';
 
 const AnimatedCollectionVisual = () => {
   const { props, indexes, positions, currentIndex, artworks } = AnimatedCollectionLogic();

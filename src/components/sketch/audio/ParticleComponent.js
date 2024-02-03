@@ -5,7 +5,7 @@ import audio from "../../../assets/llanto.wav";
 let sound;
 
 const ParticleComponent = () => {
-  const [particles, setParticles] = useState([]);
+  const [particles ] = useState([]);
   const [drawnLines, setDrawnLines] = useState([]);
   const [currentLine, setCurrentLine] = useState([]);
   const [drawingEnabled, setDrawingEnabled] = useState(true);

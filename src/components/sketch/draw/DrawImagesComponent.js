@@ -42,7 +42,6 @@ const DrawImagesComponent = () => {
     }
 
     if (drawImage && userImage && shouldDraw && !isPaused) {
-      const imgSize = 100;
       const currentImage = { img: userImage, x: p5.mouseX, y: p5.mouseY };
       imagesHistory.current.push(currentImage);
     }
@@ -91,3 +90,4 @@ const DrawImagesComponent = () => {
 };
 
 export default DrawImagesComponent;
+

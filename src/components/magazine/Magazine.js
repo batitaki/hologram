@@ -1,6 +1,6 @@
 import React from 'react'
 import './Magazine.css'
-import Sketch from '../sketch/audio/AudioImages.js';
+import Sketch from '../sketch/audio/AudioVisualizerComponent.js';
 import { useTranslation } from 'react-i18next';
 import AnimatedCollectionVisual from '../collection/animatedCollection/AnimatedCollectionVisual.js';
 

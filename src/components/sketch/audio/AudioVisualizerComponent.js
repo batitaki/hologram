@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sketch from "react-p5";
 import "p5/lib/addons/p5.sound";
 import videoFile from "../../../assets/suns-soleil.mp4";
@@ -19,6 +19,7 @@ let sound3;
 let sound4;
 let video;
 
+
 let wasLKeyPressed = false;
 let areSoundsStarted = false;
 let isSoundOn = false;
@@ -29,7 +30,6 @@ let isSound4On = false;
 let isVideoPlaying = false;
 let isGrowing = true;
 let isHKeyPressed = false;
-let isRKeyPressed = false;
 
 let initialCircleRadius = 50;
 let circleRadius = 0;
@@ -52,9 +52,7 @@ let goylOffset = 0;
 
 let cubeRotation = 0;
 
-export default (props) => {
-  const x = 250;
-  const y = 250;
+const AudioVisualizerComponent = (props) => {
 
   const preload = (p5) => {
     sound = p5.loadSound(audio);
@@ -314,3 +312,5 @@ function drawStar(p5, x, y, radius) {
   }
   p5.endShape(p5.CLOSE);
 }
+
+export default AudioVisualizerComponent;

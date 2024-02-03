@@ -25,7 +25,7 @@ import MovieForm from './components/movie/MovieForm';
 
 import DrawComponent from './components/sketch/draw/DrawComponent';
 import DrawImagesComponent from './components/sketch/draw/DrawImagesComponent';
-import AudioImages from './components/sketch/audio/AudioImages';
+import AudioImages from './components/sketch/audio/AudioVisualizerComponent';
 import DrawCirculesComponent from './components/sketch/draw/DrawCirculesComponent';
 
 function App() {

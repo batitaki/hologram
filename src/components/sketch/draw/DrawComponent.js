@@ -4,7 +4,7 @@ import "./DrawComponent.css";
 
 const DrawComponent = () => {
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(false);
-  const [drawnShapes, setDrawnShapes] = useState([]);
+  const [drawnShapes ] = useState([]);
   const [currentShape, setCurrentShape] = useState("ellipse");
   const [currentDrawing, setCurrentDrawing] = useState([]);
   const [lineStart, setLineStart] = useState(null);

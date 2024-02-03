@@ -4,7 +4,7 @@ import { getArtistDetails } from '../../services/artistsAPI.js';
 import { getArtworksByArtist } from '../../services/collectionAPI.js';
 import './ArtistDetail.css';
 import Collection from '../collection/Collection';
-import AudioImages from '../sketch/audio/AudioImages.js';
+import AudioImages from '../sketch/audio/AudioVisualizerComponent.js';
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
