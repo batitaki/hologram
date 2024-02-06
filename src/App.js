@@ -18,6 +18,7 @@ import { ArtistDetail } from './components/artist/ArtistDetail';
 import Artwork from './components/collection/Artwork';
 
 import Register from './components/user/Register';
+import CreateSketch from './components/sketch/list/CreateSketch.js';
 
 import VideoList from './components/movie/VideoList';
 import Movie from './components/movie/Movie';
@@ -27,6 +28,7 @@ import DrawComponent from './components/sketch/draw/DrawComponent';
 import DrawImagesComponent from './components/sketch/draw/DrawImagesComponent';
 import AudioVisualizerComponent from './components/sketch/audio/AudioVisualizerComponent.js';
 import DrawCirculesComponent from './components/sketch/draw/DrawCirculesComponent';
+import SketchList from './components/sketch/list/SketchList.js';
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
                 <Route path='/movies' element={<VideoList />} />
                 <Route path='/movieForm' element={<MovieForm />} />
                 <Route path='/movie/:id' element={<Movie />} />
+                <Route path='createSketch' element={<CreateSketch />} />
+                <Route path='SketchList' element={<SketchList />} />
               </Routes>
             </Router>
           </div>
