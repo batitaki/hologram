@@ -1,0 +1,36 @@
+.sketchListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Para centrar horizontalmente */
+    border: #27343a;
+}
+
+.titleSketch {
+    font-family: 'Array', sans-serif;
+    font-size: 30px;
+    color: #27343a;
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 35px;
+  }
+
+
+.sketchList {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    display: flex;
+    list-style-type: none;
+}
+
+.sketchList li {
+    margin-left: 50px;
+    width: 30%; /* Ancho del elemento li */
+    margin-bottom: 20px; /* Agregar espacio entre los elementos */
+    border: 1px solid #ccc; /* Agregar un borde de color gris claro */
+    padding: 10px; /* Añadir un relleno para separar el contenido del borde */
+    box-sizing: border-box; /* Asegurar que el ancho y alto incluyan el borde y el relleno */
+}
+
+.sketchImage {
+    width: 100%; /* Ocupar todo el ancho del contenedor li */
+    height: auto;
+}

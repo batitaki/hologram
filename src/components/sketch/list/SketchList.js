@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { fetchSketchData } from '../../../services/fetchSketch';
+import './SketchList.css';
 
 const SketchList = () => {
   const [sketches, setSketches] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchSketchData(); // Llama a la función para obtener los datos de los bocetos
-      setSketches(data); // Actualiza el estado con los datos de los bocetos
+      const data = await fetchSketchData();
+      setSketches(data);
     };
 
     fetchData();
   }, []);
 
   return (
-    <div>
-      <h2>Sketches</h2>
-      <ul>
+    <div className='sketchListContainer'>
+      <h2 className='titleSketch'>SKETCHES</h2>
+      <ul className='sketchList'>
         {sketches.map(sketch => (
           <li key={sketch.ID}>
-            <h3>{sketch.Title}</h3>
-            <p>Instructions: {sketch.Instructions}</p>
-            <p>Description: {sketch.Description}</p>
-            <img src={sketch.Image} alt={sketch.Title} />
-            <p>Artist ID: {sketch.ArtistID}</p>
+            <h3 className='titleSketch'>{sketch.Title}</h3>
+            <img className='sketchImage' src={sketch.Image} alt={sketch.Title} />
           </li>
         ))}
       </ul>
