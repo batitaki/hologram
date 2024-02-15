@@ -22,7 +22,7 @@ i18n
           dimensions:'DIMENSIONS',
           upload:'UPLOAD AN IMAGE',
           createArt:'CREATE ARTWORK',
-
+          SketchList: 'SKETCH LIST',
           draw: 'DRAW',
           movies: 'MOVIES'
         },
@@ -44,6 +44,7 @@ i18n
           createArt:'CREAR OBRA',
           creationDate:'FECHA DE CREACION',
           magazine:'REVISTA',
+          SketchList: 'BOCETOS',
           draw: 'DIBUJAR',
           movies: 'PELICULAS'
         },

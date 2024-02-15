@@ -28,7 +28,7 @@ const VideoList = () => {
           <Link to={`/movie/${video.ID}`} key={video.ID} className='video-item-link'>
             <div className='video-item'>
               <video className='video-pic' >
-                <source src={video.VideoFile} type="video/mp4" />
+                <source src={video.VideoImage} type="video/mp4" />
               </video>
               <p className='video-list-title'>{video.Title}</p>
             </div>

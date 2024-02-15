@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { fetchArtists } from '../../services/collectionAPI';
-import './MovieForm.css'
+import { createMovie } from '../../services/movieAPI';
+import './MovieForm.css';
+
 const MovieForm = () => {
-  const [, setFile] = useState(null);
+  const [videoFile, setVideoFile] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [formData, setFormData] = useState({
     Title: '',
     Duration: '',
@@ -24,8 +27,12 @@ const MovieForm = () => {
     fetchData();
   }, []);
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+  const handleVideoFileChange = (event) => {
+    setVideoFile(event.target.files[0]);
+  };
+
+  const handleImageFileChange = (event) => {
+    setImageFile(event.target.files[0]);
   };
 
   const handleInputChange = (event) => {
@@ -46,8 +53,21 @@ const MovieForm = () => {
     try {
       setLoading(true);
 
-      showAlert('Video created successfully', 'success');
-  
+      const formDataWithFile = new FormData();
+      formDataWithFile.append('VideoFile', videoFile);
+      formDataWithFile.append('Image', imageFile); // Aquí se cambió a 'Image'
+      formDataWithFile.append('Title', formData.Title);
+      formDataWithFile.append('Duration', formData.Duration);
+      formDataWithFile.append('Description', formData.Description);
+      formDataWithFile.append('Director', formData.Director);
+      formDataWithFile.append('ArtistID', formData.ArtistID);
+
+      const result = await createMovie(formDataWithFile);
+      if (result.success) {
+        showAlert('Video created successfully', 'success');
+      } else {
+        showAlert('Error creating video', 'error');
+      }
     } catch (error) {
       console.error('Error creating video:', error.message);
       showAlert('Error creating video', 'error');
@@ -70,7 +90,13 @@ const MovieForm = () => {
           <label htmlFor="VideoFile" className="my-label">
             Video File:
           </label>
-          <input type="file" id="file" name="VideoFile" onChange={handleFileChange} className="my-input" />
+          <input type="file" id="VideoFile" name="VideoFile" onChange={handleVideoFileChange} className="my-input" />
+        </div>
+        <div className="my-form-group">
+          <label htmlFor="Image" className="my-label">
+            Image:
+          </label>
+          <input type="file" id="Image" name="Image" onChange={handleImageFileChange} className="my-input" />
         </div>
         <div className="my-form-group">
           <label htmlFor="Title" className="my-label">
