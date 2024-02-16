@@ -21,3 +21,20 @@
   text-align: center;
   width: 40vw;
 }
+
+.sketch-stars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center ;
+}
+
+.stars-buttons {
+  font-family: 'Array', sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
