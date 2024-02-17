@@ -36,3 +36,27 @@ export const createUser = async (formData) => {
     return { success: false, error: 'Error en la solicitud' };
   }
 };
+
+export const loginUser = async (credentials) => {
+  try {
+    const response = await fetch('http://localhost:3002/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Inicio de sesión exitoso:', data);
+      return { success: true, token: data.token, user: data.user };
+    } else {
+      console.error('Error en el inicio de sesión');
+      return { success: false, error: 'Error en el inicio de sesión' };
+    }
+  } catch (error) {
+    console.error('Error en la solicitud:', error);
+    return { success: false, error: 'Error en la solicitud' };
+  }
+};

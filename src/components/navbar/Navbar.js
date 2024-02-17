@@ -6,7 +6,7 @@ import logo from "../../assets/logoNegroH.PNG";
 import logo2 from "../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
 
-function Navbar() {
+function Navbar({ isLoggedIn }) {
   const { t, i18n } = useTranslation();
   const [isExpanded, setExpanded] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -117,6 +117,19 @@ function Navbar() {
                 </Link>
 
                 <Link
+                to="/login"
+                className={`nav-link ${
+                  selectedView === "/login" ? "selected" : ""
+                }`}
+                onClick={() => {
+                  closeNavbar();
+                  setSelectedView("/login");
+                }}
+              >
+              LOGIN
+            </Link>
+
+                <Link
                   to="/collection"
                   className={`nav-link ${
                     selectedView === "/collection" ? "selected" : ""
@@ -154,19 +167,20 @@ function Navbar() {
                 >
                   {t("movies")}
                 </Link>
+<Link
+  to="/SketchList"
+  className={`nav-link ${
+    selectedView === "/SketchList" ? "selected" : ""
+  }`}
+  onClick={() => {
+    closeNavbar();
+    setSelectedView("/SketchList");
+    console.log("Estado de login al hacer clic en SketchList:", isLoggedIn);
+  }}
+>
+  {t("SketchList")}
+</Link>
 
-                <Link
-                  to="/SketchList"
-                  className={`nav-link ${
-                    selectedView === "/SketchList" ? "selected" : ""
-                  }`}
-                  onClick={() => {
-                    closeNavbar();
-                    setSelectedView("/SketchList");
-                  }}
-                >
-                  {t("SketchList")}
-                </Link>
                 <Link
                   to="/draw"
                   className={`nav-link ${
