@@ -7,6 +7,12 @@
     font-family: 'Array', sans-serif;
   }
   
+  .my-container-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vw;
+    font-family: 'Array', sans-serif;
+  }
   .my-form-container {
     margin-right: 100px; 
   }
