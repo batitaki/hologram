@@ -55,11 +55,14 @@ function App() {
   }, [isLoggedIn, userData]);
 
   useEffect(() => {
+    // Verifica si hay un token almacenado en localStorage al cargar la aplicación
     const token = localStorage.getItem('token');
     if (token) {
-      setIsLoggedIn(true);
+      setIsLoggedIn(true); // Establece el estado de isLoggedIn en true si hay un token
+      // Aquí podrías recuperar información adicional del usuario si es necesario
+      // setUserData(userData);
     }
-}, []); 
+  }, []);
 
   return (
     <I18nextProvider i18n={i18n}>

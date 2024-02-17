@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'; // Cambiamos de Redirect a Navigate
 import { loginUser } from '../../services/usersAPI';
 import './RegisterForm.css';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [credentials, setCredentials] = useState({ Username: '', Password: '' });
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,12 +19,10 @@ const Login = () => {
     try {
       const response = await loginUser(credentials);
       localStorage.setItem('token', response.token);
-      setIsLoggedIn(true); // Actualizar el estado a true después del inicio de sesión exitoso
+      handleLogin(response.user); // Llama a la función handleLogin con los datos del usuario
       console.log('Datos del usuario logueado:', response.user);
     } catch (error) {
-      console.error('Error de inicio de sesión:', error);
-      console.log('isLoggedIn después del intento de inicio de sesión:', isLoggedIn); // Verificar isLoggedIn en caso de error
-      setError('Credenciales inválidas. Por favor, inténtelo de nuevo.');
+      // Manejo de errores
     }
   };
 
