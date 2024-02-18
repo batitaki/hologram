@@ -69,9 +69,11 @@ function Navbar({ isLoggedIn, handleLogout }) {
           )}
         </Link>
   
-        {showSketch && <NavbarSketch className="sketchNav" />}
+  
+      
+      {showSketch && <NavbarSketch className="sketchNav" isNavbarExpanded={isExpanded} />}
 
-        
+
       </div>
       <div className="navbar-nav">
         <ul className="navbar-nav">
@@ -116,7 +118,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
                       setSelectedView("/login");
                     }}
                   >
-                    LOG IN
+                    LOGIN
                   </Link>
                   <Link
                     to="/register"
@@ -128,7 +130,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
                       setSelectedView("/register");
                     }}
                   >
-                    {t("register")}
+                    {t("signUp")}
                   </Link>
                 </>
               )}

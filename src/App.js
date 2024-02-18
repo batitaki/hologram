@@ -26,7 +26,7 @@ import Movie from './components/movie/Movie';
 import MovieForm from './components/movie/MovieForm';
 
 import DrawComponent from './components/sketch/draw/DrawComponent';
-import DrawImagesComponent from './components/sketch/draw/DrawImagesComponent';
+import DrawImagesSketch from './components/sketch/draw/DrawImagesSketch.js';
 import AudioVisualizerComponent from './components/sketch/audio/AudioVisualizerComponent.js';
 import DrawCirclesComponent from './components/sketch/draw/DrawCirclesComponent';
 import SketchList from './components/sketch/list/SketchList.js';
@@ -74,8 +74,8 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/register' element={isLoggedIn ? <Navigate to="/" /> : <Register />} />
-              <Route path='/AudioVisualizer' element={<AudioVisualizerComponent />} />
-              <Route path='/SphereImage' element={<DrawCirclesComponent />} />
+              <Route path='/AudioVisualizerSketch' element={<AudioVisualizerComponent />} />
+              <Route path='/SphereImagesSketch' element={<DrawCirclesComponent />} />
               <Route path='/magazine' element={<Magazine />} />
               <Route path='/artists' element={<Artists />} />
               <Route path='/artist/:id' element={<ArtistDetail />} />
@@ -84,15 +84,15 @@ function App() {
               <Route path='/apply' element={<ApplyForm />} />
               <Route path='/createArt' element={<CreateArtWork />} />
               <Route path='/DrawShapes' element={<DrawComponent />} />
-              <Route path='/DrawImages' element={<DrawImagesComponent />} />
+              <Route path='/DrawImagesSketch' element={<DrawImagesSketch />} />
               <Route path='/NavbarSketch' element={<NavbarSketch />} />
               <Route path='/movies' element={<VideoList />} />
               <Route path='/movieForm' element={<MovieForm />} />
               <Route path='/movie/:id' element={<Movie />} />
               <Route path='/createSketch' element={<CreateSketch />} />
               <Route path='/SketchList' element={isLoggedIn ? <SketchList /> : <Navigate to="/login" />} />
-              <Route path='/Stars' element={<StarsComponent />} />
-              <Route path='/AudioParticles' element={<ParticleComponent />} />
+              <Route path='/StarsSketch' element={<StarsComponent />} />
+              <Route path='/AudioParticlesSketch' element={<ParticleComponent />} />
               <Route path='/login' element={isLoggedIn ? <Navigate to="/" /> : <Login handleLogin={handleLogin} />}/>
             </Routes>
           </Router>

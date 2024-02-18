@@ -9,7 +9,7 @@ i18n
       en: {
         translation: {
           home: 'HOME',
-          register: 'REGISTER',
+          signUp: 'SIGN UP',
           magazine: 'MAGAZINE',
           gallery: 'GALLERY',
           artists: 'ARTISTS',
@@ -31,7 +31,7 @@ i18n
       es: {
         translation: {
           home: 'INICIO',
-          register: 'REGISTRARSE',
+          signUp: 'CREAR CUENTA',
           gallery: 'GALERIA',
           artists: 'ARTISTAS',
           apply: 'APLICAR',
