@@ -1,16 +1,17 @@
-// Navbar.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/logoNegroH.PNG";
 import logo2 from "../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
+import NavbarSketch from "../sketch/home/NavbarSketch";
 
 function Navbar({ isLoggedIn, handleLogout }) {
   const { t, i18n } = useTranslation();
   const [isExpanded, setExpanded] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [selectedView, setSelectedView] = useState("/");
+  const [showSketch, setShowSketch] = useState(true);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -18,13 +19,16 @@ function Navbar({ isLoggedIn, handleLogout }) {
   };
 
   const closeNavbar = () => {
+    console.log('showSketch', showSketch)
     setExpanded(false);
+    setShowSketch(true);  // Mostrar el NavbarSketch cuando se cierra la barra de navegación
   };
 
   const toggleNavbarAndOptions = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setExpanded(!isExpanded);
+    setShowSketch(false); // Ocultar el NavbarSketch cuando se expande la barra de navegación
   };
 
   useEffect(() => {
@@ -51,20 +55,23 @@ function Navbar({ isLoggedIn, handleLogout }) {
           {isExpanded ? (
             <img
               className="logo2"
-              onClick={toggleNavbarAndOptions}
               src={logo2}
               alt=""
             />
           ) : (
             <img
-              onClick={toggleNavbarAndOptions}
-              src={logo}
+             className="logo21"
+              src={logo2}
               alt=""
-              width="50"
+              width="200"
               style={{ margin: "8px" }}
             />
           )}
         </Link>
+  
+        {showSketch && <NavbarSketch className="sketchNav" />}
+
+        
       </div>
       <div className="navbar-nav">
         <ul className="navbar-nav">

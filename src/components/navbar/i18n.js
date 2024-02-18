@@ -24,7 +24,8 @@ i18n
           createArt:'CREATE ARTWORK',
           SketchList: 'SKETCH LIST',
           draw: 'DRAW',
-          movies: 'MOVIES'
+          movies: 'MOVIES',
+          sketchText: 'STEP 1: PRESS U TO UPLOUD AN IMAGE     STEP 2: CLICK OVER THE SKETCH TO START DRAWING YOUR IMAGE'
         },
       },
       es: {
@@ -46,7 +47,8 @@ i18n
           magazine:'REVISTA',
           SketchList: 'BOCETOS',
           draw: 'DIBUJAR',
-          movies: 'PELICULAS'
+          movies: 'PELICULAS',
+          sketchText: 'PASO 1: APRIETA U PARA CARGAR UNA IMAGEN     PASO 2: PRESIONA EL CLICK ENCIMA DEL SKETCH Y DIBUJA TU IMAGEN'
         },
       },
     },

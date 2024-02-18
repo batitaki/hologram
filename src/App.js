@@ -32,6 +32,7 @@ import DrawCirclesComponent from './components/sketch/draw/DrawCirclesComponent'
 import SketchList from './components/sketch/list/SketchList.js';
 import ParticleComponent from './components/sketch/audio/ParticleComponent.js';
 import Login from './components/user/Login.js';
+import NavbarSketch from './components/sketch/home/NavbarSketch.js';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -84,6 +85,7 @@ function App() {
               <Route path='/createArt' element={<CreateArtWork />} />
               <Route path='/DrawShapes' element={<DrawComponent />} />
               <Route path='/DrawImages' element={<DrawImagesComponent />} />
+              <Route path='/NavbarSketch' element={<NavbarSketch />} />
               <Route path='/movies' element={<VideoList />} />
               <Route path='/movieForm' element={<MovieForm />} />
               <Route path='/movie/:id' element={<Movie />} />

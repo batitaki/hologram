@@ -1,8 +1,7 @@
-
 .home-img {
-  background-image: url('../../assets/fondoPinuito.JPEG'); 
+  background-image: url('../../assets/chinaso.png'); 
   background-size: cover;
-  background-position: center;
+  background-position: 40% 80%; /* Ajusta la posición vertical para que se vea más en el medio */
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
@@ -10,7 +9,6 @@
   padding: 0;
   position: relative; 
 }
-
 
 .home-sketch {
   position: absolute;
