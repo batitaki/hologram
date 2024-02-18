@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchArtists, createArtWorkAPI } from "../../services/collectionAPI";
+import { fetchArtists, createArtWorkAPI } from "../../../services/collectionAPI";
 import { useTranslation } from "react-i18next";
 
 const CreateArtWork = () => {

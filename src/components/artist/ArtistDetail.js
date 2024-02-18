@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getArtistDetails } from '../../services/artistsAPI.js';
 import { getArtworksByArtist } from '../../services/collectionAPI.js';
 import './ArtistDetail.css';
-import Collection from '../collection/Collection';
+import Collection from '../collection/artworks/ArtworkCollection.js';
 import AudioImages from '../sketch/audio/AudioVisualizerComponent.js';
 
 const ArtistDetail = () => {
@@ -63,4 +63,4 @@ const ArtistDetail = () => {
   );
 };
 
-export { ArtistDetail };
+export default ArtistDetail; 

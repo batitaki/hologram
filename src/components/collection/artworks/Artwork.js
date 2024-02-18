@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams , Link } from 'react-router-dom';
-import { getArtworkById } from '../../services/collectionAPI';
-import { getArtistDetails } from '../../services/artistsAPI';
+import { getArtworkById } from '../../../services/collectionAPI';
+import { getArtistDetails } from '../../../services/artistsAPI';
 import {initLightboxJS} from 'lightbox.js-react'
 import 'lightbox.js-react/dist/index.css'
 import {SlideshowLightbox} from 'lightbox.js-react'

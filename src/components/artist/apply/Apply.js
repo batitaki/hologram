@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { sendArtistApplication } from '../../services/artistsAPI';
+import { sendArtistApplication } from '../../../services/artistsAPI';
 import ArtistApplicationForm from './ApplyFrom';
 
 const ApplyForm = () => {

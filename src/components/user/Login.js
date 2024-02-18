@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../services/usersAPI";
-
 
 const Login = ({ handleLogin }) => {
   const [credentials, setCredentials] = useState({
@@ -10,7 +8,6 @@ const Login = ({ handleLogin }) => {
     Password: "",
   });
   const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,26 +19,13 @@ const Login = ({ handleLogin }) => {
     try {
       const response = await loginUser(credentials);
       localStorage.setItem("token", response.token);
-      handleLogin(response.user);
-      setIsLoggedIn(true);
-      console.log("Datos del usuario logueado:", response.user);
+      handleLogin(response.user); // Llama a la función handleLogin
     } catch (error) {
       setError(
         "Error al iniciar sesión. Por favor, verifica tus credenciales."
       );
     }
   };
-
-  useEffect(() => {
-    console.log("isLoggedIn después del cambio:", isLoggedIn);
-    if (isLoggedIn) {
-      console.log("Usuario autenticado:", isLoggedIn);
-    }
-  }, [isLoggedIn]);
-
-  if (isLoggedIn) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <div className="my-container-login">
@@ -79,7 +63,9 @@ const Login = ({ handleLogin }) => {
           LOGIN
         </button>
       </form>
-      <Link  className="my-link-form" to="/Register">CREATE ACOUNT</Link>
+      <Link className="my-link-form" to="/Register">
+        CREATE ACCOUNT
+      </Link>
     </div>
   );
 };

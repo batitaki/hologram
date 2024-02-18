@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getCollection } from '../../services/collectionAPI';  
+import { getCollection } from '../../../services/collectionAPI';  
 import './Collection.css';
 
 const Collection = ({ artistArtworks }) => {

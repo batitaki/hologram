@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo2 from "../../assets/logoNegroHolo.PNG";
+import logo2 from "../../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
-import NavbarSketch from "../sketch/home/NavbarSketch";
+import NavbarSketch from "../../sketch/home/NavbarSketch";
 
 function Navbar({ isLoggedIn, handleLogout }) {
   const { t, i18n } = useTranslation();

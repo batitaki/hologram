@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchArtists } from '../../services/collectionAPI';
-import { createMovie } from '../../services/movieAPI';
+import { fetchArtists } from '../../../services/collectionAPI';
+import { createMovie } from '../../../services/movieAPI';
 
 
 const MovieForm = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchMovies } from '../../services/movieAPI';
+import { fetchMovies } from '../../../services/movieAPI';
 import './VideoList.css'
 
 const VideoList = () => {
