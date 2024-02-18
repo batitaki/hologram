@@ -1,0 +1,64 @@
+.my-container-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    font-family: 'Array', sans-serif;
+    border: 1px solid #000000;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  
+  .my-label-login {
+    display: block;
+    margin-bottom: 5px;
+    color: #00d5ff;
+    font-size: 39px;
+  }
+  
+  .my-input-login {
+    width: 350px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 5px;
+    outline: none;
+    border-radius: 0;
+  }
+  
+  .my-input-container-login {
+    margin-bottom: 30px;
+  }
+  
+  .my-button-login {
+    width: 200px; /* Ancho del botón */
+    margin-top: 10px; /* Espacio entre el input y el botón */
+    margin-left: 4vw;
+    color: #00d5ff;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+  }
+  
+  .login-title {
+    display: block;
+    color: #00d5ff;
+    font-size: 39px;
+    position: relative;
+    top: -10px;
+  }
+  
+  .my-link-login {
+    display: inline-block; /* Convertir en bloque para aplicar el line-height */
+    line-height: 50px; /* Ajustar según el tamaño del botón */
+    color: #00d5ff;
+    background-color: #ffffff;
+    margin-top: 2vw;
+    width: 250px;
+    height: 50px; /* Ajustar según el tamaño deseado del botón */
+    border: 1px solid #000000;
+    text-decoration: none;
+    text-align: center; /* Centrar el texto horizontalmente */
+  }
