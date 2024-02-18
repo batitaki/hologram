@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { fetchArtists } from '../../../services/collectionAPI';
 import { createSketch } from '../../../services/fetchSketch.js';
 
-
 const CreateSketch = () => {
   const [registeredArtists, setRegisteredArtists] = useState([]);
   const [formData, setFormData] = useState({
@@ -56,20 +55,21 @@ const CreateSketch = () => {
   };
 
   return (
-    <div className="my-container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className="my-form">
-        <div className="my-form-group">
-          <label htmlFor="Artist" className="my-label">
+    <div className="my-container-register">
+      <h3 className="form-title"> CREATE SKETCH </h3>
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className="my-form-form">
+        <div className="my-form-group-form">
+          <label htmlFor="Artist" className="my-label-form">
             ARTIST
           </label>
           <select
-            className="my-select"
+            className="my-select-form"
             name="ArtistID"
             value={formData.ArtistID}
             onChange={handleChange}
           >
             <option value="" disabled defaultValue>
-              Select an artist
+              SELECT AN ARTIST
             </option>
             {registeredArtists.map((artist) => (
               <option key={artist.ID} value={artist.ID}>
@@ -79,13 +79,13 @@ const CreateSketch = () => {
           </select>
         </div>
 
-        <div className="my-form-group">
-          <label htmlFor="Title" className="my-label">
+        <div className="my-form-group-form">
+          <label htmlFor="Title" className="my-label-form">
             TITLE
           </label>
           <input
             type="text"
-            className="my-input"
+            className="my-input-form"
             name="Title"
             value={formData.Title}
             onChange={handleChange}
@@ -93,44 +93,44 @@ const CreateSketch = () => {
           />
         </div>
 
-        <div className="my-form-group">
-          <label htmlFor="Instructions" className="my-label">
+        <div className="my-form-group-form">
+          <label htmlFor="Instructions" className="my-label-form">
             INSTRUCTIONS
           </label>
           <textarea
-            className="my-textarea"
+            className="my-textarea-form"
             name="Instructions"
             value={formData.Instructions}
             onChange={handleChange}
           />
         </div>
 
-        <div className="my-form-group">
-          <label htmlFor="Description" className="my-label">
+        <div className="my-form-group-form">
+          <label htmlFor="Description" className="my-label-form">
             DESCRIPTION
           </label>
           <textarea
-            className="my-textarea"
+            className="my-textarea-form"
             name="Description"
             value={formData.Description}
             onChange={handleChange}
           />
         </div>
 
-        <div className="my-form-group">
-          <label className="my-label" htmlFor="Image">
+        <div className="my-form-group-form">
+          <label className="my-label-form" htmlFor="Image">
             IMAGE
           </label>
           <input
             type="file"
-            className="my-input"
+            className="my-input-form"
             name="Image"
             accept="image/*"
             onChange={handleChange}
           />
         </div>
 
-        <button type="submit" className="my-button">
+        <button type="submit" className="my-button-form">
           CREATE SKETCH
         </button>
       </form>

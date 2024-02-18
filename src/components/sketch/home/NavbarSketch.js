@@ -7,7 +7,6 @@ const NavbarSketch = () => {
 
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(false);
-  const [firstClick, setFirstClick] = useState(true);
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
   const imageSize = 50;

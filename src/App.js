@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { I18nextProvider } from 'react-i18next';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import './styles/FormStyles.css'
 
 import { Home } from './components/home/Home';
 import { Foot } from './components/foot/Foot';
@@ -46,7 +47,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('token');
-    setUserData(null); // Limpiar los datos del usuario al cerrar sesión
+    setUserData(null); 
   };
 
   useEffect(() => {
@@ -56,12 +57,9 @@ function App() {
   }, [isLoggedIn, userData]);
 
   useEffect(() => {
-    // Verifica si hay un token almacenado en localStorage al cargar la aplicación
     const token = localStorage.getItem('token');
     if (token) {
-      setIsLoggedIn(true); // Establece el estado de isLoggedIn en true si hay un token
-      // Aquí podrías recuperar información adicional del usuario si es necesario
-      // setUserData(userData);
+      setIsLoggedIn(true);
     }
   }, []);
 

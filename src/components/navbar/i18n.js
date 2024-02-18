@@ -1,4 +1,3 @@
-// i18n.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -52,7 +51,7 @@ i18n
         },
       },
     },
-    lng: 'en', // idioma por defecto
+    lng: 'en', 
     interpolation: {
       escapeValue: false,
     },

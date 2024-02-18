@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../assets/logoNegroH.PNG";
 import logo2 from "../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
 import NavbarSketch from "../sketch/home/NavbarSketch";
@@ -21,14 +20,14 @@ function Navbar({ isLoggedIn, handleLogout }) {
   const closeNavbar = () => {
     console.log('showSketch', showSketch)
     setExpanded(false);
-    setShowSketch(true);  // Mostrar el NavbarSketch cuando se cierra la barra de navegación
+    setShowSketch(true);
   };
 
   const toggleNavbarAndOptions = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setExpanded(!isExpanded);
-    setShowSketch(false); // Ocultar el NavbarSketch cuando se expande la barra de navegación
+    setShowSketch(false); 
   };
 
   useEffect(() => {
@@ -46,7 +45,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isExpanded]);
+  }, [isExpanded, closeNavbar]); 
 
   return (
     <div className={`sidebar ${isExpanded ? "navbar-expanded" : ""}`}>
@@ -182,7 +181,6 @@ function Navbar({ isLoggedIn, handleLogout }) {
           </li>
         </ul>
         <div className="navbar-nav">
-          {/* Otras opciones de navegación */}
           {isExpanded && isLoggedIn && (
             <li className="nav-item">
               <Link
