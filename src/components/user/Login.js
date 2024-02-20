@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "../../services/usersAPI";
 
 const Login = ({ handleLogin }) => {
@@ -18,8 +18,17 @@ const Login = ({ handleLogin }) => {
     event.preventDefault();
     try {
       const response = await loginUser(credentials);
-      localStorage.setItem("token", response.token);
-      handleLogin(response.user); // Llama a la función handleLogin
+      // Verificar si la respuesta incluye un token (indicativo de credenciales correctas)
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+        handleLogin(response.user); // Llama a la función handleLogin para actualizar el estado del usuario
+        return <Navigate to="/profile" />;
+      } else {
+        // Si no hay token en la respuesta, muestra un mensaje de error
+        setError(
+          "Error al iniciar sesión. Por favor, verifica tus credenciales."
+        );
+      }
     } catch (error) {
       setError(
         "Error al iniciar sesión. Por favor, verifica tus credenciales."

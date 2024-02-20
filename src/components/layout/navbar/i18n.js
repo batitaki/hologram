@@ -24,7 +24,8 @@ i18n
           SketchList: 'SKETCH LIST',
           draw: 'DRAW',
           movies: 'MOVIES',
-          sketchText: 'STEP 1: PRESS U TO UPLOUD AN IMAGE     STEP 2: CLICK OVER THE SKETCH TO START DRAWING YOUR IMAGE'
+          sketchText: 'STEP 1: PRESS U TO UPLOUD AN IMAGE     STEP 2: CLICK OVER THE SKETCH TO START DRAWING YOUR IMAGE',
+          profile: 'PROFILE'
         },
       },
       es: {
@@ -47,7 +48,8 @@ i18n
           SketchList: 'BOCETOS',
           draw: 'DIBUJAR',
           movies: 'PELICULAS',
-          sketchText: 'PASO 1: APRIETA U PARA CARGAR UNA IMAGEN     PASO 2: PRESIONA EL CLICK ENCIMA DEL SKETCH Y DIBUJA TU IMAGEN'
+          sketchText: 'PASO 1: APRIETA U PARA CARGAR UNA IMAGEN     PASO 2: PRESIONA EL CLICK ENCIMA DEL SKETCH Y DIBUJA TU IMAGEN',
+          profile: 'PERFIL'
         },
       },
     },

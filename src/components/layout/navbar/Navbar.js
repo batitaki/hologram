@@ -5,7 +5,7 @@ import logo2 from "../../../assets/logoNegroHolo.PNG";
 import { useTranslation } from "react-i18next";
 import NavbarSketch from "../../sketch/home/NavbarSketch";
 
-function Navbar({ isLoggedIn, handleLogout }) {
+function Navbar({ isLoggedIn, handleLogout, userData }) {
   const { t, i18n } = useTranslation();
   const [isExpanded, setExpanded] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -18,7 +18,6 @@ function Navbar({ isLoggedIn, handleLogout }) {
   };
 
   const closeNavbar = () => {
-    console.log('showSketch', showSketch)
     setExpanded(false);
     setShowSketch(true);
   };
@@ -27,7 +26,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
     e.preventDefault();
     e.stopPropagation();
     setExpanded(!isExpanded);
-    setShowSketch(false); 
+    setShowSketch(false);
   };
 
   useEffect(() => {
@@ -45,21 +44,17 @@ function Navbar({ isLoggedIn, handleLogout }) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isExpanded, closeNavbar]); 
+  }, [isExpanded]);
 
   return (
     <div className={`sidebar ${isExpanded ? "navbar-expanded" : ""}`}>
       <div className={`logo-class ${isExpanded ? "logo-class-expanded" : ""}`}>
         <Link className="navbar-brand">
           {isExpanded ? (
-            <img
-              className="logo2"
-              src={logo2}
-              alt=""
-            />
+            <img className="logo2" src={logo2} alt="" />
           ) : (
             <img
-             className="logo21"
+              className="logo21"
               src={logo2}
               alt=""
               width="200"
@@ -67,12 +62,10 @@ function Navbar({ isLoggedIn, handleLogout }) {
             />
           )}
         </Link>
-  
-  
-      
-      {showSketch && <NavbarSketch className="sketchNav" isNavbarExpanded={isExpanded} />}
 
-
+        {showSketch && (
+          <NavbarSketch className="sketchNav" isNavbarExpanded={isExpanded} />
+        )}
       </div>
       <div className="navbar-nav">
         <ul className="navbar-nav">
@@ -168,29 +161,29 @@ function Navbar({ isLoggedIn, handleLogout }) {
                 onClick={() => {
                   closeNavbar();
                   setSelectedView("/SketchList");
-                  console.log(
-                    "Estado de login al hacer clic en SketchList:",
-                    isLoggedIn
-                  );
                 }}
               >
                 {t("SketchList")}
               </Link>
-
             </div>
           </li>
         </ul>
-        <div className="navbar-nav">
-          {isExpanded && isLoggedIn && (
-            <li className="nav-item">
-              <Link
-                to="/login"
-                className="log-out-button"
-                onClick={handleLogout}
-              >
-                LOG OUT
-              </Link>
-            </li>
+        <div className="user-info">
+          {isLoggedIn && userData && (
+            <>
+              <span>Welcome, {userData.Username}</span>
+              <img
+                src={userData.Image}
+                alt="Profile"
+                className="profile-image"
+              />
+            </>
+          )}
+
+          {isLoggedIn && (
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
           )}
         </div>
       </div>

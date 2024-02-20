@@ -125,7 +125,7 @@ const AudioVisualizerComponent = (props) => {
       p5.translate(0, 0, -200);
       p5.rotateX(cubeRotation);
       p5.rotateY(cubeRotation);
-      p5.box(100);
+      p5.box(90);
       p5.pop();
 
       // Update cube rotation
@@ -228,7 +228,7 @@ const AudioVisualizerComponent = (props) => {
     }
 
     if (isHKeyPressed) {
-      p5.fill(530, 44, 399);
+      p5.fill(350, 4, 309);
       const centerX = p5.width / -60;
       const centerY = p5.height / 60;
       p5.ellipse(centerX, centerY, circleRadius, circleRadius);

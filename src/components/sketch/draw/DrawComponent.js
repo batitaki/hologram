@@ -8,8 +8,8 @@ const DrawComponent = () => {
   const [currentShape, setCurrentShape] = useState("ellipse");
   const [currentDrawing, setCurrentDrawing] = useState([]);
   const [lineStart, setLineStart] = useState(null);
-  const [backgroundColor, setBackgroundColor] = useState("#ffc7c7");
-  const [shapeColor, setShapeColor] = useState("#FFFFFF");
+  const [backgroundColor, setBackgroundColor] = useState("#242424");
+  const [shapeColor, setShapeColor] = useState("#14DCEB"); 
   const [lineThickness, setLineThickness] = useState(1);
 
   const setup = (p5, canvasParentRef) => {

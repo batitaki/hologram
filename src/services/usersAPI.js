@@ -60,3 +60,24 @@ export const loginUser = async (credentials) => {
     return { success: false, error: 'Error en la solicitud' };
   }
 };
+
+export const fetchUserProfile = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:3002/users/profile', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Perfil del usuario:', data);
+    } else {
+      console.error('Error al obtener el perfil del usuario');
+    }
+  } catch (error) {
+    console.error('Error en la solicitud:', error);
+  }
+};
