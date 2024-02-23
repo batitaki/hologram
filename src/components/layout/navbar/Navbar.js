@@ -85,19 +85,6 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
               >
                 {t("home")}
               </Link>
-
-              <Link
-                to="/artists"
-                className={`nav-link ${
-                  selectedView === "/artists" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  closeNavbar();
-                  setSelectedView("/artists");
-                }}
-              >
-                {t("artists")}
-              </Link>
               {!isLoggedIn && (
                 <>
                   <Link
@@ -110,7 +97,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                       setSelectedView("/login");
                     }}
                   >
-                    LOGIN
+                    {t("signIn")}
                   </Link>
                   <Link
                     to="/register"
@@ -127,6 +114,18 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                 </>
               )}
 
+              <Link
+                to="/artists"
+                className={`nav-link ${
+                  selectedView === "/artists" ? "selected" : ""
+                }`}
+                onClick={() => {
+                  closeNavbar();
+                  setSelectedView("/artists");
+                }}
+              >
+                {t("artists")}
+              </Link>
               <Link
                 to="/collection"
                 className={`nav-link ${
@@ -152,7 +151,6 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
               >
                 {t("magazine")}
               </Link>
-
               <Link
                 to="/SketchList"
                 className={`nav-link ${
@@ -165,27 +163,19 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
               >
                 {t("SketchList")}
               </Link>
+              {isLoggedIn && (
+                <Link to="/profile" className="nav-link">
+                  {t("profile")}
+                </Link>
+              )}
+              {isLoggedIn && (
+                <Link to="/" className="nav-link" onClick={handleLogout}>
+                  {t("logout")}
+                </Link>
+              )}
             </div>
           </li>
         </ul>
-        <div className="user-info">
-          {isLoggedIn && userData && (
-            <>
-              <span>Welcome, {userData.Username}</span>
-              <img
-                src={userData.Image}
-                alt="Profile"
-                className="profile-image"
-              />
-            </>
-          )}
-
-          {isLoggedIn && (
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
-          )}
-        </div>
       </div>
       <div className={`class-lang ${isExpanded ? "class-lang-expanded" : ""}`}>
         <div className="nav-lang">

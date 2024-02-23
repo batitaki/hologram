@@ -25,7 +25,11 @@ i18n
           draw: 'DRAW',
           movies: 'MOVIES',
           sketchText: 'STEP 1: PRESS U TO UPLOUD AN IMAGE     STEP 2: CLICK OVER THE SKETCH TO START DRAWING YOUR IMAGE',
-          profile: 'PROFILE'
+          profile: 'PROFILE',
+          logout: 'LOGOUT',
+          signIn: 'SIGN IN',
+          password: 'PASSWORD',
+          username: 'USERNAME'
         },
       },
       es: {
@@ -49,7 +53,11 @@ i18n
           draw: 'DIBUJAR',
           movies: 'PELICULAS',
           sketchText: 'PASO 1: APRIETA U PARA CARGAR UNA IMAGEN     PASO 2: PRESIONA EL CLICK ENCIMA DEL SKETCH Y DIBUJA TU IMAGEN',
-          profile: 'PERFIL'
+          profile: 'PERFIL',
+          logout: 'CERRAR SESION',
+          signIn: 'INICIAR SESION',
+          password: 'CONTRASEÑA',
+          username: 'NOMBRE DE USUARIO'
         },
       },
     },

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "../../services/usersAPI";
+import { useTranslation } from "react-i18next"; // Importa la función useTranslation
 
 const Login = ({ handleLogin }) => {
+  const { t } = useTranslation(); // Obtiene las funciones de traducción
+
   const [credentials, setCredentials] = useState({
     Username: "",
     Password: "",
@@ -25,23 +28,19 @@ const Login = ({ handleLogin }) => {
         return <Navigate to="/profile" />;
       } else {
         // Si no hay token en la respuesta, muestra un mensaje de error
-        setError(
-          "Error al iniciar sesión. Por favor, verifica tus credenciales."
-        );
+        setError(t("loginError")); // Utiliza la función t para obtener la traducción del mensaje de error
       }
     } catch (error) {
-      setError(
-        "Error al iniciar sesión. Por favor, verifica tus credenciales."
-      );
+      setError(t("loginError")); // Utiliza la función t para obtener la traducción del mensaje de error
     }
   };
 
   return (
     <div className="my-container-login">
-      <h3 className="form-title">LOG IN</h3>
+      <h3 className="form-title">{t("signIn")}</h3>
       <form onSubmit={handleSubmit}>
         <div className="my-input-container-form">
-          <label className="my-label-form"> USERNAME</label>
+          <label className="my-label-form"> {t("username")}</label>
           <input
             style={{
               width: "350px",
@@ -58,7 +57,7 @@ const Login = ({ handleLogin }) => {
           />
         </div>
         <div className="my-input-container-form">
-          <label className="my-label-form"> PASSWORD</label>
+          <label className="my-label-form"> {t("password")}</label>
           <input
             className="my-input-form"
             type="password"
@@ -69,11 +68,11 @@ const Login = ({ handleLogin }) => {
         </div>
         {error && <div style={{ color: "red" }}>{error}</div>}
         <button className="my-button-form" type="submit">
-          LOGIN
+          {t("signIn")}
         </button>
       </form>
       <Link className="my-link-form" to="/Register">
-        CREATE ACCOUNT
+        {t("signUp")}
       </Link>
     </div>
   );

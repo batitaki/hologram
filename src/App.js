@@ -12,7 +12,7 @@ import { Foot } from './components/layout/foot/Foot';
 import { Home } from './components/layout/home/Home';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
-import UserProfile from './components/user/UserProfile'; // Importa el componente UserProfile aquí
+import UserProfile from './components/user/UserProfile'; 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
     "react-i18next": "^13.5.0",
+    "react-image-crop": "^11.0.5",
     "react-modal": "^3.16.1",
     "react-modal-image": "^2.6.0",
     "react-p5": "^1.4.1",

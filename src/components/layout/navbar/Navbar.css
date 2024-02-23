@@ -114,18 +114,3 @@ width: 50px;
 .nav-link.selected {
   color: #505050;
 }
-
-.log-out-button {
-  font-size: 37px;
-  margin-left: 9vw;
-  margin-top: 5vw;
-  font-family: 'Array', sans-serif;
-  color: #000000;
-  top: 100px;
-  text-decoration: none;
-}
-
-.profile-image{
-     width: 50px;
-     height: 50px;
-}

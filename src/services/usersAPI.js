@@ -81,3 +81,35 @@ export const fetchUserProfile = async () => {
     console.error('Error en la solicitud:', error);
   }
 };
+
+export const editUserProfile = async (formData) => {
+  try {
+    const apiEndpoint = 'http://localhost:3002/users/profile';
+    const token = localStorage.getItem('token');
+
+    const form = new FormData();
+    for (const key in formData) {
+      form.append(key, formData[key]);
+    }
+
+    const response = await fetch(apiEndpoint, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: form,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Perfil de usuario actualizado:', data);
+      return { success: true, data };
+    } else {
+      console.error('Error al actualizar el perfil del usuario');
+      return { success: false, error: 'Error al actualizar el perfil del usuario' };
+    }
+  } catch (error) {
+    console.error('Error en la solicitud:', error);
+    return { success: false, error: 'Error en la solicitud' };
+  }
+};
