@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "./UserProfile.css";
 import pencilIcon from "../../assets/pencil-icon.png";
+import { editUserProfile } from "../../services/usersAPI"; // Importa la función para editar el perfil
 import PhotoUploader from "../collection/artworks/PhotoUploader";
 import MediaPhotos from "../collection/artworks/MediaPhotos";
 
-function UserProfile({ isLoggedIn, userData }) {
+function UserProfile({ isLoggedIn, userData, setUserData }) {
   const [isEditingPhoto, setIsEditingPhoto] = useState(false);
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingBio, setIsEditingBio] = useState(false);
   const [newPhoto, setNewPhoto] = useState("");
   const [newName, setNewName] = useState("");
   const [newBio, setNewBio] = useState("");
+
+  console.log(userData)
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    localStorage.setItem("userData", JSON.stringify(userData));
+  }, [userData]);
 
   const handleEditPhoto = () => {
     setIsEditingPhoto(true);
@@ -33,15 +48,32 @@ function UserProfile({ isLoggedIn, userData }) {
   };
 
   const handleBioChange = (event) => {
-    setNewBio(event.target.value);
+    setNewBio(event.target.value); // Cambiar el valor de la biografía
   };
 
-  const handleSubmit = () => {
-    setIsEditingPhoto(false);
+  const handleSubmit = async () => {
+    const userId = userData.ID;
+    const token = localStorage.getItem("token");
+  
+    const formData = {
+      Username: newName || userData.Username,
+      Bio: newBio || userData.Bio,
+      Image: newPhoto || userData.Image,
+    };
+  
+    const response = await editUserProfile(userId, formData, token);
+    if (response.success) {
+      console.log("Perfil de usuario actualizado correctamente");
+      setUserData((prevUserData) => ({ ...prevUserData, ...formData }));
+      localStorage.setItem("userData", JSON.stringify(userData));
+      // Actualiza el estado de la bio
+      setNewBio(formData.Bio);
+    } else {
+      console.error("Error al actualizar el perfil del usuario");
+    }
     setIsEditingName(false);
-    setIsEditingBio(false);
+    setIsEditingBio(false)
   };
-
   return (
     <>
       <div className="profile">
@@ -72,9 +104,7 @@ function UserProfile({ isLoggedIn, userData }) {
                     onChange={handleBioChange}
                   />
                 ) : (
-                  <>
-                    <span className="bio">{userData.Bio}</span>
-                  </>
+                  <span className="bio">{userData.Bio}</span>
                 )}
                 <div className="edit-icon-container" onClick={handleEditBio}>
                   <img src={pencilIcon} alt="Edit" className="edit-icon" />
@@ -95,10 +125,11 @@ function UserProfile({ isLoggedIn, userData }) {
                 <img src={pencilIcon} alt="Edit" className="edit-icon" />
               </div>
             </div>
-            {/* <button onClick={handleSubmit}>Guardar cambios</button> */}
+            <button onClick={handleSubmit}>SAVE</button>
           </div>
+          
         )}
-        <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
+  <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
       </div>
       <MediaPhotos />
     </>

@@ -5,7 +5,6 @@ const PhotoUploader = ({ isLoggedIn, userData }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [showFileInput, setShowFileInput] = useState(false);
-  const [isEditingProfile, setIsEditingProfile] = useState(false); // Nuevo estado para controlar la edición del perfil
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -38,10 +37,6 @@ const PhotoUploader = ({ isLoggedIn, userData }) => {
     setShowFileInput(true);
   };
 
-  const handleEditProfile = () => {
-    setIsEditingProfile(true); // Cambiar a true cuando se hace clic en "Editar perfil"
-  };
-
   return (
     <div className="image-uploader">
       {uploadStatus ? (
@@ -49,21 +44,10 @@ const PhotoUploader = ({ isLoggedIn, userData }) => {
       ) : (
         <div>
           {isLoggedIn && !showFileInput && (
-            <div>
-              <button className="button-edit-profile" onClick={handleEditProfile}>
-                Editar perfil
-              </button>
-              {/* Renderizar iconos de lápiz cuando se está editando el perfil */}
-              {isEditingProfile && (
-                <div className="edit-icons">
-                  <span className="edit-icon">✏️ Nombre</span>
-                  <span className="edit-icon">✏️ Descripción</span>
-                  {/* Agregar más campos editables según sea necesario */}
-                </div>
-              )}
-            </div>
+            <button className="button-image-uploader" onClick={handleShowFileInput}>
+              POST PHOTO
+            </button>
           )}
-          {/* Renderizar campo de carga de foto cuando se está editando el perfil */}
           {showFileInput && (
             <div>
               <input className="input-image-uploader" type="file" onChange={handleFileChange} />

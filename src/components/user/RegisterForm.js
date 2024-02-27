@@ -5,7 +5,7 @@ const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
     <div className="my-container-register">
       <h3 className="form-title">SIGN UP</h3>
       <div className="my-form-container-form">
-        {isLoading && <div className='loading-form'>LOADING</div>} {/* Mostrar Loading si isLoading es true */}
+        {isLoading && <div className='loading-form'>LOADING...</div>} {/* Mostrar Loading si isLoading es true */}
         <form className="my-form-form" onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="my-form-group-form">
             <label className="my-label-form" htmlFor="Username">

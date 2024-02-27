@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+
 import { I18nextProvider } from "react-i18next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -21,8 +23,13 @@ import UserProfile from "./components/user/UserProfile";
 import PhotoUploader from "./components/collection/artworks/PhotoUploader"; // Importa el componente PhotoUploader
 
 function App() {
+  // Verifica si hay datos en el localStorage al inicializar el estado
+  const initialUserData = localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData"))
+    : null;
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(initialUserData);
 
   const handleLogin = async (userData) => {
     setIsLoggedIn(true);
@@ -32,11 +39,9 @@ function App() {
   };
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
     const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-    if (storedUserData && storedIsLoggedIn === "true") {
+    if (storedIsLoggedIn === "true") {
       setIsLoggedIn(true);
-      setUserData(JSON.parse(storedUserData));
     }
   }, []);
 
@@ -83,18 +88,17 @@ function App() {
                     isLoggedIn={isLoggedIn}
                     handleLogout={handleLogout}
                     userData={userData}
+                    setUserData={setUserData}
                   />
                 }
               />
               <Route
                 path="/upload-photo"
                 element={
-                  <PhotoUploader
-                    isLoggedIn={isLoggedIn}
-                    userData={userData}
-                  />
+                  <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
                 }
-              /> {/* Nueva ruta para el componente PhotoUploader */}
+              />{" "}
+              {/* Nueva ruta para el componente PhotoUploader */}
             </Routes>
           </div>
         </div>

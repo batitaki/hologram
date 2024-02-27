@@ -82,28 +82,34 @@ export const fetchUserProfile = async () => {
   }
 };
 
-export const editUserProfile = async (formData) => {
+export const editUserProfile = async (userId, formData, token) => {
   try {
-    const apiEndpoint = 'http://localhost:3002/users/profile';
-    const token = localStorage.getItem('token');
+    console.log('ID del usuario:', userId); // Verifica el ID del usuario antes de la solicitud
+    console.log('Token de autenticación:', token); // Verifica el token antes de la solicitud
 
+    const apiEndpoint = `http://localhost:3002/users/user/${userId}/edit`;
+    
+    // Crear un objeto FormData para enviar los datos del formulario
     const form = new FormData();
     for (const key in formData) {
       form.append(key, formData[key]);
     }
 
-    const response = await fetch(apiEndpoint, {
+    // Configurar las opciones de la solicitud
+    const options = {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${token}`
       },
-      body: form,
-    });
+      body: form
+    };
+
+    // Realizar la solicitud utilizando fetch
+    const response = await fetch(apiEndpoint, options);
 
     if (response.ok) {
-      const data = await response.json();
-      console.log('Perfil de usuario actualizado:', data);
-      return { success: true, data };
+      console.log('Perfil de usuario actualizado correctamente');
+      return { success: true };
     } else {
       console.error('Error al actualizar el perfil del usuario');
       return { success: false, error: 'Error al actualizar el perfil del usuario' };
