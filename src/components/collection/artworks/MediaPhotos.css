@@ -1,0 +1,53 @@
+.media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+ .columns-photos-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; 
+  }
+  
+  .photo-container:hover .photo-image {
+    opacity: 0.7;
+  }
+  
+  
+  .column-photo {
+    margin-bottom: 20px;
+    box-sizing: border-box; 
+    margin-left: 3px;
+  }
+  
+  .title {
+    font-family: 'Array', sans-serif;
+    font-size: 30px;
+    font-weight: 1;
+    color: #27343a;
+    font-style: bold;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-family: 'Array', sans-serif;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+  }
+  
+
+  .photo-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: opacity 0.2s ease;
+  }

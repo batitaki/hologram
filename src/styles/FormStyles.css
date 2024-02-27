@@ -94,7 +94,7 @@
   .my-button-form {
     width: 200px;
     margin-top: 1vw; 
-    margin-left: 4vw;
+    margin-left: 5vw;
     color: #00d5ff;
     background-color: #ffffff;
     border: 1px solid #000000;
@@ -133,4 +133,8 @@
   .my-select-form {
     width: 350px;
     font-family: 'Array', sans-serif;
+  }
+
+  .loading-form{
+    
   }

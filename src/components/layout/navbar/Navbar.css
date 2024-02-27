@@ -31,7 +31,7 @@
 }
 
 .class-lang {
-  margin-left:6vw;
+  margin-left:8vw;
   margin-bottom: 2vw;
 }
 
@@ -75,7 +75,7 @@ width: 50px;
 .logo2 {
   position: absolute;
   left: 0;
-  top: -5vw;
+  top: -7vw;
   margin-left: -4vw;
   height: 300px;
   width: auto;
@@ -83,7 +83,7 @@ width: 50px;
 .logo21 {
   position: absolute;
   left: 0;
-  top: -5vw;
+  top: -7vw;
   height: 300px;
   width: auto;
 }
