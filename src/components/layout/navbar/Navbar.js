@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo2 from "../../../assets/logoNegroHolo.PNG";
+import logo1 from "../../../assets/logoNegroH.PNG"
 import { useTranslation } from "react-i18next";
 import NavbarSketch from "../../sketch/home/NavbarSketch";
 
 function Navbar({ isLoggedIn, handleLogout, userData }) {
   const { t, i18n } = useTranslation();
-  const [isExpanded, setExpanded] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [selectedView, setSelectedView] = useState("/");
   const [showSketch, setShowSketch] = useState(true);
@@ -17,15 +18,15 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
     setSelectedLanguage(lng);
   };
 
-  const closeNavbar = () => {
-    setExpanded(false);
+  const openNavbar = () => {
+    setIsClosed(false);
     setShowSketch(true);
   };
 
   const toggleNavbarAndOptions = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setExpanded(!isExpanded);
+    setIsClosed(!isClosed);
     setShowSketch(false);
   };
 
@@ -33,53 +34,53 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
     const handleClickOutside = (event) => {
       const navbar = document.querySelector(".navbar");
       if (navbar && !navbar.contains(event.target)) {
-        closeNavbar();
+        openNavbar();
       }
     };
 
-    if (isExpanded) {
+    if (isClosed) {
       document.addEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isExpanded]);
+  }, [isClosed]);
 
   return (
-    <div className={`sidebar ${isExpanded ? "navbar-expanded" : ""}`}>
-      <div className={`logo-class ${isExpanded ? "logo-class-expanded" : ""}`}>
-        <Link className="navbar-brand">
-          {isExpanded ? (
-            <img className="logo2" src={logo2} alt="" />
-          ) : (
-            <img
-              className="logo21"
-              src={logo2}
-              alt=""
-              width="200"
-              style={{ margin: "8px" }}
-            />
-          )}
-        </Link>
+    <div className={`sidebar ${isClosed? "navbar-closed" : ""}`}>
+   <div className={`logo-class ${isClosed? "logo-class-closed" : ""}`}>
+  <Link className="navbar-brand">
+    {isClosed ? (
+      <img className="logo2" src={logo1} alt="" /> // Aquí se cambia a logo1 cuando la navbar está expandida
+    ) : (
+      <img
+        className="logo21"
+        src={logo2}
+        alt=""
+        width="200"
+        style={{ margin: "8px" }}
+      />
+    )}
+  </Link>
 
-        {showSketch && (
-          <NavbarSketch className="sketchNav" isNavbarExpanded={isExpanded} />
-        )}
-      </div>
+  {showSketch && (
+    <NavbarSketch className="sketchNav"  />
+  )}
+</div>
       <div className="navbar-nav">
         <ul className="navbar-nav">
           <li className="nav-item">
             <div
-              className={`art-options`}
+              className={`art-options ${isClosed ? "art-options-closed" : ""}`}
               id="artOptions"
-              style={{ display: isExpanded ? "block" : "none" }}
+            
             >
               <Link
                 to="/"
                 className={`nav-link ${selectedView === "/" ? "selected" : ""}`}
                 onClick={() => {
-                  closeNavbar();
+                  openNavbar();
                   setSelectedView("/");
                 }}
               >
@@ -93,7 +94,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                       selectedView === "/login" ? "selected" : ""
                     }`}
                     onClick={() => {
-                      closeNavbar();
+                      openNavbar();
                       setSelectedView("/login");
                     }}
                   >
@@ -105,7 +106,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                       selectedView === "/register" ? "selected" : ""
                     }`}
                     onClick={() => {
-                      closeNavbar();
+                      openNavbar();
                       setSelectedView("/register");
                     }}
                   >
@@ -120,7 +121,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                   selectedView === "/artists" ? "selected" : ""
                 }`}
                 onClick={() => {
-                  closeNavbar();
+                  openNavbar();
                   setSelectedView("/artists");
                 }}
               >
@@ -132,7 +133,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                   selectedView === "/collection" ? "selected" : ""
                 }`}
                 onClick={() => {
-                  closeNavbar();
+                  openNavbar();
                   setSelectedView("/collection");
                 }}
               >
@@ -145,7 +146,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                   selectedView === "/magazine" ? "selected" : ""
                 }`}
                 onClick={() => {
-                  closeNavbar();
+                  openNavbar();
                   setSelectedView("/magazine");
                 }}
               >
@@ -157,7 +158,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                   selectedView === "/SketchList" ? "selected" : ""
                 }`}
                 onClick={() => {
-                  closeNavbar();
+                  openNavbar();
                   setSelectedView("/SketchList");
                 }}
               >
@@ -177,7 +178,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
           </li>
         </ul>
       </div>
-      <div className={`class-lang ${isExpanded ? "class-lang-expanded" : ""}`}>
+      <div className={`class-lang ${isClosed ? "class-lang-closed" : ""}`}>
         <div className="nav-lang">
           <button
             className={`language-button ${
@@ -185,7 +186,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
             }`}
             onClick={() => changeLanguage("en")}
           >
-            EN
+            ENGLISH
           </button>
           <span className="language-separator"></span>
           <button
@@ -194,18 +195,19 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
             }`}
             onClick={() => changeLanguage("es")}
           >
-            ES
+            SPANISH
           </button>
         </div>
-        {!isExpanded && (
+        {!isClosed && (
           <button className="open-button" onClick={toggleNavbarAndOptions}>
-            |||
+         ---
           </button>
+          
         )}
 
-        {isExpanded && (
-          <button className="close-button" onClick={closeNavbar}>
-            x
+        {isClosed && (
+          <button className="close-button" onClick={openNavbar}>
+            +
           </button>
         )}
       </div>

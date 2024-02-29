@@ -13,7 +13,7 @@ const DrawComponent = () => {
   const [lineThickness, setLineThickness] = useState(1);
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(1024, 768).parent(canvasParentRef);
+    p5.createCanvas(724, 568).parent(canvasParentRef);
     p5.frameRate(60);
   };
 
@@ -122,22 +122,23 @@ const DrawComponent = () => {
   return (
     <div>
       <div className="sketch-controls">
-        <label htmlFor="backgroundColor">Color de fondo</label>
+        <label htmlFor="backgroundColor">BACKGROUND COLOR</label>
         <input
           type="color"
           id="backgroundColor"
           value={backgroundColor}
           onChange={handleBackgroundColorChange}
         />
-        <label htmlFor="shapeColor">Color de las formas</label>
+        <label htmlFor="shapeColor">SHAPE COLOR</label>
         <input
           type="color"
           id="shapeColor"
           value={shapeColor}
           onChange={handleShapeColorChange}
         />
-        <label htmlFor="lineThickness">Grosor de línea</label>
+        <label htmlFor="lineThickness">SIZE</label>
         <input
+            className="lineThickness"
             type="range"
             id="lineThickness"
             min="1"
@@ -152,9 +153,9 @@ const DrawComponent = () => {
           />
       </div>
       <div className="sketch-buttons">
-        <button onClick={handleEllipseClick}>DIBUJAR ELIPSE</button>
-        <button onClick={handleLineClick}>DIBUJAR LÍNEAS</button>
-        <button onClick={handleSnowflakeClick}>DIBUJAR COPO DE NIEVE</button>
+        <button onClick={handleEllipseClick}>DRAW CIRCULE</button>
+        <button onClick={handleLineClick}>DRAW LINES</button>
+        <button onClick={handleSnowflakeClick}>DRAW CIRCULES</button>
       </div>
       <Sketch setup={setup} draw={draw} className="draw-container" />
     </div>

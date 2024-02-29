@@ -10,18 +10,17 @@
 .sketchList {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
-    justify-content: space-between; /* Distribuye uniformemente los elementos en el contenedor */
+    justify-content: space-evenly; /* Distribuye uniformemente los elementos en el contenedor */
     padding: 0;
     list-style-type: none; /* Eliminar los puntos de lista */
 }
 
 .sketchList li {
     width: 25%; /* Ancho del elemento li */
-    margin-bottom: 50px; /* Espacio entre los elementos */
+    margin-bottom: 50px; /* Espacio inferior entre los elementos */
+    margin-right: 20px; /* Espacio derecho entre los elementos */
     border: 1px solid #ccc; /* Agregar un borde de color gris claro */
     padding: 10px; /* Añadir un relleno para separar el contenido del borde */
-    margin-right: 70px; /* Espacio entre los contenedores de imagen */
-    margin-left: 90px; /* Espacio entre los contenedores de imagen */
     box-sizing: border-box; /* Asegurar que el ancho y alto incluyan el borde y el relleno */
     text-align: center; /* Centrar el contenido */
 }

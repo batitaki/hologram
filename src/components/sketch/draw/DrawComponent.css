@@ -9,21 +9,16 @@
 .sketch-controls {
   font-family: 'Array', sans-serif;
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
-  margin-bottom: 20px; /* Ajusta el margen inferior para separar del sketch */
+  justify-content: center;
+  justify-content: space-evenly;
+  margin-top: 2vw;
+  margin-bottom: 2vw; /* Ajusta el margen inferior para separar del sketch */
   width: 50%; /* Ancho del contenedor de controles */
   margin-left: auto;
   margin-right: auto;
 }
 
-.sketch-controls label {
-  margin-right: -100px; /* Puedes ajustar este valor según sea necesario */
-}
 
-.sketch-controls input[type="color"] {
-  margin-right: 10px; /* Puedes ajustar este valor según sea necesario */
-}
 
 .sketch-buttons {
   font-family: 'Array', sans-serif;
@@ -37,13 +32,16 @@
 }
 
 .sketch-buttons button {
+  color: rgb(0, 0, 0);
   border: none;
   font-family: 'Array', sans-serif;
-  background-color: rgb(186, 248, 251);
+  background-color: rgb(255, 255, 255);
   margin-right: 10px; /* Ajusta el espacio entre los botones */
+  border-radius: 1px;
+  border: 1px;
 }
 
-.line-thickness-slider {
+.lineThickness {
   background-color: red; 
   color: white;  
   border: 1px solid transparent;  

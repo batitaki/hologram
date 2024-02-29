@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Sketch from 'react-p5';
+import { useLocation } from 'react-router-dom';
 
 const NavbarSketch = () => {
   const { t } = useTranslation();
+  const location = useLocation();
 
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(false);
@@ -77,12 +79,15 @@ const NavbarSketch = () => {
 
   return (
     <div>
-      <Sketch
-        className="fluid"
-        setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
-        draw={(p5) => draw(p5)}
-        style={{ color: 'black' }}
-      />
+      {/* Renderiza el Sketch solo cuando la ubicación actual sea '/magazine' */}
+      {location.pathname === '/magazine' && (
+        <Sketch
+          className="fluid"
+          setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
+          draw={(p5) => draw(p5)}
+          style={{ color: 'black' }}
+        />
+      )}
       <input
         type="file"
         id="imageInput"

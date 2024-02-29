@@ -4,108 +4,91 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 20%; /* Cambiado a un ancho relativo */
+  max-width: 300px; /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column; 
-  justify-content: space-between; 
+  flex-direction: column;
+  justify-content: space-between;
   z-index: 1000;
 }
 
-.navbar-expanded {
-  width: 530px; 
+.navbar-closed {
+  width: 5%; /* Ajustado el ancho expandido */
+  max-width: 400px; /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
 }
 
 .art-options {
-  font-size: 37px;
+  font-size: 2.5vw; /* Tamaño de fuente relativo */
   font-family: 'Array', sans-serif !important;
-  margin-left: 9vw;
   color: #000000;
-  margin-top: 3vw;
+  margin-left: 1vw;
+  position: relative;
+}
+
+.art-options-closed {
+  font-size: 0px; /* Tamaño de fuente relativo */
+  font-family: 'Array', sans-serif !important;
+  color: #000000;
+  margin-top: 2vw;
+  margin-left: 1vw;
 }
 
 .nav-lang {
   font-family: 'Array', sans-serif;
   color: #000000;
-  margin-right:0.500em;
 }
 
-.class-lang {
-  margin-left:8vw;
-  margin-bottom: 2vw;
-}
-
-.class-lang-expanded {
-  margin-right: 2vw;
-  align-self: flex-end; 
-  margin-bottom: 3vw;
-  margin-top: -4vw; 
+.sidebar .class-lang {
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
 }
 
 .language-button {
   background: none;
   border: none;
-  padding: 8px 15px;
-  font-family: 'Array', sans-serif  !important;
+  font-family: 'Array', sans-serif !important;
   color: #000000;
   cursor: pointer;
-}
-
-.language-separator {
-width: 50px;
-  height: 1px;
-  background-color:  #000000;
-  margin: 10px 0;
-  display: block;
 }
 
 .logo-class {
   margin-top: 2vw;
 }
 
-.sketchNav{
+.sketchNav {
   margin-top: 10vw;
 }
 
-.logo-class-expanded {
-  position: relative; 
-  margin-left: 17vw;
+.logo-class-closed {
+  position: relative;
 }
 
 .logo2 {
-  position: absolute;
-  left: 0;
-  top: -7vw;
-  margin-left: -4vw;
-  height: 300px;
-  width: auto;
+  margin-left: 15%;
+  width: 4vw;
+  height: auto;
 }
+
 .logo21 {
   position: absolute;
   left: 0;
   top: -7vw;
-  height: 300px;
+  height: 20vw; /* Tamaño de imagen relativo */
   width: auto;
 }
 
-.close-button {
-  font-size: 24px;
-  border: none;
-  background: none;
-  font-size: 37px;
-  font-family: 'Array', sans-serif;
-  color:  #000000;
-  margin-left:0.250em;
-}
-
+.close-button,
 .open-button {
-  font-size: 24px;
+  font-size: 40px; /* Tamaño de fuente relativo */
   border: none;
   background: none;
-  font-size: 37px;
-  font-family: 'Array', sans-serif;
-  color:  #000000;
+  font-family: 'Array', sans-serif !important;
+  color: #000000;
+  margin-bottom: 1vw;
 }
 
 .language-button.selected {
@@ -115,3 +98,13 @@ width: 50px;
 .nav-link.selected {
   color: #505050;
 }
+
+.language-separator {
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  margin: 1vw 0; /* Margen relativo */
+  display: block;
+  font-family: 'Array', sans-serif !important;
+}
+
