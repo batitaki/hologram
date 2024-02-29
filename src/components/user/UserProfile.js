@@ -4,6 +4,8 @@ import pencilIcon from "../../assets/pencil-icon.png";
 import { editUserProfile } from "../../services/usersAPI"; // Importa la función para editar el perfil
 import PhotoUploader from "../collection/media/PhotoUploader";
 import MediaPhotos from "../collection/media/MediaPhotos";
+import DragDrop from "../collection/media/dragAndDrop/DragDrop";
+import DragAndDropProvider from "../collection/media/dragAndDrop/DragAndDropProvider";
 
 function UserProfile({ isLoggedIn, userData, setUserData }) {
   const [isEditingPhoto, setIsEditingPhoto] = useState(false);
@@ -131,8 +133,10 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
         )}
   <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
       </div>
-      <MediaPhotos />
-      
+    
+      <DragAndDropProvider>
+                    <DragDrop />
+                  </DragAndDropProvider>
     </>
   );
 }

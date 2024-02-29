@@ -1,8 +1,7 @@
-// DragAndDropProvider.js
 import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import './DragAndDropProvider.css'; // Importa tus estilos CSS si es necesario
+import './DragAndDropProvider.css';
 
 const DragAndDropProvider = ({ children }) => {
   return (

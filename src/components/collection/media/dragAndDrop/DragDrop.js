@@ -36,19 +36,16 @@ function DragDrop() {
     }, [board]);
 
     useEffect(() => {
-        // Almacena media en el almacenamiento local cuando se actualiza
         localStorage.setItem('media', JSON.stringify(media));
     }, [media]);
 
     const addImageToBoard = (id) => {
-        // Obtener los datos de media del almacenamiento local
         const storedMedia = JSON.parse(localStorage.getItem('media'));
         const selectedImage = storedMedia.find((image) => image.ID === id);
         if (selectedImage) {
             setBoard((prevBoard) => [...prevBoard, selectedImage]);
         } else {
             console.error('Image not found with ID:', id);
-            // Aquí puedes manejar el caso en el que no se encuentra la imagen
         }
     };
     
@@ -67,15 +64,19 @@ function DragDrop() {
         return <div>Loading...</div>;
     }
 
-    console.log("media outside addImageTo board", media);
-
     return (
-        <div className="ccib">
-            <div className="columns-photos-container">
-                <div className="photos">
-                    {media.map((image) => (
-                        <div className="" key={image.ID}>
-                            <Picture id={image.ID} image={image.Image} />
+        <div className="media-container">
+            <div className="photos">
+                <div className="columns-photos-container">
+                    {Array.from({ length: Math.ceil(media.length / 3) }).map((_, columnIndex) => (
+                        <div className="column-photo" key={columnIndex}>
+                            {media
+                                .filter((_, index) => index % 3 === columnIndex)
+                                .map((image) => (
+                                    <div className="" key={image.ID}>
+                                        <Picture id={image.ID} image={image.Image} />
+                                    </div>
+                                ))}
                         </div>
                     ))}
                 </div>

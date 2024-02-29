@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -21,13 +20,13 @@ import Register from './components/user/Register';
 import UserProfile from './components/user/UserProfile';
 import PhotoUploader from './components/collection/media/PhotoUploader';
 
-import DragAndDropProvider from './components/collection/media/dragAndDrop/DragAndDropProvider'; // Importa el nuevo componente
-// Asegúrate de importar Example desde la ubicación correcta
+import DragAndDropProvider from './components/collection/media/dragAndDrop/DragAndDropProvider'; 
+
 import DragDrop from './components/collection/media/dragAndDrop/DragDrop';
 
 
 function App() {
-  // Verifica si hay datos en el localStorage al inicializar el estado
+  
   const initialUserData = localStorage.getItem('userData')
     ? JSON.parse(localStorage.getItem('userData'))
     : null;
@@ -98,7 +97,6 @@ function App() {
                 path="/upload-photo"
                 element={<PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />}
               />
-              {/* Nueva ruta para el componente PhotoUploader */}
               <Route
                 path="/drag-and-drop"
                 element={

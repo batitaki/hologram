@@ -1,7 +1,15 @@
+.media-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 25vw;
+}
+
 .photos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Alinea las filas en el centro */
+  justify-content: center;
 }
 
 .columns-photos-container {
@@ -11,33 +19,29 @@
 }
 
 .photo-container {
-  width: 100px; /* Cada imagen ocupa el 25% del ancho del contenedor */
+  width: 100px;
   padding: 5px;
   box-sizing: border-box;
 }
 
 .photo-image {
-  width: 100%; /* Ajusta el tamaño de la imagen para que ocupe todo el espacio del contenedor */
+  width: 100%;
   height: auto;
   cursor: pointer;
   border: 2px solid transparent;
 }
 
 .photo-image:hover {
-  border-color: #333; /* Cambia el borde al pasar el cursor sobre la imagen */
+  border-color: #333; 
 }
+
 
 .board {
-  position: fixed;
-  left: 300px;
-  top: 350px;
-  bottom: 0;
-  width: 700px;
-  height: 400px;
-  background-color: #f0f0f0; /* color de fondo opcional */
-  overflow-y: auto; /* para habilitar el desplazamiento vertical si es necesario */
-  padding: 20px; /* ajusta el relleno según sea necesario */
-  border-right: 1px solid #ccc; /* opcional: agregar borde a la derecha */
+  position: relative; /* Cambiar de fixed a relative */
+  width: 400px;
+  height: 700px;
+  background-color: #f0f0f0; 
+  overflow-y: auto;
+  padding: 20px;
+  border-right: 1px solid #ccc; 
 }
-
-
