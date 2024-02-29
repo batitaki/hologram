@@ -1,44 +1,20 @@
-import React, { useState , useEffect} from "react";
-import "./UserProfile.css";
-import pencilIcon from "../../assets/pencil-icon.png";
-import { editUserProfile } from "../../services/usersAPI"; // Importa la función para editar el perfil
-import PhotoUploader from "../collection/media/PhotoUploader";
-import MediaPhotos from "../collection/media/MediaPhotos";
-import DragDrop from "../collection/media/dragAndDrop/DragDrop";
-import DragAndDropProvider from "../collection/media/dragAndDrop/DragAndDropProvider";
+import React, { useState, useEffect } from 'react';
+import './UserProfile.css';
+import pencilIcon from '../../assets/pencil-icon.png';
+import { editUserProfile } from '../../services/usersAPI';
+import PhotoUploader from '../collection/media/PhotoUploader';
+import MediaPhotos from '../collection/media/MediaPhotos';
+import DragDrop from '../collection/media/dragAndDrop/DragDrop';
+import DragAndDropProvider from '../collection/media/dragAndDrop/DragAndDropProvider';
 
 function UserProfile({ isLoggedIn, userData, setUserData }) {
-  const [isEditingPhoto, setIsEditingPhoto] = useState(false);
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingBio, setIsEditingBio] = useState(false);
-  const [newPhoto, setNewPhoto] = useState("");
-  const [newName, setNewName] = useState("");
-  const [newBio, setNewBio] = useState("");
+  const [isEditing, setIsEditing] = useState(false); // Estado para controlar la edición
+  const [newPhoto, setNewPhoto] = useState('');
+  const [newName, setNewName] = useState('');
+  const [newBio, setNewBio] = useState('');
 
-  console.log(userData)
-
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      setUserData(JSON.parse(storedUserData));
-    }
-  }, []);
-
-
-  useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(userData));
-  }, [userData]);
-
-  const handleEditPhoto = () => {
-    setIsEditingPhoto(true);
-  };
-
-  const handleEditName = () => {
-    setIsEditingName(true);
-  };
-
-  const handleEditBio = () => {
-    setIsEditingBio(true);
+  const handleEdit = () => {
+    setIsEditing(true); // Al hacer clic en "EDIT", activa el modo de edición
   };
 
   const handlePhotoChange = (event) => {
@@ -50,32 +26,31 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
   };
 
   const handleBioChange = (event) => {
-    setNewBio(event.target.value); // Cambiar el valor de la biografía
+    setNewBio(event.target.value);
   };
 
   const handleSubmit = async () => {
     const userId = userData.ID;
-    const token = localStorage.getItem("token");
-  
+    const token = localStorage.getItem('token');
+
     const formData = {
       Username: newName || userData.Username,
       Bio: newBio || userData.Bio,
       Image: newPhoto || userData.Image,
     };
-  
+
     const response = await editUserProfile(userId, formData, token);
     if (response.success) {
-      console.log("Perfil de usuario actualizado correctamente");
+      console.log('Perfil de usuario actualizado correctamente');
       setUserData((prevUserData) => ({ ...prevUserData, ...formData }));
-      localStorage.setItem("userData", JSON.stringify(userData));
-      // Actualiza el estado de la bio
+      localStorage.setItem('userData', JSON.stringify(userData));
       setNewBio(formData.Bio);
     } else {
-      console.error("Error al actualizar el perfil del usuario");
+      console.error('Error al actualizar el perfil del usuario');
     }
-    setIsEditingName(false);
-    setIsEditingBio(false)
+    setIsEditing(false); // Desactiva el modo de edición después de enviar los cambios
   };
+
   return (
     <>
       <div className="profile">
@@ -83,38 +58,42 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
           <div className="profile-container">
             <div className="bio-username">
               <div className="username-container">
-                {isEditingName ? (
+                {isEditing ? (
                   <input
                     type="text"
-                    value={newName}
+                    value={newName || userData.Username}
                     onChange={handleNameChange}
                   />
                 ) : (
-                  <>
-                    <span className="username">{userData.Username}</span>
-                  </>
+                  <span className="username">{userData.Username}</span>
                 )}
-                <div className="edit-icon-container" onClick={handleEditName}>
+                <div
+                  className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
+                  onClick={handleEdit}
+                >
                   <img src={pencilIcon} alt="Edit" className="edit-icon" />
                 </div>
               </div>
               <div className="bio-container">
-                {isEditingBio ? (
+                {isEditing ? (
                   <input
                     type="text"
-                    value={newBio}
+                    value={newBio || userData.Bio}
                     onChange={handleBioChange}
                   />
                 ) : (
                   <span className="bio">{userData.Bio}</span>
                 )}
-                <div className="edit-icon-container" onClick={handleEditBio}>
+                <div
+                  className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
+                  onClick={handleEdit}
+                >
                   <img src={pencilIcon} alt="Edit" className="edit-icon" />
                 </div>
               </div>
             </div>
             <div className="profile-image-container">
-              {isEditingPhoto ? (
+              {isEditing ? (
                 <input type="file" onChange={handlePhotoChange} />
               ) : (
                 <img
@@ -123,20 +102,33 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
                   className="profile-image"
                 />
               )}
-              <div className="edit-icon-container" onClick={handleEditPhoto}>
+              <div
+                className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
+                onClick={handleEdit}
+              >
                 <img src={pencilIcon} alt="Edit" className="edit-icon" />
               </div>
             </div>
-            <button onClick={handleSubmit}>SAVE</button>
+            
+            {isEditing && (
+              <button onClick={handleSubmit}>SAVE</button>
+            )}
           </div>
-          
         )}
-  <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
+         <div className="edit-profile">
+        {isLoggedIn && userData && (
+      
+            <button className='button-edit-profile' onClick={handleEdit}>EDIT PROFILE</button>
+        )}
+       
+            <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
+
+        </div>
       </div>
-    
+
       <DragAndDropProvider>
-                    <DragDrop />
-                  </DragAndDropProvider>
+        <DragDrop />
+      </DragAndDropProvider>
     </>
   );
 }

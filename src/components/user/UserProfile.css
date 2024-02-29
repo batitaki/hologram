@@ -46,7 +46,9 @@
 }
 .button-image-uploader{
     width: 100px;
-    height: 100px;
+    height: 60px;
+    border: none;
+    background-color: rgb(211, 253, 254);
 }
 
 .input-image-uploader {
@@ -61,4 +63,25 @@
 
 .bio {
     font-family: 'Array', sans-serif;
+}
+.hidden {
+  display: none;
+}
+
+.edit-profile{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-content: center;
+  font-family: 'Array', sans-serif;
+}
+
+.button-edit-profile{
+  margin-right: 20px;
+  margin-top: 101px;
+  width: 100px;
+  height: 60px;
+  font-family: 'Array', sans-serif;
+  border: none;
+  background-color: rgb(211, 253, 254);
 }
