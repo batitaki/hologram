@@ -1,18 +1,18 @@
 const fetchMedia = async () => {
-    try {
-      const response = await fetch('http://localhost:3002/media/media');
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      } else {
-        console.error('Error fetching media');
-        return [];
-      }
-    } catch (error) {
-      console.error('Error fetching media:', error);
-      return [];
+  try {
+    const response = await fetch('http://localhost:3002/media/media');
+    if (!response.ok) {
+      throw new Error('Error fetching media');
     }
-  };
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching media:', error);
+    throw error; // Lanza la excepción para que el código cliente pueda manejar el error.
+  }
+};
+
   
   const uploadMedia = async (formDataWithFile) => {
     try {

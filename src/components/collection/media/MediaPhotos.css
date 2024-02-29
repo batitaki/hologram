@@ -27,17 +27,17 @@
   border-color: #333; /* Cambia el borde al pasar el cursor sobre la imagen */
 }
 
-
-.drag-drop-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px dashed #aaa;
-  padding: 20px;
-  margin-top: 20px;
-  width: 500px;
-  height: 500px;
-  box-sizing: border-box;
-  cursor: pointer;
+.board {
+  position: fixed;
+  left: 300px;
+  top: 350px;
+  bottom: 0;
+  width: 700px;
+  height: 400px;
+  background-color: #f0f0f0; /* color de fondo opcional */
+  overflow-y: auto; /* para habilitar el desplazamiento vertical si es necesario */
+  padding: 20px; /* ajusta el relleno según sea necesario */
+  border-right: 1px solid #ccc; /* opcional: agregar borde a la derecha */
 }
+
 

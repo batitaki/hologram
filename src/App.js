@@ -19,10 +19,11 @@ import { Home } from './components/layout/home/Home';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import UserProfile from './components/user/UserProfile';
-import PhotoUploader from './components/collection/artworks/PhotoUploader';
+import PhotoUploader from './components/collection/media/PhotoUploader';
 
-import DragAndDropProvider from './components/collection/Drag/DragAndDropProvider'; // Importa el nuevo componente// Asegúrate de importar Example desde la ubicación correcta
-import DragDrop from './components/collection/Drag/DragDrop';
+import DragAndDropProvider from './components/collection/media/dragAndDrop/DragAndDropProvider'; // Importa el nuevo componente
+// Asegúrate de importar Example desde la ubicación correcta
+import DragDrop from './components/collection/media/dragAndDrop/DragDrop';
 
 
 function App() {

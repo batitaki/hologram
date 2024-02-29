@@ -2,8 +2,8 @@ import React, { useState , useEffect} from "react";
 import "./UserProfile.css";
 import pencilIcon from "../../assets/pencil-icon.png";
 import { editUserProfile } from "../../services/usersAPI"; // Importa la función para editar el perfil
-import PhotoUploader from "../collection/artworks/PhotoUploader";
-import MediaPhotos from "../collection/artworks/MediaPhotos";
+import PhotoUploader from "../collection/media/PhotoUploader";
+import MediaPhotos from "../collection/media/MediaPhotos";
 
 function UserProfile({ isLoggedIn, userData, setUserData }) {
   const [isEditingPhoto, setIsEditingPhoto] = useState(false);
@@ -132,6 +132,7 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
   <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
       </div>
       <MediaPhotos />
+      
     </>
   );
 }
