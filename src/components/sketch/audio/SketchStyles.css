@@ -38,3 +38,14 @@
   justify-content: space-evenly;
   margin-bottom: 20px;
 }
+
+.button-permission{
+  margin-left: 35%;
+  margin-top: 20%;
+  margin-bottom: 20vw;
+  font-size: 5vw; /* Tamaño de fuente relativo */
+  border: none;
+  background: none;
+  font-family: 'Array', sans-serif !important;
+  color: #000000;
+}

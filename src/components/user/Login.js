@@ -42,13 +42,6 @@ const Login = ({ handleLogin }) => {
         <div className="my-input-container-form">
           <label className="my-label-form"> {t("username")}</label>
           <input
-            style={{
-              width: "350px",
-              backgroundColor: "#ffffff",
-              border: "1px solid #000000",
-              borderRadius: "0",
-              padding: "5px",
-            }}
             type="text"
             className="my-input-form"
             name="Username"

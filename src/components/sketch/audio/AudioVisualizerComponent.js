@@ -298,16 +298,16 @@ const AudioVisualizerComponent = (props) => {
 };
 
 function drawStar(p5, x, y, radius) {
-  p5.fill(255, 200, 0);
+  p5.fill(280, 20, 50);
   p5.beginShape();
   for (let i = 0; i < 5; i++) {
-    let angle = p5.TWO_PI * i / 4 - p5.HALF_PI;
-    let x1 = x + p5.cos(angle) * radius;
-    let y1 = y + p5.sin(angle) * radius;
+    let angle = p5.TWO_PI * i / 8 - p5.HALF_PI;
+    let x1 = x * p5.cos(angle) * radius;
+    let y1 = y * p5.sin(angle) * radius;
     p5.vertex(x1, y1);
     angle += p5.TWO_PI / 10;
-    let x2 = x + p5.cos(angle) * radius / 2;
-    let y2 = y + p5.sin(angle) * radius / 2;
+    let x2 = x / p5.cos(angle) / radius / 2;
+    let y2 = y / p5.sin(angle) / radius / 2;
     p5.vertex(x2, y2);
   }
   p5.endShape(p5.CLOSE);

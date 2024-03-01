@@ -12,7 +12,6 @@ const Magazine = () => {
       <div className='magazine'>
         <h2 className='titleMagazine'>{t("magazine")}</h2>
       </div>
-      <Sketch />
       <div className='animated'>
         <div className='text-animation'>
           <br /><br /><br /><br /><br /><br />

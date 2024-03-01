@@ -20,7 +20,7 @@
 }
 
 .art-options {
-  font-size: 2.5vw; /* Tamaño de fuente relativo */
+  font-size: 2.3vw; /* Tamaño de fuente relativo */
   font-family: 'Array', sans-serif !important;
   color: #000000;
   margin-left: 1vw;
@@ -38,6 +38,7 @@
 .nav-lang {
   font-family: 'Array', sans-serif;
   color: #000000;
+  font-size: 1.1vw;
 }
 
 .sidebar .class-lang {
@@ -83,7 +84,7 @@ align-items: center;
 
 .close-button,
 .open-button {
-  font-size: 40px; /* Tamaño de fuente relativo */
+  font-size: 2vw; /* Tamaño de fuente relativo */
   border: none;
   background: none;
   font-family: 'Array', sans-serif !important;
@@ -102,7 +103,7 @@ align-items: center;
 .language-separator {
   width: 100%;
   height: 2px;
-  background-color: #000000;
+  background-color: #5c5c5c;
   margin: 1vw 0; /* Margen relativo */
   display: block;
   font-family: 'Array', sans-serif !important;

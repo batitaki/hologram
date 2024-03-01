@@ -5,6 +5,7 @@ import audio from "../../../assets/llanto.wav";
 let sound;
 
 const ParticleComponent = () => {
+  const [audioPermission, setAudioPermission] = useState(false);
   const [particles ] = useState([]);
   const [drawnLines, setDrawnLines] = useState([]);
   const [currentLine, setCurrentLine] = useState([]);
@@ -31,9 +32,19 @@ const ParticleComponent = () => {
     sound.currentTime = 0;
     setAudioPlaying(false);
   };
+  const requestAudioPermission = () => {
+    if (sound && !audioPermission) {
+      sound.play().then(() => {
+        setAudioPermission(true);
+        stopAudio();
+      }).catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+    }
+  }
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(500, 500).parent(canvasParentRef);
+    p5.createCanvas(1400, 700).parent(canvasParentRef);
     p5.frameRate(60);
 
     for (let i = 0; i < numParticles; i++) {
@@ -128,14 +139,20 @@ const ParticleComponent = () => {
     }
   };
   return (
-    <Sketch
-      setup={setup}
-      draw={draw}
-      mouseMoved={mouseMoved}
-      mouseReleased={mouseReleased}
-      mouseLeave={mouseLeave}
-      mouseClicked={mouseClicked}
-    />
+    <div>
+      {audioPermission ? (
+        <Sketch
+          setup={setup}
+          draw={draw}
+          mouseMoved={mouseMoved}
+          mouseReleased={mouseReleased}
+          mouseLeave={mouseLeave}
+          mouseClicked={mouseClicked}
+        />
+      ) : (
+        <button className="button-permission" onClick={requestAudioPermission}>ALLOW AUDIO</button>
+      )}
+    </div>
   );
 };
 

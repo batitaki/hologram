@@ -9,20 +9,21 @@
   justify-content: center;
   margin-top: 10vh;
   font-family: "Array", sans-serif;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
   width: 70%;
   max-width: 600px; 
   height: auto;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
+  border-radius: 2px;
   padding: 50px; 
 }
 
 .my-label-form {
   display: block;
   margin-bottom: 5px;
-  color: #00d5ff;
+  color: #000000ce;
   font-size: 2.5vw; 
 }
 
@@ -33,10 +34,10 @@
   max-width: 350px;
   min-width: 350px;
   background-color: #ffffff;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
   padding: 5px;
   outline: none;
-  border-radius: 0;
+  border-radius: 2px;
   margin-bottom: 15px; 
 }
 
@@ -44,19 +45,20 @@
 .my-link-form {
   width: 90%;
   margin-top: 2vw; 
-  color: #00d5ff;
+  color: #000000ce;
   background-color: #ffffff;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
   text-decoration: none;
   text-align: center;
   padding: 10px; 
+  border-radius: 2px;
   max-width: 350px;
   min-width: 350px; 
 }
 
 .form-title {
   display: block;
-  color: #00d5ff;
+  color: #000000ce;
   font-size: 2.5vw;
   position: relative;
   top: -10px;
