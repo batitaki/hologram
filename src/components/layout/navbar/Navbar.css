@@ -4,9 +4,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 20%; /* Cambiado a un ancho relativo */
+  width: 21%; /* Cambiado a un ancho relativo */
   max-width: 300px; /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.562);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 .art-options {
   font-size: 2.3vw; /* Tamaño de fuente relativo */
   font-family: 'Array', sans-serif !important;
-  color: #000000;
+  color: #000000f5;
   margin-left: 1vw;
   position: relative;
 }
@@ -66,15 +66,17 @@ align-items: center;
 
 .logo-class-closed {
   position: relative;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+.logo1 {
+  width: auto;
+  height: 15vw;
 }
 
 .logo2 {
-  margin-left: 15%;
-  width: 4vw;
-  height: auto;
-}
-
-.logo21 {
   position: absolute;
   left: 0;
   top: -7vw;

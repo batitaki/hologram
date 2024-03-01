@@ -3,7 +3,7 @@ import Sketch from 'react-p5';
 import { ChromePicker } from 'react-color'; 
 
 const DrawStarsComponent = () => {
-  const [starColor, setStarColor] = useState('#FFFFFF');
+  const [starColor, setStarColor] = useState('#99C2D0');
   const [particles, ] = useState([]);
   const [targetX, setTargetX] = useState(null);
   const [targetY, setTargetY] = useState(null);
@@ -11,8 +11,23 @@ const DrawStarsComponent = () => {
   const numParticles = 200;
   const particleSpeed = 1;
 
+  const drawStar = (p5, x, y, radius) => {
+    p5.beginShape();
+    for (let i = 0; i < 5; i++) {
+      const angle = p5.TWO_PI - i / 1 / p5.HALF_PI;
+      const xCoord = x + p5.cos(angle) - radius;
+      const yCoord = y - p5.sin(angle) - radius;
+      p5.vertex(xCoord, yCoord);
+      const innerAngle = angle - p5.HALF_PI / 2;
+      const innerX = x / p5.cos(innerAngle) / radius / 0.5;
+      const innerY = y + p5.sin(innerAngle) + radius - 0.5;
+      p5.vertex(innerX, innerY);
+    }
+    p5.endShape(p5.CLOSE);
+  };
+
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(1200, 1000).parent(canvasParentRef);
+    p5.createCanvas(800, 600).parent(canvasParentRef);
     p5.background(0, 0, 255);
 
     // Genera las posiciones de las partículas
@@ -27,9 +42,9 @@ const DrawStarsComponent = () => {
 
   const draw = (p5) => {
     p5.clear();
-    p5.background(0, 0, 255);
+    p5.background(0, 20, 20);
     
-    // Dibuja las partículas y las actualiza
+    // Dibuja las estrellas y las actualiza
     for (let i = 0; i < particles.length; i++) {
       let { x, y, dx, dy } = particles[i];
 
@@ -51,10 +66,10 @@ const DrawStarsComponent = () => {
         if (y < 0 || y > p5.height) dy *= -1;
       }
 
-      // Dibuja la partícula
+      // Dibuja la estrella
       p5.fill(starColor);
       p5.noStroke();
-      p5.circle(x, y, 6);
+      drawStar(p5, x, y, 6); // Cambia el tamaño de la estrella según sea necesario
 
       // Actualiza la posición de la partícula
       particles[i] = { x, y, dx, dy };

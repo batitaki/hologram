@@ -18,7 +18,8 @@ const AnimatedCollectionLogic = () => {
         setArtworks(fetchedArtworks);
         const initialIndexes = getRandomIndexes(fetchedArtworks, 10);
         setIndexes(initialIndexes);
-        setPositions(generateRandomPositions(10));
+        const initialPositions = generateRandomPositions(10); // Adjust the count as per your requirement
+        setPositions(initialPositions);
       } catch (error) {
         console.error('Error fetching artworks', error);
       }
@@ -27,28 +28,22 @@ const AnimatedCollectionLogic = () => {
     fetchArtworks();
   }, []);
 
+  const updateIndexesAndPositions = () => {
+    const nextIndexes = getRandomIndexes(artworks, 10);
+    setIndexes(nextIndexes);
+    const nextPositions = generateRandomPositions(10); // Adjust the count as per your requirement
+    setPositions(nextPositions);
+    setCurrentIndex(nextIndexes[0]);
+  };
+
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: { duration: 500 },
-    onRest: () => {
-      setIndexes((prevIndexes) => {
-        const nextIndexes = getRandomIndexes(artworks, 10);
-        setCurrentIndex(nextIndexes[0]);
-        setPositions(generateRandomPositions(10));
-        return nextIndexes;
-      });
-    },
+    onRest: updateIndexesAndPositions,
   });
 
-  useInterval(() => {
-    setIndexes((prevIndexes) => {
-      const nextIndexes = getRandomIndexes(artworks, 10);
-      setCurrentIndex(nextIndexes[0]);
-      setPositions(generateRandomPositions(10));
-      return nextIndexes;
-    });
-  }, 9000);
+  useInterval(updateIndexesAndPositions, 9000);
 
   return { props, indexes, positions, currentIndex, artworks };
 };
