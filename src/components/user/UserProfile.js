@@ -9,7 +9,7 @@ import DragDrop from '../collection/media/dragAndDrop/DragDrop';
 import DragAndDropProvider from '../collection/media/dragAndDrop/DragAndDropProvider';
 
 function UserProfile({ isLoggedIn, userData, setUserData }) {
-  const [isEditing, setIsEditing] = useState(false); // Estado para controlar la edición
+  const [isEditing, setIsEditing] = useState(false); 
   const [newPhoto, setNewPhoto] = useState('');
   const [newName, setNewName] = useState('');
   const [newBio, setNewBio] = useState('');
@@ -35,7 +35,7 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
 
 
   const handleEdit = () => {
-    setIsEditing(true); // Al hacer clic en "EDIT", activa el modo de edición
+    setIsEditing(true); 
   };
 
   const handlePhotoChange = (event) => {
@@ -69,7 +69,7 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
     } else {
       console.error('Error al actualizar el perfil del usuario');
     }
-    setIsEditing(false); // Desactiva el modo de edición después de enviar los cambios
+    setIsEditing(false); 
   };
   
   return (

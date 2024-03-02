@@ -24,12 +24,12 @@ const AnimatedCollectionVisual = () => {
           <div className="animated-artwork-container">
            {positions.map((position, i) => (
   <animated.div
-    key={i} // Utiliza 'i' como la clave del elemento en el mapeo
+    key={i} 
     style={{
       ...props,
       position: 'absolute',
-      left: position && position.left, // Verifica que 'position' esté definido
-      top: position && position.top, // Verifica que 'position' esté definido
+      left: position && position.left,
+      top: position && position.top, 
       width: '200px',
       margin: '20px',
     }}

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "../../services/usersAPI";
-import { useTranslation } from "react-i18next"; // Importa la función useTranslation
+import { useTranslation } from "react-i18next"; 
 
 const Login = ({ handleLogin }) => {
-  const { t } = useTranslation(); // Obtiene las funciones de traducción
+  const { t } = useTranslation(); 
 
   const [credentials, setCredentials] = useState({
     Username: "",
@@ -21,17 +21,17 @@ const Login = ({ handleLogin }) => {
     event.preventDefault();
     try {
       const response = await loginUser(credentials);
-      // Verificar si la respuesta incluye un token (indicativo de credenciales correctas)
+    
       if (response.token) {
         localStorage.setItem("token", response.token);
-        handleLogin(response.user); // Llama a la función handleLogin para actualizar el estado del usuario
+        handleLogin(response.user); 
         return <Navigate to="/profile" />;
       } else {
-        // Si no hay token en la respuesta, muestra un mensaje de error
-        setError(t("loginError")); // Utiliza la función t para obtener la traducción del mensaje de error
+
+        setError(t("loginError"));
       }
     } catch (error) {
-      setError(t("loginError")); // Utiliza la función t para obtener la traducción del mensaje de error
+      setError(t("loginError")); 
     }
   };
 

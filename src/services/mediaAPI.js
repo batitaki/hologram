@@ -9,7 +9,7 @@ const fetchMedia = async () => {
     return data;
   } catch (error) {
     console.error("Error fetching media:", error);
-    throw error; // Lanza la excepción para que el código cliente pueda manejar el error.
+    throw error; 
   }
 };
 

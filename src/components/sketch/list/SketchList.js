@@ -21,7 +21,6 @@ const SketchList = () => {
       <ul className='sketchList'>
         {sketches.map(sketch => (
           <li key={sketch.ID}>
-            {/* Enlace que redirecciona al sketch correspondiente */}
             <Link to={`/${sketch.FilePath}`} style={{ textDecoration: 'none', color: '#27343a' }}>
               <h3 className='titleSketch'>{sketch.Title}</h3>
               <img className='sketchImage' src={sketch.Image} alt={sketch.Title} />

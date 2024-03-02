@@ -3,30 +3,30 @@
     font-size: 30px;
     color: #27343a;
     text-align: center;
-    margin-bottom: 40px; /* Reducimos el espacio inferior */
-    margin-top: 20px; /* Reducimos el espacio superior */
+    margin-bottom: 40px; 
+    margin-top: 20px; 
 }
 
 .sketchList {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
-    justify-content: space-evenly; /* Distribuye uniformemente los elementos en el contenedor */
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
     padding: 0;
-    list-style-type: none; /* Eliminar los puntos de lista */
+    list-style-type: none;
 }
 
 .sketchList li {
-    width: 25%; /* Ancho del elemento li */
-    margin-bottom: 50px; /* Espacio inferior entre los elementos */
-    margin-right: 20px; /* Espacio derecho entre los elementos */
-    border: 1px solid #ccc; /* Agregar un borde de color gris claro */
-    padding: 10px; /* Añadir un relleno para separar el contenido del borde */
-    box-sizing: border-box; /* Asegurar que el ancho y alto incluyan el borde y el relleno */
-    text-align: center; /* Centrar el contenido */
+    width: 25%; 
+    margin-bottom: 50px;
+    margin-right: 20px; 
+    border: 1px solid #ccc;
+    padding: 10px; 
+    box-sizing: border-box; 
+    text-align: center; 
 }
 
 .sketchImage {
-    width: 100%; /* Ocupar todo el ancho del contenedor li */
+    width: 100%;
     height: auto;
 }
 

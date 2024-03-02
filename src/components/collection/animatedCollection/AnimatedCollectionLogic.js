@@ -16,9 +16,9 @@ const AnimatedCollectionLogic = () => {
       try {
         const fetchedArtworks = await getCollection();
         setArtworks(fetchedArtworks);
-        const initialIndexes = getRandomIndexes(fetchedArtworks, 10);
+        const initialIndexes = getRandomIndexes(fetchedArtworks, 30);
         setIndexes(initialIndexes);
-        const initialPositions = generateRandomPositions(10); // Adjust the count as per your requirement
+        const initialPositions = generateRandomPositions(30);
         setPositions(initialPositions);
       } catch (error) {
         console.error('Error fetching artworks', error);
@@ -29,9 +29,9 @@ const AnimatedCollectionLogic = () => {
   }, []);
 
   const updateIndexesAndPositions = () => {
-    const nextIndexes = getRandomIndexes(artworks, 10);
+    const nextIndexes = getRandomIndexes(artworks, 30);
     setIndexes(nextIndexes);
-    const nextPositions = generateRandomPositions(10); // Adjust the count as per your requirement
+    const nextPositions = generateRandomPositions(30);
     setPositions(nextPositions);
     setCurrentIndex(nextIndexes[0]);
   };

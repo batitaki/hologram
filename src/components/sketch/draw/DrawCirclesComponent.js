@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Sketch from 'react-p5';
-import { ChromePicker } from 'react-color'; // Importa el selector de colores
+import { ChromePicker } from 'react-color';
 import './DrawCircules.css';
 import audio from "../../../assets/llanto.wav";
 import suziImage from "../../../assets/suzi.jpg";
@@ -14,7 +14,7 @@ const DrawCirculesComponent = () => {
   const [drawHImage, setDrawHImage] = useState(false);
   const [drawSImage, setDrawSImage] = useState(false);
   const [drawGImage, setDrawGImage] = useState(false);
-  const [aureolaColor, setAureolaColor] = useState({ r: 465, g: 90, b: 220 }); // Color inicial
+  const [aureolaColor, setAureolaColor] = useState({ r: 465, g: 90, b: 220 }); 
   const [showColorPicker, setShowColorPicker] = useState(false);
   const imgRef = useRef(null);
   const aureolas = [];

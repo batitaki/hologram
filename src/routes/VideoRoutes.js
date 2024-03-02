@@ -1,6 +1,6 @@
 import React from 'react';
-import VideoList from '../components/collection/movie/VideoList'; // Actualizar la ruta de VideoList
-import MovieForm from '../components/collection/movie/MovieForm'; // Actualizar la ruta de MovieForm
+import VideoList from '../components/collection/movie/VideoList'; 
+import MovieForm from '../components/collection/movie/MovieForm';
 import Movie from '../components/collection/movie/Movie'; 
 
 const VideoRoutes = [

@@ -50,8 +50,7 @@ const DrawComponent = () => {
         };
         setCurrentDrawing([...currentDrawing, lineShape]);
       } else if (currentShape === "snowflake") {
-        // Draw snowflake logic
-        // This is just a basic example, you can enhance it
+
         const snowflakeShape = {
           type: "snowflake",
           x: p5.mouseX,
@@ -73,14 +72,12 @@ const DrawComponent = () => {
         } else if (shape.type === "line") {
           p5.line(shape.startX, shape.startY, shape.endX, shape.endY);
         } else if (shape.type === "snowflake") {
-          // Draw snowflake logic
-          // This is just a basic example, you can enhance it
+
           p5.text("*", shape.x, shape.y);
         }
       }
     }
 
-    // Dibujar las líneas en currentDrawing
     for (const shape of currentDrawing) {
       p5.stroke(shape.color);
       if (shape.type === "ellipse") {
@@ -88,8 +85,7 @@ const DrawComponent = () => {
       } else if (shape.type === "line") {
         p5.line(shape.startX, shape.startY, shape.endX, shape.endY);
       } else if (shape.type === "snowflake") {
-        // Draw snowflake logic
-        // This is just a basic example, you can enhance it
+
         p5.text("*", shape.x, shape.y);
       }
     }
@@ -146,9 +142,9 @@ const DrawComponent = () => {
             value={lineThickness}
             onChange={handleLineThicknessChange}
             style={{
-              backgroundColor: 'red', // Cambia 'red' al color que desees
-              color: 'white', // Cambia 'white' al color del texto que desees
-              border: '1px solid transparent', // Elimina el borde azul predeterminado
+              backgroundColor: 'red',
+              color: 'white', 
+              border: '1px solid transparent', 
             }}
           />
       </div>

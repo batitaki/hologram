@@ -6,7 +6,7 @@ const DrawImagesComponent = () => {
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
-  const [showInstructions, setShowInstructions] = useState(true); // Nuevo estado
+  const [showInstructions, setShowInstructions] = useState(true); 
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
 
@@ -20,7 +20,7 @@ const DrawImagesComponent = () => {
           setUserImage(img);
           setDrawImage(true);
           setShouldDraw(true);
-          setShowInstructions(false); // Ocultar instrucciones después de cargar la imagen
+          setShowInstructions(false);
         });
         imgRef.current = img;
       };
@@ -38,7 +38,7 @@ const DrawImagesComponent = () => {
     p5.background(255);
 
     if (showInstructions) {
-      // Dibujar texto titilante si showInstructions es true
+
       if (p5.frameCount % 30 < 15) {
         p5.fill(0);
         p5.textAlign(p5.CENTER);
@@ -47,7 +47,7 @@ const DrawImagesComponent = () => {
         p5.text('PRESS U TO DRAW YOUR PHOTO', p5.width / 2, p5.height / 2);
       }
     } else {
-      // Dibujar imágenes
+
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y } = imagesHistory.current[i];
         const imgSize = 100;

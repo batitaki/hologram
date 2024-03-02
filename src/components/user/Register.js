@@ -7,12 +7,10 @@ const Register = () => {
     Username: '',
     Password: '',
     Email: '',
-    DateOfBirth:'',
-    PhoneNumber:'',
     Image: null,
   });
 
-  const [isLoading, setIsLoading] = useState(false); // Nuevo estado de carga
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,11 +31,11 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setIsLoading(true); // Establecer isLoading en true al enviar la petición
+    setIsLoading(true); 
 
     const apiResponse = await createUser(formData);
 
-    setIsLoading(false); // Establecer isLoading en false al recibir la respuesta
+    setIsLoading(false);
 
     if (apiResponse.success) {
       alert('Request sent correctly');
@@ -57,7 +55,7 @@ const Register = () => {
   return (
     <RegisterForm
       formData={formData}
-      isLoading={isLoading} // Pasar isLoading al componente RegisterForm
+      isLoading={isLoading} 
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />

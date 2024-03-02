@@ -1,17 +1,17 @@
 export const fetchUsers = async () => {
   try {
-    const response = await fetch('http://localhost:3002/users/users');
+    const response = await fetch("http://localhost:3002/users/users");
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error al obtener users:', error);
+    console.error("Error al obtener users:", error);
     return [];
   }
 };
 
 export const createUser = async (formData) => {
   try {
-    const apiEndpoint = 'http://localhost:3002/users/createUser';
+    const apiEndpoint = "http://localhost:3002/users/createUser";
     const form = new FormData();
 
     for (const key in formData) {
@@ -19,103 +19,104 @@ export const createUser = async (formData) => {
     }
 
     const response = await fetch(apiEndpoint, {
-      method: 'POST',
+      method: "POST",
       body: form,
     });
 
     if (response.ok) {
       const data = await response.json();
-      console.log('Solicitud creada:', data);
+      console.log("Solicitud creada:", data);
       return { success: true, data };
     } else {
-      console.error('Error al crear la solicitud');
-      return { success: false, error: 'Error al crear la solicitud' };
+      console.error("Error al crear la solicitud");
+      return { success: false, error: "Error al crear la solicitud" };
     }
   } catch (error) {
-    console.error('Error en la solicitud:', error);
-    return { success: false, error: 'Error en la solicitud' };
+    console.error("Error en la solicitud:", error);
+    return { success: false, error: "Error en la solicitud" };
   }
 };
 
 export const loginUser = async (credentials) => {
   try {
-    const response = await fetch('http://localhost:3002/users/login', {
-      method: 'POST',
+    const response = await fetch("http://localhost:3002/users/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
     });
 
     if (response.ok) {
       const data = await response.json();
-      console.log('Inicio de sesión exitoso:', data);
+      console.log("Inicio de sesión exitoso:", data);
       return { success: true, token: data.token, user: data.user };
     } else {
-      console.error('Error en el inicio de sesión');
-      return { success: false, error: 'Error en el inicio de sesión' };
+      console.error("Error en el inicio de sesión");
+      return { success: false, error: "Error en el inicio de sesión" };
     }
   } catch (error) {
-    console.error('Error en la solicitud:', error);
-    return { success: false, error: 'Error en la solicitud' };
+    console.error("Error en la solicitud:", error);
+    return { success: false, error: "Error en la solicitud" };
   }
 };
 
 export const fetchUserProfile = async () => {
   try {
-    const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:3002/users/profile', {
-      method: 'GET',
+    const token = localStorage.getItem("token");
+    const response = await fetch("http://localhost:3002/users/profile", {
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (response.ok) {
       const data = await response.json();
-      console.log('Perfil del usuario:', data);
+      console.log("Perfil del usuario:", data);
     } else {
-      console.error('Error al obtener el perfil del usuario');
+      console.error("Error al obtener el perfil del usuario");
     }
   } catch (error) {
-    console.error('Error en la solicitud:', error);
+    console.error("Error en la solicitud:", error);
   }
 };
 
 export const editUserProfile = async (userId, formData, token) => {
   try {
-    console.log('ID del usuario:', userId); // Verifica el ID del usuario antes de la solicitud
-    console.log('Token de autenticación:', token); // Verifica el token antes de la solicitud
+    console.log("ID del usuario:", userId);
+    console.log("Token de autenticación:", token); 
 
     const apiEndpoint = `http://localhost:3002/users/user/${userId}/edit`;
-    
-    // Crear un objeto FormData para enviar los datos del formulario
+
     const form = new FormData();
+
     for (const key in formData) {
       form.append(key, formData[key]);
     }
 
-    // Configurar las opciones de la solicitud
     const options = {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: form
+      body: form,
     };
 
-    // Realizar la solicitud utilizando fetch
     const response = await fetch(apiEndpoint, options);
 
     if (response.ok) {
-      console.log('Perfil de usuario actualizado correctamente');
+      console.log("Perfil de usuario actualizado correctamente");
       return { success: true };
     } else {
-      console.error('Error al actualizar el perfil del usuario');
-      return { success: false, error: 'Error al actualizar el perfil del usuario' };
+      console.error("Error al actualizar el perfil del usuario");
+      return {
+        success: false,
+        error: "Error al actualizar el perfil del usuario",
+      };
     }
   } catch (error) {
-    console.error('Error en la solicitud:', error);
-    return { success: false, error: 'Error en la solicitud' };
+    console.error("Error en la solicitud:", error);
+    return { success: false, error: "Error en la solicitud" };
   }
 };
