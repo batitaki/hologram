@@ -64,19 +64,24 @@ function DragDrop() {
         return <div>Loading...</div>;
     }
 
+    // Calculating the number of columns and dividing the media into three parts
+    const columnsCount = 3;
+    const columnSize = Math.ceil(media.length / columnsCount);
+    const mediaColumns = Array.from({ length: columnsCount }).map((_, columnIndex) =>
+        media.slice(columnIndex * columnSize, (columnIndex + 1) * columnSize)
+    );
+
     return (
         <div className="media-container">
             <div className="photos">
                 <div className="columns-photos-container">
-                    {Array.from({ length: Math.ceil(media.length / 3) }).map((_, columnIndex) => (
+                    {mediaColumns.map((column, columnIndex) => (
                         <div className="column-photo" key={columnIndex}>
-                            {media
-                                .filter((_, index) => index % 3 === columnIndex)
-                                .map((image) => (
-                                    <div className="" key={image.ID}>
-                                        <Picture id={image.ID} image={image.Image} />
-                                    </div>
-                                ))}
+                            {column.map((image) => (
+                                <div className="" key={image.ID}>
+                                    <Picture id={image.ID} image={image.Image} />
+                                </div>
+                            ))}
                         </div>
                     ))}
                 </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { uploadMedia } from "../../../services/mediaAPI";
 
-const PhotoUploader = ({ isLoggedIn, userData }) => {
+const PhotoUploader = ({ isLoggedIn, userData, onPhotoUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [showFileInput, setShowFileInput] = useState(false);
@@ -24,6 +24,7 @@ const PhotoUploader = ({ isLoggedIn, userData }) => {
       const response = await uploadMedia(formData);
       if (response.success) {
         setUploadStatus("¡Foto subida exitosamente!");
+        window.location.reload(); // Recargar la página después de que se haya subido la foto
       } else {
         setUploadStatus("Error al subir la foto");
       }

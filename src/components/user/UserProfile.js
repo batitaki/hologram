@@ -3,6 +3,7 @@ import './UserProfile.css';
 import pencilIcon from '../../assets/pencil-icon.png';
 import { editUserProfile } from '../../services/usersAPI';
 import PhotoUploader from '../collection/media/PhotoUploader';
+import { getMediaByUser } from '../../services/mediaAPI';
 import MediaPhotos from '../collection/media/MediaPhotos';
 import DragDrop from '../collection/media/dragAndDrop/DragDrop';
 import DragAndDropProvider from '../collection/media/dragAndDrop/DragAndDropProvider';
@@ -12,6 +13,26 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
   const [newPhoto, setNewPhoto] = useState('');
   const [newName, setNewName] = useState('');
   const [newBio, setNewBio] = useState('');
+  const [userMedia, setUserMedia] = useState([]);
+
+
+  const loadUserMedia = async (userId) => {
+    try {
+      const mediaDataByUser = await getMediaByUser(userId);
+      setUserMedia(mediaDataByUser);
+      console.log(mediaDataByUser)
+    } catch (error) {
+      console.error('Error fetching user media', error);
+    }
+  };
+
+  useEffect(() => {
+    if (userData && userData.ID) {
+      loadUserMedia(userData.ID);
+    }
+  }, [userData]);
+
+
 
   const handleEdit = () => {
     setIsEditing(true); // Al hacer clic en "EDIT", activa el modo de edición
@@ -50,57 +71,22 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
     }
     setIsEditing(false); // Desactiva el modo de edición después de enviar los cambios
   };
-
+  
   return (
     <>
-      <div className="profile">
-        {isLoggedIn && userData && (
-          <div className="profile-container">
-            <div className="bio-username">
-              <div className="username-container">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={newName || userData.Username}
-                    onChange={handleNameChange}
-                  />
-                ) : (
-                  <span className="username">{userData.Username}</span>
-                )}
-                <div
-                  className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
-                  onClick={handleEdit}
-                >
-                  <img src={pencilIcon} alt="Edit" className="edit-icon" />
-                </div>
-              </div>
-              <div className="bio-container">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={newBio || userData.Bio}
-                    onChange={handleBioChange}
-                  />
-                ) : (
-                  <span className="bio">{userData.Bio}</span>
-                )}
-                <div
-                  className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
-                  onClick={handleEdit}
-                >
-                  <img src={pencilIcon} alt="Edit" className="edit-icon" />
-                </div>
-              </div>
-            </div>
-            <div className="profile-image-container">
+    <div className="profile">
+      {isLoggedIn && userData && (
+        <div className="profile-container">
+          <div className="bio-username">
+            <div className="username-container">
               {isEditing ? (
-                <input type="file" onChange={handlePhotoChange} />
-              ) : (
-                <img
-                  src={userData.Image}
-                  alt="Profile"
-                  className="profile-image"
+                <input
+                  type="text"
+                  value={newName || userData.Username}
+                  onChange={handleNameChange}
                 />
+              ) : (
+                <span className="username">{userData.Username}</span>
               )}
               <div
                 className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
@@ -109,27 +95,60 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
                 <img src={pencilIcon} alt="Edit" className="edit-icon" />
               </div>
             </div>
-            
-            {isEditing && (
-              <button onClick={handleSubmit}>SAVE</button>
-            )}
+            <div className="bio-container">
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={newBio || userData.Bio}
+                  onChange={handleBioChange}
+                />
+              ) : (
+                <span className="bio">{userData.Bio}</span>
+              )}
+              <div
+                className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
+                onClick={handleEdit}
+              >
+                <img src={pencilIcon} alt="Edit" className="edit-icon" />
+              </div>
+            </div>
           </div>
-        )}
-         <div className="edit-profile">
-        {isLoggedIn && userData && (
-      
-            <button className='button-edit-profile' onClick={handleEdit}>EDIT PROFILE</button>
-        )}
-       
-            <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
-
+          <div className="profile-image-container">
+            {isEditing ? (
+              <input type="file" onChange={handlePhotoChange} />
+            ) : (
+              <img
+                src={userData.Image}
+                alt="Profile"
+                className="profile-image"
+              />
+            )}
+            <div
+              className={`edit-icon-container ${isEditing ? '' : 'hidden'}`}
+              onClick={handleEdit}
+            >
+              <img src={pencilIcon} alt="Edit" className="edit-icon" />
+            </div>
+          </div>
+          {isEditing && (
+            <button onClick={handleSubmit}>SAVE</button>
+          )}
         </div>
+      )}
+      <div className="edit-profile">
+        {isLoggedIn && userData && (
+          <button className='button-edit-profile' onClick={handleEdit}>EDIT PROFILE</button>
+        )}
+        <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
       </div>
+      <MediaPhotos media={userMedia} userId={userData.ID} />
 
       <DragAndDropProvider>
-        <DragDrop />
+        <DragDrop/>
       </DragAndDropProvider>
-    </>
+    </div>
+  </>
+  
   );
 }
 

@@ -18,7 +18,7 @@
 }
 
 .photo-container {
-  width: 100px;
+  width: 200px;
   padding: 5px;
   box-sizing: border-box;
 }
@@ -36,12 +36,19 @@
 
 
 .board {
-  position: relative; /* Cambiar de fixed a relative */
-  width: 400px;
+  position: relative;
+  width: 550px;
   height: 700px;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   overflow-y: auto;
   padding: 20px;
-  border-right: 1px solid #ccc; 
+  border-right: 1px solid #ccc;
+  display: flex; /* Usa flexbox */
+  flex-wrap: wrap; /* Permite que las imágenes se envuelvan en múltiples líneas */
 }
 
+.board-picture {
+  width: calc(33.33% - 20px); /* Ancho de una tercera parte del contenedor, con espacio entre las imágenes */
+  margin: 10px; /* Espacio entre las imágenes */
+  box-sizing: border-box; /* Incluye el padding y el border en el ancho */
+}

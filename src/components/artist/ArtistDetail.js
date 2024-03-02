@@ -15,7 +15,7 @@ const ArtistDetail = () => {
     try {
       const artistData = await getArtistDetails(artistId);
       setSelectedArtist(artistData);
-
+      
       const artworksData = await getArtworksByArtist(artistId);
       setArtistArtworks(artworksData);
     } catch (error) {
@@ -45,6 +45,12 @@ const ArtistDetail = () => {
           <div className='descriptionContainer'>
             <h1 className='artistName'>{selectedArtist.Name}</h1>
             <p className='artistDescription'>{selectedArtist.ArtistDescription}</p>
+            {selectedArtist.User && (
+              <div className='userData'>
+                <p>Username: {selectedArtist.User.Username}</p>
+                <p>Email: {selectedArtist.User.Email}</p>
+              </div>
+            )}
           </div>
           <div className='containerImage'>
             <img src={selectedArtist.Image} className="product1" alt={selectedArtist.Name} />
@@ -52,15 +58,14 @@ const ArtistDetail = () => {
         </div>
       </div>
       <div className='sketch-content'>
-      <p className='sketch-title'>interactive sketch</p>
+        <p className='sketch-title'>interactive sketch</p>
         <AudioImages/>
       </div>
       <div className='artistDetailContainer'>
         <Collection artistArtworks={artistArtworks} />
       </div>
     </>
-
   );
 };
 
-export default ArtistDetail; 
+export default ArtistDetail;

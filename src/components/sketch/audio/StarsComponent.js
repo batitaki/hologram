@@ -27,7 +27,7 @@ const DrawStarsComponent = () => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(800, 600).parent(canvasParentRef);
+    p5.createCanvas(1220, 750).parent(canvasParentRef);
     p5.background(0, 0, 255);
 
     // Genera las posiciones de las partículas
