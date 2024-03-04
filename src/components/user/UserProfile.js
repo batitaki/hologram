@@ -144,7 +144,8 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
       <MediaPhotos media={userMedia} userId={userData.ID} />
 
       <DragAndDropProvider>
-        <DragDrop/>
+      <DragDrop userId={userData.ID} />
+
       </DragAndDropProvider>
     </div>
   </>

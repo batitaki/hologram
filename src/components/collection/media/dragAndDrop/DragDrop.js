@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Picture from './Picture';
 import { useDrop } from 'react-dnd';
-import { fetchMedia } from '../../../../services/mediaAPI';
+import { getMediaByUser } from '../../../../services/mediaAPI'; 
 import './DragAndDropProvider.css';
 
-function DragDrop() {
+function DragDrop( { userId } ) {
     const [board, setBoard] = useState([]);
-    const [media, setMedia] = useState([]);
+    const [userMedia, setUserMedia] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const loadUserMedia = async () => {
             try {
-                const data = await fetchMedia();
-                setMedia(data);
-            } catch (error) {
-                console.error('Error fetching media:', error);
-            } finally {
+                const mediaDataByUser = await getMediaByUser(userId);
+                setUserMedia(mediaDataByUser);
                 setIsLoading(false);
+            } catch (error) {
+                console.error('Error fetching user media', error);
             }
         };
-        
-        fetchData();
-    }, []);
+
+        loadUserMedia();
+    }, [userId]);
 
     useEffect(() => {
         const storedBoard = JSON.parse(localStorage.getItem('board'));
@@ -36,12 +35,12 @@ function DragDrop() {
     }, [board]);
 
     useEffect(() => {
-        localStorage.setItem('media', JSON.stringify(media));
-    }, [media]);
+        localStorage.setItem('userMedia', JSON.stringify(userMedia));
+    }, [userMedia]);
 
     const addImageToBoard = (id) => {
-        const storedMedia = JSON.parse(localStorage.getItem('media'));
-        const selectedImage = storedMedia.find((image) => image.ID === id);
+        const userMedia = JSON.parse(localStorage.getItem('userMedia'));
+       const selectedImage = userMedia.find((image) => image.ID === id);
         if (selectedImage) {
             setBoard((prevBoard) => [...prevBoard, selectedImage]);
         } else {
@@ -66,9 +65,9 @@ function DragDrop() {
 
     // Calculating the number of columns and dividing the media into three parts
     const columnsCount = 3;
-    const columnSize = Math.ceil(media.length / columnsCount);
+    const columnSize = Math.ceil(userMedia.length / columnsCount);
     const mediaColumns = Array.from({ length: columnsCount }).map((_, columnIndex) =>
-        media.slice(columnIndex * columnSize, (columnIndex + 1) * columnSize)
+        userMedia.slice(columnIndex * columnSize, (columnIndex + 1) * columnSize)
     );
 
     return (
