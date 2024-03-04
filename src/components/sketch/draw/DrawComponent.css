@@ -50,3 +50,10 @@
 .draw-images{
   margin-top: 5vw;
 }
+
+.draw-image-size{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
