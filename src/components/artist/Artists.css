@@ -1,5 +1,5 @@
 .title {
-  font-family: 'Array', sans-serif;
+  font-family: "Array", sans-serif;
   font-size: 30px;
   font-weight: 1;
   color: #27343a;
@@ -13,20 +13,18 @@
   flex-wrap: wrap;
   padding: 20px;
 }
-
 .artist {
   background-color: white;
-  border: 2px solid rgba(128, 136, 139, 0.3); 
-  box-shadow: 3px 3px 6px rgba(157, 165, 168, 0.2); 
-  width: calc(50% - 20px); 
-  box-sizing: border-box; 
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  width: calc(33.33% - 20px); /* Ancho de un tercio del contenedor con margen */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
 }
-
 .artist .image {
   margin-bottom: 10px;
 }
@@ -45,9 +43,8 @@
 }
 
 .artist .detail {
-  font-family: 'Array', sans-serif;
+  font-family: "Array", sans-serif;
   text-align: center;
-
 }
 
 .artist:hover {
@@ -55,12 +52,12 @@
 }
 
 .artist {
-  font-family: 'Array', sans-serif;
+  font-family: "Array", sans-serif;
   margin: 0;
 }
 
 .name {
-  color:#3c3737;
+  color: #3c3737;
   font-size: large;
   font-weight: 1000;
 }
@@ -73,8 +70,13 @@
 .artists-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; 
+  justify-content: space-between;
   gap: 20px;
   max-width: 650px;
-  margin: 0 auto; 
+  margin: 0 auto;
+}
+.loading{
+  font-family: "Array", sans-serif;
+  display: flex;
+  justify-content: center;
 }

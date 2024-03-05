@@ -62,7 +62,7 @@ const Artwork = () => {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className='loading'>LOADING...</p>
       )}
     </div>
   );

@@ -60,7 +60,7 @@ function DragDrop( { userId } ) {
     }));
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className='loading'>LOADING...</div>;
     }
 
     // Calculating the number of columns and dividing the media into three parts

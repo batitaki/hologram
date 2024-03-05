@@ -4,7 +4,6 @@ import { getArtistDetails } from '../../services/artistsAPI.js';
 import { getArtworksByArtist } from '../../services/collectionAPI.js';
 import './ArtistDetail.css';
 import Collection from '../collection/artworks/ArtworkCollection.js';
-import AudioImages from '../sketch/audio/AudioVisualizerComponent.js';
 
 const ArtistDetail = () => {
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -35,7 +34,7 @@ const ArtistDetail = () => {
   }, [artistArtworks]);
 
   if (!selectedArtist) {
-    return <div>Loading...</div>;
+    return <div className='loading'>LOADING...</div>;
   }
 
   return (
@@ -56,10 +55,6 @@ const ArtistDetail = () => {
             <img src={selectedArtist.Image} className="product1" alt={selectedArtist.Name} />
           </div>
         </div>
-      </div>
-      <div className='sketch-content'>
-        <p className='sketch-title'>interactive sketch</p>
-        <AudioImages/>
       </div>
       <div className='artistDetailContainer'>
         <Collection artistArtworks={artistArtworks} />
