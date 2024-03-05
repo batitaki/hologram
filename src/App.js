@@ -19,12 +19,13 @@ import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import UserProfile from "./components/user/UserProfile";
 import PhotoUploader from "./components/collection/media/PhotoUploader";
+import SearchUserProfile from "./components/user/SearchUserProfile";
 
 import DragAndDropProvider from "./components/collection/media/dragAndDrop/DragAndDropProvider";
 
 import DragDrop from "./components/collection/media/dragAndDrop/DragDrop";
 
-function App () {
+function App() {
   const initialUserData = localStorage.getItem("userData")
     ? JSON.parse(localStorage.getItem("userData"))
     : null;
@@ -93,6 +94,7 @@ function App () {
                   />
                 }
               />
+              <Route path="/search-profile" element={<SearchUserProfile />} />
               <Route
                 path="/upload-photo"
                 element={

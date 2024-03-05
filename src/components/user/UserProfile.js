@@ -4,7 +4,6 @@ import pencilIcon from "../../assets/pencil-icon.png";
 import { editUserProfile } from "../../services/usersAPI";
 import PhotoUploader from "../collection/media/PhotoUploader";
 import { getMediaByUser } from "../../services/mediaAPI";
-import MediaPhotos from "../collection/media/MediaPhotos";
 import DragDrop from "../collection/media/dragAndDrop/DragDrop";
 import DragAndDropProvider from "../collection/media/dragAndDrop/DragAndDropProvider";
 

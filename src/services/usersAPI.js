@@ -82,6 +82,27 @@ export const fetchUserProfile = async () => {
   }
 };
 
+export const searchUserProfile = async (username) => {
+  try {
+    const response = await fetch(`http://localhost:3002/users/users/${username}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Perfil del usuario encontrado:", data);
+      return { success: true, user: data.user };
+    } else {
+      console.error("Error al buscar el perfil del usuario");
+      return { success: false, error: "Error al buscar el perfil del usuario" };
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error);
+    return { success: false, error: "Error en la solicitud" };
+  }
+};
+
+
 export const editUserProfile = async (userId, formData, token) => {
   try {
     console.log("ID del usuario:", userId);
