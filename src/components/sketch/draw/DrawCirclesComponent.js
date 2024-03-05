@@ -1,36 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Sketch from 'react-p5';
 import { ChromePicker } from 'react-color';
-import './DrawCircules.css';
-import audio from "../../../assets/llanto.wav";
-import suziImage from "../../../assets/suzi.jpg";
-import harmImage from "../../../assets/harm.jpg";
-import goylImage from "../../../assets/goyl.jpg";
+import './DrawCircles.css'; // Adjusted file name
 
-let sound;
-
-const DrawCirculesComponent = () => {
-  const [audioPlaying, setAudioPlaying] = useState(false);
-  const [drawHImage, setDrawHImage] = useState(false);
-  const [drawSImage, setDrawSImage] = useState(false);
-  const [drawGImage, setDrawGImage] = useState(false);
+const DrawCirclesComponent = () => {
   const [aureolaColor, setAureolaColor] = useState({ r: 465, g: 90, b: 220 }); 
   const [showColorPicker, setShowColorPicker] = useState(false);
+  const [userImage, setUserImage] = useState(null); // State to store user provided image
+  const [drawUserImage, setDrawUserImage] = useState(false); // State to control drawing of user image
   const imgRef = useRef(null);
   const aureolas = [];
-
-  useEffect(() => {
-    sound = new Audio(audio);
-    sound.loop = true;
-    sound.load();
-  }, []);
-
-  const playAudio = () => {
-    if (!audioPlaying) {
-      sound.play();
-      setAudioPlaying(true);
-    }
-  };
 
   const handleColorChange = (color) => {
     setAureolaColor(color.rgb);
@@ -44,85 +23,80 @@ const DrawCirculesComponent = () => {
     setShowColorPicker(false);
   };
 
-  const mouseClicked = () => {
-    playAudio();
-  };
-
   const keyPressed = (p5) => {
-    if (p5.key === 'H') {
-      setDrawHImage(true);
-    } else if (p5.key === 'S') {
-      setDrawSImage(true);
-    } else if (p5.key === 'G') {
-      setDrawGImage(true);
+    if (p5.key === 'u' || p5.key === 'U') {
+      // Allow user to load image when 'u' is pressed
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/*';
+      fileInput.onchange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setUserImage(e.target.result);
+          setDrawUserImage(true); // Activate drawing of user image
+        };
+        reader.readAsDataURL(file);
+      };
+      fileInput.click();
     }
   };
 
-  const keyReleased = (p5) => {
-    if (p5.key === 'H') {
-      setDrawHImage(false);
-    } else if (p5.key === 'S') {
-      setDrawSImage(false);
-    } else if (p5.key === 'G') {
-      setDrawGImage(false);
+  const mousePressed = (p5) => {
+    if (drawUserImage && userImage && imgRef.current && imgRef.current.user) {
+      // Draw user image when mouse is pressed
+      const mouseX = p5.mouseX;
+      const mouseY = p5.mouseY;
+      const imgSize = 100;
+      p5.image(imgRef.current.user, mouseX - imgSize / 2, mouseY - imgSize / 2, imgSize, imgSize);
+      aureolas.push({ x: mouseX, y: mouseY, radius: 0, growing: true }); // Initialize radius to 0 and indicate it's growing
     }
+  };
+
+  const mouseReleased = () => {
+    // Stop aureola growth when mouse is released
+    aureolas.forEach((aureola) => {
+      aureola.growing = false;
+    });
   };
 
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(1024, 768).parent(canvasParentRef);
     p5.background(255);
     p5.frameRate(60);
-
-    imgRef.current = {
-      suzi: p5.loadImage(suziImage, () => {
-        console.log('Imagen de Suzy cargada correctamente.');
-      }),
-      harm: p5.loadImage(harmImage, () => {
-        console.log('Imagen de Harm cargada correctamente.');
-      }),
-      goyl: p5.loadImage(goylImage, () => {
-        console.log('Imagen de Goyl cargada correctamente.');
-      }),
-    };
   };
 
   const draw = (p5) => {
-    if (audioPlaying) {
-      const mouseX = p5.mouseX;
-      const mouseY = p5.mouseY;
-
-      if (drawHImage && imgRef.current && imgRef.current.harm) {
-        const imgSize = 100;
-        p5.image(imgRef.current.harm, mouseX - imgSize / 2, mouseY - imgSize / 2, imgSize, imgSize);
-        aureolas.push({ x: mouseX, y: mouseY, radius: 0 });
-      } else if (drawSImage && imgRef.current && imgRef.current.suzi) {
-        const imgSize = 100;
-        p5.image(imgRef.current.suzi, mouseX - imgSize / 2, mouseY - imgSize / 2, imgSize, imgSize);
-        aureolas.push({ x: mouseX, y: mouseY, radius: 0 });
-      } else if (drawGImage && imgRef.current && imgRef.current.goyl) {
-        const imgSize = 100;
-        p5.image(imgRef.current.goyl, mouseX - imgSize / 2, mouseY - imgSize / 2, imgSize, imgSize);
-        aureolas.push({ x: mouseX, y: mouseY, radius: 0 });
-      }
+    if (userImage && !imgRef.current) {
+      // Load user image into p5.js environment if it's not already loaded
+      imgRef.current = {
+        user: p5.loadImage(userImage, () => {
+          console.log('User image loaded successfully.');
+        }),
+      };
     }
 
-    for (let i = aureolas.length - 1; i >= 10; i--) {
+    // Draw aureolas
+    for (let i = aureolas.length - 1; i >= 0; i--) {
       p5.noFill();
       p5.stroke(aureolaColor.r, aureolaColor.g, aureolaColor.b);
       p5.ellipse(aureolas[i].x, aureolas[i].y, aureolas[i].radius, aureolas[i].radius);
 
-      aureolas[i].radius += 5;
+      // Increase aureola radius while mouse is pressed
+      if (aureolas[i].growing) {
+        aureolas[i].radius -= 5;
+      }
 
-      if (aureolas[i].radius >= 440) {
-        aureolas.splice(i, 8);
+      if (aureolas[i].radius >= 340) {
+        aureolas.splice(i, 1); // Remove aureolas that exceed maximum size
       }
     }
   };
 
   return (
     <div>
-      <div className='color-buttons'>
-        <button onClick={toggleColorPicker}>Pick Color</button>
+      <div className='color-button-container' >
+        <button className='color-buttons' onClick={toggleColorPicker}>PICK COLOR</button>
         {showColorPicker && (
           <ChromePicker color={aureolaColor} onChange={handleColorChange} onClose={handleCloseColorPicker} />
         )}
@@ -131,12 +105,12 @@ const DrawCirculesComponent = () => {
         className="fluid"
         setup={setup}
         draw={draw}
-        mouseClicked={mouseClicked}
         keyPressed={keyPressed}
-        keyReleased={keyReleased}
+        mousePressed={mousePressed}
+        mouseReleased={mouseReleased}
       />
     </div>
   );
 };
 
-export default DrawCirculesComponent;
+export default DrawCirclesComponent;

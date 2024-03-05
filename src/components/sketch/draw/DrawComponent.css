@@ -57,3 +57,20 @@
   margin-top: 100px;
 }
 
+.color-buttons {
+  font-size: 2vw;
+  margin-right: 2vw;
+  margin-top: 10vw;
+  width: 11vw;
+  height: 6vw;
+  font-family: 'Array', sans-serif;
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.color-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
