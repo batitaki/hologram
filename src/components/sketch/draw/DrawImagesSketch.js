@@ -44,7 +44,7 @@ const DrawImagesComponent = () => {
         p5.textSize(20);
         p5.textFont("Array");
         p5.text("PRESS U TO DRAW YOUR IMAGES", p5.width / 2, p5.height / 2);
-      }
+  }
     } else {
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
@@ -65,10 +65,8 @@ const DrawImagesComponent = () => {
   };
 
   const mousePressed = () => {
-    // Solo permite dibujar si se presiona el mouse dentro del área del sketch
     setShouldDraw(true);
 
-    // Si el dibujo ya está activo, cambia el estado de pausa
     if (shouldDraw) {
       setIsPaused(!isPaused);
     }
@@ -77,10 +75,10 @@ const DrawImagesComponent = () => {
   const handleSizeChange = (key) => {
     switch (key) {
       case '1':
-        setSize(50); // Tamaño más pequeño
+        setSize(50); 
         break;
       case '2':
-        setSize(150); // Tamaño medio
+        setSize(150);
         break;
       case '3':
         setSize(250); // Tamaño grande
