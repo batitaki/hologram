@@ -65,14 +65,14 @@ const DrawCirclesComponent = () => {
     if (!userImage) {
       p5.background(255, 255, 20);
     } else {
-      p5.background(255); 
+      p5.background(255, 5, 0); 
     }
     p5.frameRate(60);
   };
 
   const draw = (p5) => {
     if (!userImage) {
-      p5.background(255);
+      p5.background(255, 255, 200);
     }
 
     if (showInstructions && p5.frameCount % 60 < 30) {
