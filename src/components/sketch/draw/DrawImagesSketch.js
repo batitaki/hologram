@@ -4,10 +4,10 @@ import Sketch from "react-p5";
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
-  const [shouldDraw, setShouldDraw] = useState(false); // Cambiado a falso por defecto
+  const [shouldDraw, setShouldDraw] = useState(false); 
   const [isPaused, setIsPaused] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-  const [size, setSize] = useState(100); // Tamaño predeterminado
+  const [size, setSize] = useState(100); 
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
 
@@ -20,7 +20,7 @@ const DrawImagesComponent = () => {
         const img = p5.loadImage(reader.result, () => {
           setUserImage(img);
           setShowInstructions(false);
-          setDrawImage(true); // Activar dibujo automáticamente después de cargar la imagen
+          setDrawImage(true); 
         });
         imgRef.current = img;
       };

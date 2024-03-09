@@ -63,38 +63,36 @@ const DrawCirclesComponent = () => {
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(1024, 768).parent(canvasParentRef);
     if (!userImage) {
-      p5.background(255, 255, 20);
+      p5.background(55, 55, 20);
     } else {
-      p5.background(255, 5, 0); 
+      p5.background(55, 5, 0); 
     }
     p5.frameRate(60);
   };
 
   const draw = (p5) => {
     if (!userImage) {
-      p5.background(255, 255, 200);
+      p5.background(0, 0, 30);
     }
 
     if (showInstructions && p5.frameCount % 60 < 30) {
       p5.textAlign(p5.CENTER);
       p5.textSize(30);
       p5.textFont("Array");
-      p5.fill(15, 45, 78);
+      p5.fill(250, 250, 250);
       
-      // Mensaje "Don't be shy" se muestra 3 veces
-      if (p5.frameCount < 230) { // 180 fotogramas es aproximadamente 3 segundos a 60 fps
+      if (p5.frameCount < 230) { 
     
           if (p5.frameCount % 60 < 15) {
-            p5.text("DONT BE SHY!!", p5.width / 2, p5.height / 2 - 100 );
+            p5.text("DONT BE SHY!!", p5.width / 2, p5.height / 2 - 50 );
           }
   
       } else {
-        // Después de 3 repeticiones, se muestra el mensaje de instrucciones 7 veces
         const textLine1 = 'PRESS U TO UPLOAD YOUR PHOTOS';
         const textLine2 = 'CLICK INSIDE THE CANVAS TO DRAW YOUR IMAGE WITH THE CHOSEN COLOR';
 
-          p5.text(textLine1, p5.width / 2, p5.height / 2 - 100);
-          p5.text(textLine2, p5.width / 2, p5.height / 2 + -50 );
+          p5.text(textLine1, p5.width / 2, p5.height / 2 - 50);
+          p5.text(textLine2, p5.width / 2, p5.height / 2 + -20 );
         }
     }
   
