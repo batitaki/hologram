@@ -63,23 +63,23 @@ const DrawCirclesComponent = () => {
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(1024, 768).parent(canvasParentRef);
     if (!userImage) {
-      p5.background(55, 55, 20);
+      p5.background(255, 55, 50);
     } else {
-      p5.background(55, 5, 0); 
+      p5.background(255, 5, 50); 
     }
     p5.frameRate(60);
   };
 
   const draw = (p5) => {
     if (!userImage) {
-      p5.background(0, 0, 30);
+      p5.background(250);
     }
 
     if (showInstructions && p5.frameCount % 60 < 30) {
       p5.textAlign(p5.CENTER);
       p5.textSize(30);
       p5.textFont("Array");
-      p5.fill(250, 250, 250);
+      p5.fill(550, 0, 0);
       
       if (p5.frameCount < 230) { 
     

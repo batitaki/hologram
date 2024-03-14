@@ -49,3 +49,9 @@
   font-family: 'Array', sans-serif !important;
   color: #000000;
 }
+
+.color-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
