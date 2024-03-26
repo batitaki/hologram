@@ -70,8 +70,6 @@
   display: flex;
   justify-content: center;
   font-family: 'Array', sans-serif;
-  margin-top: 10vw;
-
 }
 
 .button-image-uploader {
@@ -132,7 +130,6 @@
 
 .button-edit-profile {
   margin-right: 2vw;
-  margin-top: 10vw;
   width: 10vw;
   height: 6vw;
   font-family: 'Array', sans-serif;

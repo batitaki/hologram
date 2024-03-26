@@ -74,3 +74,16 @@
   align-items: center;
   margin-top: 5vh;
 }
+
+.sizes-instruction{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Array', sans-serif;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.intructions-list {
+  list-style: none;
+}

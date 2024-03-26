@@ -8,6 +8,8 @@
   margin: 0;
   padding: 0;
   position: relative; 
+  z-index: -1;
+  opacity: 0.8; /* Cambia este valor para ajustar la transparencia */
 }
 
 .home-sketch {

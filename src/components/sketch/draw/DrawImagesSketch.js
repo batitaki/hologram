@@ -41,7 +41,7 @@ const DrawImagesComponent = () => {
       if (p5.frameCount % 30 < 15) {
         p5.fill(0);
         p5.textAlign(p5.CENTER);
-        p5.textSize(20);
+        p5.textSize(35);
         p5.textFont("Array");
         p5.text("PRESS U TO DRAW YOUR IMAGES", p5.width / 2, p5.height / 2);
   }
@@ -120,6 +120,18 @@ const DrawImagesComponent = () => {
             style={{ display: "none" }}
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
+          <div className="sizes-instruction">
+            <li className="intructions-list">
+              TO SELECT THE IMAGE SIZE PRESS 
+              <p> KEY 1 = EXTRA SMALL 50PX </p>
+              <p> KEY 2 = SMALL 150PX </p>
+              <p> KEY 3 = MEDIUM 250PX </p>
+              <p> KEY 4 = LARGE 500PX </p>
+              <p> KEY 5 = EXTRA LARGE 1050PX</p>
+            </li>
+
+
+          </div>
         </div>
       </div>
     </>
