@@ -20,6 +20,7 @@ import Register from "./components/user/Register";
 import UserProfile from "./components/user/UserProfile";
 import PhotoUploader from "./components/collection/media/PhotoUploader";
 import SearchProfile from "./components/user/SearchProfile";
+import SearchedUserProfile from "./components/user/SearchedUserProfile";
 import BackgroundSketch from "./components/sketch/home/BackgroundSketch";
 
 import DragAndDropProvider from "./components/collection/media/dragAndDrop/DragAndDropProvider";
@@ -99,6 +100,8 @@ function App() {
 
 
               <Route path="/search-profile" element={<SearchProfile />} />
+
+              <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
 
               <Route
                 path="/upload-photo"

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { searchUserProfile } from "../../services/usersAPI";
-import MediaPhotos from "../collection/media/MediaPhotos";
 
 const SearchProfile = () => {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
-  const [showFullProfile, setShowFullProfile] = useState(false);
 
   useEffect(() => {
     const loadUserProfile = async () => {
@@ -16,8 +15,6 @@ const SearchProfile = () => {
         } else {
           setUserData(null);
         }
-        // Reset showFullProfile to false after each search
-        setShowFullProfile(false);
       } catch (error) {
         console.error("Error fetching user profile:", error);
       }
@@ -27,10 +24,6 @@ const SearchProfile = () => {
       loadUserProfile();
     }
   }, [username]);
-
-  const handleShowFullProfile = () => {
-    setShowFullProfile(true);
-  };
 
   return (
     <>
@@ -42,41 +35,19 @@ const SearchProfile = () => {
           placeholder="SEARCH PROFILE"
           className="search-input-profile"
         />
-       {userData && !showFullProfile && (
-          <div className="user-preview" onClick={handleShowFullProfile}>
-            <img
-              src={userData.Image}
-              alt="Profile"
-              className="profile-preview-image"
-            />
-            <p className="username-preview">{userData.Username}</p>
-          </div>
+        {userData && (
+          <Link to={`/searched-profile/${userData.ID}`} className="user-preview-link">
+            <div className="user-preview">
+              <img
+                src={userData.Image}
+                alt="Profile"
+                className="profile-preview-image"
+              />
+              <p className="username-preview">{userData.Username}</p>
+            </div>
+          </Link>
         )}
       </div>
-      {showFullProfile && userData && (
-        <>
-        <div className="full-profile-container">
-          <div className="bio-username">
-            <div className="username-container">
-              <p className="username">{userData.Username}</p>
-            </div>
-            <div className="bio-container">
-              <p className="Bio">Bio: {userData.Bio}</p>
-            </div>
-          </div>
-          <div className="profile-image-container">
-            <img
-              src={userData.Image}
-              alt="Profile"
-              className="profile-image"
-            />
-          </div>
-        </div>
-            <div className="search-media-container">
-            <MediaPhotos userId={userData.ID} />
-          </div>
-          </>
-      )}
     </>
   );
 };
