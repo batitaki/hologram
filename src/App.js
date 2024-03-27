@@ -19,7 +19,7 @@ import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import UserProfile from "./components/user/UserProfile";
 import PhotoUploader from "./components/collection/media/PhotoUploader";
-import SearchUserProfile from "./components/user/SearchUserProfile";
+import SearchProfile from "./components/user/SearchProfile";
 import BackgroundSketch from "./components/sketch/home/BackgroundSketch";
 
 import DragAndDropProvider from "./components/collection/media/dragAndDrop/DragAndDropProvider";
@@ -58,7 +58,7 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <Router>
-      <BackgroundSketch />
+        <BackgroundSketch />
         <div className="App">
           <div className="header-parent">
             <Navbar
@@ -96,7 +96,10 @@ function App() {
                   />
                 }
               />
-              <Route path="/search-profile" element={<SearchUserProfile />} />
+
+
+              <Route path="/search-profile" element={<SearchProfile />} />
+
               <Route
                 path="/upload-photo"
                 element={

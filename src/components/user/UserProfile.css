@@ -4,11 +4,6 @@
   align-items: center;
 }
 
-.search-profile-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 
 .username {
   font-family: 'Array', sans-serif;
@@ -21,24 +16,6 @@
   margin-top: 3vw; 
   margin-left: 5vw;
   font-family: 'Array', sans-serif;
-}
-
-.search-input-profile{
-  font-family: 'Array', sans-serif;
-  width: 90%; 
-  max-width: 350px;
-  min-width: 350px;
-  background-color: #ffffff;
-  border: 0.5px solid #000000;
-  padding: 5px;
-  outline: none;
-  border-radius: 2px;
-  margin-top: 5vw;
-}
-
-.search-input-container{
-  display: flex;
-  justify-content: center;
 }
 
 .bio-username{
@@ -137,6 +114,12 @@
   background-color: rgb(255, 255, 255);
 }
 
+
+
+
+/* BOARD STYLES */
+
+
 .board {
   position: relative;
   width: 550px;
@@ -145,14 +128,77 @@
   overflow-y: auto;
   padding: 20px;
   border: 1px solid #ccc;
-  display: flex; /* Usa flexbox */
-  flex-wrap: wrap; /* Permite que las imágenes se envuelvan en múltiples líneas */
+  display: flex;
+  flex-wrap: wrap; 
 }
 
 .board-picture {
-  width: calc(33.33% - 20px); /* Ancho de una tercera parte del contenedor, con espacio entre las imágenes */
-  margin: 10px; /* Espacio entre las imágenes */
-  box-sizing: border-box; /* Incluye el padding y el border en el ancho */
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  box-sizing: border-box; 
+}
+
+
+
+
+/*    SEARCH INPUT STYLES */
+
+.full-profile-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-input-profile{
+  font-family: 'Array', sans-serif;
+  width: 90%; 
+  max-width: 350px;
+  min-width: 350px;
+  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  padding: 5px;
+  outline: none;
+  border-radius: 2px;
+  margin-top: 5vw;
+}
+
+.search-input-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-preview {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centrar verticalmente los elementos */
+  border: 0.1px solid rgb(0, 0, 0);
+  margin-top: 10px;
+  margin-bottom: 10px; /* Espacio entre cada vista previa de usuario */
+  cursor: pointer;
+  width: 24vw;
+  padding: 20px;
+  
+}
+
+.user-preview .profile-preview-image {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 50px; /* Espacio entre la imagen y el nombre de usuario */
+}
+
+.user-preview .username-preview {
+  font-family: 'Array', sans-serif;
+  margin-top: auto; /* Centrar verticalmente el nombre de usuario */
+  margin-bottom: auto; /* Centrar verticalmente el nombre de usuario */
 }
 
 
@@ -160,25 +206,25 @@
 @media screen and (max-width: 768px) {
   .profile-container {
 
-    flex-direction: column-reverse; /* Cambiar el orden de la dirección de la columna */
+    flex-direction: column-reverse; 
     align-items: center;
   }
 
   .profile-image-container {
-    margin-top: 0; /* Eliminar el espacio entre la imagen y el nombre de usuario */
-    margin-bottom: 5vw; /* Agregar espacio entre la imagen y la bio */
+    margin-top: 0;
+    margin-bottom: 5vw;
   }
 
   .username {
-    margin-bottom: 5vw; /* Espacio entre el nombre de usuario y la bio */
+    margin-bottom: 5vw;
   }
 
   .board{
     margin-right: 5vw;
   }
   .board-picture {
-  width: calc(49.49% - 18px); /* Ancho de una tercera parte del contenedor, con espacio entre las imágenes */
-  margin: 10px; /* Espacio entre las imágenes */
-  box-sizing: border-box; /* Incluye el padding y el border en el ancho */
+  width: calc(49.49% - 18px);
+  margin: 10px;
+  box-sizing: border-box;
 }
 }

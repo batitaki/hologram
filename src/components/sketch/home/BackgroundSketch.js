@@ -102,7 +102,7 @@ const BackgroundSketch = () => {
     }
 
     isDead() {
-      return this.alpha <= 0; // La partícula desaparece cuando la opacidad es menor o igual a 0
+      return this.alpha <= 0;
     }
   }
 
