@@ -1,6 +1,6 @@
 export const getCollection = async () => {
   try {
-    const collectionAwnser = await fetch('http://localhost:3002/artworks/artworks');
+    const collectionAwnser = await fetch('https://holograma-3.onrender.com/artworks/artworks');
     const data = await collectionAwnser.json();
     return data;
   } catch (error) {
