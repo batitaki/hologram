@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Sketch from "react-p5";
 
 const DrawImagesComponent = () => {
@@ -8,8 +8,10 @@ const DrawImagesComponent = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
   const [size, setSize] = useState(100); 
+  const [opacity, setOpacity] = useState(1); // Estado para controlar la opacidad
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
+  const opacityImage = useRef(null); // Referencia a la imagen con opacidad
 
   const handleImageUpload = (p5, e) => {
     const file = e.target.files[0];
@@ -44,11 +46,18 @@ const DrawImagesComponent = () => {
         p5.textSize(35);
         p5.textFont("Array");
         p5.text("PRESS U TO DRAW YOUR IMAGES", p5.width / 2, p5.height / 2);
-  }
+      }
     } else {
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
         p5.image(img, x - width / 2, y - height / 2, width, height);
+      }
+
+      // Dibujar imagen con opacidad si está activada
+      if (opacityImage.current) {
+        p5.tint(255, 255 * opacity); // Aplicar opacidad
+        p5.image(opacityImage.current, 0, 0, p5.width, p5.height);
+        p5.noTint(); // Restaurar opacidad a su estado normal
       }
 
       if (drawImage && userImage && shouldDraw && !isPaused) {
@@ -94,12 +103,20 @@ const DrawImagesComponent = () => {
     }
   };
 
+  const handleOpacityChange = () => {
+    setOpacity(opacity === 1 ? 0.5 : 1); // Cambiar la opacidad entre 1 y 0.5
+  };
+
   const keyTyped = (p5) => {
     handleSizeChange(p5.key);
     if (p5.key === "U" || p5.key === "u") {
       document.getElementById("imageInput").click();
+    } else if (p5.key === "6") {
+      setSize(1050); // Establecer el tamaño al máximo
+      setOpacity(0.5); // Establecer la opacidad a 0.5
     }
   };
+  
 
   return (
     <>
@@ -128,9 +145,8 @@ const DrawImagesComponent = () => {
               <p> KEY 3 = MEDIUM 250PX </p>
               <p> KEY 4 = LARGE 500PX </p>
               <p> KEY 5 = EXTRA LARGE 1050PX</p>
+              <p> KEY 6 = CHANGE OPACITY</p> {/* Agregar instrucción para la tecla "6" */}
             </li>
-
-
           </div>
         </div>
       </div>
