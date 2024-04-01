@@ -14,7 +14,7 @@ export const fetchSketchData = async () => {
   export const createSketch = async (formData) => {
     try {
       const response = await fetch(
-        "http://localhost:3002/sketches/createSketch",
+        "https://holograma-3.onrender.com/sketches/createSketch",
         {
           method: "POST",
           body: formData,
