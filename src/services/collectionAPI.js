@@ -11,7 +11,7 @@ export const getCollection = async () => {
 
 export const fetchArtists = async () => {
   try {
-    const response = await fetch('http://localhost:3002/artworks/createArtwork');
+    const response = await fetch('https://holograma-3.onrender.com/artworks/createArtwork');
     const data = await response.json();
     return data;
   } catch (error) {
