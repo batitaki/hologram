@@ -1,7 +1,7 @@
 
 export const fetchSketchData = async () => {
     try {
-      const response = await fetch("http://localhost:3002/sketches/sketches");
+      const response = await fetch("https://holograma-3.onrender.com/sketches/sketches");
       const data = await response.json();
       console.log("Sketch Data:", data);
       return data;
