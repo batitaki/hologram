@@ -121,6 +121,19 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
               >
                 {t("artists")}
               </Link>
+
+              <Link
+                to="/movies"
+                className={`nav-link ${
+                  selectedView === "/movies" ? "selected" : ""
+                }`}
+                onClick={() => {
+                  openNavbar();
+                  setSelectedView("/movies");
+                }}
+              >
+                {t("artists")}
+              </Link>
               <Link
                 to="/collection"
                 className={`nav-link ${

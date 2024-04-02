@@ -9,7 +9,7 @@ i18n
         translation: {
           home: 'HOME',
           signUp: 'SIGN UP',
-          magazine: 'MAGAZINEEE',
+          magazine: 'MAGAZINE',
           gallery: 'GALLERY',
           artists: 'ARTISTS',
           apply: 'APPLY',
