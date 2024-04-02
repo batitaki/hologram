@@ -132,7 +132,7 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
                   setSelectedView("/movies");
                 }}
               >
-                {t("artists")}
+                {t("movies")}
               </Link>
               <Link
                 to="/collection"
