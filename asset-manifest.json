@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.4849fe71.css",
-    "main.js": "/static/js/main.5a3aaa75.js",
-    "static/media/llanto.wav": "/static/media/llanto.c08dc2be3b8d4aa265c2.wav",
-    "static/media/suns-soleil.mp4": "/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
-    "static/media/goyl.jpg": "/static/media/goyl.291f7becdf2d6eb0178b.jpg",
-    "static/media/harm.jpg": "/static/media/harm.e179ac40ba09f57e6141.jpg",
-    "static/media/beat.wav": "/static/media/beat.b3be5b01c8fd4f9470c9.wav",
-    "static/media/ojo.wav": "/static/media/ojo.83c597dc61dc2d759b15.wav",
-    "static/media/rising.wav": "/static/media/rising.992bed25bc39b08a5d19.wav",
-    "static/media/soho.wav": "/static/media/soho.fa61c375e2365a7ab31d.wav",
-    "static/media/space.wav": "/static/media/space.7901f76250741c6e3459.wav",
-    "static/media/flan.png": "/static/media/flan.5db1c98ccac743628f58.png",
-    "static/media/logoko.PNG": "/static/media/logoko.acfea23dc4eb08593580.PNG",
-    "static/media/araki.jpg": "/static/media/araki.d6a004cea962c39c9f06.jpg",
-    "static/media/logoNegroHolo.PNG": "/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
-    "static/media/suzi.jpg": "/static/media/suzi.a76d3e10ecdb497a6006.jpg",
-    "index.html": "/index.html",
-    "main.4849fe71.css.map": "/static/css/main.4849fe71.css.map",
-    "main.5a3aaa75.js.map": "/static/js/main.5a3aaa75.js.map"
+    "main.css": "/hologramassa/static/css/main.e128920a.css",
+    "main.js": "/hologramassa/static/js/main.9f1ff7c9.js",
+    "static/media/llanto.wav": "/hologramassa/static/media/llanto.c08dc2be3b8d4aa265c2.wav",
+    "static/media/suns-soleil.mp4": "/hologramassa/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
+    "static/media/goyl.jpg": "/hologramassa/static/media/goyl.291f7becdf2d6eb0178b.jpg",
+    "static/media/harm.jpg": "/hologramassa/static/media/harm.e179ac40ba09f57e6141.jpg",
+    "static/media/beat.wav": "/hologramassa/static/media/beat.b3be5b01c8fd4f9470c9.wav",
+    "static/media/ojo.wav": "/hologramassa/static/media/ojo.83c597dc61dc2d759b15.wav",
+    "static/media/rising.wav": "/hologramassa/static/media/rising.992bed25bc39b08a5d19.wav",
+    "static/media/soho.wav": "/hologramassa/static/media/soho.fa61c375e2365a7ab31d.wav",
+    "static/media/space.wav": "/hologramassa/static/media/space.7901f76250741c6e3459.wav",
+    "static/media/flan.png": "/hologramassa/static/media/flan.5db1c98ccac743628f58.png",
+    "static/media/logoko.PNG": "/hologramassa/static/media/logoko.acfea23dc4eb08593580.PNG",
+    "static/media/araki.jpg": "/hologramassa/static/media/araki.d6a004cea962c39c9f06.jpg",
+    "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
+    "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
+    "index.html": "/hologramassa/index.html",
+    "main.e128920a.css.map": "/hologramassa/static/css/main.e128920a.css.map",
+    "main.9f1ff7c9.js.map": "/hologramassa/static/js/main.9f1ff7c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.4849fe71.css",
-    "static/js/main.5a3aaa75.js"
+    "static/css/main.e128920a.css",
+    "static/js/main.9f1ff7c9.js"
   ]
 }
