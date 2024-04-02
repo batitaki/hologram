@@ -11,7 +11,7 @@ export const getCollection = async () => {
 
 export const fetchArtists = async () => {
   try {
-    const response = await fetch('https://holograma-3.onrender.com/artworks/createArtwork');
+    const response = await fetch('https://holograma-3.onrender.com/artists/artists');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -22,7 +22,7 @@ export const fetchArtists = async () => {
 
 export const createArtWorkAPI = async (formData) => {
   try {
-    const response = await fetch('http://localhost:3002/artworks/createArtwork', {
+    const response = await fetch('https://holograma-3.onrender.com/artworks/createArtwork', {
       method: 'POST',
       body: formData,
     });
@@ -42,7 +42,7 @@ export const createArtWorkAPI = async (formData) => {
 
 export const getArtworkById = async (artworkId) => {
   try {
-    const response = await fetch(`http://localhost:3002/artworks/artworks/${artworkId}`); 
+    const response = await fetch(`https://holograma-3.onrender.com/artworks/artworks/${artworkId}`); 
     const data = await response.json();
     return data;
   } catch (error) {
@@ -53,7 +53,7 @@ export const getArtworkById = async (artworkId) => {
 
 export const getArtworksByArtist = async (artistId) => {
   try {
-    const response = await fetch(`http://localhost:3002/artworks/byArtist/${artistId}`);
+    const response = await fetch(`https://holograma-3.onrender.com/artworks/byArtist/${artistId}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -64,7 +64,7 @@ export const getArtworksByArtist = async (artistId) => {
 
 export const fetchSketchData = async () => {
   try {
-    const response = await fetch('http://localhost:3002/artworks/sketches');
+    const response = await fetch('https://holograma-3.onrender.com/artworks/sketches');
     const data = await response.json();
     console.log('Sketch Data:', data);
     return data;
@@ -78,7 +78,7 @@ export const fetchSketchData = async () => {
 
 export const createSketch = async (formData) => {
   try {
-    const response = await fetch('http://localhost:3002/artworks/createSketch', {
+    const response = await fetch('https://holograma-3.onrender.com/artworks/createSketch', {
       method: 'POST',
       body: formData,
     });

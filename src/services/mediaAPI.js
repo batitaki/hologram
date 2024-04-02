@@ -1,6 +1,6 @@
 const fetchMedia = async () => {
   try {
-    const response = await fetch("http://localhost:3002/media/media");
+    const response = await fetch("https://holograma-3.onrender.com/media/media");
     if (!response.ok) {
       throw new Error("Error fetching media");
     }
@@ -16,7 +16,7 @@ const fetchMedia = async () => {
 const getMediaByUser = async (userId) => {
   try {
     const response = await fetch(
-      `http://localhost:3002/media/byUser/${userId}`
+      `https://holograma-3.onrender.com/media/byUser/${userId}`
     );
     const data = await response.json();
     return data;
@@ -31,7 +31,7 @@ const getMediaByUser = async (userId) => {
 
 const uploadMedia = async (formDataWithFile) => {
   try {
-    const response = await fetch("http://localhost:3002/media/upload", {
+    const response = await fetch("https://holograma-3.onrender.com/media/upload", {
       method: "POST",
       body: formDataWithFile,
     });

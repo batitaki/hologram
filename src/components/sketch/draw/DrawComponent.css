@@ -75,7 +75,7 @@
   margin-top: 5vh;
 }
 
-.sizes-instruction{
+.sizes-instruction {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -86,4 +86,15 @@
 
 .intructions-list {
   list-style: none;
+  text-align: center; /* Centrar el texto */
+}
+
+@media only screen and (max-width: 768px) {
+  .sizes-instruction {
+     
+  }
+
+  .intructions-list {
+    font-size: 14px; /* Reducir el tamaño de fuente para dispositivos móviles */
+  }
 }

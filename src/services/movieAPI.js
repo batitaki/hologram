@@ -1,6 +1,6 @@
 const fetchMovies = async () => {
   try {
-    const response = await fetch('http://localhost:3002/movies/movies');
+    const response = await fetch('https://holograma-3.onrender.com/movies/movies');
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -16,7 +16,7 @@ const fetchMovies = async () => {
 
 const fetchMovieDetails = async (movieId) => {
   try {
-    const response = await fetch(`http://localhost:3002/movies/movies/${movieId}`);
+    const response = await fetch(`https://holograma-3.onrender.com/movies/movies/${movieId}`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -32,7 +32,7 @@ const fetchMovieDetails = async (movieId) => {
 
 const createMovie = async (formDataWithFile) => {
   try {
-    const response = await fetch('http://localhost:3002/movies/createMovie', {
+    const response = await fetch('https://holograma-3.onrender.com/movies/createMovie', {
       method: 'POST',
       body: formDataWithFile,
     });
