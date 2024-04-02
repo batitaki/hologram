@@ -68,7 +68,7 @@ function App() {
               userData={userData}
             />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/hologramassa/" element={<Home />} />
               {ComponentRoutes.map((route, index) => (
                 <Route key={index} path={route.path} element={route.element} />
               ))}
