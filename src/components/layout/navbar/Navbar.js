@@ -5,7 +5,7 @@ import logo2 from "../../../assets/logoNegroHolo.PNG";
 import logo1 from "../../../assets/logoko.PNG";
 import { useTranslation } from "react-i18next";
 
-function Navbar({ isLoggedIn, handleLogout, userData }) {
+function Navbar({ isLoggedIn, handleLogout }) {
   const { t, i18n } = useTranslation();
   const [isClosed, setIsClosed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -71,11 +71,11 @@ function Navbar({ isLoggedIn, handleLogout, userData }) {
               <Link
                 to="/"
                 className={`nav-link ${
-                  selectedView === "/" ? "selected" : ""
+                  selectedView === "/hologramassa/" ? "selected" : ""
                 }`}
                 onClick={() => {
                   openNavbar();
-                  setSelectedView("/");
+                  setSelectedView("/hologramassa/");
                 }}
               >
                 {t("home")}

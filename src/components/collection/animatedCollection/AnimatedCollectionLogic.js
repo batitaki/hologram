@@ -10,6 +10,7 @@ const AnimatedCollectionLogic = () => {
   const [indexes, setIndexes] = useState([]);
   const [positions, setPositions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchArtworks = async () => {
@@ -20,6 +21,7 @@ const AnimatedCollectionLogic = () => {
         setIndexes(initialIndexes);
         const initialPositions = generateRandomPositions(30);
         setPositions(initialPositions);
+        setLoading(false); 
       } catch (error) {
         console.error('Error fetching artworks', error);
       }
@@ -45,7 +47,7 @@ const AnimatedCollectionLogic = () => {
 
   useInterval(updateIndexesAndPositions, 9000);
 
-  return { props, indexes, positions, currentIndex, artworks };
+  return { props, indexes, positions, currentIndex, artworks, loading };
 };
 
 export default AnimatedCollectionLogic;

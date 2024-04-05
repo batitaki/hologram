@@ -13,7 +13,10 @@ code {
 }
 
 .loading {
-  font-family: 'Array', sans-serif;
-  font-size: 30px;
-  color: #27343a;
+  font-family: "Array", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  margin-top: 40vh;
+  margin-bottom: 60vh;
 }

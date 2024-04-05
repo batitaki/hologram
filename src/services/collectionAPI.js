@@ -18,7 +18,9 @@ export const fetchArtists = async () => {
     console.error('Error al obtener artistas:', error);
     return [];
   }
+
 };
+
 
 export const createArtWorkAPI = async (formData) => {
   try {

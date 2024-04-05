@@ -72,14 +72,14 @@ const DrawCirclesComponent = () => {
 
   const draw = (p5) => {
     if (!userImage) {
-      p5.background(250);
+      p5.background(255);
     }
 
     if (showInstructions && p5.frameCount % 60 < 30) {
       p5.textAlign(p5.CENTER);
       p5.textSize(30);
       p5.textFont("Array");
-      p5.fill(550, 0, 0);
+      p5.fill(0);
       
       if (p5.frameCount < 230) { 
     
