@@ -69,7 +69,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
               id="artOptions"
             >
               <Link
-                to="/"
+                to="/hologramassa/"
                 className={`nav-link ${
                   selectedView === "/hologramassa/" ? "selected" : ""
                 }`}
