@@ -177,7 +177,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
                 </Link>
               )}
               {isLoggedIn && (
-                <Link to="/" className="nav-link" onClick={handleLogout}>
+                <Link to="/hologramassa/" className="nav-link" onClick={handleLogout}>
                   {t("logout")}
                 </Link>
               )}

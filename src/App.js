@@ -74,13 +74,13 @@ function App() {
               ))}
               <Route
                 path="/register"
-                element={isLoggedIn ? <Navigate to="/" /> : <Register />}
+                element={isLoggedIn ? <Navigate to="/hologramassa/" /> : <Register />}
               />
               <Route
                 path="/login"
                 element={
                   isLoggedIn ? (
-                    <Navigate to="/" />
+                    <Navigate to="/hologramassa/" />
                   ) : (
                     <Login handleLogin={handleLogin} />
                   )
