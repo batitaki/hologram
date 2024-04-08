@@ -20,3 +20,14 @@ code {
   margin-top: 40vh;
   margin-bottom: 60vh;
 }
+
+button {
+  -webkit-appearance: none; /* Anula la apariencia predeterminada de los botones en Safari/Chrome */
+  -moz-appearance: none; /* Anula la apariencia predeterminada de los botones en Firefox */
+  appearance: none; /* Anula la apariencia predeterminada de los botones en otros navegadores */
+  background-color: transparent; /* Establece el fondo transparente */
+  border: none; /* Elimina el borde */
+  outline: none; /* Elimina el contorno */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  /* Agrega cualquier otro estilo personalizado que desees */
+}
