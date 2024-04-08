@@ -119,6 +119,10 @@ const DrawImagesComponent = () => {
     }
   };
 
+  const handleButtonClick = () => {
+    document.getElementById("imageInput").click();
+  };
+
   return (
     <>
       <div className="draw-images">
@@ -140,6 +144,7 @@ const DrawImagesComponent = () => {
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
           <div className="sizes-instruction">
+          <button className="input-draw-images" onClick={handleButtonClick}>LOAD IMAGE</button>
             <ul className="intructions-list">
               TO SELECT THE IMAGE SIZE PRESS
               <li>KEY 1 = EXTRA SMALL 50PX</li>
