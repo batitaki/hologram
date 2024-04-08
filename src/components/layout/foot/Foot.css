@@ -3,15 +3,28 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff; /* Color de fondo de tu footer */
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  padding: 20px 0; /* Añadir un relleno para separar el contenido del borde */
 }
 
 .foot-text {
   font-family: 'Array', sans-serif;
   color: #3c3737;
+  text-align: center; /* Alinear el texto al centro */
+  font-size: 14px; /* Reducir el tamaño de fuente para dispositivos más pequeños */
+}
+
+/* Media query para ajustes en dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .footer {
+    padding: 10px 0; /* Reducir el relleno en dispositivos móviles */
+  }
+
+  .foot-text {
+    font-size: 12px; /* Reducir aún más el tamaño de fuente para dispositivos más pequeños */
+  }
 }

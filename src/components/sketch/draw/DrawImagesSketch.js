@@ -1,17 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Sketch from "react-p5";
+import "./DrawImages.css";
 
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
-  const [shouldDraw, setShouldDraw] = useState(false); 
+  const [shouldDraw, setShouldDraw] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-  const [size, setSize] = useState(100); 
-  const [opacity, setOpacity] = useState(1); // Estado para controlar la opacidad
+  const [size, setSize] = useState(100);
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
-  const opacityImage = useRef(null); // Referencia a la imagen con opacidad
 
   const handleImageUpload = (p5, e) => {
     const file = e.target.files[0];
@@ -22,7 +21,7 @@ const DrawImagesComponent = () => {
         const img = p5.loadImage(reader.result, () => {
           setUserImage(img);
           setShowInstructions(false);
-          setDrawImage(true); 
+          setDrawImage(true);
         });
         imgRef.current = img;
       };
@@ -31,11 +30,22 @@ const DrawImagesComponent = () => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(1024, 668).parent(canvasParentRef);
+    const canvasWidth = Math.min(window.innerWidth, 1024);
+    const canvasHeight = canvasWidth * (2 / 3);
+    const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+    canvas.parent(canvasParentRef);
+    canvas.style("display", "block");
+    canvas.style("margin", "auto"); 
+    canvas.style("user-select", "none"); 
+    canvas.style('touch-action', 'none');
+
+    canvas.elt.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+    }, { passive: false });
+  
     p5.background(255);
     p5.frameRate(60);
   };
-
   const draw = (p5) => {
     p5.background(255);
 
@@ -43,21 +53,20 @@ const DrawImagesComponent = () => {
       if (p5.frameCount % 30 < 15) {
         p5.fill(0);
         p5.textAlign(p5.CENTER);
-        p5.textSize(35);
+        const instructionTextSize = p5.width < 600 ? 20 : 35; // Reducir el tamaño del texto para dispositivos móviles
+        p5.textSize(instructionTextSize);
         p5.textFont("Array");
-        p5.text("PRESS U TO DRAW YOUR IMAGES", p5.width / 2, p5.height / 2);
+        const instructionText = "PRESS U TO DRAW YOUR IMAGES";
+        p5.text(
+          instructionText,
+          p5.width / 2,
+          p5.height / 2 + instructionTextSize / 2
+        );
       }
     } else {
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
         p5.image(img, x - width / 2, y - height / 2, width, height);
-      }
-
-      // Dibujar imagen con opacidad si está activada
-      if (opacityImage.current) {
-        p5.tint(255, 255 * opacity); // Aplicar opacidad
-        p5.image(opacityImage.current, 0, 0, p5.width, p5.height);
-        p5.noTint(); // Restaurar opacidad a su estado normal
       }
 
       if (drawImage && userImage && shouldDraw && !isPaused) {
@@ -83,19 +92,19 @@ const DrawImagesComponent = () => {
 
   const handleSizeChange = (key) => {
     switch (key) {
-      case '1':
-        setSize(50); 
+      case "1":
+        setSize(50);
         break;
-      case '2':
+      case "2":
         setSize(150);
         break;
-      case '3':
+      case "3":
         setSize(250); // Tamaño grande
         break;
-      case '4':
+      case "4":
         setSize(500); // Tamaño muy grande
         break;
-      case '5':
+      case "5":
         setSize(1050); // Tamaño máximo
         break;
       default:
@@ -103,33 +112,26 @@ const DrawImagesComponent = () => {
     }
   };
 
-  const handleOpacityChange = () => {
-    setOpacity(opacity === 1 ? 0.5 : 1); // Cambiar la opacidad entre 1 y 0.5
-  };
-
   const keyTyped = (p5) => {
     handleSizeChange(p5.key);
     if (p5.key === "U" || p5.key === "u") {
       document.getElementById("imageInput").click();
-    } else if (p5.key === "6") {
-      setSize(1050); // Establecer el tamaño al máximo
-      setOpacity(0.5); // Establecer la opacidad a 0.5
     }
   };
-  
 
   return (
     <>
       <div className="draw-images">
         <h4 className="title"> DRAW IMAGES </h4>
         <div>
-          <Sketch
-            className="fluid"
-            setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
-            draw={(p5) => draw(p5)}
-            keyTyped={(p5) => keyTyped(p5)}
-            mousePressed={() => mousePressed()}
-          />
+          <div className="canvas-container">
+            <Sketch
+              setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
+              draw={(p5) => draw(p5)}
+              keyTyped={(p5) => keyTyped(p5)}
+              mousePressed={() => mousePressed()}
+            />
+          </div>
           <input
             type="file"
             id="imageInput"
@@ -138,15 +140,14 @@ const DrawImagesComponent = () => {
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
           <div className="sizes-instruction">
-            <li className="intructions-list">
-              TO SELECT THE IMAGE SIZE PRESS 
-              <p> KEY 1 = EXTRA SMALL 50PX </p>
-              <p> KEY 2 = SMALL 150PX </p>
-              <p> KEY 3 = MEDIUM 250PX </p>
-              <p> KEY 4 = LARGE 500PX </p>
-              <p> KEY 5 = EXTRA LARGE 1050PX</p>
-              <p> KEY 6 = CHANGE OPACITY</p> {/* Agregar instrucción para la tecla "6" */}
-            </li>
+            <ul className="intructions-list">
+              TO SELECT THE IMAGE SIZE PRESS
+              <li>KEY 1 = EXTRA SMALL 50PX</li>
+              <li>KEY 2 = SMALL 150PX</li>
+              <li>KEY 3 = MEDIUM 250PX</li>
+              <li>KEY 4 = LARGE 500PX</li>
+              <li>KEY 5 = EXTRA LARGE 1050PX</li>
+            </ul>
           </div>
         </div>
       </div>

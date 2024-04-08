@@ -63,3 +63,16 @@
   padding: 20px;
   box-sizing: border-box;
 }
+
+/* Agrega esta parte al final de tu archivo CSS */
+
+@media only screen and (max-width: 768px) {
+  .columns-container {
+    flex-direction: column; /* Cambiar a columna en dispositivos móviles */
+  }
+  
+  .column {
+    width: 100%; /* Ocupar todo el ancho en dispositivos móviles */
+    margin-bottom: 30px; /* Aumentar el espacio entre las columnas en dispositivos móviles */
+  }
+}

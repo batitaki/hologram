@@ -143,6 +143,7 @@ function UserProfile({ isLoggedIn, userData, setUserData }) {
           )}
           <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
         </div>
+
         <DragAndDropProvider>
           <DragDrop userId={userData.ID} />
         </DragAndDropProvider>

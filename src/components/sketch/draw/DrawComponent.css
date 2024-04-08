@@ -47,15 +47,6 @@
   border: 1px solid transparent;  
 }
 
-.draw-images{
-  margin-top: 5vw;
-}
-
-.draw-image-size{
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-}
 
 .color-buttons {
   font-size: 2vw;
@@ -75,26 +66,3 @@
   margin-top: 5vh;
 }
 
-.sizes-instruction {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-family: 'Array', sans-serif;
-  align-items: center;
-  margin-top: 10vh;
-}
-
-.intructions-list {
-  list-style: none;
-  text-align: center; /* Centrar el texto */
-}
-
-@media only screen and (max-width: 768px) {
-  .sizes-instruction {
-     
-  }
-
-  .intructions-list {
-    font-size: 14px; /* Reducir el tamaño de fuente para dispositivos móviles */
-  }
-}

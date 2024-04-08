@@ -45,7 +45,6 @@ const Artwork = () => {
       <div className='artworkImage'>
            <SlideshowLightbox className="container grid grid-cols-3 gap-2 mx-auto">
            <img
-                  style={{ width: 'auto', height: '500px' }}
                   className="w-full"
                   src={artworkDetails.Image}
                   alt={artworkDetails.Name}

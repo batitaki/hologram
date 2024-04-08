@@ -1,13 +1,14 @@
 .artworkContent {
   display: flex;
-  justify-content: flex-start;
-  padding-left: 17vw;
+  flex-direction: row;
+  justify-content: space-around;
   margin-bottom: 15vw;
 }
 
-.artworkImage {
-  width: auto; 
-  height: 400px;
+
+.w-full{
+  width: 600px;
+  height: auto;
 }
 
 .image-content {
@@ -19,8 +20,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 15vw;
-  margin-bottom: 2vw;
+  max-width: 440px;
 }
 
 .price {
@@ -47,5 +47,36 @@
   font-style: bold;
   text-decoration: none;
   display: flex;
-  margin-bottom: 1vw
+  margin-bottom: 1vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .artworkContent {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info {
+    margin-top: 20vh;
+    align-items: center;
+    text-align: center;
+    max-width: none; /* Quitamos la restricción de ancho máximo */
+  }
+
+  .w-full{
+    width: 85%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10vw;
+  }
+
+  .image-content{  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
 }

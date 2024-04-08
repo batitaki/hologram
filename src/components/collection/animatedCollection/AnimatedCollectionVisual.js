@@ -16,7 +16,6 @@ const AnimatedCollectionVisual = () => {
         height: "700px",
         position: "relative",
         overflow: "hidden",
-        margin: "auto",
       }}
     >
       {loading ? ( 
@@ -34,7 +33,6 @@ const AnimatedCollectionVisual = () => {
                     left: position && position.left,
                     top: position && position.top,
                     width: "200px",
-                    margin: "20px",
                   }}
                 >
                   {artworks[i] && (

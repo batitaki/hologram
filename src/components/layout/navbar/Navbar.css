@@ -60,10 +60,6 @@ align-items: center;
   margin-top: 2vw;
 }
 
-.sketchNav {
-  margin-top: 10vw;
-}
-
 .logo-class-closed {
   position: relative;
   display: flex;
@@ -111,3 +107,46 @@ align-items: center;
   font-family: 'Array', sans-serif !important;
 }
 
+@media screen and (max-width: 767px) {
+  .sidebar {
+    width: 25%; /* Ocupa todo el ancho disponible */
+    max-width: none; /* Sin ancho máximo */
+    height: 100%;
+  }
+
+  .navbar-closed {
+    width: 8%; /* Ocupa todo el ancho disponible */
+    max-width: none; /* Sin ancho máximo */
+  }
+
+  .art-options {
+    font-size: 16px; /* Tamaño de fuente fijo para dispositivos móviles */
+    margin-left: 10px; /* Ajuste de margen */
+  }
+
+  .art-options-closed {
+    font-size: 0px; /* Tamaño de fuente relativo */
+    margin-top: 20px; /* Ajuste de margen */
+    margin-left: 10px; /* Ajuste de margen */
+  }
+
+  .language-button {
+    font-size: 6.5px; /* Tamaño de fuente fijo para dispositivos móviles */
+  }
+
+  .logo-class {
+    margin-top: 20px; /* Ajuste de margen */
+  }
+
+  .sketchNav {
+    margin-top: 100px; /* Ajuste de margen */
+  }
+
+  .close-button,
+  .open-button {
+    font-size: 16px; /* Tamaño de fuente fijo para dispositivos móviles */
+    margin-bottom: 10px; /* Ajuste de margen */
+  }
+
+  
+}
