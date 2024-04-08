@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/hologramassa/static/css/main.20786a01.css",
+    "main.css": "/hologramassa/static/css/main.66d794e1.css",
     "main.js": "/hologramassa/static/js/main.74e37f9e.js",
     "static/media/llanto.wav": "/hologramassa/static/media/llanto.c08dc2be3b8d4aa265c2.wav",
     "static/media/suns-soleil.mp4": "/hologramassa/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
@@ -17,11 +17,11 @@
     "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
     "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
     "index.html": "/hologramassa/index.html",
-    "main.20786a01.css.map": "/hologramassa/static/css/main.20786a01.css.map",
+    "main.66d794e1.css.map": "/hologramassa/static/css/main.66d794e1.css.map",
     "main.74e37f9e.js.map": "/hologramassa/static/js/main.74e37f9e.js.map"
   },
   "entrypoints": [
-    "static/css/main.20786a01.css",
+    "static/css/main.66d794e1.css",
     "static/js/main.74e37f9e.js"
   ]
 }
