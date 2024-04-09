@@ -1,6 +1,14 @@
+let baseUrl;
+
+if (process.env.NODE_ENV === "development") {
+  baseUrl = 'https://holograma-development-1.onrender.com';
+} else {
+  baseUrl = 'https://holograma-3.onrender.com';
+}
+
 export const getCollection = async () => {
   try {
-    const collectionAwnser = await fetch('https://holograma-3.onrender.com/artworks/artworks');
+    const collectionAwnser = await fetch(`${baseUrl}/artworks/artworks`);
     const data = await collectionAwnser.json();
     return data;
   } catch (error) {
@@ -11,7 +19,7 @@ export const getCollection = async () => {
 
 export const fetchArtists = async () => {
   try {
-    const response = await fetch('https://holograma-3.onrender.com/artists/artists');
+    const response = await fetch(`${baseUrl}/artists/artists`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -24,7 +32,7 @@ export const fetchArtists = async () => {
 
 export const createArtWorkAPI = async (formData) => {
   try {
-    const response = await fetch('https://holograma-3.onrender.com/artworks/createArtwork', {
+    const response = await fetch(`${baseUrl}/artworks/createArtwork`, {
       method: 'POST',
       body: formData,
     });
@@ -44,7 +52,7 @@ export const createArtWorkAPI = async (formData) => {
 
 export const getArtworkById = async (artworkId) => {
   try {
-    const response = await fetch(`https://holograma-3.onrender.com/artworks/artworks/${artworkId}`); 
+    const response = await fetch(`${baseUrl}/artworks/artworks/${artworkId}`); 
     const data = await response.json();
     return data;
   } catch (error) {
@@ -55,7 +63,7 @@ export const getArtworkById = async (artworkId) => {
 
 export const getArtworksByArtist = async (artistId) => {
   try {
-    const response = await fetch(`https://holograma-3.onrender.com/artworks/byArtist/${artistId}`);
+    const response = await fetch(`${baseUrl}/artworks/byArtist/${artistId}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -66,7 +74,7 @@ export const getArtworksByArtist = async (artistId) => {
 
 export const fetchSketchData = async () => {
   try {
-    const response = await fetch('https://holograma-3.onrender.com/artworks/sketches');
+    const response = await fetch(`${baseUrl}/artworks/sketches`);
     const data = await response.json();
     console.log('Sketch Data:', data);
     return data;
@@ -80,7 +88,7 @@ export const fetchSketchData = async () => {
 
 export const createSketch = async (formData) => {
   try {
-    const response = await fetch('https://holograma-3.onrender.com/artworks/createSketch', {
+    const response = await fetch(`${baseUrl}/artworks/createSketch`, {
       method: 'POST',
       body: formData,
     });

@@ -7,6 +7,8 @@ const Collection = ({ artistArtworks }) => {
   const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     const fetchArtworks = async () => {
       try {

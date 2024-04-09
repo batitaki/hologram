@@ -28,6 +28,9 @@ import DragAndDropProvider from "./components/collection/media/dragAndDrop/DragA
 import DragDrop from "./components/collection/media/dragAndDrop/DragDrop";
 
 function App() {
+
+
+
   const initialUserData = localStorage.getItem("userData")
     ? JSON.parse(localStorage.getItem("userData"))
     : null;
