@@ -102,7 +102,7 @@ function App() {
               />
 
 
-              <Route path="/search-profile" element={<SearchProfile />} />
+              <Route path="/hologramassa/search-profile" element={<SearchProfile />} />
 
               <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
 

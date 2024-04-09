@@ -69,13 +69,13 @@ function Navbar({ isLoggedIn, handleLogout }) {
               id="artOptions"
             >
               <Link
-                to="/"
+                to="/hologramassa/"
                 className={`nav-link ${
-                  selectedView === "/" ? "selected" : ""
+                  selectedView === "/hologramassa/" ? "selected" : ""
                 }`}
                 onClick={() => {
                   openNavbar();
-                  setSelectedView("/");
+                  setSelectedView("/hologramassa/");
                 }}
               >
                 {t("home")}
@@ -177,7 +177,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
                 </Link>
               )}
               {isLoggedIn && (
-                <Link to="/" className="nav-link" onClick={handleLogout}>
+                <Link to="/hologramassa/" className="nav-link" onClick={handleLogout}>
                   {t("logout")}
                 </Link>
               )}
