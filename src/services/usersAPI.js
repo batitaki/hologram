@@ -1,6 +1,6 @@
 export const fetchUsers = async () => {
   try {
-    const response = await fetch("https://holograma-3.onrender.com/users/users");
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/users`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -11,7 +11,7 @@ export const fetchUsers = async () => {
 
 export const createUser = async (formData) => {
   try {
-    const apiEndpoint = "https://holograma-3.onrender.com/users/createUser";
+    const apiEndpoint = `${process.env.REACT_APP_API_ENDPOINT}/users/createUser`;
     const form = new FormData();
 
     for (const key in formData) {
@@ -39,7 +39,7 @@ export const createUser = async (formData) => {
 
 export const loginUser = async (credentials) => {
   try {
-    const response = await fetch("https://holograma-3.onrender.com/users/login", {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const loginUser = async (credentials) => {
 export const fetchUserProfile = async () => {
   try {
     const token = localStorage.getItem("token");
-    const response = await fetch("https://holograma-3.onrender.com/users/profile", {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ export const fetchUserProfile = async () => {
 
 export const searchUserProfile = async (username) => {
   try {
-    const response = await fetch(`https://holograma-3.onrender.com/users/users/${username}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/users/${username}`, {
       method: "GET",
     });
 
@@ -108,7 +108,7 @@ export const editUserProfile = async (userId, formData, token) => {
     console.log("ID del usuario:", userId);
     console.log("Token de autenticación:", token); 
 
-    const apiEndpoint = `https://holograma-3.onrender.com/users/user/${userId}/edit`;
+    const apiEndpoint = `${process.env.REACT_APP_API_ENDPOINT}/users/user/${userId}/edit`;
 
     const form = new FormData();
 

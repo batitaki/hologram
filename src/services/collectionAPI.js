@@ -1,14 +1,6 @@
-let baseUrl;
-
-if (process.env.NODE_ENV === "development") {
-  baseUrl = 'https://holograma-development-1.onrender.com';
-} else {
-  baseUrl = 'https://holograma-3.onrender.com';
-}
-
 export const getCollection = async () => {
   try {
-    const collectionAwnser = await fetch(`${baseUrl}/artworks/artworks`);
+    const collectionAwnser = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/artworks`);
     const data = await collectionAwnser.json();
     return data;
   } catch (error) {
@@ -19,20 +11,19 @@ export const getCollection = async () => {
 
 export const fetchArtists = async () => {
   try {
-    const response = await fetch(`${baseUrl}/artists/artists`);
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artists/artists`);
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error al obtener artistas:', error);
     return [];
   }
-
 };
 
 
 export const createArtWorkAPI = async (formData) => {
   try {
-    const response = await fetch(`${baseUrl}/artworks/createArtwork`, {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/createArtwork`, {
       method: 'POST',
       body: formData,
     });
@@ -52,7 +43,7 @@ export const createArtWorkAPI = async (formData) => {
 
 export const getArtworkById = async (artworkId) => {
   try {
-    const response = await fetch(`${baseUrl}/artworks/artworks/${artworkId}`); 
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/artworks/${artworkId}`); 
     const data = await response.json();
     return data;
   } catch (error) {
@@ -63,7 +54,7 @@ export const getArtworkById = async (artworkId) => {
 
 export const getArtworksByArtist = async (artistId) => {
   try {
-    const response = await fetch(`${baseUrl}/artworks/byArtist/${artistId}`);
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/byArtist/${artistId}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -74,7 +65,7 @@ export const getArtworksByArtist = async (artistId) => {
 
 export const fetchSketchData = async () => {
   try {
-    const response = await fetch(`${baseUrl}/artworks/sketches`);
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/sketches`);
     const data = await response.json();
     console.log('Sketch Data:', data);
     return data;
@@ -84,11 +75,9 @@ export const fetchSketchData = async () => {
   }
 };
 
-
-
 export const createSketch = async (formData) => {
   try {
-    const response = await fetch(`${baseUrl}/artworks/createSketch`, {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artworks/createSketch`, {
       method: 'POST',
       body: formData,
     });
@@ -105,4 +94,3 @@ export const createSketch = async (formData) => {
     return { success: false, error: 'Error al enviar la solicitud' };
   }
 };
-

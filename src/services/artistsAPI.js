@@ -1,6 +1,6 @@
 const getArtists = async () => {
   try {
-    const artistAnswer = await fetch('https://holograma-3.onrender.com/artists/artists');
+    const artistAnswer = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artists/artists`);
     const data = await artistAnswer.json();
     return data;
   } catch (error) {
@@ -9,11 +9,9 @@ const getArtists = async () => {
   }
 };
 
-
-
 const getArtistDetails = async (artistId) => {
   try {
-      const response = await fetch(`https://holograma-3.onrender.com/artists/artistDetail/${artistId}`);
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/artists/artistDetail/${artistId}`);
     if (response.ok) {
       const artistData = await response.json();
       return artistData;
@@ -27,10 +25,9 @@ const getArtistDetails = async (artistId) => {
   }
 };
 
-
 const sendArtistApplication = async (formData) => {
   try {
-    const apiEndpoint = 'https://holograma-3.onrender.com/artists/artistRequest';
+    const apiEndpoint = `${process.env.REACT_APP_API_ENDPOINT}/artists/artistRequest`;
     const form = new FormData();
 
     for (const key in formData) {
@@ -55,7 +52,5 @@ const sendArtistApplication = async (formData) => {
     return { success: false, error: 'Error en la solicitud' };
   }
 };
-
-
 
 export { getArtists, getArtistDetails, sendArtistApplication };
