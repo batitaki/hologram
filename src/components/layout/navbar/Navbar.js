@@ -123,18 +123,6 @@ function Navbar({ isLoggedIn, handleLogout }) {
               </Link>
 
               <Link
-                to="/movies"
-                className={`nav-link ${
-                  selectedView === "/movies" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  openNavbar();
-                  setSelectedView("/movies");
-                }}
-              >
-                {t("movies")}
-              </Link>
-              <Link
                 to="/collection"
                 className={`nav-link ${
                   selectedView === "/collection" ? "selected" : ""

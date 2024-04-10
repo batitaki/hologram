@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .sketch-content{
@@ -40,10 +40,9 @@
 }
 
 .button-permission{
-  margin-left: 35%;
-  margin-top: 20%;
-  margin-bottom: 20vw;
-  font-size: 5vw; /* Tamaño de fuente relativo */
+  margin-top: 30vh;
+  margin-bottom: 50vw;
+  font-size: 2vw; /* Tamaño de fuente relativo */
   border: none;
   background: none;
   font-family: 'Array', sans-serif !important;
