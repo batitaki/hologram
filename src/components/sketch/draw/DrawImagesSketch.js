@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Sketch from "react-p5";
 import "./DrawImages.css";
 
@@ -8,13 +8,17 @@ const DrawImagesComponent = () => {
   const [shouldDraw, setShouldDraw] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-  const [size, setSize] = useState(100);
+  const [showSecondInstruction, setShowSecondInstruction] = useState(false);
+  const [printedFirstImage, setPrintedFirstImage] = useState(false);
+  const [size, setSize] = useState(() => {
+    return window.innerWidth < 780 ? 50 : 100; 
+  });
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
 
   const handleImageUpload = (p5, e) => {
     const file = e.target.files[0];
-
+  
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -22,12 +26,15 @@ const DrawImagesComponent = () => {
           setUserImage(img);
           setShowInstructions(false);
           setDrawImage(true);
+          setShowSecondInstruction(true);
+          openFullscreen(); 
         });
         imgRef.current = img;
       };
       reader.readAsDataURL(file);
     }
   };
+  
 
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = Math.min(window.innerWidth, 1024);
@@ -53,10 +60,10 @@ const DrawImagesComponent = () => {
       if (p5.frameCount % 30 < 15) {
         p5.fill(0);
         p5.textAlign(p5.CENTER);
-        const instructionTextSize = p5.width < 600 ? 20 : 35; // Reducir el tamaño del texto para dispositivos móviles
+        const instructionTextSize = p5.width < 600 ? 20 : 35;
         p5.textSize(instructionTextSize);
         p5.textFont("Array");
-        const instructionText = "PRESS U TO DRAW YOUR IMAGES";
+        const instructionText = "PRESS U TO LOAD IMAGES";
         p5.text(
           instructionText,
           p5.width / 2,
@@ -64,6 +71,23 @@ const DrawImagesComponent = () => {
         );
       }
     } else {
+      if (showSecondInstruction && !printedFirstImage && imagesHistory.current.length === 0) {
+        if (p5.frameCount % 30 < 15) {
+          p5.fill(0);
+          p5.textAlign(p5.CENTER);
+          const instructionTextSize = p5.width < 600 ? 20 : 35;
+          p5.textSize(instructionTextSize);
+          p5.textFont("Array");
+          const instructionText = "CLICK INSIDE THE CANVAS";
+          p5.text(
+            instructionText,
+            p5.width / 2,
+            p5.height / 2 + instructionTextSize / 2
+          );
+        }
+      }
+  
+
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
         p5.image(img, x - width / 2, y - height / 2, width, height);
@@ -78,6 +102,10 @@ const DrawImagesComponent = () => {
           height: userImage.height * (size / userImage.width),
         };
         imagesHistory.current.push(currentImage);
+        if (!printedFirstImage) {
+          setShowSecondInstruction(false);
+          setPrintedFirstImage(true);
+        }
       }
     }
   };
@@ -99,13 +127,13 @@ const DrawImagesComponent = () => {
         setSize(150);
         break;
       case "3":
-        setSize(250); // Tamaño grande
+        setSize(250); 
         break;
       case "4":
-        setSize(500); // Tamaño muy grande
+        setSize(500); 
         break;
       case "5":
-        setSize(1050); // Tamaño máximo
+        setSize(1050); 
         break;
       default:
         break;
@@ -123,10 +151,20 @@ const DrawImagesComponent = () => {
     document.getElementById("imageInput").click();
   };
 
+  const openFullscreen = () => {
+    const canvas = document.querySelector(".p5Canvas");
+    if (canvas.requestFullscreen) {
+      canvas.requestFullscreen();
+    } else if (canvas.webkitRequestFullscreen) { /* Safari */
+      canvas.webkitRequestFullscreen();
+    } else if (canvas.msRequestFullscreen) { /* IE11 */
+      canvas.msRequestFullscreen();
+    }
+  };
   return (
     <>
       <div className="draw-images">
-        <h4 className="title"> DRAW IMAGES </h4>
+        <h4 className="title"> PRINT IMAGES </h4>
         <div>
           <div className="canvas-container">
             <Sketch
@@ -144,6 +182,9 @@ const DrawImagesComponent = () => {
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
           <div className="sizes-instruction">
+          <div>
+        <button className="button-full-screan" onClick={openFullscreen}>FULLSCREEN</button>
+        </div>
           <button className="input-draw-images" onClick={handleButtonClick}>LOAD IMAGE</button>
             <ul className="intructions-list">
               TO SELECT THE IMAGE SIZE PRESS

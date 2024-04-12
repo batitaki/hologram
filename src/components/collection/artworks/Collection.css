@@ -69,10 +69,11 @@
 @media only screen and (max-width: 768px) {
   .columns-container {
     flex-direction: column; /* Cambiar a columna en dispositivos móviles */
+    align-items: center;
   }
   
   .column {
-    width: 100%; /* Ocupar todo el ancho en dispositivos móviles */
+    width: 90%; /* Ocupar todo el ancho en dispositivos móviles */
     margin-bottom: 30px; /* Aumentar el espacio entre las columnas en dispositivos móviles */
   }
 }

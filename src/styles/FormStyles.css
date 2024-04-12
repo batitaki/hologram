@@ -70,7 +70,7 @@
   .my-container-movie,
   .my-container-artwork,
   .my-container-apply {
-    width: 80%; /* Reducir el ancho del contenedor al 90% del ancho disponible */
+    width: 75%; /* Reducir el ancho del contenedor al 90% del ancho disponible */
     max-width: none; /* Quitar el ancho máximo para que pueda ajustarse según el tamaño de la pantalla */
     margin-left: auto; /* Centrar horizontalmente el contenedor */
     margin-right: auto;

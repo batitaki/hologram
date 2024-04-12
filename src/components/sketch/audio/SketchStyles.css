@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+
 }
 
 .sketch-title {
@@ -53,4 +53,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.button-full-screan {
+  font-size: 2vw; /* Tamaño de fuente relativo */
+  border: none;
+  background: none;
+  font-family: 'Array', sans-serif !important;
+  color: #000000;
 }

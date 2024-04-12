@@ -10,6 +10,7 @@ const CreateSketch = () => {
     Image: '',
     Instructions: '',
     Description: '',
+    FilePath: ''
   });
 
   useEffect(() => {
@@ -114,6 +115,19 @@ const CreateSketch = () => {
             name="Description"
             value={formData.Description}
             onChange={handleChange}
+          />
+        </div>
+        <div className="my-form-group-form">
+          <label htmlFor="FilePath" className="my-label-form">
+            FILE PATH
+          </label>
+          <input
+            type="text"
+            className="my-input-form"
+            name="FilePath"
+            value={formData.FilePath}
+            onChange={handleChange}
+            required
           />
         </div>
 

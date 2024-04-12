@@ -58,10 +58,11 @@
   }
 
   .info {
-    margin-top: 20vh;
+    margin-top: 10vh;
     align-items: center;
     text-align: center;
-    max-width: none; /* Quitamos la restricción de ancho máximo */
+    width: 80%;
+    max-width: none; 
   }
 
   .w-full{
