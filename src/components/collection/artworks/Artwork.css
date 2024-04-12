@@ -1,18 +1,15 @@
 .artworkContent {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-bottom: 15vw;
+  margin-top: 15vh;
+  align-items:center ;
+  
 }
-
-
 .w-full{
   width: 600px;
   height: auto;
-}
-
-.image-content {
-  margin-top: 6vw;
 }
 
 .info {
@@ -20,7 +17,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 440px;
+  width: 30%;
+  height: 70vh;
+  border: 0.5px solid #000000;
 }
 
 .price {
@@ -37,6 +36,7 @@
   font-weight: 1;
   color: #27343a;
   font-style: bold;
+  margin-bottom: 5vh;
 }
 
 .artist-name {

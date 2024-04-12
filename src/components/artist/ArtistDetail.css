@@ -44,6 +44,20 @@
   height: auto; 
 }
 
+.showMoreButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.showMoreButton:hover {
+  background-color: #0056b3;
+}
+
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 768px) {
   .artistDetailContainer {
@@ -72,4 +86,17 @@
     width: 80vw; /* Ajusta el ancho de la imagen */
     height: auto; /* Mantén la proporción de la imagen */
   }
+
+  .artistDescription {
+    font-family: 'Array', sans-serif;
+    font-size: 15px;
+    color: #27343a;
+    text-align: center;
+    width: 40vw;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Mostrar solo dos líneas */
+  }
+  
 }

@@ -65,7 +65,7 @@ const ParticleComponent = () => {
       const centerX = p5.width / 2;
       const centerY = p5.height / 2;
 
-      const numLines = 300;
+      const numLines = 500;
       const angleIncrement = p5.TWO_PI / numLines;
   
       const maxLength = p5.dist(0, 0, centerX, centerY);
@@ -73,7 +73,7 @@ const ParticleComponent = () => {
       let lineLength = (sound.currentTime / sound.duration) * maxLength;
   
       p5.stroke(255, 0, 0);
-      p5.strokeWeight(2);
+      p5.strokeWeight(1);
       for (let i = 0; i < numLines; i++) {
         const angle = i * angleIncrement;
         const x = centerX + lineLength * p5.cos(angle);
