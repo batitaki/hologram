@@ -29,6 +29,10 @@
   align-items: center ;
 }
 
+.fluid-sketch {
+  cursor: none; /* Ocultar cursor */
+}
+
 .stars-buttons {
   font-family: 'Array', sans-serif;
   font-size: 20px;

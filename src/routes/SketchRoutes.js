@@ -9,6 +9,7 @@ import ParticleComponent from '../components/sketch/audio/ParticleComponent.js';
 import ShapeSketch from '../components/collection/magazine/ShapeSketch.js';
 import IAimages from '../components/collection/magazine/IAimages.js';
 import SketchList from '../components/sketch/list/SketchList.js';
+import FluidComponent from '../components/sketch/audio/FluidComponent.js';
 
 
 const SketchRoutes = [
@@ -17,6 +18,7 @@ const SketchRoutes = [
   { path: '/DrawImagesSketch', element: <DrawImagesSketch /> },
   { path: '/StarsSketch', element: <StarsComponent /> },
   { path: '/AudioParticlesSketch', element: <ParticleComponent /> },
+  { path: '/FluidSketch', element: <FluidComponent /> },
   { path: '/AudioVisualizerSketch', element: <AudioVisualizerComponent /> },
   { path: '/SphereImagesSketch', element: <DrawCirclesComponent /> }, 
   { path: '/ShapeSketch', element: <ShapeSketch /> }, 
