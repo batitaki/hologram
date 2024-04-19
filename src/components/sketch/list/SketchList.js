@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSketchData } from '../../../services/fetchSketch';
+import { fetchSketchData } from '../../../services/sketchAPI';
 import './SketchList.css';
 
 const SketchList = () => {
