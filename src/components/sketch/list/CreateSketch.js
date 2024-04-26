@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchArtists } from '../../../services/collectionAPI';
-import { createSketch } from '../../../services/fetchSketch.js';
+import { createSketch } from '../../../services/sketchAPI.js';
 
 const CreateSketch = () => {
   const [registeredArtists, setRegisteredArtists] = useState([]);
