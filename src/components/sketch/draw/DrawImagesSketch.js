@@ -1,24 +1,30 @@
 import React, { useState, useRef } from "react";
 import Sketch from "react-p5";
-import "./DrawImages.css";
+import horseImage from "../../../assets/horse.png";
+import image1 from "../../../assets/face.png";
+import image2 from "../../../assets/gratis-png-muhammad-ali-mike-tyson-boxeo-thumbnail.png";
+import image3 from "../../../assets/flan.png";
+import image4 from "../../../assets/stars.png";
+import image5 from "../../../assets/chinaso.png";
 
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+
   const [showInstructions, setShowInstructions] = useState(true);
   const [showSecondInstruction, setShowSecondInstruction] = useState(false);
   const [printedFirstImage, setPrintedFirstImage] = useState(false);
   const [size, setSize] = useState(() => {
-    return window.innerWidth < 780 ? 50 : 100; 
+    return window.innerWidth < 780 ? 50 : 100;
   });
   const imgRef = useRef(null);
   const imagesHistory = useRef([]);
 
-  const handleImageUpload = (p5, e) => {
+  const handleImageUpload = (p5, e, image) => {
     const file = e.target.files[0];
-  
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -27,32 +33,38 @@ const DrawImagesComponent = () => {
           setShowInstructions(false);
           setDrawImage(true);
           setShowSecondInstruction(true);
-          openFullscreen(); 
+          openFullscreen();
         });
         imgRef.current = img;
       };
       reader.readAsDataURL(file);
     }
   };
-  
 
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = Math.min(window.innerWidth, 1024);
     const canvasHeight = canvasWidth * (2 / 3);
+
     const canvas = p5.createCanvas(canvasWidth, canvasHeight);
     canvas.parent(canvasParentRef);
     canvas.style("display", "block");
-    canvas.style("margin", "auto"); 
-    canvas.style("user-select", "none"); 
-    canvas.style('touch-action', 'none');
+    canvas.style("margin", "auto");
+    canvas.style("user-select", "none");
+    canvas.style("touch-action", "none");
+    canvas.style("border", "1px solid black"); // Agregar un borde de 1px sólido negro
 
-    canvas.elt.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-    }, { passive: false });
-  
+    canvas.elt.addEventListener(
+      "touchstart",
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
     p5.background(255);
     p5.frameRate(60);
   };
+
   const draw = (p5) => {
     p5.background(255);
 
@@ -71,7 +83,11 @@ const DrawImagesComponent = () => {
         );
       }
     } else {
-      if (showSecondInstruction && !printedFirstImage && imagesHistory.current.length === 0) {
+      if (
+        showSecondInstruction &&
+        !printedFirstImage &&
+        imagesHistory.current.length === 0
+      ) {
         if (p5.frameCount % 30 < 15) {
           p5.fill(0);
           p5.textAlign(p5.CENTER);
@@ -86,7 +102,6 @@ const DrawImagesComponent = () => {
           );
         }
       }
-  
 
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
@@ -110,13 +125,95 @@ const DrawImagesComponent = () => {
     }
   };
 
-  const mousePressed = () => {
-    setShouldDraw(true);
+  const mousePressed = (p5) => {
+    if (shouldDraw && userImage) {
+      const currentImage = {
+        img: userImage,
+        x: p5.mouseX,
+        y: p5.mouseY,
+        width: userImage.width * (size / userImage.width),
+        height: userImage.height * (size / userImage.width),
+      };
+      imagesHistory.current.push(currentImage);
+      setShowSecondInstruction(false);
+      setPrintedFirstImage(true);
+      setShowInstructions(false);
+    } else {
+      setShouldDraw(true);
+    }
 
-    if (shouldDraw) {
-      setIsPaused(!isPaused);
+    setIsPaused(!isPaused);
+  };
+
+  const mouseDragged = (p5) => {
+    if (shouldDraw && userImage) {
+      const currentImage = {
+        img: userImage,
+        x: p5.mouseX,
+        y: p5.mouseY,
+        width: userImage.width * (size / userImage.width),
+        height: userImage.height * (size / userImage.width),
+      };
+      imagesHistory.current.push(currentImage);
+      setShowSecondInstruction(false);
+      setPrintedFirstImage(true);
+      setShowInstructions(false);
     }
   };
+
+  const keyTyped = (p5) => {
+    if (p5.key === "U" || p5.key === "u") {
+      document.getElementById("imageInput").click();
+    } else {
+      handleSizeChange(p5.key);
+    }
+  };
+
+  const handleButtonClick = () => {
+    document.getElementById("imageInput").click();
+  };
+
+  const openFullscreen = () => {
+    const canvas = document.querySelector(".p5Canvas");
+    try {
+      if (canvas.requestFullscreen) {
+        canvas.requestFullscreen();
+      } else if (canvas.webkitRequestFullscreen) {
+        /* Safari */
+        canvas.webkitRequestFullscreen();
+      } else if (canvas.msRequestFullscreen) {
+        /* IE11 */
+        canvas.msRequestFullscreen();
+      }
+    } catch (error) {
+      console.error("Error requesting fullscreen:", error);
+    }
+  };
+  const handleImageClick = (p5, image) => {
+    const canvasX = p5.mouseX - p5.width / 2;
+    const canvasY = p5.mouseY - p5.height / 2;
+    const imageSize = size / 2; // Tamaño de la imagen dividido por 2 para centrarla correctamente
+  
+    const img = p5.loadImage(image, () => {
+      if (img.width !== 0 && img.height !== 0) {
+        setUserImage(img);
+        const currentImage = {
+          img: img,
+          x: canvasX - imageSize, // Ajustar la posición en función del tamaño de la imagen
+          y: canvasY - imageSize, // Ajustar la posición en función del tamaño de la imagen
+          width: img.width * (size / img.width),
+          height: img.height * (size / img.width),
+        };
+        imagesHistory.current.push(currentImage);
+        setShowSecondInstruction(false);
+        setPrintedFirstImage(true);
+        setShowInstructions(false);
+      } else {
+        console.error("Error loading image.");
+      }
+    });
+  };
+  
 
   const handleSizeChange = (key) => {
     switch (key) {
@@ -127,53 +224,119 @@ const DrawImagesComponent = () => {
         setSize(150);
         break;
       case "3":
-        setSize(250); 
+        setSize(250);
         break;
       case "4":
-        setSize(500); 
+        setSize(500);
         break;
       case "5":
-        setSize(1050); 
+        setSize(1050);
         break;
       default:
         break;
     }
   };
 
-  const keyTyped = (p5) => {
-    handleSizeChange(p5.key);
-    if (p5.key === "U" || p5.key === "u") {
-      document.getElementById("imageInput").click();
-    }
-  };
-
-  const handleButtonClick = () => {
-    document.getElementById("imageInput").click();
-  };
-
-  const openFullscreen = () => {
-    const canvas = document.querySelector(".p5Canvas");
-    if (canvas.requestFullscreen) {
-      canvas.requestFullscreen();
-    } else if (canvas.webkitRequestFullscreen) { /* Safari */
-      canvas.webkitRequestFullscreen();
-    } else if (canvas.msRequestFullscreen) { /* IE11 */
-      canvas.msRequestFullscreen();
-    }
-  };
   return (
     <>
       <div className="draw-images">
         <h4 className="title"> PRINT IMAGES </h4>
-        <div>
-          <div className="canvas-container">
-            <Sketch
-              setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
-              draw={(p5) => draw(p5)}
-              keyTyped={(p5) => keyTyped(p5)}
-              mousePressed={() => mousePressed()}
-            />
-          </div>
+
+        <div className="canvas-container">
+          <Sketch
+            setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
+            draw={(p5) => draw(p5)}
+            keyTyped={(p5) => keyTyped(p5)}
+            mousePressed={(p5) => mousePressed(p5, image1)}
+            mouseDragged={(p5) => mouseDragged(p5, image1)}
+          />
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap:"5vw",
+            marginTop:"2vw"
+          }}
+        >
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={horseImage}
+            alt="horse"
+            onClick={() => handleImageClick(new window.p5(), horseImage)}
+          />
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={image1}
+            alt="image1"
+            onClick={() => handleImageClick(new window.p5(), image1)}
+          />
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={image2}
+            alt="image2"
+            onClick={() => handleImageClick(new window.p5(), image2)}
+          />
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={image3}
+            alt="image3"
+            onClick={() => handleImageClick(new window.p5(), image3)}
+          />
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={image4}
+            alt="image4"
+            onClick={() => handleImageClick(new window.p5(), image4)}
+          />
+          <img
+            style={{
+              width: "80px",
+              height: "auto",
+              margin: "10px",
+              cursor: "pointer",
+            }}
+            src={image5} 
+            alt="image5"
+            onClick={() => handleImageClick(new window.p5(), image5)}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "70%",
+            marginLeft: "15vw",
+          }}
+        >
           <input
             type="file"
             id="imageInput"
@@ -181,20 +344,58 @@ const DrawImagesComponent = () => {
             style={{ display: "none" }}
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
-          <div className="sizes-instruction">
-          <div>
-        <button className="button-full-screan" onClick={openFullscreen}>FULLSCREEN</button>
-        </div>
-          <button className="input-draw-images" onClick={handleButtonClick}>LOAD IMAGE</button>
-            <ul className="intructions-list">
-              TO SELECT THE IMAGE SIZE PRESS
-              <li>KEY 1 = EXTRA SMALL 50PX</li>
-              <li>KEY 2 = SMALL 150PX</li>
-              <li>KEY 3 = MEDIUM 250PX</li>
-              <li>KEY 4 = LARGE 500PX</li>
-              <li>KEY 5 = EXTRA LARGE 1050PX</li>
-            </ul>
+          <div  className="buttons-draw-images">
+          <button className="button-full-screan" onClick={openFullscreen}>
+            FULLSCREEN
+          </button>
+          <button className="button-full-screan" onClick={handleButtonClick}>
+            LOAD IMAGE
+          </button>
           </div>
+          <p>
+            Interactive Image Collage Platform <br />
+            Welcome to our interactive image collage platform! How It Works
+            <br />
+            For guidance on using the platform, follow the on-screen
+            instructions. These will provide helpful tips and information as you
+            navigate the collage creation process.
+            <br />
+            Whether you're an artist, designer, or simply looking to unleash
+            your creativity, our interactive image collage platform offers a fun
+            and efficient way to bring your ideas to life. Get started now and
+            let your imagination run wild!
+            <br />
+            <br />
+            Fullscreen Mode: Want to immerse yourself fully in your creative
+            process? Click the "FULLSCREEN" button to enter fullscreen mode.
+            <br />
+            Pause/Resume Drawing: Need a break or want to pause the drawing
+            process? Simply click inside the canvas area again to toggle between
+            pause and resume modes.
+          </p>
+          Begin by uploading your desired images using the "LOAD IMAGE" button.
+          Simply click the button or press "U" to trigger the image upload
+          prompt.
+          <br />
+          <br />
+          Once you've uploaded your images, click inside the canvas area to
+          start placing them. Each click will position the image at the cursor
+          location.
+          <br />
+          <br />
+          <br />
+          Image Size Adjustment: To adjust the size of the images, use the
+          numbered keys on your keyboard:
+          <br />
+          Press 1 for an extra-small size (50px).
+          <br />
+          Press 2 for a small size (150px).
+          <br />
+          Press 3 for a medium size (250px).
+          <br />
+          Press 4 for a large size (500px).
+          <br />
+          Press 5 for an extra-large size (1050px).
         </div>
       </div>
     </>

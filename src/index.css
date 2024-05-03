@@ -12,15 +12,6 @@ code {
     monospace;
 }
 
-.loading {
-  font-family: "Array", sans-serif;
-  display: flex;
-  justify-content: center;
-  font-size: 2vw;
-  margin-top: 40vh;
-  margin-bottom: 60vh;
-}
-
 button {
   -webkit-appearance: none; /* Anula la apariencia predeterminada de los botones en Safari/Chrome */
   -moz-appearance: none; /* Anula la apariencia predeterminada de los botones en Firefox */
@@ -29,4 +20,24 @@ button {
   border: none; /* Elimina el borde */
   outline: none; /* Elimina el contorno */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.loading {
+  font-family: "Array", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  margin-top: 40vh;
+  margin-bottom: 60vh;
+  animation: opacityAnimation 1s ease infinite alternate, colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
+}
+
+@keyframes opacityAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes colorAnimation {
+  0% { color: red; } /* Comienza con rojo */
+  100% { color: black; } /* Cambia a negro */
 }

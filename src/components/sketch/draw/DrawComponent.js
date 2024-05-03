@@ -13,7 +13,17 @@ const DrawComponent = () => {
   const [lineThickness, setLineThickness] = useState(1);
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(724, 568).parent(canvasParentRef);
+    const canvasWidth = Math.min(window.innerWidth, 1024);
+    const canvasHeight = canvasWidth * (2 / 3);
+
+    const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+    canvas.parent(canvasParentRef);
+    canvas.style("display", "block");
+    canvas.style("margin", "auto");
+    canvas.style("user-select", "none");
+    canvas.style('touch-action', 'none');
+    canvas.style('border', '1px solid black'); 
+
     p5.frameRate(60);
   };
 

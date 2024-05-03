@@ -61,7 +61,19 @@ const DrawCirclesComponent = () => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(1024, 768).parent(canvasParentRef);
+    const canvasWidth = Math.min(window.innerWidth, 1024);
+    const canvasHeight = canvasWidth * (2 / 3);
+
+    const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+    canvas.parent(canvasParentRef);
+    canvas.style("display", "block");
+    canvas.style("margin", "auto");
+    canvas.style("user-select", "none");
+    canvas.style('touch-action', 'none');
+    canvas.style('border', '1px solid black'); 
+
+
+
     if (!userImage) {
       p5.background(255, 55, 50);
     } else {
