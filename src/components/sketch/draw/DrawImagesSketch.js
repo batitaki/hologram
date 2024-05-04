@@ -1,18 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Sketch from "react-p5";
 import horseImage from "../../../assets/horse.png";
 import image1 from "../../../assets/face.png";
 import image2 from "../../../assets/gratis-png-muhammad-ali-mike-tyson-boxeo-thumbnail.png";
 import image3 from "../../../assets/flan.png";
 import image4 from "../../../assets/stars.png";
-import image5 from "../../../assets/chinaso.png";
+import image5 from "../../../assets/dolphines.png";
 
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
   const [shouldDraw, setShouldDraw] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-
   const [showInstructions, setShowInstructions] = useState(true);
   const [showSecondInstruction, setShowSecondInstruction] = useState(false);
   const [printedFirstImage, setPrintedFirstImage] = useState(false);
@@ -126,48 +125,89 @@ const DrawImagesComponent = () => {
   };
 
   const mousePressed = (p5) => {
-    if (shouldDraw && userImage) {
-      const currentImage = {
-        img: userImage,
-        x: p5.mouseX,
-        y: p5.mouseY,
-        width: userImage.width * (size / userImage.width),
-        height: userImage.height * (size / userImage.width),
-      };
-      imagesHistory.current.push(currentImage);
-      setShowSecondInstruction(false);
-      setPrintedFirstImage(true);
-      setShowInstructions(false);
-    } else {
-      setShouldDraw(true);
+    const canvasX = p5.width / 2;
+    const canvasY = p5.height / 2;
+  
+    if (
+      p5.mouseX > canvasX - p5.width / 2 &&
+      p5.mouseX < canvasX + p5.width / 2 &&
+      p5.mouseY > canvasY - p5.height / 2 &&
+      p5.mouseY < canvasY + p5.height / 2
+    ) {
+      if (shouldDraw && userImage) {
+        const currentImage = {
+          img: userImage,
+          x: p5.mouseX,
+          y: p5.mouseY,
+          width: userImage.width * (size / userImage.width),
+          height: userImage.height * (size / userImage.width),
+        };
+        imagesHistory.current.push(currentImage);
+        setShowSecondInstruction(false);
+        setPrintedFirstImage(true);
+        setShowInstructions(false);
+      } else {
+        setShouldDraw(true);
+      }
+  
+      setIsPaused(!isPaused);
     }
-
-    setIsPaused(!isPaused);
   };
-
+  
   const mouseDragged = (p5) => {
-    if (shouldDraw && userImage) {
-      const currentImage = {
-        img: userImage,
-        x: p5.mouseX,
-        y: p5.mouseY,
-        width: userImage.width * (size / userImage.width),
-        height: userImage.height * (size / userImage.width),
-      };
-      imagesHistory.current.push(currentImage);
-      setShowSecondInstruction(false);
-      setPrintedFirstImage(true);
-      setShowInstructions(false);
+    const canvasX = p5.width / 2;
+    const canvasY = p5.height / 2;
+  
+    if (
+      p5.mouseX > canvasX - p5.width / 2 &&
+      p5.mouseX < canvasX + p5.width / 2 &&
+      p5.mouseY > canvasY - p5.height / 2 &&
+      p5.mouseY < canvasY + p5.height / 2
+    ) {
+      if (shouldDraw && userImage) {
+        const currentImage = {
+          img: userImage,
+          x: p5.mouseX,
+          y: p5.mouseY,
+          width: userImage.width * (size / userImage.width),
+          height: userImage.height * (size / userImage.width),
+        };
+        imagesHistory.current.push(currentImage);
+        setShowSecondInstruction(false);
+        setPrintedFirstImage(true);
+        setShowInstructions(false);
+      }
     }
   };
+  
 
   const keyTyped = (p5) => {
-    if (p5.key === "U" || p5.key === "u") {
+    if ((p5.key === "z" || p5.key === "Z") && p5.keyIsDown(91)) {
+      handleUndo();
+    } else if (p5.key === "U" || p5.key === "u") {
       document.getElementById("imageInput").click();
     } else {
       handleSizeChange(p5.key);
     }
   };
+
+  const keyDown = (event) => {
+    // Verifica si la combinación de teclas es Command + Z
+    if (event.metaKey && event.key === "z") {
+      handleUndo();
+      // Previene el comportamiento predeterminado del navegador para evitar que se realice el desplazamiento hacia arriba
+      event.preventDefault();
+    }
+  };
+
+  // Agrega un event listener para el evento keydown en el documento
+  useEffect(() => {
+    document.addEventListener("keydown", keyDown);
+    // Limpia el event listener al desmontar el componente
+    return () => {
+      document.removeEventListener("keydown", keyDown);
+    };
+  }, []);
 
   const handleButtonClick = () => {
     document.getElementById("imageInput").click();
@@ -189,11 +229,12 @@ const DrawImagesComponent = () => {
       console.error("Error requesting fullscreen:", error);
     }
   };
+
   const handleImageClick = (p5, image) => {
     const canvasX = p5.mouseX - p5.width / 2;
     const canvasY = p5.mouseY - p5.height / 2;
     const imageSize = size / 2; // Tamaño de la imagen dividido por 2 para centrarla correctamente
-  
+
     const img = p5.loadImage(image, () => {
       if (img.width !== 0 && img.height !== 0) {
         setUserImage(img);
@@ -213,7 +254,6 @@ const DrawImagesComponent = () => {
       }
     });
   };
-  
 
   const handleSizeChange = (key) => {
     switch (key) {
@@ -236,98 +276,198 @@ const DrawImagesComponent = () => {
         break;
     }
   };
+  const handleUndo = () => {
+    // Recorremos el historial de imágenes desde el final hacia el principio
+    for (let i = imagesHistory.current.length - 1; i >= 0; i--) {
+      // Si encontramos una imagen en el historial, la eliminamos y salimos del bucle
+      if (imagesHistory.current[i].hasOwnProperty("img")) {
+        imagesHistory.current.splice(i, 1);
+        break;
+      }
+    }
+
+    // Forzar una actualización del componente
+    setShouldDraw(!shouldDraw);
+
+    console.log(imagesHistory.current);
+  };
 
   return (
     <>
       <div className="draw-images">
         <h4 className="title"> PRINT IMAGES </h4>
 
-        <div className="canvas-container">
-          <Sketch
-            setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
-            draw={(p5) => draw(p5)}
-            keyTyped={(p5) => keyTyped(p5)}
-            mousePressed={(p5) => mousePressed(p5, image1)}
-            mouseDragged={(p5) => mouseDragged(p5, image1)}
-          />
-        </div>
-
         <div
           style={{
             display: "flex",
+            flexDirection: "row",
             justifyContent: "center",
-            alignItems: "center",
-            gap:"5vw",
-            marginTop:"2vw"
+            marginLeft:"10%"
           }}
         >
-          <img
+          <div
             style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-            src={horseImage}
-            alt="horse"
-            onClick={() => handleImageClick(new window.p5(), horseImage)}
-          />
-          <img
-            style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            src={image1}
-            alt="image1"
-            onClick={() => handleImageClick(new window.p5(), image1)}
-          />
-          <img
-            style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            src={image2}
-            alt="image2"
-            onClick={() => handleImageClick(new window.p5(), image2)}
-          />
-          <img
-            style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            src={image3}
-            alt="image3"
-            onClick={() => handleImageClick(new window.p5(), image3)}
-          />
-          <img
-            style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            src={image4}
-            alt="image4"
-            onClick={() => handleImageClick(new window.p5(), image4)}
-          />
-          <img
-            style={{
-              width: "80px",
-              height: "auto",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            src={image5} 
-            alt="image5"
-            onClick={() => handleImageClick(new window.p5(), image5)}
-          />
+          >
+            <Sketch
+              setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
+              draw={(p5) => draw(p5)}
+              keyTyped={(p5) => keyTyped(p5)}
+              mousePressed={(p5) => mousePressed(p5, image1)}
+              mouseDragged={(p5) => mouseDragged(p5, image1)}
+            />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", marginLeft:"5%", marginBottom:"5%", position:"relative" }}>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), horseImage)}
+            >
+              <img
+                src={horseImage}
+                alt="horse"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), image1)}
+            >
+              <img
+                src={image1}
+                alt="image1"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), image2)}
+            >
+              <img
+                src={image2}
+                alt="image2"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), image3)}
+            >
+              <img
+                src={image3}
+                alt="image3"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), image4)}
+            >
+              <img
+                src={image4}
+                alt="image4"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                width: "120px",
+                height: "120px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                border: "solid 1px black",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => handleImageClick(new window.p5(), image5)}
+            >
+              <img
+                src={image5}
+                alt="image5"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+          </div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -335,6 +475,8 @@ const DrawImagesComponent = () => {
             justifyContent: "center",
             width: "70%",
             marginLeft: "15vw",
+            fontFamily: "monospace"
+     
           }}
         >
           <input
@@ -344,13 +486,16 @@ const DrawImagesComponent = () => {
             style={{ display: "none" }}
             onChange={(e) => handleImageUpload(new window.p5(), e)}
           />
-          <div  className="buttons-draw-images">
-          <button className="button-full-screan" onClick={openFullscreen}>
-            FULLSCREEN
-          </button>
-          <button className="button-full-screan" onClick={handleButtonClick}>
-            LOAD IMAGE
-          </button>
+          <div className="buttons-draw-images">
+            <button className="button-full-screan" onClick={openFullscreen}>
+              FULLSCREEN
+            </button>
+            <button className="button-full-screan" onClick={handleButtonClick}>
+              LOAD IMAGE
+            </button>
+            <button className="button-full-screan" onClick={handleUndo}>
+              UNDO
+            </button>
           </div>
           <p>
             Interactive Image Collage Platform <br />

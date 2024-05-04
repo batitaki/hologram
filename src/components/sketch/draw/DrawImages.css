@@ -1,6 +1,6 @@
 .draw-images {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 5vw;
 }
@@ -8,6 +8,8 @@
 
 .canvas-container {
   margin-top: 20px; /* Ajusta el espacio entre el contenedor del lienzo y los botones */
+  display: flex;
+  flex-direction: row;
 }
 
 .buttons-draw-images{
