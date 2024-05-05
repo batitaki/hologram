@@ -60,7 +60,7 @@ function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      
+
       <Router basename="/hologramassa">
 
         <div className="App">
@@ -71,7 +71,7 @@ function App() {
               userData={userData}
             />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/hologramassa" element={<Home />} />
               {ComponentRoutes.map((route, index) => (
                 <Route key={index} path={route.path} element={route.element} />
               ))}
