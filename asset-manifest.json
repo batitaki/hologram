@@ -1,9 +1,15 @@
 {
   "files": {
-    "main.css": "/hologramassa/static/css/main.a7f2fd5f.css",
-    "main.js": "/hologramassa/static/js/main.f86f8d84.js",
+    "main.css": "/hologramassa/static/css/main.21a0c5fc.css",
+    "main.js": "/hologramassa/static/js/main.9b78bdd9.js",
+    "static/media/drawing-shapes.mp4": "/hologramassa/static/media/drawing-shapes.b6857b68c0548c21b0ce.mp4",
+    "static/media/sphere-images.mp4": "/hologramassa/static/media/sphere-images.8930108372c5a073b21a.mp4",
+    "static/media/print-images-video-crop.mp4": "/hologramassa/static/media/print-images-video-crop.778ee532c76b81f8f7f6.mp4",
+    "static/media/solo-brillaba-crop.mp4": "/hologramassa/static/media/solo-brillaba-crop.82aea95b3c616ce78ce0.mp4",
     "static/media/llanto.wav": "/hologramassa/static/media/llanto.c08dc2be3b8d4aa265c2.wav",
     "static/media/solo-brillaba-q.wav": "/hologramassa/static/media/solo-brillaba-q.0f3638c1b085579547fe.wav",
+    "static/media/audio-patch.mp4": "/hologramassa/static/media/audio-patch.6307b92c0a133cc0fbe7.mp4",
+    "static/media/fluid-sketch.mp4": "/hologramassa/static/media/fluid-sketch.91404fe47f6f0adb6ddd.mp4",
     "static/media/suns-soleil.mp4": "/hologramassa/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
     "static/media/goyl.jpg": "/hologramassa/static/media/goyl.291f7becdf2d6eb0178b.jpg",
     "static/media/harm.jpg": "/hologramassa/static/media/harm.e179ac40ba09f57e6141.jpg",
@@ -23,11 +29,11 @@
     "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
     "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
     "index.html": "/hologramassa/index.html",
-    "main.a7f2fd5f.css.map": "/hologramassa/static/css/main.a7f2fd5f.css.map",
-    "main.f86f8d84.js.map": "/hologramassa/static/js/main.f86f8d84.js.map"
+    "main.21a0c5fc.css.map": "/hologramassa/static/css/main.21a0c5fc.css.map",
+    "main.9b78bdd9.js.map": "/hologramassa/static/js/main.9b78bdd9.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7f2fd5f.css",
-    "static/js/main.f86f8d84.js"
+    "static/css/main.21a0c5fc.css",
+    "static/js/main.9b78bdd9.js"
   ]
 }
