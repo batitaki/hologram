@@ -60,7 +60,7 @@ function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <Router>
+      <Router basename="/hologramassa">
 
         <div className="App">
           <div className="header-parent">
@@ -70,7 +70,7 @@ function App() {
               userData={userData}
             />
             <Routes>
-              <Route path="/hologramassa/" element={<Home />} />
+              <Route path="/" element={<Home />} />
               {ComponentRoutes.map((route, index) => (
                 <Route key={index} path={route.path} element={route.element} />
               ))}
@@ -82,7 +82,7 @@ function App() {
                 path="/login"
                 element={
                   isLoggedIn ? (
-                    <Navigate to="/hologramassa/" />
+                    <Navigate to="/" />
                   ) : (
                     <Login handleLogin={handleLogin} />
                   )
@@ -101,7 +101,7 @@ function App() {
               />
 
 
-              <Route path="/hologramassa/search-profile" element={<SearchProfile />} />
+              <Route path="/search-profile" element={<SearchProfile />} />
 
               <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
 
@@ -119,8 +119,6 @@ function App() {
                   </DragAndDropProvider>
                 }
               />
-
-              
             </Routes>
           </div>
         </div>
