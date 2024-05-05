@@ -27,7 +27,7 @@ i18n
           sketchText: 'STEP 1: PRESS U TO UPLOUD AN IMAGE     STEP 2: CLICK OVER THE SKETCH TO START DRAWING YOUR IMAGE',
           profile: 'PROFILE',
           logout: 'LOGOUT',
-          signIn: 'SIGN IN',
+          signIn: 'LOGIN',
           password: 'PASSWORD',
           username: 'USERNAME'
         },

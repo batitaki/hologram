@@ -46,7 +46,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
   return (
     <div className={`sidebar ${isClosed ? "navbar-closed" : ""}`}>
       <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
-        <Link to="/hologramassa/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           {isClosed ? (
             <img className="logo1" src={logo1} alt="" /> 
           ) : (
@@ -82,18 +82,6 @@ function Navbar({ isLoggedIn, handleLogout }) {
                     }}
                   >
                     {t("signIn")}
-                  </Link>
-                  <Link
-                    to="/register"
-                    className={`nav-link ${
-                      selectedView === "/register" ? "selected" : ""
-                    }`}
-                    onClick={() => {
-                      openNavbar();
-                      setSelectedView("/register");
-                    }}
-                  >
-                    {t("signUp")}
                   </Link>
                 </>
               )}
