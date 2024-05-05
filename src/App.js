@@ -60,6 +60,7 @@ function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
+      
       <Router basename="/hologramassa">
 
         <div className="App">
