@@ -10,6 +10,7 @@ import ShapeSketch from '../components/collection/magazine/ShapeSketch.js';
 import IAimages from '../components/collection/magazine/IAimages.js';
 import SketchList from '../components/sketch/list/SketchList.js';
 import FluidComponent from '../components/sketch/audio/FluidComponent.js';
+import SketchVideoList from '../components/sketch/list/SketchVideoList.js';
 
 
 const SketchRoutes = [
@@ -24,6 +25,7 @@ const SketchRoutes = [
   { path: '/ShapeSketch', element: <ShapeSketch /> }, 
   { path: '/IAimages', element: <IAimages /> }, 
   { path: '/SketchList', element: <SketchList /> }, 
+  { path: '/SketchVideoList', element: <SketchVideoList /> }, 
 ];
 
 export default SketchRoutes;

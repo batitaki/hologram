@@ -136,13 +136,13 @@ function Navbar({ isLoggedIn, handleLogout }) {
                 {t("magazine")}
               </Link>
               <Link
-                to="/SketchList"
+                to="/SketchVideoList"
                 className={`nav-link ${
-                  selectedView === "/SketchList" ? "selected" : ""
+                  selectedView === "/SketchVideoList" ? "selected" : ""
                 }`}
                 onClick={() => {
                   openNavbar();
-                  setSelectedView("/SketchList");
+                  setSelectedView("/SketchVideoList");
                 }}
               >
                 {t("SketchList")}
