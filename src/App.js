@@ -60,7 +60,7 @@ function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <Router>
+      <Router basename="/hologramassa">
 
         <div className="App">
           <div className="header-parent">
@@ -83,6 +83,7 @@ function App() {
                 element={
                   isLoggedIn ? (
                     <Navigate to="/hologramassa/" />
+
                   ) : (
                     <Login handleLogin={handleLogin} />
                   )
