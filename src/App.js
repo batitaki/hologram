@@ -76,7 +76,7 @@ function App() {
               ))}
               <Route
                 path="/register"
-                element={isLoggedIn ? <Navigate to="/hologramassa/" /> : <Register />}
+                element={isLoggedIn ? <Navigate to="/" /> : <Register />}
               />
               <Route
                 path="/login"
