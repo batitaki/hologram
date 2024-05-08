@@ -134,7 +134,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
               )}
               {isLoggedIn && (
                 <Link
-                  to="/hologramassa/"
+                  to="/"
                   className="nav-link"
                   onClick={handleLogout}
                 >
