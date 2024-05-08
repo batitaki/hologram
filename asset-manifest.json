@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/hologramassa/static/css/main.21a0c5fc.css",
-    "main.js": "/hologramassa/static/js/main.5d87009a.js",
-    "static/media/drawing-shapes.mp4": "/hologramassa/static/media/drawing-shapes.b6857b68c0548c21b0ce.mp4",
-    "static/media/sphere-images.mp4": "/hologramassa/static/media/sphere-images.8930108372c5a073b21a.mp4",
+    "main.css": "/hologramassa/static/css/main.0803db11.css",
+    "main.js": "/hologramassa/static/js/main.6c87bdd9.js",
     "static/media/print-images-video-crop.mp4": "/hologramassa/static/media/print-images-video-crop.778ee532c76b81f8f7f6.mp4",
     "static/media/solo-brillaba-crop.mp4": "/hologramassa/static/media/solo-brillaba-crop.82aea95b3c616ce78ce0.mp4",
+    "static/media/draw-video.mp4": "/hologramassa/static/media/draw-video.711c57e13226c6b29b60.mp4",
+    "static/media/solo-brillaba99.wav": "/hologramassa/static/media/solo-brillaba99.14fd28e676ca82132e1a.wav",
     "static/media/llanto.wav": "/hologramassa/static/media/llanto.c08dc2be3b8d4aa265c2.wav",
-    "static/media/solo-brillaba-q.wav": "/hologramassa/static/media/solo-brillaba-q.0f3638c1b085579547fe.wav",
+    "static/media/sketch-ellipses-video.mp4": "/hologramassa/static/media/sketch-ellipses-video.e0e81457264ae7481069.mp4",
     "static/media/audio-patch.mp4": "/hologramassa/static/media/audio-patch.6307b92c0a133cc0fbe7.mp4",
     "static/media/fluid-sketch.mp4": "/hologramassa/static/media/fluid-sketch.91404fe47f6f0adb6ddd.mp4",
     "static/media/suns-soleil.mp4": "/hologramassa/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
@@ -29,11 +29,11 @@
     "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
     "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
     "index.html": "/hologramassa/index.html",
-    "main.21a0c5fc.css.map": "/hologramassa/static/css/main.21a0c5fc.css.map",
-    "main.5d87009a.js.map": "/hologramassa/static/js/main.5d87009a.js.map"
+    "main.0803db11.css.map": "/hologramassa/static/css/main.0803db11.css.map",
+    "main.6c87bdd9.js.map": "/hologramassa/static/js/main.6c87bdd9.js.map"
   },
   "entrypoints": [
-    "static/css/main.21a0c5fc.css",
-    "static/js/main.5d87009a.js"
+    "static/css/main.0803db11.css",
+    "static/js/main.6c87bdd9.js"
   ]
 }
