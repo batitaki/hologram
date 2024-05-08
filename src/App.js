@@ -14,7 +14,7 @@ import Navbar from "./components/layout/navbar/Navbar";
 import i18n from "./components/layout/navbar/i18n";
 import ComponentRoutes from "./ComponentRoutes";
 import { Foot } from "./components/layout/foot/Foot";
-import { Home } from "./components/layout/home/Home";
+import  Home  from "./components/layout/home/Home";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import UserProfile from "./components/user/UserProfile";

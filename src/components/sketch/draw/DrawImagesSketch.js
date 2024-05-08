@@ -6,6 +6,7 @@ import image2 from "../../../assets/gratis-png-muhammad-ali-mike-tyson-boxeo-thu
 import image3 from "../../../assets/flan.png";
 import image4 from "../../../assets/stars.png";
 import image5 from "../../../assets/dolphines.png";
+import Image from "./Image";
 
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
@@ -41,9 +42,14 @@ const DrawImagesComponent = () => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    const canvasWidth = Math.min(window.innerWidth, 1024);
-    const canvasHeight = canvasWidth * (2 / 3);
-
+    let canvasWidth = Math.min(window.innerWidth, 1024);
+    let canvasHeight = canvasWidth * (2 / 3);
+  
+    if (window.innerWidth < 780) {
+      canvasWidth = window.innerWidth * 0.65; // 65% del ancho de la pantalla
+      canvasHeight = window.innerHeight * 0.9; // 90% de la altura de la pantalla
+    }
+  
     const canvas = p5.createCanvas(canvasWidth, canvasHeight);
     canvas.parent(canvasParentRef);
     canvas.style("display", "block");
@@ -51,7 +57,7 @@ const DrawImagesComponent = () => {
     canvas.style("user-select", "none");
     canvas.style("touch-action", "none");
     canvas.style("border", "1px solid black"); // Agregar un borde de 1px sólido negro
-
+  
     canvas.elt.addEventListener(
       "touchstart",
       (e) => {
@@ -59,11 +65,11 @@ const DrawImagesComponent = () => {
       },
       { passive: false }
     );
-
+  
     p5.background(255);
     p5.frameRate(60);
   };
-
+  
   const draw = (p5) => {
     p5.background(255);
 
@@ -296,13 +302,14 @@ const DrawImagesComponent = () => {
     <>
       <div className="draw-images">
         <h4 className="title"> PRINT IMAGES </h4>
-
+  
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            marginLeft:"10%"
+            alignItems:"center",
+            marginLeft: "10%"
           }}
         >
           <div
@@ -320,154 +327,25 @@ const DrawImagesComponent = () => {
               mouseDragged={(p5) => mouseDragged(p5, image1)}
             />
           </div>
-          <div style={{ display: "flex", flexDirection: "column", marginLeft:"5%", marginBottom:"5%", position:"relative" }}>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), horseImage)}
-            >
-              <img
-                src={horseImage}
-                alt="horse"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), image1)}
-            >
-              <img
-                src={image1}
-                alt="image1"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), image2)}
-            >
-              <img
-                src={image2}
-                alt="image2"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), image3)}
-            >
-              <img
-                src={image3}
-                alt="image3"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), image4)}
-            >
-              <img
-                src={image4}
-                alt="image4"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                border: "solid 1px black",
-                padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={() => handleImageClick(new window.p5(), image5)}
-            >
-              <img
-                src={image5}
-                alt="image5"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "5%",
+   
+              position: "relative"
+            }}
+          >
+          <Image src={horseImage} alt="horse" size={120} onClick={() => handleImageClick(new window.p5(), horseImage)} />
+          <Image src={image1} alt="image1" size={120} onClick={() => handleImageClick(new window.p5(), image1)} />
+          <Image src={image2} alt="image2" size={120} onClick={() => handleImageClick(new window.p5(), image2)} />
+          <Image src={image3} alt="image3" size={120} onClick={() => handleImageClick(new window.p5(), image3)} />
+          <Image src={image4} alt="image4" size={120} onClick={() => handleImageClick(new window.p5(), image4)} />
+          <Image src={image5} alt="image5" size={120} onClick={() => handleImageClick(new window.p5(), image5)} />
+
           </div>
         </div>
-
+  
         <div
           style={{
             display: "flex",
@@ -476,7 +354,6 @@ const DrawImagesComponent = () => {
             width: "70%",
             marginLeft: "15vw",
             fontFamily: "Arial, Helvetica, sans-serif"
-     
           }}
         >
           <input
@@ -501,14 +378,14 @@ const DrawImagesComponent = () => {
             Interactive Image Collage Platform <br />
             Welcome to our interactive image collage platform! How It Works
             <br />
-            For guidance on using the platform, follow the on-screen
-            instructions. These will provide helpful tips and information as you
-            navigate the collage creation process.
+            For guidance on using the platform, follow the on-screen instructions.
+            These will provide helpful tips and information as you navigate the
+            collage creation process.
             <br />
-            Whether you're an artist, designer, or simply looking to unleash
-            your creativity, our interactive image collage platform offers a fun
-            and efficient way to bring your ideas to life. Get started now and
-            let your imagination run wild!
+            Whether you're an artist, designer, or simply looking to unleash your
+            creativity, our interactive image collage platform offers a fun and
+            efficient way to bring your ideas to life. Get started now and let your
+            imagination run wild!
             <br />
             <br />
             Fullscreen Mode: Want to immerse yourself fully in your creative
@@ -518,33 +395,33 @@ const DrawImagesComponent = () => {
             process? Simply click inside the canvas area again to toggle between
             pause and resume modes.
           </p>
-          Begin by uploading your desired images using the "LOAD IMAGE" button.
-          Simply click the button or press "U" to trigger the image upload
-          prompt.
-          <br />
-          <br />
-          Once you've uploaded your images, click inside the canvas area to
-          start placing them. Each click will position the image at the cursor
-          location.
-          <br />
-          <br />
-          <br />
-          Image Size Adjustment: To adjust the size of the images, use the
-          numbered keys on your keyboard:
-          <br />
-          Press 1 for an extra-small size (50px).
-          <br />
-          Press 2 for a small size (150px).
-          <br />
-          Press 3 for a medium size (250px).
-          <br />
-          Press 4 for a large size (500px).
-          <br />
-          Press 5 for an extra-large size (1050px).
+          <p>
+            Begin by uploading your desired images using the "LOAD IMAGE" button.
+            Simply click the button or press "U" to trigger the image upload prompt.
+          </p>
+          <p>
+            Once you've uploaded your images, click inside the canvas area to start
+            placing them. Each click will position the image at the cursor location.
+          </p>
+          <p>
+            Image Size Adjustment: To adjust the size of the images, use the
+            numbered keys on your keyboard:
+            <br />
+            Press 1 for an extra-small size (50px).
+            <br />
+            Press 2 for a small size (150px).
+            <br />
+            Press 3 for a medium size (250px).
+            <br />
+            Press 4 for a large size (500px).
+            <br />
+            Press 5 for an extra-large size (1050px).
+          </p>
         </div>
       </div>
     </>
   );
+  
 };
 
 export default DrawImagesComponent;

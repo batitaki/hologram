@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sketch from "react-p5";
-import particleImage from "../../../assets/logo-rojo-home.png";
+import particleImage from "../../../assets/flan.png";
 
 const BackgroundSketch = () => {
   const [particles, setParticles] = useState([]);
@@ -33,7 +33,7 @@ const BackgroundSketch = () => {
   };
 
   const draw = (p5) => {
-    p5.background(137, 197, 250);
+    p5.background(17, 57, 250);
     p5.noFill();
 
     // Dibujar y actualizar partículas
@@ -87,7 +87,7 @@ const BackgroundSketch = () => {
       // Calcular el aspecto de la imagen de la partícula
       const aspectRatio = this.particleImg.width / this.particleImg.height;
       // Calcular el ancho y alto basado en el radio y el aspecto
-      const width = this.radius * 27;
+      const width = this.radius * 7;
       const height = width / aspectRatio;
 
       // Dibujar la imagen de la partícula sin opacidad

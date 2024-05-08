@@ -16,7 +16,8 @@
 
 .artist {
   background-color: white;
-  border: solid 2px rgb(0, 0, 0);
+  border: solid 1.5px rgb(0, 0, 0);
+  border-radius: 8px;
   flex-basis: calc(33.33% - 20px); /* Ancho fijo para cada contenedor */
   box-sizing: border-box;
   display: flex;

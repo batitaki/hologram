@@ -1,24 +1,18 @@
-.home-img {
-  background-image: url('../../../assets/araki.jpg'); 
-  background-size: cover;
-  background-position: 5% 5%;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  position: relative; 
-  z-index: -10;
+
+.home-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.home-sketch {
+.background-video {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* El video cubrirá todo el contenedor sin distorsionarse */
   position: absolute;
-  top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  z-index: 500;
-}
-.home {
- display: flex;
- justify-content: center;
+  top: 0;
+  left: 0;
 }

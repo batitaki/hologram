@@ -1,30 +1,23 @@
 .footer {
-  position: relative;
-  bottom: 0;
+  position: fixed;
+  bottom: -20vh; /* Inicialmente oculto debajo de la pantalla */
   left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20%;
-  padding: 20px 0; /* Añadir un relleno para separar el contenido del borde */
+  padding: 20px 0;
+  z-index: 1;
+  transition: bottom 0.3s ease; /* Agregar transición suave */
 }
-
-.foot-text {
-  font-family: 'Array', sans-serif;
-  color: #3c3737;
-  text-align: center; /* Alinear el texto al centro */
-  font-size: 14px; /* Reducir el tamaño de fuente para dispositivos más pequeños */
-}
-
 /* Media query para ajustes en dispositivos móviles */
 @media only screen and (max-width: 600px) {
   .footer {
-    padding: 10px 0; /* Reducir el relleno en dispositivos móviles */
+    padding: 10px 0;
   }
 
   .foot-text {
-    font-size: 12px; /* Reducir aún más el tamaño de fuente para dispositivos más pequeños */
+    font-size: 12px;
   }
 }
