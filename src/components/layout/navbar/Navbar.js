@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo2 from "../../../assets/logoNegroHolo.PNG";
 import logo1 from "../../../assets/logoko.PNG";
+import botonHamburguesa from "../../../assets/boton-hamburguesa.png";
+
 import { useTranslation } from "react-i18next";
 
 function Navbar({ isLoggedIn, handleLogout }) {
@@ -48,27 +50,17 @@ function Navbar({ isLoggedIn, handleLogout }) {
       <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
         <Link to="/" className="navbar-brand">
           {isClosed ? (
-            <img className="logo1" src={logo1} alt="" /> 
+            <img className="logo1" src={logo1} alt="" />
           ) : (
-            <img
-              className="logo2"
-              src={logo2}
-              alt=""
-
-            />
+            <img className="logo2" src={logo2} alt="" />
           )}
         </Link>
       </div>
       <div className="navbar-nav">
-        <ul className="navbar-nav">
-          <li className="nav-item">
             <div
-              className={`art-options ${
-                isClosed ? "art-options-closed" : ""
-              }`}
+              className={`art-options ${isClosed ? "art-options-closed" : ""}`}
               id="artOptions"
             >
-        
               {!isLoggedIn && (
                 <>
                   <Link
@@ -141,13 +133,15 @@ function Navbar({ isLoggedIn, handleLogout }) {
                 </Link>
               )}
               {isLoggedIn && (
-                <Link to="/hologramassa/" className="nav-link" onClick={handleLogout}>
+                <Link
+                  to="/hologramassa/"
+                  className="nav-link"
+                  onClick={handleLogout}
+                >
                   {t("logout")}
                 </Link>
               )}
             </div>
-          </li>
-        </ul>
       </div>
       <div className={`class-lang ${isClosed ? "class-lang-closed" : ""}`}>
         <div className="nav-lang">
@@ -170,15 +164,20 @@ function Navbar({ isLoggedIn, handleLogout }) {
           </button>
         </div>
         {!isClosed && (
-          <button className="open-button" onClick={toggleNavbarAndOptions}>
+          <button className="close-button" onClick={toggleNavbarAndOptions}>
             x
           </button>
         )}
 
         {isClosed && (
-          <button className="close-button" onClick={openNavbar}>
-            =
-          </button>
+       <button className="open-button" onClick={openNavbar}>
+       <img
+         className="boton-hamburguesa-png"
+         src={botonHamburguesa}
+         alt="Open Navbar"
+         style={{ width: '35px', height: '35px' }}
+       />
+     </button>
         )}
       </div>
     </div>

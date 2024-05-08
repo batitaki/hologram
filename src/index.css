@@ -5,11 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: rgba(245, 252, 255)!important;
 }
 
 button {
@@ -39,5 +35,5 @@ button {
 
 @keyframes colorAnimation {
   0% { color: red; } /* Comienza con rojo */
-  100% { color: black; } /* Cambia a negro */
+  100% { color: rgb(255, 0, 0); } /* Cambia a negro */
 }

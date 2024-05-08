@@ -16,8 +16,7 @@
 
 .artist {
   background-color: white;
-  border: 0.5px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  border: solid 2px rgb(0, 0, 0);
   flex-basis: calc(33.33% - 20px); /* Ancho fijo para cada contenedor */
   box-sizing: border-box;
   display: flex;
@@ -34,6 +33,10 @@
   gap: 20px;
   max-width: 1100px; /* Ancho máximo del contenedor padre */
   margin: 0 auto;
+}
+
+.artist:hover {
+  border-color: rgb(255, 0, 0); /* Cambiamos el color del borde cuando se pasa el cursor */
 }
 
 .artist .image {

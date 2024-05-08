@@ -17,7 +17,7 @@
   font-family: 'Array', sans-serif;
   font-size: 35px;
   font-weight: 10;
-  color: #27343a;
+  color: #000000;
   text-align: center;
   width: 40vw;
 }
@@ -46,7 +46,7 @@
 .button-permission{
   margin-top: 30vh;
   margin-bottom: 50vw;
-  font-size: 2vw; /* Tamaño de fuente relativo */
+  font-size: 3.5vw; /* Tamaño de fuente relativo */
   border: none;
   background: none;
   font-family: 'Array', sans-serif !important;

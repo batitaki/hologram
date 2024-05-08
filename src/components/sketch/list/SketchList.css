@@ -1,28 +1,35 @@
-/* SketchList.css */
+/* Estilos para pantallas grandes */
 .sketch-video-list {
-  width: 100%; /* Ancho total de la página */
-  text-align: center; /* Alinea los elementos hijos horizontalmente */
+  width: 100%;
+  text-align: center;
 }
 
 .sketch-video-container {
-  width: 25%; /* Ajusta el tamaño de cada contenedor según sea necesario */
-  margin: 10px; /* Espaciado entre los contenedores */
+  width: 25%;
+  height: 55%;
+  margin: 10px;
   display: inline-block;
   vertical-align: top;
   position: relative;
   border: solid 2px rgb(0, 0, 0);
   padding: 10px;
+  cursor: pointer;
+}
+
+.sketch-video-container:hover {
+  border-color: rgb(255, 0, 0); /* Cambiamos el color del borde cuando se pasa el cursor */
 }
 
 .sketch-video-container video {
-  width: 100%; /* El video ocupará todo el espacio disponible dentro del contenedor */
+  width: 100%;
   height: auto;
   display: block;
 }
 
+
 .video-title {
-  margin-top: 10px; /* Espaciado entre el video y el título */
-  text-align: center; /* Alinea el texto en el centro */
+  margin-top: 10px;
+  text-align: center;
   font-family: "Array", sans-serif;
   font-size: 1.5vw;
 }
@@ -32,4 +39,21 @@
   font-size: 1.5vw;
   margin-top: 3vh;
   margin-bottom: 3vh;
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .sketch-video-container {
+    width: 80%; /* Cambia el ancho a 100% para que los elementos se coloquen en columna */
+    height: auto; /* Elimina la altura fija para adaptarse al contenido */
+    margin: 10px auto; /* Centra los contenedores */
+  }
+
+  .video-title {
+    font-size: 4vw; /* Ajusta el tamaño del título para dispositivos móviles */
+  }
+
+  .sketch-video-list-title {
+    font-size: 3vw; /* Ajusta el tamaño del título de la lista para dispositivos móviles */
+  }
 }

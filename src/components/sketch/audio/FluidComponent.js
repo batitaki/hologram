@@ -132,6 +132,7 @@ const FluidComponent = () => {
           <Sketch
             setup={setup}
             draw={draw}
+            className="fluid-sketch"
           />
         </>
       ) : (

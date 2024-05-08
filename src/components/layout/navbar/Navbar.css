@@ -6,8 +6,8 @@
   bottom: 0;
   width: 21%; /* Cambiado a un ancho relativo */
   max-width: 300px; /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
-  background-color: rgba(255, 255, 255, 0.562);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(245, 252, 255, 0.628);
+  box-shadow: 0 2px 4px rgb(0, 69, 80);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +22,7 @@
 .art-options {
   font-size: 2.3vw; /* Tamaño de fuente relativo */
   font-family: 'Array', sans-serif !important;
-  color: #000000f5;
+  color: #000000;
   margin-left: 1vw;
   position: relative;
 }
@@ -101,7 +101,7 @@ align-items: center;
 .language-separator {
   width: 100%;
   height: 2px;
-  background-color: #5c5c5c;
+  background-color: #000000;
   margin: 1vw 0; /* Margen relativo */
   display: block;
   font-family: 'Array', sans-serif !important;
@@ -148,6 +148,10 @@ align-items: center;
     margin-bottom: 10px; /* Ajuste de margen */
   }
 
+  .boton-hamburguesa-png {
+    width: 10px;
+
+  }
   
   
 }

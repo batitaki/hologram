@@ -12,8 +12,8 @@
   max-width: 1200px; 
 }
 
-.artwork-container:hover .artwork-image {
-  opacity: 0.7;
+.artwork-container:hover {
+  border: solid 2px rgb(255, 0, 0);
 }
 
 
@@ -26,14 +26,14 @@
   font-family: 'Array', sans-serif;
   font-size: 30px;
   font-weight: 1;
-  color: #27343a;
+  color: #000000;
   font-style: bold;
   margin-bottom: 20px;
 }
 
 .description {
   font-family: 'Array', sans-serif;
-  color: #333333;
+  color: #000000;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -45,7 +45,7 @@
   font-family: 'Array', sans-serif;
   font-size: 25px;
   font-weight: bold;
-  color: #38464d;
+  color: #000000;
 }
 
 .artwork-image {
@@ -60,8 +60,10 @@
 
 .artwork-container {
   margin-bottom: 30px;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
+  border: solid 2px rgb(0, 0, 0);
+  margin-left: 15px;
 }
 
 /* Agrega esta parte al final de tu archivo CSS */
@@ -73,7 +75,7 @@
   }
   
   .column {
-    width: 90%; /* Ocupar todo el ancho en dispositivos móviles */
+    width: 80%; /* Ocupar todo el ancho en dispositivos móviles */
     margin-bottom: 30px; /* Aumentar el espacio entre las columnas en dispositivos móviles */
   }
 }

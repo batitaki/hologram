@@ -475,7 +475,7 @@ const DrawImagesComponent = () => {
             justifyContent: "center",
             width: "70%",
             marginLeft: "15vw",
-            fontFamily: "monospace"
+            fontFamily: "Arial, Helvetica, sans-serif"
      
           }}
         >

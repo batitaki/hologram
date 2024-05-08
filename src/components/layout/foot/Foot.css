@@ -3,12 +3,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30%;
+  margin-top: 20%;
   padding: 20px 0; /* Añadir un relleno para separar el contenido del borde */
 }
 
