@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sketch from 'react-p5';
-import './IAstyles.css';
+
 
 const ShapeSketch = () => {
   const [userInput, setUserInput] = useState(''); // Estado para almacenar la entrada del usuario
@@ -101,7 +101,7 @@ const ShapeSketch = () => {
   };
 
   return (
-    <div className='iaStyles'>
+    <div >
       <h1>Simple Model Component</h1>
       <p>Ingrese los comandos de p5.js:</p>
       <ul>

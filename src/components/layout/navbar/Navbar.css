@@ -6,7 +6,7 @@
   bottom: 0;
   width: 21%; /* Cambiado a un ancho relativo */
   max-width: 300px; /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
-  background-color: rgba(245, 252, 255, 0.628);
+  background-color: rgba(245, 252, 255, 0.439);
   box-shadow: 0 2px 4px rgb(0, 69, 80);
   display: flex;
   flex-direction: column;

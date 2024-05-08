@@ -42,7 +42,7 @@
 }
 
 /* Estilos para dispositivos móviles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1224px) {
   .sketch-video-container {
     width: 80%; /* Cambia el ancho a 100% para que los elementos se coloquen en columna */
     height: auto; /* Elimina la altura fija para adaptarse al contenido */

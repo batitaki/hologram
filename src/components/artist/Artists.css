@@ -82,8 +82,11 @@
 }
 
 
-@media only screen and (max-width: 850px) {
-  .artist {
-    flex-basis: calc(100% - 20px); /* Ancho fijo para cada contenedor en smartphones */
+@media only screen and (max-width: 1224px) {
+  .artists-container {
+    display: flex;
+    justify-content: center;
+    flex-direction:column ;
+    width: 80%;
   }
 }
