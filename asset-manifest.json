@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/hologramassa/static/css/main.f8390232.css",
-    "main.js": "/hologramassa/static/js/main.23171b69.js",
+    "main.css": "/hologramassa/static/css/main.9367f057.css",
+    "main.js": "/hologramassa/static/js/main.4b3b17c7.js",
     "static/media/print-images-video-crop.mp4": "/hologramassa/static/media/print-images-video-crop.778ee532c76b81f8f7f6.mp4",
     "static/media/solo-brillaba-crop.mp4": "/hologramassa/static/media/solo-brillaba-crop.82aea95b3c616ce78ce0.mp4",
     "static/media/draw-video.mp4": "/hologramassa/static/media/draw-video.711c57e13226c6b29b60.mp4",
@@ -13,6 +13,7 @@
     "static/media/suns-soleil.mp4": "/hologramassa/static/media/suns-soleil.4c4bc2672cf49bd40b60.mp4",
     "static/media/goyl.jpg": "/hologramassa/static/media/goyl.291f7becdf2d6eb0178b.jpg",
     "static/media/harm.jpg": "/hologramassa/static/media/harm.e179ac40ba09f57e6141.jpg",
+    "static/media/lacienaga.mp4": "/hologramassa/static/media/lacienaga.cd80ca40668a6bb837ea.mp4",
     "static/media/beat.wav": "/hologramassa/static/media/beat.b3be5b01c8fd4f9470c9.wav",
     "static/media/ojo.wav": "/hologramassa/static/media/ojo.83c597dc61dc2d759b15.wav",
     "static/media/rising.wav": "/hologramassa/static/media/rising.992bed25bc39b08a5d19.wav",
@@ -21,20 +22,18 @@
     "static/media/stars.png": "/hologramassa/static/media/stars.3df9a588dcec5e8b77eb.png",
     "static/media/flan.png": "/hologramassa/static/media/flan.5db1c98ccac743628f58.png",
     "static/media/horse.png": "/hologramassa/static/media/horse.84469cca1d911ce0de02.png",
-    "static/media/logo-rojo-home.png": "/hologramassa/static/media/logo-rojo-home.8fe05fee4a7e7a23b7d5.png",
     "static/media/dolphines.png": "/hologramassa/static/media/dolphines.1d85054f77f1f80571db.png",
     "static/media/face.png": "/hologramassa/static/media/face.d7ea62da9ab734d8c840.png",
     "static/media/logoko.PNG": "/hologramassa/static/media/logoko.acfea23dc4eb08593580.PNG",
-    "static/media/araki.jpg": "/hologramassa/static/media/araki.d6a004cea962c39c9f06.jpg",
     "static/media/gratis-png-muhammad-ali-mike-tyson-boxeo-thumbnail.png": "/hologramassa/static/media/gratis-png-muhammad-ali-mike-tyson-boxeo-thumbnail.86d6c8b792ae1722e7c6.png",
     "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
     "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
     "index.html": "/hologramassa/index.html",
-    "main.f8390232.css.map": "/hologramassa/static/css/main.f8390232.css.map",
-    "main.23171b69.js.map": "/hologramassa/static/js/main.23171b69.js.map"
+    "main.9367f057.css.map": "/hologramassa/static/css/main.9367f057.css.map",
+    "main.4b3b17c7.js.map": "/hologramassa/static/js/main.4b3b17c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.f8390232.css",
-    "static/js/main.23171b69.js"
+    "static/css/main.9367f057.css",
+    "static/js/main.4b3b17c7.js"
   ]
 }
