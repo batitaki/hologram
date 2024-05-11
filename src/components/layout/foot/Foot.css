@@ -1,6 +1,6 @@
 .footer {
-  position: fixed;
-  bottom: -20vh; /* Inicialmente oculto debajo de la pantalla */
+  margin-top: 10vw;
+  bottom: 0; /* Inicialmente oculto debajo de la pantalla */
   left: 0;
   width: 100%;
   display: flex;

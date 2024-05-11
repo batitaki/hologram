@@ -34,15 +34,15 @@ const SketchVideoList = () => {
           <Link to={`/${video.path}`}>
             {videoLoading[video.id] ? (
               <div className="loading">Loading...</div>
-            ) : (
-              <video
-                src={video.src}
-                autoPlay
-                loop
-                muted
-                onLoadedData={() => handleVideoLoaded(video.id)}
-              />
-            )}
+            ) : null}
+            <video
+              src={video.src}
+              autoPlay
+              loop
+              muted
+              style={{ display: videoLoading[video.id] ? 'none' : 'block' }}
+              onLoadedData={() => handleVideoLoaded(video.id)}
+            />
           </Link>
           <div className="video-title">{video.title}</div>
         </div>

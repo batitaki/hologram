@@ -10,7 +10,7 @@ const Magazine = () => {
   return (
     <>
       <div className="magazine">
-        <h2 className="titleMagazine">{t("magazine")}</h2>
+        <h2 className="title">{t("magazine")}</h2>
       </div>
       <div className="animated">
         <div className="text-animation">

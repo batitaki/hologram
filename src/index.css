@@ -8,6 +8,17 @@ body {
   background-color: rgba(245, 252, 255)!important;
 }
 
+.title {
+  font-family: "Array", sans-serif;
+  font-size: 30px;
+  font-weight: 1;
+  color: #27343a;
+  text-align: center;
+  font-style: bold;
+  margin-top: 3vh;
+}
+
+
 button {
   -webkit-appearance: none; /* Anula la apariencia predeterminada de los botones en Safari/Chrome */
   -moz-appearance: none; /* Anula la apariencia predeterminada de los botones en Firefox */

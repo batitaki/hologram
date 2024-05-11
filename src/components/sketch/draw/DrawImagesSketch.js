@@ -11,8 +11,6 @@ import Image from "./Image";
 const DrawImagesComponent = () => {
   const [drawImage, setDrawImage] = useState(false);
   const [userImage, setUserImage] = useState(null);
-  const [shouldDraw, setShouldDraw] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
   const [showSecondInstruction, setShowSecondInstruction] = useState(false);
   const [printedFirstImage, setPrintedFirstImage] = useState(false);
@@ -43,13 +41,13 @@ const DrawImagesComponent = () => {
 
   const setup = (p5, canvasParentRef) => {
     let canvasWidth = Math.min(window.innerWidth, 1024);
-    let canvasHeight = canvasWidth * (2 / 3);
-  
+    let canvasHeight = canvasWidth * (1.9 / 3);
+
     if (window.innerWidth < 780) {
       canvasWidth = window.innerWidth * 0.65; // 65% del ancho de la pantalla
       canvasHeight = window.innerHeight * 0.9; // 90% de la altura de la pantalla
     }
-  
+
     const canvas = p5.createCanvas(canvasWidth, canvasHeight);
     canvas.parent(canvasParentRef);
     canvas.style("display", "block");
@@ -57,7 +55,7 @@ const DrawImagesComponent = () => {
     canvas.style("user-select", "none");
     canvas.style("touch-action", "none");
     canvas.style("border", "1px solid black"); // Agregar un borde de 1px sólido negro
-  
+
     canvas.elt.addEventListener(
       "touchstart",
       (e) => {
@@ -65,11 +63,11 @@ const DrawImagesComponent = () => {
       },
       { passive: false }
     );
-  
+
     p5.background(255);
     p5.frameRate(60);
   };
-  
+
   const draw = (p5) => {
     p5.background(255);
 
@@ -113,7 +111,7 @@ const DrawImagesComponent = () => {
         p5.image(img, x - width / 2, y - height / 2, width, height);
       }
 
-      if (drawImage && userImage && shouldDraw && !isPaused) {
+      if (drawImage && userImage && p5.mouseIsPressed) {
         const currentImage = {
           img: userImage,
           x: p5.mouseX,
@@ -133,14 +131,14 @@ const DrawImagesComponent = () => {
   const mousePressed = (p5) => {
     const canvasX = p5.width / 2;
     const canvasY = p5.height / 2;
-  
+
     if (
       p5.mouseX > canvasX - p5.width / 2 &&
       p5.mouseX < canvasX + p5.width / 2 &&
       p5.mouseY > canvasY - p5.height / 2 &&
       p5.mouseY < canvasY + p5.height / 2
     ) {
-      if (shouldDraw && userImage) {
+      if (userImage) {
         const currentImage = {
           img: userImage,
           x: p5.mouseX,
@@ -153,24 +151,22 @@ const DrawImagesComponent = () => {
         setPrintedFirstImage(true);
         setShowInstructions(false);
       } else {
-        setShouldDraw(true);
+        setDrawImage(true);
       }
-  
-      setIsPaused(!isPaused);
     }
   };
-  
+
   const mouseDragged = (p5) => {
     const canvasX = p5.width / 2;
     const canvasY = p5.height / 2;
-  
+
     if (
       p5.mouseX > canvasX - p5.width / 2 &&
       p5.mouseX < canvasX + p5.width / 2 &&
       p5.mouseY > canvasY - p5.height / 2 &&
       p5.mouseY < canvasY + p5.height / 2
     ) {
-      if (shouldDraw && userImage) {
+      if (userImage) {
         const currentImage = {
           img: userImage,
           x: p5.mouseX,
@@ -185,7 +181,6 @@ const DrawImagesComponent = () => {
       }
     }
   };
-  
 
   const keyTyped = (p5) => {
     if ((p5.key === "z" || p5.key === "Z") && p5.keyIsDown(91)) {
@@ -293,7 +288,7 @@ const DrawImagesComponent = () => {
     }
 
     // Forzar una actualización del componente
-    setShouldDraw(!shouldDraw);
+    setDrawImage(!drawImage);
 
     console.log(imagesHistory.current);
   };
@@ -302,14 +297,14 @@ const DrawImagesComponent = () => {
     <>
       <div className="draw-images">
         <h4 className="title"> PRINT IMAGES </h4>
-  
+
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            alignItems:"center",
-            marginLeft: "10%"
+            alignItems: "center",
+            marginLeft: "10%",
           }}
         >
           <div
@@ -324,6 +319,7 @@ const DrawImagesComponent = () => {
               draw={(p5) => draw(p5)}
               keyTyped={(p5) => keyTyped(p5)}
               mousePressed={(p5) => mousePressed(p5, image1)}
+              mouseReleased={(p5) => setShowInstructions(false)}
               mouseDragged={(p5) => mouseDragged(p5, image1)}
             />
           </div>
@@ -332,20 +328,49 @@ const DrawImagesComponent = () => {
               display: "flex",
               flexDirection: "column",
               marginLeft: "5%",
-   
-              position: "relative"
+
+              position: "relative",
             }}
           >
-          <Image src={horseImage} alt="horse" size={120} onClick={() => handleImageClick(new window.p5(), horseImage)} />
-          <Image src={image1} alt="image1" size={120} onClick={() => handleImageClick(new window.p5(), image1)} />
-          <Image src={image2} alt="image2" size={120} onClick={() => handleImageClick(new window.p5(), image2)} />
-          <Image src={image3} alt="image3" size={120} onClick={() => handleImageClick(new window.p5(), image3)} />
-          <Image src={image4} alt="image4" size={120} onClick={() => handleImageClick(new window.p5(), image4)} />
-          <Image src={image5} alt="image5" size={120} onClick={() => handleImageClick(new window.p5(), image5)} />
-
+            <Image
+              src={horseImage}
+              alt="horse"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), horseImage)}
+            />
+            <Image
+              src={image1}
+              alt="image1"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), image1)}
+            />
+            <Image
+              src={image2}
+              alt="image2"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), image2)}
+            />
+            <Image
+              src={image3}
+              alt="image3"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), image3)}
+            />
+            <Image
+              src={image4}
+              alt="image4"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), image4)}
+            />
+            <Image
+              src={image5}
+              alt="image5"
+              size={120}
+              onClick={() => handleImageClick(new window.p5(), image5)}
+            />
           </div>
         </div>
-  
+
         <div
           style={{
             display: "flex",
@@ -353,7 +378,7 @@ const DrawImagesComponent = () => {
             justifyContent: "center",
             width: "70%",
             marginLeft: "15vw",
-            fontFamily: "Arial, Helvetica, sans-serif"
+            fontFamily: "Arial, Helvetica, sans-serif",
           }}
         >
           <input
@@ -378,14 +403,14 @@ const DrawImagesComponent = () => {
             Interactive Image Collage Platform <br />
             Welcome to our interactive image collage platform! How It Works
             <br />
-            For guidance on using the platform, follow the on-screen instructions.
-            These will provide helpful tips and information as you navigate the
-            collage creation process.
+            For guidance on using the platform, follow the on-screen
+            instructions. These will provide helpful tips and information as you
+            navigate the collage creation process.
             <br />
-            Whether you're an artist, designer, or simply looking to unleash your
-            creativity, our interactive image collage platform offers a fun and
-            efficient way to bring your ideas to life. Get started now and let your
-            imagination run wild!
+            Whether you're an artist, designer, or simply looking to unleash
+            your creativity, our interactive image collage platform offers a fun
+            and efficient way to bring your ideas to life. Get started now and
+            let your imagination run wild!
             <br />
             <br />
             Fullscreen Mode: Want to immerse yourself fully in your creative
@@ -396,12 +421,14 @@ const DrawImagesComponent = () => {
             pause and resume modes.
           </p>
           <p>
-            Begin by uploading your desired images using the "LOAD IMAGE" button.
-            Simply click the button or press "U" to trigger the image upload prompt.
+            Begin by uploading your desired images using the "LOAD IMAGE"
+            button. Simply click the button or press "U" to trigger the image
+            upload prompt.
           </p>
           <p>
-            Once you've uploaded your images, click inside the canvas area to start
-            placing them. Each click will position the image at the cursor location.
+            Once you've uploaded your images, click inside the canvas area to
+            start placing them. Each click will position the image at the cursor
+            location.
           </p>
           <p>
             Image Size Adjustment: To adjust the size of the images, use the
@@ -421,7 +448,6 @@ const DrawImagesComponent = () => {
       </div>
     </>
   );
-  
 };
 
 export default DrawImagesComponent;

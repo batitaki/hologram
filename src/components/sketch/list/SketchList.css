@@ -40,6 +40,25 @@
   font-size: 1.5vw;
   margin-top: 3vh;
   margin-bottom: 3vh;
+
+}
+.video-loading {
+  font-family: "Array", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  animation: opacityAnimation 1s ease infinite alternate, colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
+  text-decoration: none;
+}
+
+@keyframes opacityAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes colorAnimation {
+  0% { color: red; } /* Comienza con rojo */
+  100% { color: rgb(255, 0, 0); } /* Cambia a negro */
 }
 
 /* Estilos para dispositivos móviles */
