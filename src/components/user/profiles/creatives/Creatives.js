@@ -19,15 +19,15 @@ const Creatives = () => {
   }, []);
 
   return (
-    <div className="creatives-container"> \
+    <div className="creatives-container"> 
       <h1 className='title'>CREATIIVES</h1>
       <div className="users-grid"> 
         {users.map(user => (
           <div key={user.id} className="user-card"> 
             <img src={user.Image} alt={user.Username} className="user-image" /> 
             <div className="user-details"> 
-              <p>Nombre: {user.Name}</p>
-              <p>Email: {user.Email}</p>
+              <p> {user.Username}</p>
+              <p> {user.Email}</p>
             </div>
           </div>
         ))}

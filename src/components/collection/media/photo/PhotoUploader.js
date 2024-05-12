@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { uploadMedia } from "../../../services/mediaAPI";
+import { uploadMedia } from "../../../../services/mediaAPI";
 
 const PhotoUploader = ({ isLoggedIn, userData, onPhotoUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);

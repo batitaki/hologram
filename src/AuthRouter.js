@@ -12,7 +12,7 @@ import Login from "./components/user/form/Login";
 import Register from "./components/user/form/Register";
 import UserProfile from "./components/user/profiles/UserProfile";
 import SearchProfile from "./components/user/profiles/search/SearchProfile";
-import PhotoUploader from "./components/collection/media/PhotoUploader";
+import PhotoUploader from "./components/collection/media/photo/PhotoUploader";
 import Creatives from "./components/user/profiles/creatives/Creatives";
 
 

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import { editUserProfile } from "../../../services/usersAPI";
 import { getMediaByUser } from "../../../services/mediaAPI";
-import PhotoUploader from "../../collection/media/PhotoUploader";
+import PhotoUploader from "../../collection/media/photo/PhotoUploader";
 
 import UserInfo from "./UserInfo";
 import ProfileImage from "./ProfileImage";
-import MediaGallery from "./MediaGallery";
+import MediaGallery from "../../collection/media/photo/MediaGallery";
 import EditProfileSection from "./EditProfileSection";
 
 function UserProfile({ isLoggedIn, userData, setUserData }) {
