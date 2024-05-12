@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/hologramassa/static/css/main.aa892e14.css",
-    "main.js": "/hologramassa/static/js/main.ac14dc02.js",
+    "main.css": "/hologramassa/static/css/main.8506606d.css",
+    "main.js": "/hologramassa/static/js/main.d5c648d9.js",
     "static/media/print-images-video-crop.mp4": "/hologramassa/static/media/print-images-video-crop.778ee532c76b81f8f7f6.mp4",
     "static/media/solo-brillaba-crop.mp4": "/hologramassa/static/media/solo-brillaba-crop.82aea95b3c616ce78ce0.mp4",
     "static/media/draw-video.mp4": "/hologramassa/static/media/draw-video.711c57e13226c6b29b60.mp4",
@@ -28,11 +28,11 @@
     "static/media/logoNegroHolo.PNG": "/hologramassa/static/media/logoNegroHolo.107cac0cb621148c267a.PNG",
     "static/media/suzi.jpg": "/hologramassa/static/media/suzi.a76d3e10ecdb497a6006.jpg",
     "index.html": "/hologramassa/index.html",
-    "main.aa892e14.css.map": "/hologramassa/static/css/main.aa892e14.css.map",
-    "main.ac14dc02.js.map": "/hologramassa/static/js/main.ac14dc02.js.map"
+    "main.8506606d.css.map": "/hologramassa/static/css/main.8506606d.css.map",
+    "main.d5c648d9.js.map": "/hologramassa/static/js/main.d5c648d9.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa892e14.css",
-    "static/js/main.ac14dc02.js"
+    "static/css/main.8506606d.css",
+    "static/js/main.d5c648d9.js"
   ]
 }
