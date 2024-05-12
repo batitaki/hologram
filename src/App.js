@@ -8,6 +8,7 @@ import { Foot } from "./components/layout/foot/Foot";
 function App() {
   const initialUserData = localStorage.getItem("userData")
     ? JSON.parse(localStorage.getItem("userData"))
+    
     : null;
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
