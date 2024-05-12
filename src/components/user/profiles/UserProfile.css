@@ -4,6 +4,30 @@
   align-items: center;
 }
 
+.columns-photos-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vw;
+}
+
+.row-photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.photo-container {
+  width: 20%; 
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.photo-image {
+  width: 100%; 
+  height: auto;
+}
+
 
 .username {
   font-family: 'Array', sans-serif;

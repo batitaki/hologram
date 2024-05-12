@@ -3,20 +3,20 @@ import Sketch from 'react-p5';
 
 
 const ShapeSketch = () => {
-  const [userInput, setUserInput] = useState(''); // Estado para almacenar la entrada del usuario
-  const [shapes, setShapes] = useState([]); // Estado para almacenar las formas dibujadas
-  const [deformation, setDeformation] = useState(0); // Estado para el parámetro de deformación
-  const [movement, setMovement] = useState(0); // Estado para el parámetro de movimiento
+  const [userInput, setUserInput] = useState('');
+  const [shapes, setShapes] = useState([]); 
+  const [deformation, setDeformation] = useState(0);
+  const [movement, setMovement] = useState(0); 
 
-  // Función de configuración de p5.js
+
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(400, 400).parent(canvasParentRef);
-    p5.background(0, 0, 255); // Establecer el fondo del lienzo como azul
+    p5.background(0, 0, 255);
   };
 
-  // Función de dibujo de p5.js
+
   const draw = (p5) => {
-    p5.background(0, 0, 255); // Limpiar el fondo en cada cuadro
+    p5.background(0, 0, 255); 
   
     shapes.forEach(shape => {
         p5.stroke(255); // Establecer el color del trazo en blanco

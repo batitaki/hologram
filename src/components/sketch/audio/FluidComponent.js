@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sketch from "react-p5";
-import audio from "../../../assets/untitled.wav";
+import audio from "../../../assets/solo-brillaba99.wav";
 
 let sound;
 

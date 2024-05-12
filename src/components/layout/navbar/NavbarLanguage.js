@@ -6,7 +6,7 @@ function NavbarLanguage({
   changeLanguage,
   toggleNavbarAndOptions,
   botonHamburguesa,
-  openNavbar, // Agregar esta línea
+  openNavbar,
 }) {
   return (
     <div className={`class-lang ${isClosed ? "class-lang-closed" : ""}`}>

@@ -1,6 +1,6 @@
 export const fetchUsers = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/users`);
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/user`);
     const data = await response.json();
     return data;
   } catch (error) {

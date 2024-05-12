@@ -45,6 +45,18 @@ function NavbarLinks({
         >
           {t("magazine")}
         </Link>
+        <Link
+          to="/creatives"
+          className={`nav-link ${
+            selectedView === "/creatives" ? "selected" : ""
+          }`}
+          onClick={() => {
+            openNavbar();
+            setSelectedView("/creatives");
+          }}
+        >
+          {t("creatives")}
+        </Link>
 
         <Link
           to="/SketchVideoList"

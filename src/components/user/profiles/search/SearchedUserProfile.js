@@ -1,5 +1,5 @@
 import React from "react";
-import MediaPhotos from "../../../collection/media/MediaPhotos";
+
 
 const SearchedUserProfile = ({ userData }) => {
   console.log("userData:", userData);
@@ -25,9 +25,6 @@ const SearchedUserProfile = ({ userData }) => {
         <div className="profile-image-container">
           <img src={userData.Image} alt="Profile" className="profile-image" />
         </div>
-      </div>
-      <div className="search-media-container">
-        <MediaPhotos userId={userData.ID} />
       </div>
     </>
   );
