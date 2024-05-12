@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo2 from "../../../assets/logoNegroHolo.PNG";
 import logo1 from "../../../assets/logoko.PNG";
 import botonHamburguesa from "../../../assets/boton-hamburguesa.png";
 
 import { useTranslation } from "react-i18next";
+import NavbarLogo from "./NavbarLogo";
+import NavbarLinks from "./NavbarLinks";
+import NavbarLanguage from "./NavbarLanguage";
 
 function Navbar({ isLoggedIn, handleLogout }) {
   const { t, i18n } = useTranslation();
@@ -47,139 +49,24 @@ function Navbar({ isLoggedIn, handleLogout }) {
 
   return (
     <div className={`sidebar ${isClosed ? "navbar-closed" : ""}`}>
-      <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
-        <Link to="/" className="navbar-brand">
-          {isClosed ? (
-            <img className="logo1" src={logo1} alt="" />
-          ) : (
-            <img className="logo2" src={logo2} alt="" />
-          )}
-        </Link>
-      </div>
-      <div className="navbar-nav">
-            <div
-              className={`art-options ${isClosed ? "art-options-closed" : ""}`}
-              id="artOptions"
-            >
-              {!isLoggedIn && (
-                <>
-                  <Link
-                    to="/login"
-                    className={`nav-link ${
-                      selectedView === "/login" ? "selected" : ""
-                    }`}
-                    onClick={() => {
-                      openNavbar();
-                      setSelectedView("/login");
-                    }}
-                  >
-                    {t("signIn")}
-                  </Link>
-                </>
-              )}
-
-              <Link
-                to="/artists"
-                className={`nav-link ${
-                  selectedView === "/artists" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  openNavbar();
-                  setSelectedView("/artists");
-                }}
-              >
-                {t("artists")}
-              </Link>
-              <Link
-                to="/collection"
-                className={`nav-link ${
-                  selectedView === "/collection" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  openNavbar();
-                  setSelectedView("/collection");
-                }}
-              >
-                {t("gallery")}
-              </Link>
-
-              <Link
-                to="/magazine"
-                className={`nav-link ${
-                  selectedView === "/magazine" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  openNavbar();
-                  setSelectedView("/magazine");
-                }}
-              >
-                {t("magazine")}
-              </Link>
-              <Link
-                to="/SketchVideoList"
-                className={`nav-link ${
-                  selectedView === "/SketchVideoList" ? "selected" : ""
-                }`}
-                onClick={() => {
-                  openNavbar();
-                  setSelectedView("/SketchVideoList");
-                }}
-              >
-                {t("SketchList")}
-              </Link>
-              {isLoggedIn && (
-                <Link to="/profile" className="nav-link">
-                  {t("profile")}
-                </Link>
-              )}
-              {isLoggedIn && (
-                <Link
-                  to="/"
-                  className="nav-link"
-                  onClick={handleLogout}
-                >
-                  {t("logout")}
-                </Link>
-              )}
-            </div>
-      </div>
-      <div className={`class-lang ${isClosed ? "class-lang-closed" : ""}`}>
-        <div className="nav-lang">
-          <button
-            className={`language-button ${
-              selectedLanguage === "en" ? "selected" : ""
-            }`}
-            onClick={() => changeLanguage("en")}
-          >
-            ENGLISH
-          </button>
-          <span className="language-separator"></span>
-          <button
-            className={`language-button ${
-              selectedLanguage === "es" ? "selected" : ""
-            }`}
-            onClick={() => changeLanguage("es")}
-          >
-            SPANISH
-          </button>
-        </div>
-        {!isClosed && (
-          <button className="close-button" onClick={toggleNavbarAndOptions}>
-            x
-          </button>
-        )}
-
-        {isClosed && (
-       <button className="open-button" onClick={openNavbar}>
-       <img
-         className="boton-hamburguesa-png"
-         src={botonHamburguesa}
-         alt="Open Navbar"
-         style={{ width: '35px', height: '35px' }}
-       />
-     </button>
-        )}
-      </div>
+      <NavbarLogo isClosed={isClosed} logo1={logo1} logo2={logo2} />
+      <NavbarLinks
+        isClosed={isClosed}
+        isLoggedIn={isLoggedIn}
+        selectedView={selectedView}
+        openNavbar={openNavbar}
+        setSelectedView={setSelectedView}
+        handleLogout={handleLogout}
+        t={t}
+      />
+      <NavbarLanguage
+        isClosed={isClosed}
+        selectedLanguage={selectedLanguage}
+        changeLanguage={changeLanguage}
+        toggleNavbarAndOptions={toggleNavbarAndOptions}
+        botonHamburguesa={botonHamburguesa}
+        openNavbar={openNavbar}
+      />
     </div>
   );
 }

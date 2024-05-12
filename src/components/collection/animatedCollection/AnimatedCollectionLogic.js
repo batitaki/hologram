@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { useInterval } from 'react-use';
-import { getCollection } from '../../../services/collectionAPI';
+import { fetchMedia } from '../../../services/mediaAPI';
 
 import { getRandomIndexes, generateRandomPositions } from './AnimatedCollectionUtils';
 
@@ -15,7 +15,7 @@ const AnimatedCollectionLogic = () => {
   useEffect(() => {
     const fetchArtworks = async () => {
       try {
-        const fetchedArtworks = await getCollection();
+        const fetchedArtworks = await fetchMedia();
         setArtworks(fetchedArtworks);
         const initialIndexes = getRandomIndexes(fetchedArtworks, 30);
         setIndexes(initialIndexes);

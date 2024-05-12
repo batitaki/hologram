@@ -6,29 +6,20 @@ import {
   Navigate,
 } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./styles/FormStyles.css";
-
 import Navbar from "./components/layout/navbar/Navbar";
 import i18n from "./components/layout/navbar/i18n";
 import ComponentRoutes from "./ComponentRoutes";
 import { Foot } from "./components/layout/foot/Foot";
 import  Home  from "./components/layout/home/Home";
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
-import UserProfile from "./components/user/UserProfile";
+import Login from "./components/user/form/Login";
+import Register from "./components/user/form/Register";
+import UserProfile from "./components/user/profiles/UserProfile";
 import PhotoUploader from "./components/collection/media/PhotoUploader";
-import SearchProfile from "./components/user/SearchProfile";
-import SearchedUserProfile from "./components/user/SearchedUserProfile";
-
-import DragAndDropProvider from "./components/collection/media/dragAndDrop/DragAndDropProvider";
-
-import DragDrop from "./components/collection/media/dragAndDrop/DragDrop";
+import SearchProfile from "./components/user/profiles/search/SearchProfile";
+import SearchedUserProfile from "./components/user/profiles/search/SearchedUserProfile";
 
 function App() {
-
-
 
   const initialUserData = localStorage.getItem("userData")
     ? JSON.parse(localStorage.getItem("userData"))
@@ -101,7 +92,6 @@ function App() {
                 }
               />
 
-
               <Route path="/search-profile" element={<SearchProfile />} />
 
               <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
@@ -111,15 +101,7 @@ function App() {
                 element={
                   <PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />
                 }
-              />
-              <Route
-                path="/drag-and-drop"
-                element={
-                  <DragAndDropProvider>
-                    <DragDrop />
-                  </DragAndDropProvider>
-                }
-              />
+              />     
             </Routes>
           </div>
         </div>
