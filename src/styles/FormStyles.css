@@ -10,7 +10,7 @@
   margin-top: 10vh;
   font-family: "Array", sans-serif;
   border: 0.5px solid #000000;
-  width: 70%;
+  width: 100%;
   max-width: 600px; 
   height: auto;
   margin-left: auto;
@@ -22,7 +22,7 @@
 
 .my-label-form {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   color: #000000ce;
   font-size: 2.5vw; 
 }
@@ -30,9 +30,7 @@
 .my-input-form,
 .my-textarea-form,
 .my-select-form {
-  width: 90%; 
-  max-width: 350px;
-  min-width: 350px;
+  width:98%; 
   background-color: #ffffff;
   border: 0.5px solid #000000;
   padding: 5px;
@@ -43,14 +41,15 @@
 
 .my-button-form,
 .my-link-form {
-  width: 90%;
+  font-family: "Array", sans-serif;
+  font-size: 2vw;
+  width: 100%;
   margin-top: 2vw; 
   color: #000000ce;
   background-color: #ffffff;
   border: 0.5px solid #000000;
   text-decoration: none;
   text-align: center;
-  padding: 10px; 
   border-radius: 2px;
   max-width: 350px;
   min-width: 350px; 
@@ -65,38 +64,21 @@
 }
 
 @media (max-width: 768px) {
+  .my-label-form,
+  .form-title {
+    font-size: 18px;
+  }
+
+  .my-button-form,
+  .my-link-form {
+    font-size: 14px;
+  }
+
   .my-container-login,
   .my-container-register,
   .my-container-movie,
   .my-container-artwork,
   .my-container-apply {
-    width: 70%; /* Reducir el ancho del contenedor al 90% del ancho disponible */
-    max-width: none; /* Quitar el ancho máximo para que pueda ajustarse según el tamaño de la pantalla */
-    margin-left: auto; /* Centrar horizontalmente el contenedor */
-    margin-right: auto;
-    padding: 30px; /* Reducir el relleno para dar más espacio en dispositivos móviles */
-  }
-
-  .my-label-form,
-  .form-title {
-    font-size: 18px; /* Reducir el tamaño de fuente de las etiquetas y títulos */
-  }
-
-  .my-input-form,
-  .my-textarea-form,
-  .my-select-form {
-    width: 100%; /* Hacer que los campos de entrada ocupen todo el ancho del contenedor */
-    max-width: 100%; /* Ajustar al ancho máximo del contenedor */
-    min-width: auto; /* Eliminar el ancho mínimo para permitir el ajuste automático */
-  }
-
-  .my-button-form,
-  .my-link-form {
-    width: 100%; /* Hacer que los botones y enlaces ocupen todo el ancho del contenedor */
-    max-width: none; /* Quitar el ancho máximo para que pueda ajustarse según el tamaño de la pantalla */
-    min-width: auto; /* Eliminar el ancho mínimo para permitir el ajuste automático */
-    margin-top: 20px; /* Aumentar el espacio entre los elementos en dispositivos móviles */
-    font-size: 16px; /* Reducir el tamaño de fuente de los botones y enlaces */
+    margin-left: 150px;
   }
 }
-
