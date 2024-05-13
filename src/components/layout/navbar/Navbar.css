@@ -22,7 +22,7 @@
 
 .art-options {
   font-size: 2.3vw; 
-
+  font-weight: bold;
   color: #000000;
   margin-left: 1vw;
   position: relative;
@@ -34,18 +34,19 @@
 .nav-link {
   text-decoration: none;
   color: #000000;
+  font-weight: bold;
 }
 
 .art-options-closed {
   font-size: 0px;
-
+  font-weight: bold;
   color: #000000;
   margin-top: 2vw;
   margin-left: 1vw;
 }
 
 .nav-lang {
-
+  font-weight: bold;
   color: #000000;
   font-size: 1.1vw;
 }
@@ -63,6 +64,7 @@
   font-family: "Array", sans-serif !important;
   color: #000000;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .logo-class {
@@ -97,14 +99,17 @@
   font-family: "Array", sans-serif;
   color: #000000;
   margin-bottom: 1vw;
+  font-weight: bold;
 }
 
 .language-button.selected {
   color: #4d4d4d;
+  font-weight: bold;
 }
 
 .nav-link.selected {
   color: #505050;
+  font-weight: bold;
 }
 
 .language-separator {

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    handleChange(event); // Propaga el evento para manejar el archivo seleccionado en el componente padre
+  };
+
   return (
     <div className="my-container-register">
-      <h3 className="form-title">SIGN UP</h3>
-      <div className="my-form-container-form">
+     <div className="my-form-items">
         {isLoading && <div className='loading-form'>LOADING...</div>}
-        <form className="my-form-form" onSubmit={handleSubmit} encType="multipart/form-data">
-          <div className="my-form-group-form">
+        <form className='my-form'  onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className="my-input-container-form">
             <label className="my-label-form" htmlFor="Username">
               USERNAME
             </label>
@@ -19,7 +25,7 @@ const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="my-form-group-form">
+          <div className="my-input-container-form">
             <label className="my-label-form" htmlFor="Password">
               PASSWORD
             </label>
@@ -31,7 +37,7 @@ const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="my-form-group-form">
+          <div className="my-input-container-form">
             <label className="my-label-form" htmlFor="Email">
               EMAIL
             </label>
@@ -43,23 +49,27 @@ const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="my-form-group-form">
+          <div className="my-input-container-form">
             <label className="my-label-form" htmlFor="Image">
-              IMAGES
+              PROFILE IMAGE
             </label>
-            <input
-              type="file"
-              className="my-input-form"
-              id="inputGroupFile01"
-              name="Image"
-              onChange={handleChange}
-            />
+            <div className="custom-file-container">
+              <input
+                type="file"
+                className="custom-file-input"
+                id="inputGroupFile01"
+                name="Image"
+                onChange={handleFileChange}
+              />
+              <label className="custom-file-label" htmlFor="inputGroupFile01">
+                {selectedFile ? selectedFile.name : "Choose file"}
+              </label>
+            </div>
           </div>
           <input type="submit" value="Enviar" className="my-button-form" />
         </form>
       </div>
     </div>
-
   );
 };
 

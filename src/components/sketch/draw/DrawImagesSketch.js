@@ -78,6 +78,7 @@ const DrawImagesComponent = () => {
         const instructionTextSize = p5.width < 600 ? 20 : 35;
         p5.textSize(instructionTextSize);
         p5.textFont("Array");
+          p5.textStyle(p5.BOLD);
         const instructionText = "PRESS U TO LOAD IMAGES";
         p5.text(
           instructionText,

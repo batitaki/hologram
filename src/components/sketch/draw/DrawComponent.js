@@ -4,13 +4,14 @@ import "./DrawComponent.css";
 
 const DrawComponent = () => {
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(false);
-  const [drawnShapes ] = useState([]);
+  const [drawnShapes] = useState([]);
   const [currentShape, setCurrentShape] = useState("ellipse");
   const [currentDrawing, setCurrentDrawing] = useState([]);
   const [lineStart, setLineStart] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState("#242424");
-  const [shapeColor, setShapeColor] = useState("#14DCEB"); 
+  const [shapeColor, setShapeColor] = useState("#14DCEB");
   const [lineThickness, setLineThickness] = useState(1);
+  const [textToPrint, setTextToPrint] = useState(""); // Nuevo estado para almacenar el texto a imprimir
 
   const setup = (p5, canvasParentRef) => {
     const canvasWidth = Math.min(window.innerWidth, 1024);
@@ -21,8 +22,8 @@ const DrawComponent = () => {
     canvas.style("display", "block");
     canvas.style("margin", "auto");
     canvas.style("user-select", "none");
-    canvas.style('touch-action', 'none');
-    canvas.style('border', '1px solid black'); 
+    canvas.style("touch-action", "none");
+    canvas.style("border", "1px solid black");
 
     p5.frameRate(60);
   };
@@ -32,9 +33,9 @@ const DrawComponent = () => {
 
     setIsMouseOverCanvas(
       p5.mouseX > 0 &&
-      p5.mouseX < p5.width &&
-      p5.mouseY > 0 &&
-      p5.mouseY < p5.height
+        p5.mouseX < p5.width &&
+        p5.mouseY > 0 &&
+        p5.mouseY < p5.height
     );
 
     if (p5.mouseIsPressed && isMouseOverCanvas) {
@@ -60,7 +61,6 @@ const DrawComponent = () => {
         };
         setCurrentDrawing([...currentDrawing, lineShape]);
       } else if (currentShape === "snowflake") {
-
         const snowflakeShape = {
           type: "snowflake",
           x: p5.mouseX,
@@ -73,7 +73,7 @@ const DrawComponent = () => {
 
     p5.strokeWeight(lineThickness);
 
-    // Dibujar las líneas en drawnShapes
+    // Dibujar las formas en drawnShapes
     for (const shapes of drawnShapes) {
       for (const shape of shapes) {
         p5.stroke(shape.color);
@@ -81,8 +81,8 @@ const DrawComponent = () => {
           p5.ellipse(shape.x, shape.y, shape.size, shape.size);
         } else if (shape.type === "line") {
           p5.line(shape.startX, shape.startY, shape.endX, shape.endY);
-        } else if (shape.type === "snowflake") {
-
+        } else if (shape.type === "snowflake"
+        ) {
           p5.text("*", shape.x, shape.y);
         }
       }
@@ -95,8 +95,10 @@ const DrawComponent = () => {
       } else if (shape.type === "line") {
         p5.line(shape.startX, shape.startY, shape.endX, shape.endY);
       } else if (shape.type === "snowflake") {
-
-        p5.text("*", shape.x, shape.y);
+        // Usar el texto ingresado por el usuario en lugar de un texto fijo
+        p5.textStyle(p5.BOLD); // Aplicar negrita
+        p5.textFont("Array"); // Establecer la fuente en "Array"
+        p5.text(textToPrint, shape.x, shape.y);
       }
     }
   };
@@ -125,6 +127,10 @@ const DrawComponent = () => {
     setLineThickness(parseInt(event.target.value));
   };
 
+  const handleTextChange = (event) => {
+    setTextToPrint(event.target.value);
+  };
+
   return (
     <div>
       <div className="sketch-controls">
@@ -144,19 +150,26 @@ const DrawComponent = () => {
         />
         <label htmlFor="lineThickness">SIZE</label>
         <input
-            className="lineThickness"
-            type="range"
-            id="lineThickness"
-            min="1"
-            max="10"
-            value={lineThickness}
-            onChange={handleLineThicknessChange}
-            style={{
-              backgroundColor: 'red',
-              color: 'white', 
-              border: '1px solid transparent', 
-            }}
-          />
+          className="lineThickness"
+          type="range"
+          id="lineThickness"
+          min="1"
+          max="10"
+          value={lineThickness}
+          onChange={handleLineThicknessChange}
+          style={{
+            backgroundColor: "red",
+            color: "white",
+            border: "1px solid transparent",
+          }}
+        />
+        <label htmlFor="textToPrint">Texto a imprimir:</label>
+        <input
+          type="text"
+          id="textToPrint"
+          value={textToPrint}
+          onChange={handleTextChange}
+        />
       </div>
       <div className="sketch-buttons">
         <button onClick={handleEllipseClick}>DRAW CIRCULE</button>

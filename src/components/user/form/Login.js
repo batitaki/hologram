@@ -36,38 +36,46 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
+    <>
+
     <div className="my-container-login">
-      <h3 className="form-title">{t("signIn")}</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="my-input-container-form">
-          <label className="my-label-form"> {t("username")}</label>
-          <input
-            type="text"
-            className="my-input-form"
-            name="Username"
-            value={credentials.Username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="my-input-container-form">
-          <label className="my-label-form"> {t("password")}</label>
-          <input
-            className="my-input-form"
-            type="password"
-            name="Password"
-            value={credentials.Password}
-            onChange={handleChange}
-          />
-        </div>
-        {error && <div style={{ color: "red" }}>{error}</div>}
-        <button className="my-button-form" type="submit">
-          {t("signIn")}
-        </button>
-      </form>
-      <Link className="my-link-form" to="/Register">
-        {t("signUp")}
-      </Link>
+      <div className="my-form-items">
+        <form className="my-form" onSubmit={handleSubmit}>
+          <div className="my-input-container-form">
+            <label className="my-label-form"> {t("username")}</label>
+            <input
+              type="text"
+              className="my-input-form"
+              name="Username"
+              value={credentials.Username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="my-input-container-form">
+            <label className="my-label-form"> {t("password")}</label>
+            <input
+              className="my-input-form"
+              type="password"
+              name="Password"
+              value={credentials.Password}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="my-input-container-form">
+            {error && <div style={{ color: "red" }}>{error}</div>}
+            <button className="my-button-form" type="submit">
+              {t("signIn")}
+            </button>
+          </div>
+          <div className="my-input-container-form">
+            <Link className="my-link-form" to="/Register">
+              {t("signUp")}
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
+    </>
   );
 };
 

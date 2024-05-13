@@ -15,10 +15,21 @@ body {
   color: #27343a;
   text-align: center;
   font-style: bold;
+  font-weight: bold;
   margin-top: 3vh;
 }
 
+.my-link-form {
+  text-decoration: none;
+  color: #000000ce; /* Color del texto */
+  font-size: 2vw; /* Tamaño de fuente */
+  margin-top: 10px; /* Margen superior */
+  display: block; /* Convertir en bloque para ocupar todo el ancho disponible */
+}
 
+.my-link-form:hover {
+  color: #000000; /* Cambiar color al pasar el mouse sobre el enlace */
+}
 
 
 .loading {
