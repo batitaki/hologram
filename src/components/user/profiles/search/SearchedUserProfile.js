@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
+const SearchedUserProfile = () => {
+  const { userId } = useParams();
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-const SearchedUserProfile = ({ userData }) => {
-  console.log("userData:", userData);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      setIsLoading(true);
+      try {
+        // Obtener los datos del usuario del localStorage
+        const userDataFromStorage = localStorage.getItem('searchedUserData');
+        if (userDataFromStorage) {
+          setUserData(JSON.parse(userDataFromStorage));
+          setIsLoading(false);
+          setError("");
+        } else {
+          setError("User data not found in localStorage");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError("Error fetching user data");
+      }
+    };
 
-  if (!userData) {
-    console.log("userData is null or undefined");
-    return <p>Loading...</p>;
-  }
-
-  console.log("Rendering user profile with userData:", userData);
+    fetchUserData();
+  }, [userId]);
 
   return (
-    <>
-      <div className="full-profile-container">
-        <div className="bio-username">
-          <div className="username-container">
-            <p className="username">{userData.Username}</p>
-          </div>
-          <div className="bio-container">
-            <p className="Bio">Bio: {userData.Bio}</p>
-          </div>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : userData ? (
+        <div>
+          <p>Username: {userData.Username}</p>
+          <p>Bio: {userData.Bio}</p>
+          <img src={userData.Image} alt="Profile" />
         </div>
-        <div className="profile-image-container">
-          <img src={userData.Image} alt="Profile" className="profile-image" />
-        </div>
-      </div>
-    </>
+      ) : (
+        <p>No user found</p>
+      )}
+    </div>
   );
 };
 

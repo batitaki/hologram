@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import ComponentRoutes from "./ComponentRoutes";
 import Navbar from "./components/layout/navbar/Navbar";
 import Home from "./components/layout/home/Home";
@@ -13,8 +8,8 @@ import Register from "./components/user/form/Register";
 import UserProfile from "./components/user/profiles/UserProfile";
 import PhotoUploader from "./components/collection/media/photo/PhotoUploader";
 import Creatives from "./components/user/profiles/creatives/Creatives";
-import SearchProfile from "./components/user/profiles/search/SearchProfile";
 import SearchedUserProfile from "./components/user/profiles/search/SearchedUserProfile";
+import SearchUserProfile from "./components/user/profiles/search/SearchProfile";
 
 const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserData }) => {
   return (
@@ -32,10 +27,8 @@ const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserDa
             <Route path="/profile" element={<UserProfile isLoggedIn={isLoggedIn} handleLogout={handleLogout} userData={userData} setUserData={setUserData} />} />
             <Route path="/upload-photo" element={<PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />} />
             <Route path="/creatives" element={<Creatives />} />
-            {/* Definimos la ruta para el perfil de usuario buscado */}
-            <Route path="/search-profile" element={<SearchProfile />} />
-
-             <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
+            <Route path="/search-profile" element={<SearchUserProfile />} />
+            <Route path="/searched-user-profile/:userId" element={<SearchedUserProfile profileData={userData} />} />
           </Routes>
         </div>
       </div>
