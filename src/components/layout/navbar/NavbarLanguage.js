@@ -37,12 +37,7 @@ function NavbarLanguage({
 
       {isClosed && (
         <button className="open-button" onClick={openNavbar}>
-          <img
-            className="boton-hamburguesa-png"
-            src={botonHamburguesa}
-            alt="Open Navbar"
-            style={{ width: "35px", height: "35px" }}
-          />
+            |||
         </button>
       )}
     </div>

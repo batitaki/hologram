@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import ComponentRoutes from "./ComponentRoutes";
 import Navbar from "./components/layout/navbar/Navbar";
@@ -11,10 +11,10 @@ import Home from "./components/layout/home/Home";
 import Login from "./components/user/form/Login";
 import Register from "./components/user/form/Register";
 import UserProfile from "./components/user/profiles/UserProfile";
-import SearchProfile from "./components/user/profiles/search/SearchProfile";
 import PhotoUploader from "./components/collection/media/photo/PhotoUploader";
 import Creatives from "./components/user/profiles/creatives/Creatives";
-
+import SearchProfile from "./components/user/profiles/search/SearchProfile";
+import SearchedUserProfile from "./components/user/profiles/search/SearchedUserProfile";
 
 const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserData }) => {
   return (
@@ -30,9 +30,12 @@ const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserDa
             <Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register />} />
             <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login handleLogin={handleLogin} />} />
             <Route path="/profile" element={<UserProfile isLoggedIn={isLoggedIn} handleLogout={handleLogout} userData={userData} setUserData={setUserData} />} />
-            <Route path="/search-profile" element={<SearchProfile />} />
             <Route path="/upload-photo" element={<PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />} />
-            <Route path="/creatives" element= {<Creatives/>} />
+            <Route path="/creatives" element={<Creatives />} />
+            {/* Definimos la ruta para el perfil de usuario buscado */}
+            <Route path="/search-profile" element={<SearchProfile />} />
+
+             <Route path="/searched-profile/:userId" element={<SearchedUserProfile userData={userData} />} />
           </Routes>
         </div>
       </div>

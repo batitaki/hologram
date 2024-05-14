@@ -7,12 +7,24 @@
   width: 21%;
   max-width: 300px; 
   background-color: rgba(245, 252, 255, 0.439);
-  box-shadow: 0 2px 4px rgb(0, 69, 80);
+  border-right: 1.5px solid black; /* Nuevo borde en lugar de la sombra */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: "Array", sans-serif;
   z-index: 1000;
+}
+
+.vertical-logo{
+  font-family: "Array", sans-serif;
+  color: #000000;
+  font-size: 2.5vw;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin-top: 2vw;
 }
 
 .navbar-closed {
@@ -21,7 +33,7 @@
 }
 
 .art-options {
-  font-size: 2.3vw; 
+  font-size: 2.5vw; 
   font-weight: bold;
   color: #000000;
   margin-left: 1vw;
@@ -49,6 +61,7 @@
   font-weight: bold;
   color: #000000;
   font-size: 1.1vw;
+  margin-bottom: 5vh;
 }
 
 .sidebar .class-lang {
@@ -65,11 +78,26 @@
   color: #000000;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1.2vw;
 }
 
-.logo-class {
-  margin-top: 2vw;
+.text-logo{
+  font-family: "Array", sans-serif;
+  color: #000000;
+  font-size: 2.5vw;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 0.2em; 
 }
+.navbar-brand {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 .logo-class-closed {
   position: relative;
@@ -78,20 +106,17 @@
   align-items: center;
 }
 
-.logo1 {
-  width: auto;
-  height: 15vw;
+.close-button{
+  font-size: 3vw; 
+  border: none;
+  background: none;
+  font-family: "Array", sans-serif;
+  color: #000000;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.logo2 {
-  position: absolute;
-  left: 0;
-  top: -7vw;
-  height: 20vw; 
-  width: auto;
-}
-
-.close-button,
 .open-button {
   font-size: 2vw; 
   border: none;
@@ -99,7 +124,10 @@
   font-family: "Array", sans-serif;
   color: #000000;
   margin-bottom: 1vw;
+  cursor: pointer;
   font-weight: bold;
+  transform: rotate(90deg);
+
 }
 
 .language-button.selected {
@@ -166,13 +194,10 @@
     margin-top: 100px;
   }
 
-  .close-button,
-  .open-button {
+  .close-button {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 110px;
+
   }
 
-  .boton-hamburguesa-png {
-    width: 10px;
-  }
 }

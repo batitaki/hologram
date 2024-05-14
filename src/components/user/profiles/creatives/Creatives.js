@@ -27,7 +27,6 @@ const Creatives = () => {
             <img src={user.Image} alt={user.Username} className="user-image" /> 
             <div className="user-details"> 
               <p> {user.Username}</p>
-              <p> {user.Email}</p>
             </div>
           </div>
         ))}

@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   font-family: "Array", sans-serif;
-  border: 2px solid #000000;
+  border: 1.5px solid #000000;
   width: 100%;
   max-width: 600px;
   border-radius: 8px;
@@ -34,6 +34,11 @@
   border: solid 1.5px;
   font-weight: bold;
   border-radius: 2px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }
 
 .my-link-form:hover {

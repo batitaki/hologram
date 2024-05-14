@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function MediaGallery({ userMedia }) {
   return (
@@ -10,7 +11,9 @@ function MediaGallery({ userMedia }) {
               .slice(rowIndex * 3, (rowIndex + 1) * 3)
               .map((media, index) => (
                 <div className="photo-container" key={index}>
-                  <img className="photo-image" src={media.Image} alt={`Media ${index}`} />
+                  <Link to={`/profile/${media.UserID}`}>
+                    <img className="photo-image" src={media.Image} alt={`Media ${index}`} />
+                  </Link>
                 </div>
               ))}
           </div>

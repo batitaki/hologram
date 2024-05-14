@@ -6,9 +6,9 @@ function NavbarLogo({ isClosed, logo1, logo2 }) {
     <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
       <Link to="/" className="navbar-brand">
         {isClosed ? (
-          <img className="logo1" src={logo1} alt="" />
+          <p className="vertical-logo"> HOLOGRAMA </p>
         ) : (
-          <img className="logo2" src={logo2} alt="" />
+          <p className="text-logo"> HOLOGRAMA </p>
         )}
       </Link>
     </div>

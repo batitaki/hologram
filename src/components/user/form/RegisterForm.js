@@ -74,3 +74,5 @@ const RegisterForm = ({ formData, isLoading, handleChange, handleSubmit }) => {
 };
 
 export default RegisterForm;
+
+

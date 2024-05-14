@@ -5,8 +5,14 @@ import { Link } from "react-router-dom";
 import AnimatedCollectionLogic from "./AnimatedCollectionLogic";
 
 const AnimatedCollectionVisual = () => {
-  const { props,  positions, currentIndex, artworks, loading } =
+  const { props, positions, currentIndex, media, loading } =
     AnimatedCollectionLogic();
+
+  const handleClick = (userId) => {
+    // Aquí podrías realizar alguna acción al hacer clic en la imagen,
+    // como redireccionar al perfil del usuario.
+    console.log(`Clic en la imagen del usuario con ID: ${userId}`);
+  };
 
   return (
     <div
@@ -18,12 +24,12 @@ const AnimatedCollectionVisual = () => {
         overflow: "hidden",
       }}
     >
-      {loading ? ( 
+      {loading ? (
         <div className="loading">Loading...</div>
       ) : (
         <div className="animated-collection-container">
-          {artworks.length > 0 && (
-            <div className="animated-artwork-container">
+          {media.length > 0 && (
+            <div className="animated-media-container">
               {positions.map((position, i) => (
                 <animated.div
                   key={i}
@@ -35,14 +41,18 @@ const AnimatedCollectionVisual = () => {
                     width: "200px",
                   }}
                 >
-                  {artworks[i] && (
-                    <Link to={`/artwork/${artworks[i].ID}`} key={artworks[i].ID}>
+                  {media[i] && (
+                    <Link
+                      to={`/searched-profile/${media[i].UserID}`} // Reemplaza "UserID" con el nombre de la propiedad que contiene el ID del usuario asociado con el medio
+                      key={media[i].ID}
+                      onClick={() => handleClick(media[i].UserID)}
+                    >
                       <img
-                        className={`animated-artwork-image ${
+                        className={`animated-media-image ${
                           i === currentIndex ? "active" : ""
                         }`}
-                        src={artworks[i].Image}
-                        alt={artworks[i].Title}
+                        src={media[i].Image}
+                        alt={media[i].Title}
                         style={{ width: "100%", objectFit: "cover" }}
                       />
                     </Link>

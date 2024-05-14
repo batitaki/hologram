@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { useInterval } from 'react-use';
-import { fetchMedia } from '../../../services/mediaAPI';
+import { fetchMedia } from '../../../services/mediaAPI'; // Assuming this import is used elsewhere
 
 import { getRandomIndexes, generateRandomPositions } from './AnimatedCollectionUtils';
 
 const AnimatedCollectionLogic = () => {
-  const [artworks, setArtworks] = useState([]);
+  const [media, setMedia] = useState([]);
   const [indexes, setIndexes] = useState([]);
   const [positions, setPositions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchArtworks = async () => {
+    const fetchData = async () => {
       try {
-        const fetchedArtworks = await fetchMedia();
-        setArtworks(fetchedArtworks);
-        const initialIndexes = getRandomIndexes(fetchedArtworks, 30);
+        const fetchedMedia = await fetchMedia();
+        setMedia(fetchedMedia);
+        const initialIndexes = getRandomIndexes(fetchedMedia, 30);
         setIndexes(initialIndexes);
         const initialPositions = generateRandomPositions(30);
         setPositions(initialPositions);
@@ -27,11 +27,11 @@ const AnimatedCollectionLogic = () => {
       }
     };
 
-    fetchArtworks();
+    fetchData();
   }, []);
 
   const updateIndexesAndPositions = () => {
-    const nextIndexes = getRandomIndexes(artworks, 30);
+    const nextIndexes = getRandomIndexes(media, 30);
     setIndexes(nextIndexes);
     const nextPositions = generateRandomPositions(30);
     setPositions(nextPositions);
@@ -47,7 +47,7 @@ const AnimatedCollectionLogic = () => {
 
   useInterval(updateIndexesAndPositions, 9000);
 
-  return { props, indexes, positions, currentIndex, artworks, loading };
+  return { props, indexes, positions, currentIndex, media, loading };
 };
 
 export default AnimatedCollectionLogic;
