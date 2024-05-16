@@ -1,40 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
-import { searchUserProfile } from "../../../../services/usersAPI";
-import { getMediaByUser } from "../../../../services/mediaAPI";
-import MediaGallery from "../../../collection/media/photo/MediaGallery";
+import { Link } from "react-router-dom";
+import { fetchUsersByUsername } from "../../../../services/usersAPI";
 
-const SearchUserProfile = () => {
+const SearchProfile = () => {
   const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
-  const [userMedia, setUserMedia] = useState([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const loadUserProfile = async () => {
-      setIsLoading(true);
       try {
-        const response = await searchUserProfile(username);
-        if (response.success) {
-          setUserData(response.user);
-          setError("");
-          if (response.user && response.user.ID) {
-            const mediaData = await getMediaByUser(response.user.ID);
-            setUserMedia(mediaData);
-          }
-          // Guardar los datos del usuario en localStorage
-          localStorage.setItem('searchedUserData', JSON.stringify(response.user));
-        } else {
-          setUserData(null);
-          setUserMedia([]);
-          setError(response.error);
+        const response = await fetchUsersByUsername(username);
+        console.log("Respuesta del servidor:", response);
+        if (response.user) {
+          setUser(response.user);
+        } else if (response.error) {
+          console.error("Error fetching user profile:", response.error);
+          setUser(null);
         }
       } catch (error) {
         console.error("Error fetching user profile:", error);
-        setError("Error fetching user profile");
       }
-      setIsLoading(false);
     };
 
     if (username.trim() !== "") {
@@ -49,38 +34,25 @@ const SearchUserProfile = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="ENTER USERNAME"
+          placeholder="SEARCH PROFILE"
           className="search-input-profile"
         />
-      </div>
-      <div className="search-profile-container">
-        {userData && (
-          <div className="bio-username">
-            <div className="username-container">
-              {/* Envuelve el nombre de usuario en un enlace */}
-              <Link to={`/searched-user-profile/${userData.ID}`} className="username">{userData.Username}</Link>
+        {user && (
+          <Link to={`/creatives/${user.ID}`} className="user-preview-link">
+            <div className="user-preview">
+              <img
+                src={user.Image}
+                alt="Profile"
+                className="profile-preview-image"
+              />
+
+              <p className="username-preview">{user.Username}</p>
             </div>
-            <div className="bio-container">
-              <p className="Bio">Bio: {userData.Bio}</p>
-            </div>
-          </div>
+          </Link>
         )}
-        <div className="profile-image-container">
-          {userData && (
-            <img
-              src={userData.Image}
-              alt="Profile"
-              className="profile-image"
-            />
-          )}
-        </div>
-      </div>
-      <div>
-        {/* Aquí puedes mostrar la galería de medios del usuario si lo deseas */}
-        {/* <MediaGallery media={userMedia} /> */}
       </div>
     </>
   );
 };
 
-export default SearchUserProfile;
+export default SearchProfile;

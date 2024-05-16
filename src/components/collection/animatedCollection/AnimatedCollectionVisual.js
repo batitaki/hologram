@@ -43,7 +43,7 @@ const AnimatedCollectionVisual = () => {
                 >
                   {media[i] && (
                     <Link
-                      to={`/searched-profile/${media[i].UserID}`} // Reemplaza "UserID" con el nombre de la propiedad que contiene el ID del usuario asociado con el medio
+                      to={`/creatives/${media[i].UserID}`} // Reemplaza "UserID" con el nombre de la propiedad que contiene el ID del usuario asociado con el medio
                       key={media[i].ID}
                       onClick={() => handleClick(media[i].UserID)}
                     >

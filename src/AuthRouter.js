@@ -8,7 +8,7 @@ import Register from "./components/user/form/Register";
 import UserProfile from "./components/user/profiles/UserProfile";
 import PhotoUploader from "./components/collection/media/photo/PhotoUploader";
 import Creatives from "./components/user/profiles/creatives/Creatives";
-import SearchedUserProfile from "./components/user/profiles/search/SearchedUserProfile";
+import CreativeDetail from "./components/user/profiles/creatives/CreativeDetail";
 import SearchUserProfile from "./components/user/profiles/search/SearchProfile";
 
 const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserData }) => {
@@ -27,8 +27,8 @@ const AuthRouter = ({ isLoggedIn, handleLogout, handleLogin, userData, setUserDa
             <Route path="/profile" element={<UserProfile isLoggedIn={isLoggedIn} handleLogout={handleLogout} userData={userData} setUserData={setUserData} />} />
             <Route path="/upload-photo" element={<PhotoUploader isLoggedIn={isLoggedIn} userData={userData} />} />
             <Route path="/creatives" element={<Creatives />} />
-            <Route path="/search-profile" element={<SearchUserProfile />} />
-            <Route path="/searched-user-profile/:userId" element={<SearchedUserProfile profileData={userData} />} />
+           <Route path="/search-profile" element={<SearchUserProfile />} />
+           <Route path="/creatives/:userId" element={<CreativeDetail />} />
           </Routes>
         </div>
       </div>

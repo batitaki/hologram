@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import { fetchUsers } from '../../../../services/usersAPI';
 import './Creatives.css';
 
@@ -23,12 +24,14 @@ const Creatives = () => {
       <h1 className='title'>CREATIIVES</h1>
       <div className="users-grid"> 
         {users.map(user => (
-          <div key={user.id} className="user-card"> 
-            <img src={user.Image} alt={user.Username} className="user-image" /> 
-            <div className="user-details"> 
-              <p> {user.Username}</p>
+          <Link key={user.ID} to={`/creatives/${user.ID}`}> {/* Wrap each card with Link */}
+            <div className="user-card"> 
+              <img src={user.Image} alt={user.Username} className="user-image" /> 
+              <div className="user-details"> 
+                <p>{user.Username}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

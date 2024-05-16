@@ -1,10 +1,32 @@
 export const fetchUsers = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/user`);
+    const response = await  fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/user`);
     const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error al obtener users:", error);
+    return [];
+  }
+};
+
+export const fetchUserById = async (userId) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/users/${userId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener usuario por ID:", error);
+    return { success: false, error: "Error al obtener usuario por ID" };
+  }
+};
+
+export const fetchUsersByUsername = async (username) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/profile-searched/${username}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener usuarios por nombre de usuario:", error);
     return [];
   }
 };
@@ -82,25 +104,6 @@ export const fetchUserProfile = async () => {
   }
 };
 
-export const searchUserProfile = async (username) => {
-  try {
-    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/users/${username}`, {
-      method: "GET",
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Perfil del usuario encontrado:", data);
-      return { success: true, user: data.user };
-    } else {
-      console.error("Error al buscar el perfil del usuario");
-      return { success: false, error: "Error al buscar el perfil del usuario" };
-    }
-  } catch (error) {
-    console.error("Error en la solicitud:", error);
-    return { success: false, error: "Error en la solicitud" };
-  }
-};
 
 
 export const editUserProfile = async (userId, formData, token) => {
