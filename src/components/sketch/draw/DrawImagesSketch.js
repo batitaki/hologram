@@ -45,7 +45,7 @@ const DrawImagesComponent = () => {
 
     if (window.innerWidth < 780) {
       canvasWidth = window.innerWidth * 0.65; // 65% del ancho de la pantalla
-      canvasHeight = window.innerHeight * 0.9; // 90% de la altura de la pantalla
+      canvasHeight = window.innerHeight * 0.8; // 90% de la altura de la pantalla
     }
 
     const canvas = p5.createCanvas(canvasWidth, canvasHeight);
@@ -70,15 +70,16 @@ const DrawImagesComponent = () => {
 
   const draw = (p5) => {
     p5.background(255);
-
-    if (showInstructions) {
+  
+    if (showInstructions && !drawImage) {
+      // Muestra las instrucciones solo si no se está dibujando y aún no se ha cargado ninguna imagen
       if (p5.frameCount % 30 < 15) {
         p5.fill(0);
         p5.textAlign(p5.CENTER);
         const instructionTextSize = p5.width < 600 ? 20 : 35;
         p5.textSize(instructionTextSize);
         p5.textFont("Array");
-          p5.textStyle(p5.BOLD);
+        p5.textStyle(p5.BOLD);
         const instructionText = "PRESS U TO LOAD IMAGES";
         p5.text(
           instructionText,
@@ -86,32 +87,32 @@ const DrawImagesComponent = () => {
           p5.height / 2 + instructionTextSize / 2
         );
       }
-    } else {
-      if (
-        showSecondInstruction &&
-        !printedFirstImage &&
-        imagesHistory.current.length === 0
-      ) {
-        if (p5.frameCount % 30 < 15) {
-          p5.fill(0);
-          p5.textAlign(p5.CENTER);
-          const instructionTextSize = p5.width < 600 ? 20 : 35;
-          p5.textSize(instructionTextSize);
-          p5.textFont("Array");
-          const instructionText = "CLICK INSIDE THE CANVAS";
-          p5.text(
-            instructionText,
-            p5.width / 2,
-            p5.height / 2 + instructionTextSize / 2
-          );
-        }
+    } else if (
+      showSecondInstruction &&
+      !printedFirstImage &&
+      imagesHistory.current.length === 0
+    ) {
+      // Muestra la segunda instrucción solo si aún no se ha colocado ninguna imagen y no se está dibujando
+      if (p5.frameCount % 30 < 15) {
+        p5.fill(0);
+        p5.textAlign(p5.CENTER);
+        const instructionTextSize = p5.width < 600 ? 20 : 35;
+        p5.textSize(instructionTextSize);
+        p5.textFont("Array");
+        const instructionText = "CLICK INSIDE THE CANVAS";
+        p5.text(
+          instructionText,
+          p5.width / 2,
+          p5.height / 2 + instructionTextSize / 2
+        );
       }
-
+    } else {
+      // Dibuja las imágenes en el lienzo si el usuario está dibujando
       for (let i = 0; i < imagesHistory.current.length; i++) {
         const { img, x, y, width, height } = imagesHistory.current[i];
         p5.image(img, x - width / 2, y - height / 2, width, height);
       }
-
+  
       if (drawImage && userImage && p5.mouseIsPressed) {
         const currentImage = {
           img: userImage,
@@ -128,11 +129,12 @@ const DrawImagesComponent = () => {
       }
     }
   };
-
+  
+  // Dentro del manejador de eventos mousePressed
   const mousePressed = (p5) => {
     const canvasX = p5.width / 2;
     const canvasY = p5.height / 2;
-
+  
     if (
       p5.mouseX > canvasX - p5.width / 2 &&
       p5.mouseX < canvasX + p5.width / 2 &&
@@ -156,11 +158,12 @@ const DrawImagesComponent = () => {
       }
     }
   };
-
+  
+  // Dentro del manejador de eventos mouseDragged
   const mouseDragged = (p5) => {
     const canvasX = p5.width / 2;
     const canvasY = p5.height / 2;
-
+  
     if (
       p5.mouseX > canvasX - p5.width / 2 &&
       p5.mouseX < canvasX + p5.width / 2 &&
@@ -336,37 +339,37 @@ const DrawImagesComponent = () => {
             <Image
               src={horseImage}
               alt="horse"
-              size={120}
+              size={100}
               onClick={() => handleImageClick(new window.p5(), horseImage)}
             />
             <Image
               src={image1}
               alt="image1"
-              size={120}
+              size={100}
               onClick={() => handleImageClick(new window.p5(), image1)}
             />
             <Image
               src={image2}
               alt="image2"
-              size={120}
+              size={100}
               onClick={() => handleImageClick(new window.p5(), image2)}
             />
             <Image
               src={image3}
               alt="image3"
-              size={120}
+              size={100}
               onClick={() => handleImageClick(new window.p5(), image3)}
             />
             <Image
               src={image4}
               alt="image4"
-              size={120}
+              size={100}
               onClick={() => handleImageClick(new window.p5(), image4)}
             />
             <Image
               src={image5}
               alt="image5"
-              size={120}
+              size={10}
               onClick={() => handleImageClick(new window.p5(), image5)}
             />
           </div>

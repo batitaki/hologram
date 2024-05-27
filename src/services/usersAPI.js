@@ -104,8 +104,6 @@ export const fetchUserProfile = async () => {
   }
 };
 
-
-
 export const editUserProfile = async (userId, formData, token) => {
   try {
     console.log("ID del usuario:", userId);

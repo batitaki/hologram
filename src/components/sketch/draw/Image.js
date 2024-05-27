@@ -3,6 +3,7 @@ import React from "react";
 const Image = ({ src, alt, size, onClick }) => {
   return (
     <div
+      className="ImageContainer"
       style={{
         width: `${size}px`,
         height: `${size}px`,
@@ -17,6 +18,7 @@ const Image = ({ src, alt, size, onClick }) => {
       onClick={onClick}
     >
       <img
+        className="Image"
         src={src}
         alt={alt}
         style={{

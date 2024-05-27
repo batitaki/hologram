@@ -10,7 +10,7 @@ body {
 
 .title {
   font-family: "Array", sans-serif;
-  font-size: 30px;
+  font-size: 2vw;
   font-weight: 1;
   color: #27343a;
   text-align: center;
@@ -50,4 +50,13 @@ body {
 @keyframes colorAnimation {
   0% { color: red; } /* Comienza con rojo */
   100% { color: rgb(255, 0, 0); } /* Cambia a negro */
+}
+
+@media only screen and (max-width: 600px) {
+
+  .title{
+    font-size: 3vw;
+  }
+
+
 }

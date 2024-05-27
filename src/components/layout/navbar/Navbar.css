@@ -24,7 +24,8 @@
   text-decoration: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  margin-top: 2vw;
+  margin-top: 3vw;
+
 }
 
 .navbar-closed {
@@ -153,10 +154,11 @@
     width: 100%; 
     max-width: none; 
     height: 100vh;
+    background-color: rgba(245, 252, 255, 0.787);
   }
 
   .navbar-closed {
-    width: 12%; 
+    width: 7%; 
     max-width: none; 
   }
 
@@ -175,6 +177,15 @@
     align-items: center;
     font-size: 25px;
   }
+
+
+.language-separator {
+  width: 85%;
+  height: 2px;
+  background-color: #000000;
+  margin: 1vw 0;
+  display: block;
+}
 
   .art-options-closed {
     font-size: 0px;
@@ -195,8 +206,20 @@
   }
 
   .close-button {
-    font-size: 16px;
+    font-size: 10vw;
     margin-bottom: 110px;
+  }
+  .open-button {
+    font-size: 5vw; 
+  }
+
+  .vertical-logo{
+    font-size: 7.0vw;
+  }
+
+  .text-logo{
+
+    font-size: 7.5vw;
 
   }
 
